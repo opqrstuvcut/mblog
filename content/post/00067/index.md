@@ -9,7 +9,7 @@ Individual Conditional Expectation(ICE)は任意のモデルのある特徴量�
 例えば、ある特定のデータのある特徴量が大きくなるにつれ、モデルの出力がどういった変化をするかを見ます。
 
 PDPの記事を先に見ると、理解がはやいかと思います。  
-[Partial Dependence Plotの解説記事](https://opqrstuvcut.github.io/blog/posts/partial-dependence-plot/)
+[Partial Dependence Plotの解説記事](https://opqrstuvcut.github.io/mblog/posts/partial-dependence-plot/)
 
 # Individual Conditional Expectationの概要
 ICEは冒頭に述べたとおりなので、あまり細かい話をする必要がないのですが、Partial Dependence Plot(PDP)との違いを述べておきます。  
