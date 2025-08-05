@@ -26,10 +26,10 @@ PDPはデータの集合の全体に対して、ある特徴量の値を順に�
 モデルはLightGBMの勾配ブースティング法を利用しています。&lt;/p&gt;
 &lt;h2 id=&#34;年齢に対するindividual-conditional-expectation&#34;&gt;年齢に対するIndividual Conditional Expectation
 &lt;/h2&gt;&lt;p&gt;年齢を$0,5,10,\cdots,65$と変化させてみた結果が以下のとおりです。縦軸はタイタニックに乗った乗客の生存確率の予測値です。1つ1つの曲線が1つの乗客に対応します。&lt;br&gt;
-&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/individual-conditional-expectation/ice_age.png&#34;
+&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/individual-conditional-expectation/ice_age.png&#34;
 	width=&#34;907&#34;
 	height=&#34;278&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/individual-conditional-expectation/ice_age_hu9390657832697148048.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/individual-conditional-expectation/ice_age_hu13515510827042229278.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/individual-conditional-expectation/ice_age_hu_6bd79fbe28adde5e.png 480w, https://opqrstuvcut.github.io/mblog/posts/individual-conditional-expectation/ice_age_hu_9b984e4e3982000.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;年齢に対するIndividual Conditional Expectation&#34;
@@ -45,10 +45,10 @@ PDPはデータの集合の全体に対して、ある特徴量の値を順に�
 生存確率が0.7以上であり続けた人のデータを軽く確認したところ、性別は全員女性でした。PDPのときもそうでしたが、女性の生存確率が高いモデルになっているのがここからもわかります。&lt;/p&gt;
 &lt;p&gt;また、ICEでは左端の値をすべてのデータで揃えることで見やすくすることがあります。&lt;br&gt;
 各データごとに、0歳のときの予測値でそれぞれの予測値を引いてみた結果が以下のとおりです。
-&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/individual-conditional-expectation/ice_age_centered.png&#34;
+&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/individual-conditional-expectation/ice_age_centered.png&#34;
 	width=&#34;920&#34;
 	height=&#34;278&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/individual-conditional-expectation/ice_age_centered_hu7141907973305086535.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/individual-conditional-expectation/ice_age_centered_hu2872371132474607967.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/individual-conditional-expectation/ice_age_centered_hu_5abf43809a710a0c.png 480w, https://opqrstuvcut.github.io/mblog/posts/individual-conditional-expectation/ice_age_centered_hu_d9cf39640f968626.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;年齢に対するIndividual Conditional Expectation&#34;
@@ -113,10 +113,10 @@ $$ E_{X_C}[f(x_i, X_C)] = \int p(X_C) f(x_i, X_C) dX_C .$$
 $$ E_{X_C}[f(x_i, X_C)] = \int p(X_C) f(x_i, X_C) dX_C \approx \frac{1}{n} \sum_{j=1}^n f(x_i,X_{jC}) .$$&lt;/p&gt;
 &lt;h2 id=&#34;年齢に対するpartial-dependence-plot&#34;&gt;年齢に対するPartial Dependence Plot
 &lt;/h2&gt;&lt;p&gt;年齢を$0,5,10,\cdots,65$と変化させてみた結果が以下のとおりです。&lt;br&gt;
-&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/partial-dependence-plot/ppd_age.png&#34;
+&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/partial-dependence-plot/ppd_age.png&#34;
 	width=&#34;907&#34;
 	height=&#34;278&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/partial-dependence-plot/ppd_age_hu337343712515268662.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/partial-dependence-plot/ppd_age_hu11077960252519028782.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/partial-dependence-plot/ppd_age_hu_f2013eedb68a8548.png 480w, https://opqrstuvcut.github.io/mblog/posts/partial-dependence-plot/ppd_age_hu_25b7cdcbe0050c4d.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;年齢に対するPartial Dependence Plot&#34;
@@ -130,10 +130,10 @@ $$ E_{X_C}[f(x_i, X_C)] = \int p(X_C) f(x_i, X_C) dX_C \approx \frac{1}{n} \sum_
 年齢が低いほうが、生存しやすかった傾向が読み取れます。また35歳にピークがありますので、なにか理由がありそうです。例えば、年齢があがるほど客室のクラスが良くなりやすいのかもしれません（そうだとすると年齢と客室のクラスは独立ではないのかという話になりますので、実際にはここの考察が必要になりそうです）。&lt;/p&gt;
 &lt;h2 id=&#34;性別に対するpartial-dependence-plot&#34;&gt;性別に対するPartial Dependence Plot
 &lt;/h2&gt;&lt;p&gt;性別についても結果を示します。&lt;br&gt;
-&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/partial-dependence-plot/ppd_sex.png&#34;
+&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/partial-dependence-plot/ppd_sex.png&#34;
 	width=&#34;907&#34;
 	height=&#34;278&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/partial-dependence-plot/ppd_sex_hu697429830695706603.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/partial-dependence-plot/ppd_sex_hu11100406626365697369.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/partial-dependence-plot/ppd_sex_hu_68b509b68cc59429.png 480w, https://opqrstuvcut.github.io/mblog/posts/partial-dependence-plot/ppd_sex_hu_7038f23634b03913.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;性別に対するPPD&#34;
@@ -196,12 +196,12 @@ $p$と$q$はそれぞれ確率分布であり、$KL(p||q)$が大きいほど、2
 &lt;h1 id=&#34;kl-divergenceの最小化問題&#34;&gt;KL divergenceの最小化問題
 &lt;/h1&gt;&lt;h2 id=&#34;klpqのケース&#34;&gt;KL(p||q)のケース
 &lt;/h2&gt;&lt;p&gt;仮に分布$p$が固定されているものだとして、$KL(p||q)$が最小化されるように$q$を決めることを考えます。ただし、$p=q$になることはないとします。&lt;/p&gt;
-&lt;p&gt;前述したKL divergenceの定義をみてみると、$p(\mathbf{x})$が0でない値をもつ領域では$q(\mathbf{x})$も$p(\mathbf{x})$に近い値かあるいは$p(\mathbf{x})$より大きい値にならなければ、$KL(p||q)$が大きくなってしまいます。よってこの場合にはKL divergenceを最小化するような&lt;!-- raw HTML omitted --&gt;$q$は$p$全体をカバーするように広がる分布&lt;!-- raw HTML omitted --&gt;になると考えられます。&lt;/p&gt;
+&lt;p&gt;前述したKL divergenceの定義をみてみると、$p(\mathbf{x})$が0でない値をもつ領域では$q(\mathbf{x})$も$p(\mathbf{x})$に近い値かあるいは$p(\mathbf{x})$より大きい値にならなければ、$KL(p||q)$が大きくなってしまいます。よってこの場合にはKL divergenceを最小化するような**$q$は$p$全体をカバーするように広がる分布**になると考えられます。&lt;/p&gt;
 &lt;h2 id=&#34;klqpのケース&#34;&gt;KL(q||p)のケース
 &lt;/h2&gt;&lt;p&gt;次にKL divergenceに与える$p$と$q$の順序をひっくり返し、$KL(q||p)$の最小化問題を考えてみます。$KL(q||p)$は
 $$ KL(q||p) = \int q(\mathbf{x}) \log \left(\frac{q(\mathbf{x})}{p(\mathbf{x})}\right) {\rm d\mathbf{x}}$$
 ですね。
-$KL(q||p)$が小さくなるにはどうすればよいかといえば、$p(\mathbf{x})$が0に近いような領域で$q(\mathbf{x})$が小さくなるようにすればよいです。$p(\mathbf{x})$が小さい領域はいくらでもあり、そういったところに大きい$q(\mathbf{x})$が割り当てられると、$KL(q||p)$が大きくなってしまいますね。このため、イメージとしては、$KL(q||p)$を最小化するような&lt;!-- raw HTML omitted --&gt;$q$の密度は$p$の密度が大きいところに集中するような分布&lt;!-- raw HTML omitted --&gt;になると考えられます。&lt;/p&gt;
+$KL(q||p)$が小さくなるにはどうすればよいかといえば、$p(\mathbf{x})$が0に近いような領域で$q(\mathbf{x})$が小さくなるようにすればよいです。$p(\mathbf{x})$が小さい領域はいくらでもあり、そういったところに大きい$q(\mathbf{x})$が割り当てられると、$KL(q||p)$が大きくなってしまいますね。このため、イメージとしては、$KL(q||p)$を最小化するような**$q$の密度は$p$の密度が大きいところに集中するような分布**になると考えられます。&lt;/p&gt;
 &lt;h1 id=&#34;実験&#34;&gt;実験
 &lt;/h1&gt;&lt;p&gt;上記の話が成り立つのかを実験してみます。&lt;/p&gt;
 &lt;h2 id=&#34;実験準備&#34;&gt;実験準備
@@ -211,10 +211,10 @@ $KL(q||p)$が小さくなるにはどうすればよいかといえば、$p(\mat
 $$\mathbf{u} = \begin{pmatrix} 0.3 \\ -0.2 \end{pmatrix}, \Sigma =\begin{pmatrix} 0.9&amp;amp;-0.7 \\ -0.7 &amp;amp; 0.9 \end{pmatrix}$$
 とました。
 $p$を確率密度毎に色わけして表示してみると、以下のとおりです。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/a656f547ccf54333352ff64a2de84cd7.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/a656f547ccf54333352ff64a2de84cd7.png&#34;
 	width=&#34;640&#34;
 	height=&#34;480&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/a656f547ccf54333352ff64a2de84cd7_hu13867360107566300566.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/a656f547ccf54333352ff64a2de84cd7_hu377267406213030738.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/a656f547ccf54333352ff64a2de84cd7_hu_88a58d6a9433d27d.png 480w, https://opqrstuvcut.github.io/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/a656f547ccf54333352ff64a2de84cd7_hu_96ba85589944d254.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -229,10 +229,10 @@ $$q(\mathbf{x}|\mathbf{s},\alpha)=\frac{1}{{2\pi}\alpha}\exp\biggl[-\frac{(\math
 $q$は同心円状に確率密度をもつ分布になりますので、パラメータをどうやっても$p$と一致することはできません。&lt;/p&gt;
 &lt;h2 id=&#34;実験結果&#34;&gt;実験結果
 &lt;/h2&gt;&lt;p&gt;$KL(p||q)$を最小化したケースをまず示します。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/983be7a190c4aaf3488cd6c3d4471158.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/983be7a190c4aaf3488cd6c3d4471158.png&#34;
 	width=&#34;640&#34;
 	height=&#34;480&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/983be7a190c4aaf3488cd6c3d4471158_hu1976570934999206934.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/983be7a190c4aaf3488cd6c3d4471158_hu17104291689527597488.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/983be7a190c4aaf3488cd6c3d4471158_hu_6abcadaac0ce9fd1.png 480w, https://opqrstuvcut.github.io/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/983be7a190c4aaf3488cd6c3d4471158_hu_5988d16f1c0eb15a.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -244,10 +244,10 @@ $q$は同心円状に確率密度をもつ分布になりますので、パラ�
 &lt;p&gt;白い線が$p$の等高線です。色分けされて表示されているのが、$q$の確率密度になります。
 先程の話のとおり、$q$は$p$に対して広がった分布になっていることがわかります。&lt;/p&gt;
 &lt;p&gt;次に$KL(q||p)$を最小化したケースです。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/ffae8716aa0ab67fa3d7ff25156a8dcb.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/ffae8716aa0ab67fa3d7ff25156a8dcb.png&#34;
 	width=&#34;640&#34;
 	height=&#34;480&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/ffae8716aa0ab67fa3d7ff25156a8dcb_hu6336058389525374409.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/ffae8716aa0ab67fa3d7ff25156a8dcb_hu3435602450384120079.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/ffae8716aa0ab67fa3d7ff25156a8dcb_hu_d3d90caeef3891bc.png 480w, https://opqrstuvcut.github.io/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/ffae8716aa0ab67fa3d7ff25156a8dcb_hu_b522797f1f72d593.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -397,10 +397,10 @@ $${\rm argmin_{g \in G}} \ L(f, g, \pi_x) + \Omega(g).$$&lt;/p&gt;
 &lt;/h1&gt;&lt;h2 id=&#34;superpixel&#34;&gt;superpixel
 &lt;/h2&gt;&lt;p&gt;画像にLIMEを適用する場合、まず次のように入力画像をsuperpixelに分割し、領域ごとに寄与を求めていきます。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/1341b73a17da593ffc43cebc86969604.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/1341b73a17da593ffc43cebc86969604.jpg&#34;
 	width=&#34;1400&#34;
 	height=&#34;672&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/1341b73a17da593ffc43cebc86969604_hu8446067134062836465.jpg 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/1341b73a17da593ffc43cebc86969604_hu12011469338926740137.jpg 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/1341b73a17da593ffc43cebc86969604_hu_490e3f20baa3ca97.jpg 480w, https://opqrstuvcut.github.io/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/1341b73a17da593ffc43cebc86969604_hu_ab48e04d310ba4cb.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -409,13 +409,12 @@ $${\rm argmin_{g \in G}} \ L(f, g, \pi_x) + \Omega(g).$$&lt;/p&gt;
 		data-flex-basis=&#34;500px&#34;
 	
 &gt;
-引用元：https://towardsdatascience.com/understanding-how-lime-explains-predictions-d404e5d1829c&lt;/p&gt;
-&lt;/blockquote&gt;
+引用元：https://towardsdatascience.com/understanding-how-lime-explains-predictions-d404e5d1829c&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;実際には上記のようにある程度細かく領域を分けますが、以下では例として扱いやすいように次のような画像を考えて、粗く領域を分けていきます（左がオリジナルのくまモンで、右がsuperpixelに分割されたくまモンです）。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/ad1fa258f844d5a4ad33e45d75dcf7da.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/ad1fa258f844d5a4ad33e45d75dcf7da.png&#34;
 	width=&#34;171&#34;
 	height=&#34;294&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/ad1fa258f844d5a4ad33e45d75dcf7da_hu9434594275459747719.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/ad1fa258f844d5a4ad33e45d75dcf7da_hu5114722451893555332.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/ad1fa258f844d5a4ad33e45d75dcf7da_hu_36c0de34f1324a90.png 480w, https://opqrstuvcut.github.io/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/ad1fa258f844d5a4ad33e45d75dcf7da_hu_afe0590f55ad36d8.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -423,10 +422,10 @@ $${\rm argmin_{g \in G}} \ L(f, g, \pi_x) + \Omega(g).$$&lt;/p&gt;
 		data-flex-grow=&#34;58&#34;
 		data-flex-basis=&#34;139px&#34;
 	
-&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/cc5a03cf0c2b50e3217a99edddcc002b.jpg&#34;
+&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/cc5a03cf0c2b50e3217a99edddcc002b.jpg&#34;
 	width=&#34;171&#34;
 	height=&#34;294&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/cc5a03cf0c2b50e3217a99edddcc002b_hu9645411743597279984.jpg 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/cc5a03cf0c2b50e3217a99edddcc002b_hu6040191805966188847.jpg 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/cc5a03cf0c2b50e3217a99edddcc002b_hu_62f4dd0ab98b7ca.jpg 480w, https://opqrstuvcut.github.io/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/cc5a03cf0c2b50e3217a99edddcc002b_hu_78c8451f2d1af058.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -439,10 +438,10 @@ $${\rm argmin_{g \in G}} \ L(f, g, \pi_x) + \Omega(g).$$&lt;/p&gt;
 具体的には
 $$x&amp;rsquo; = [0, 0, 1, 1, 0,0,0,0]$$
 としたとき、3番目と4番目だけが1ですので、この$x&amp;rsquo;$に対応した画像は次のようになります。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/158a3d802d662d2e95988553c4d83e5d.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/158a3d802d662d2e95988553c4d83e5d.jpg&#34;
 	width=&#34;171&#34;
 	height=&#34;294&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/158a3d802d662d2e95988553c4d83e5d_hu15376020573375360564.jpg 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/158a3d802d662d2e95988553c4d83e5d_hu3072560797674580192.jpg 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/158a3d802d662d2e95988553c4d83e5d_hu_715bcec3706d547f.jpg 480w, https://opqrstuvcut.github.io/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/158a3d802d662d2e95988553c4d83e5d_hu_3b55624558feaa70.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -460,10 +459,10 @@ $x&amp;rsquo;$の話でいえば、適当な個数の要素については1と�
 先程示した$x&amp;rsquo;$に対応した画像も$x$の近傍になります。&lt;/p&gt;
 &lt;h2 id=&#34;線形モデルのケース&#34;&gt;線形モデルのケース
 &lt;/h2&gt;&lt;p&gt;$g$が線形モデルの場合には$g(z&amp;rsquo;)$は次のようになります。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/e25d1447ff223231a0d857396c39ef6f.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/e25d1447ff223231a0d857396c39ef6f.png&#34;
 	width=&#34;1335&#34;
 	height=&#34;377&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/e25d1447ff223231a0d857396c39ef6f_hu345399191377022762.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/e25d1447ff223231a0d857396c39ef6f_hu5359498291438263020.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/e25d1447ff223231a0d857396c39ef6f_hu_21d802ea4d512c9.png 480w, https://opqrstuvcut.github.io/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/e25d1447ff223231a0d857396c39ef6f_hu_a29bd495745f09d1.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -539,10 +538,10 @@ $z$は$x$近傍の画像をあらわし、$z&amp;rsquo;$は先程まで説明し
 &lt;/h2&gt;&lt;h3 id=&#34;アップロード&#34;&gt;アップロード
 &lt;/h3&gt;&lt;p&gt;npm run startを実行すると、ブラウザ上でアプリが立ち上がります。
 立ち上げ直後はファイルのアップロードを促されるので、準備したファイルをドラッグアンドドロップしてアップロードします。
-&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/1031826c887d80ad190bb59649cdbb48.png&#34;
+&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/1031826c887d80ad190bb59649cdbb48.png&#34;
 	width=&#34;1200&#34;
 	height=&#34;868&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/1031826c887d80ad190bb59649cdbb48_hu9280480562647874341.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/1031826c887d80ad190bb59649cdbb48_hu15435857664537984534.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/1031826c887d80ad190bb59649cdbb48_hu_e5aae611fcd5e416.png 480w, https://opqrstuvcut.github.io/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/1031826c887d80ad190bb59649cdbb48_hu_9fd3a2c6ed1cbd4.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -553,10 +552,10 @@ $z$は$x$近傍の画像をあらわし、$z&amp;rsquo;$は先程まで説明し
 &gt;&lt;/p&gt;
 &lt;h3 id=&#34;性能の分布&#34;&gt;性能の分布
 &lt;/h3&gt;&lt;p&gt;アップロードすると、次のような画面になります。
-&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/30a5a67fea020bf8b04e12576d2317d2.png&#34;
+&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/30a5a67fea020bf8b04e12576d2317d2.png&#34;
 	width=&#34;2876&#34;
 	height=&#34;1530&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/30a5a67fea020bf8b04e12576d2317d2_hu3855017382333919797.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/30a5a67fea020bf8b04e12576d2317d2_hu16432191736414497549.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/30a5a67fea020bf8b04e12576d2317d2_hu_d24c8bf0f25b34a3.png 480w, https://opqrstuvcut.github.io/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/30a5a67fea020bf8b04e12576d2317d2_hu_8998e84de475e21c.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -573,10 +572,10 @@ segment0に含まれるデータは性能が良く、segment3に含まれるデ�
 各segmentがどのGroupに入るのかはユーザー側で変えることが可能です。&lt;/p&gt;
 &lt;h3 id=&#34;特徴量の分布&#34;&gt;特徴量の分布
 &lt;/h3&gt;&lt;p&gt;ManifoldではGroup毎の特徴量の分布の違いを見ることができます。
-&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/47067194819153d6cc72c968965ce47e.png&#34;
+&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/47067194819153d6cc72c968965ce47e.png&#34;
 	width=&#34;2876&#34;
 	height=&#34;1530&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/47067194819153d6cc72c968965ce47e_hu7251450522915568825.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/47067194819153d6cc72c968965ce47e_hu10800898343569755754.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/47067194819153d6cc72c968965ce47e_hu_ccffc69641067c52.png 480w, https://opqrstuvcut.github.io/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/47067194819153d6cc72c968965ce47e_hu_6f0f7a25ec2013e0.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -586,10 +585,10 @@ segment0に含まれるデータは性能が良く、segment3に含まれるデ�
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;一番上の行がGroupによる性別の分布の違いをあらわしたもので、そこにマウスをもってくると次のようになります。
-&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/2f11d99ea2c3cf569c040d9555f5ab2c.png&#34;
+&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/2f11d99ea2c3cf569c040d9555f5ab2c.png&#34;
 	width=&#34;2876&#34;
 	height=&#34;1530&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/2f11d99ea2c3cf569c040d9555f5ab2c_hu2135436493372741207.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/2f11d99ea2c3cf569c040d9555f5ab2c_hu1973847946822195271.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/2f11d99ea2c3cf569c040d9555f5ab2c_hu_4a032448631c4a76.png 480w, https://opqrstuvcut.github.io/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/2f11d99ea2c3cf569c040d9555f5ab2c_hu_7b974e1b293c4078.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -600,10 +599,10 @@ segment0に含まれるデータは性能が良く、segment3に含まれるデ�
 &gt;&lt;/p&gt;
 &lt;p&gt;性別が男性である場合にはGroup1に入っている（性能が良い）データが46個、Group0に入っている（性能が悪い）データが7個となっています。
 また、マウスを右側にもっていくと次のようになります。
-&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/837bdb8363f352975fdb197d05287473.png&#34;
+&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/837bdb8363f352975fdb197d05287473.png&#34;
 	width=&#34;2876&#34;
 	height=&#34;1530&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/837bdb8363f352975fdb197d05287473_hu3081930767704644002.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/837bdb8363f352975fdb197d05287473_hu8070454898579217814.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/837bdb8363f352975fdb197d05287473_hu_f2743ffcd578f97a.png 480w, https://opqrstuvcut.github.io/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/837bdb8363f352975fdb197d05287473_hu_b9158af593eabf24.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	

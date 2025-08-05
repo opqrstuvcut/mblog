@@ -30,19 +30,19 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;plt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;人工的に画像にノイズを乗せて、blurとmedianBlurを適用した結果を比べてみます。&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;ノイズを乗せた画像&lt;/th&gt;
-&lt;th&gt;blurを適用した画像&lt;/th&gt;
-&lt;th&gt;medianBlurを適用した画像&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/%E5%A4%96%E3%82%8C%E5%80%A4%E3%81%AB%E5%BC%B7%E3%81%84medianblur/28e324c722b76a17f033eec94f612f1f.png&#34;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;ノイズを乗せた画像&lt;/th&gt;
+          &lt;th&gt;blurを適用した画像&lt;/th&gt;
+          &lt;th&gt;medianBlurを適用した画像&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/%E5%A4%96%E3%82%8C%E5%80%A4%E3%81%AB%E5%BC%B7%E3%81%84medianblur/28e324c722b76a17f033eec94f612f1f.png&#34;
 	width=&#34;266&#34;
 	height=&#34;250&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/%E5%A4%96%E3%82%8C%E5%80%A4%E3%81%AB%E5%BC%B7%E3%81%84medianblur/28e324c722b76a17f033eec94f612f1f_hu177850194157102766.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/%E5%A4%96%E3%82%8C%E5%80%A4%E3%81%AB%E5%BC%B7%E3%81%84medianblur/28e324c722b76a17f033eec94f612f1f_hu10984901810705135623.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/%E5%A4%96%E3%82%8C%E5%80%A4%E3%81%AB%E5%BC%B7%E3%81%84medianblur/28e324c722b76a17f033eec94f612f1f_hu_538b837e0d3b7e4c.png 480w, https://opqrstuvcut.github.io/mblog/posts/%E5%A4%96%E3%82%8C%E5%80%A4%E3%81%AB%E5%BC%B7%E3%81%84medianblur/28e324c722b76a17f033eec94f612f1f_hu_199dc76dbed29437.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -51,10 +51,10 @@
 		data-flex-basis=&#34;255px&#34;
 	
 &gt;&lt;/td&gt;
-&lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/%E5%A4%96%E3%82%8C%E5%80%A4%E3%81%AB%E5%BC%B7%E3%81%84medianblur/3b26ff8d1e9fbe2c3266d45ddecc0122.png&#34;
+          &lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/%E5%A4%96%E3%82%8C%E5%80%A4%E3%81%AB%E5%BC%B7%E3%81%84medianblur/3b26ff8d1e9fbe2c3266d45ddecc0122.png&#34;
 	width=&#34;266&#34;
 	height=&#34;250&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/%E5%A4%96%E3%82%8C%E5%80%A4%E3%81%AB%E5%BC%B7%E3%81%84medianblur/3b26ff8d1e9fbe2c3266d45ddecc0122_hu2768304795713180101.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/%E5%A4%96%E3%82%8C%E5%80%A4%E3%81%AB%E5%BC%B7%E3%81%84medianblur/3b26ff8d1e9fbe2c3266d45ddecc0122_hu15164818641049480127.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/%E5%A4%96%E3%82%8C%E5%80%A4%E3%81%AB%E5%BC%B7%E3%81%84medianblur/3b26ff8d1e9fbe2c3266d45ddecc0122_hu_395638ce6081afaa.png 480w, https://opqrstuvcut.github.io/mblog/posts/%E5%A4%96%E3%82%8C%E5%80%A4%E3%81%AB%E5%BC%B7%E3%81%84medianblur/3b26ff8d1e9fbe2c3266d45ddecc0122_hu_d7052e289de98286.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -63,10 +63,10 @@
 		data-flex-basis=&#34;255px&#34;
 	
 &gt;&lt;/td&gt;
-&lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/%E5%A4%96%E3%82%8C%E5%80%A4%E3%81%AB%E5%BC%B7%E3%81%84medianblur/38fd4d2636a29433a5cd4a3204c1dca5.png&#34;
+          &lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/%E5%A4%96%E3%82%8C%E5%80%A4%E3%81%AB%E5%BC%B7%E3%81%84medianblur/38fd4d2636a29433a5cd4a3204c1dca5.png&#34;
 	width=&#34;266&#34;
 	height=&#34;250&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/%E5%A4%96%E3%82%8C%E5%80%A4%E3%81%AB%E5%BC%B7%E3%81%84medianblur/38fd4d2636a29433a5cd4a3204c1dca5_hu2393766809385022018.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/%E5%A4%96%E3%82%8C%E5%80%A4%E3%81%AB%E5%BC%B7%E3%81%84medianblur/38fd4d2636a29433a5cd4a3204c1dca5_hu15868415670755405227.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/%E5%A4%96%E3%82%8C%E5%80%A4%E3%81%AB%E5%BC%B7%E3%81%84medianblur/38fd4d2636a29433a5cd4a3204c1dca5_hu_af32d633584524cf.png 480w, https://opqrstuvcut.github.io/mblog/posts/%E5%A4%96%E3%82%8C%E5%80%A4%E3%81%AB%E5%BC%B7%E3%81%84medianblur/38fd4d2636a29433a5cd4a3204c1dca5_hu_72d31dcb1c616829.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -75,8 +75,8 @@
 		data-flex-basis=&#34;255px&#34;
 	
 &gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;中央値を使うことで、ノイズを上手く取り除くことができています。
 ただし、文字の部分などは結構ボケるようになりました。中央値を使うと、白い背景と近い部分のピクセルはすべて白に置き換えられてしまうからです。&lt;/p&gt;

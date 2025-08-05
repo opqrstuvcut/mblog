@@ -70,12 +70,12 @@ $p$と$q$はそれぞれ確率分布であり、$KL(p||q)$が大きいほど、2
 &lt;h1 id=&#34;kl-divergenceの最小化問題&#34;&gt;KL divergenceの最小化問題
 &lt;/h1&gt;&lt;h2 id=&#34;klpqのケース&#34;&gt;KL(p||q)のケース
 &lt;/h2&gt;&lt;p&gt;仮に分布$p$が固定されているものだとして、$KL(p||q)$が最小化されるように$q$を決めることを考えます。ただし、$p=q$になることはないとします。&lt;/p&gt;
-&lt;p&gt;前述したKL divergenceの定義をみてみると、$p(\mathbf{x})$が0でない値をもつ領域では$q(\mathbf{x})$も$p(\mathbf{x})$に近い値かあるいは$p(\mathbf{x})$より大きい値にならなければ、$KL(p||q)$が大きくなってしまいます。よってこの場合にはKL divergenceを最小化するような&lt;!-- raw HTML omitted --&gt;$q$は$p$全体をカバーするように広がる分布&lt;!-- raw HTML omitted --&gt;になると考えられます。&lt;/p&gt;
+&lt;p&gt;前述したKL divergenceの定義をみてみると、$p(\mathbf{x})$が0でない値をもつ領域では$q(\mathbf{x})$も$p(\mathbf{x})$に近い値かあるいは$p(\mathbf{x})$より大きい値にならなければ、$KL(p||q)$が大きくなってしまいます。よってこの場合にはKL divergenceを最小化するような**$q$は$p$全体をカバーするように広がる分布**になると考えられます。&lt;/p&gt;
 &lt;h2 id=&#34;klqpのケース&#34;&gt;KL(q||p)のケース
 &lt;/h2&gt;&lt;p&gt;次にKL divergenceに与える$p$と$q$の順序をひっくり返し、$KL(q||p)$の最小化問題を考えてみます。$KL(q||p)$は
 $$ KL(q||p) = \int q(\mathbf{x}) \log \left(\frac{q(\mathbf{x})}{p(\mathbf{x})}\right) {\rm d\mathbf{x}}$$
 ですね。
-$KL(q||p)$が小さくなるにはどうすればよいかといえば、$p(\mathbf{x})$が0に近いような領域で$q(\mathbf{x})$が小さくなるようにすればよいです。$p(\mathbf{x})$が小さい領域はいくらでもあり、そういったところに大きい$q(\mathbf{x})$が割り当てられると、$KL(q||p)$が大きくなってしまいますね。このため、イメージとしては、$KL(q||p)$を最小化するような&lt;!-- raw HTML omitted --&gt;$q$の密度は$p$の密度が大きいところに集中するような分布&lt;!-- raw HTML omitted --&gt;になると考えられます。&lt;/p&gt;
+$KL(q||p)$が小さくなるにはどうすればよいかといえば、$p(\mathbf{x})$が0に近いような領域で$q(\mathbf{x})$が小さくなるようにすればよいです。$p(\mathbf{x})$が小さい領域はいくらでもあり、そういったところに大きい$q(\mathbf{x})$が割り当てられると、$KL(q||p)$が大きくなってしまいますね。このため、イメージとしては、$KL(q||p)$を最小化するような**$q$の密度は$p$の密度が大きいところに集中するような分布**になると考えられます。&lt;/p&gt;
 &lt;h1 id=&#34;実験&#34;&gt;実験
 &lt;/h1&gt;&lt;p&gt;上記の話が成り立つのかを実験してみます。&lt;/p&gt;
 &lt;h2 id=&#34;実験準備&#34;&gt;実験準備
@@ -85,10 +85,10 @@ $KL(q||p)$が小さくなるにはどうすればよいかといえば、$p(\mat
 $$\mathbf{u} = \begin{pmatrix} 0.3 \\ -0.2 \end{pmatrix}, \Sigma =\begin{pmatrix} 0.9&amp;amp;-0.7 \\ -0.7 &amp;amp; 0.9 \end{pmatrix}$$
 とました。
 $p$を確率密度毎に色わけして表示してみると、以下のとおりです。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/a656f547ccf54333352ff64a2de84cd7.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/a656f547ccf54333352ff64a2de84cd7.png&#34;
 	width=&#34;640&#34;
 	height=&#34;480&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/a656f547ccf54333352ff64a2de84cd7_hu13867360107566300566.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/a656f547ccf54333352ff64a2de84cd7_hu377267406213030738.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/a656f547ccf54333352ff64a2de84cd7_hu_88a58d6a9433d27d.png 480w, https://opqrstuvcut.github.io/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/a656f547ccf54333352ff64a2de84cd7_hu_96ba85589944d254.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -103,10 +103,10 @@ $$q(\mathbf{x}|\mathbf{s},\alpha)=\frac{1}{{2\pi}\alpha}\exp\biggl[-\frac{(\math
 $q$は同心円状に確率密度をもつ分布になりますので、パラメータをどうやっても$p$と一致することはできません。&lt;/p&gt;
 &lt;h2 id=&#34;実験結果&#34;&gt;実験結果
 &lt;/h2&gt;&lt;p&gt;$KL(p||q)$を最小化したケースをまず示します。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/983be7a190c4aaf3488cd6c3d4471158.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/983be7a190c4aaf3488cd6c3d4471158.png&#34;
 	width=&#34;640&#34;
 	height=&#34;480&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/983be7a190c4aaf3488cd6c3d4471158_hu1976570934999206934.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/983be7a190c4aaf3488cd6c3d4471158_hu17104291689527597488.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/983be7a190c4aaf3488cd6c3d4471158_hu_6abcadaac0ce9fd1.png 480w, https://opqrstuvcut.github.io/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/983be7a190c4aaf3488cd6c3d4471158_hu_5988d16f1c0eb15a.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -118,10 +118,10 @@ $q$は同心円状に確率密度をもつ分布になりますので、パラ�
 &lt;p&gt;白い線が$p$の等高線です。色分けされて表示されているのが、$q$の確率密度になります。
 先程の話のとおり、$q$は$p$に対して広がった分布になっていることがわかります。&lt;/p&gt;
 &lt;p&gt;次に$KL(q||p)$を最小化したケースです。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/ffae8716aa0ab67fa3d7ff25156a8dcb.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/ffae8716aa0ab67fa3d7ff25156a8dcb.png&#34;
 	width=&#34;640&#34;
 	height=&#34;480&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/ffae8716aa0ab67fa3d7ff25156a8dcb_hu6336058389525374409.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/ffae8716aa0ab67fa3d7ff25156a8dcb_hu3435602450384120079.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/ffae8716aa0ab67fa3d7ff25156a8dcb_hu_d3d90caeef3891bc.png 480w, https://opqrstuvcut.github.io/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/ffae8716aa0ab67fa3d7ff25156a8dcb_hu_b522797f1f72d593.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -258,10 +258,10 @@ PyTorch実装：&lt;a class=&#34;link&#34; href=&#34;https://github.com/mkocabas
 &lt;/h1&gt;&lt;h2 id=&#34;解けない問題の紹介&#34;&gt;解けない問題の紹介
 &lt;/h2&gt;&lt;p&gt;以下の図は論文で示されている、通常のCNNではうまく解けない、あるいは性能が悪い問題設定です。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/efb07cdfddebc778bcbeeb190d527904.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/efb07cdfddebc778bcbeeb190d527904.png&#34;
 	width=&#34;1229&#34;
 	height=&#34;641&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/efb07cdfddebc778bcbeeb190d527904_hu12233075823933697515.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/efb07cdfddebc778bcbeeb190d527904_hu7577460229333500530.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/efb07cdfddebc778bcbeeb190d527904_hu_2784e3f5c785f5e1.png 480w, https://opqrstuvcut.github.io/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/efb07cdfddebc778bcbeeb190d527904_hu_ce6495fc4e8bfeff.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -269,8 +269,7 @@ PyTorch実装：&lt;a class=&#34;link&#34; href=&#34;https://github.com/mkocabas
 		data-flex-grow=&#34;191&#34;
 		data-flex-basis=&#34;460px&#34;
 	
-&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;Supervised Coordinate Classification は2次元座標xとyを入力として2次元のグレイスケールの画像を出力する問題です。入力の(x,y)の座標に対応するピクセルだけが1、それ以外のところは0になるように出力します。出力されるピクセルの数の分類問題となります。&lt;/li&gt;
 &lt;li&gt;Supervised Renderingも画像を出力しますが、入力(x,y)を中心とした9×9の四角に含まれるピクセルは1、それ以外は0になるように出力します。&lt;/li&gt;
@@ -286,18 +285,17 @@ PyTorch実装：&lt;a class=&#34;link&#34; href=&#34;https://github.com/mkocabas
 
 
 	
-	&lt;a href=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/f37f360d4f973fb8ae6a980331c16510.png&#34;&gt;
-	&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/f37f360d4f973fb8ae6a980331c16510_hu5399084942121867496.png&#34; alt=&#34;&#34;&gt;
+	&lt;a href=&#34;https://opqrstuvcut.github.io/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/f37f360d4f973fb8ae6a980331c16510.png&#34;&gt;
+	&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/f37f360d4f973fb8ae6a980331c16510_hu_a42601ebd86404f2.png&#34; alt=&#34;&#34;&gt;
 	&lt;/a&gt;
-
 
 &lt;/blockquote&gt;
 &lt;p&gt;上記の2つのパターンでそれぞれ訓練データでCNNを訓練し、accuracyを計測した結果が以下の図になります。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/e9218e21fa4fbae75ff0078db0be5bb8.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/e9218e21fa4fbae75ff0078db0be5bb8.png&#34;
 	width=&#34;760&#34;
 	height=&#34;499&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/e9218e21fa4fbae75ff0078db0be5bb8_hu16896551138487073776.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/e9218e21fa4fbae75ff0078db0be5bb8_hu10632705997455868300.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/e9218e21fa4fbae75ff0078db0be5bb8_hu_36346fd57232adc1.png 480w, https://opqrstuvcut.github.io/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/e9218e21fa4fbae75ff0078db0be5bb8_hu_857c945e506f1c46.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -305,19 +303,18 @@ PyTorch実装：&lt;a class=&#34;link&#34; href=&#34;https://github.com/mkocabas
 		data-flex-grow=&#34;152&#34;
 		data-flex-basis=&#34;365px&#34;
 	
-&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;1つの点が1つの学習されたモデルでの訓練データとテストデータのaccuracyに対応しています（多分それぞれのモデルはハイパーパラメータが異なるのですが、はっきりと読み取れませんでした）。&lt;br&gt;
-このグラフから、Uniform splitのときには訓練データのaccuracyは1.0になることがあっても、テストデータは高々0.86程度にしかならないことがわかります。また、Quadrant splitのときにはさらにひどい状況で、&lt;!-- raw HTML omitted --&gt;テストデータはまったく正解しません&lt;!-- raw HTML omitted --&gt;（ほとんど0ですね）。&lt;/p&gt;
+このグラフから、Uniform splitのときには訓練データのaccuracyは1.0になることがあっても、テストデータは高々0.86程度にしかならないことがわかります。また、Quadrant splitのときにはさらにひどい状況で、&lt;strong&gt;テストデータはまったく正解しません&lt;/strong&gt;（ほとんど0ですね）。&lt;/p&gt;
 &lt;p&gt;問題設定を見ると、一見簡単な問題のように思えますが、実際には驚くほど解きにくい問題であることがわかります。&lt;/p&gt;
 &lt;h2 id=&#34;unsupervised-density-learningを通常のcnnで学習させた結果&#34;&gt;Unsupervised Density Learningを通常のCNNで学習させた結果
 &lt;/h2&gt;&lt;p&gt;次にGANのケースも見てみます。&lt;br&gt;
 学習データでは青の図形と赤の図形はそれぞれ平面上に一様に分布します。下図の上段右がそれを示しており、赤の点と青の点がそれぞれの色の図形の中心位置をプロットしたものです。GANで生成する画像もこのように、図形が&lt;strong&gt;一様に色々なところに描かれて欲しい&lt;/strong&gt;ところです。&lt;br&gt;
 しかしながら、CNNを使ったGANのモデルが生成した画像では赤の図形と青の図形の位置の分布には偏りがあります（モード崩壊）。下図の下段右がこれを示しています。
-&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/0923d0009bc673227806d583954c2239.png&#34;
+&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/0923d0009bc673227806d583954c2239.png&#34;
 	width=&#34;1206&#34;
 	height=&#34;725&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/0923d0009bc673227806d583954c2239_hu14391901488616015877.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/0923d0009bc673227806d583954c2239_hu5871020559221432272.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/0923d0009bc673227806d583954c2239_hu_456bb97d4c1612d5.png 480w, https://opqrstuvcut.github.io/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/0923d0009bc673227806d583954c2239_hu_428a4c5afef785f3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -329,12 +326,12 @@ PyTorch実装：&lt;a class=&#34;link&#34; href=&#34;https://github.com/mkocabas
 &lt;h1 id=&#34;coordconv&#34;&gt;CoordConv
 &lt;/h1&gt;&lt;p&gt;前述の問題はなぜ解きにくいのでしょうか。&lt;br&gt;
 理由としては、CNNでは畳み込みの計算をおこなうだけであり、この畳み込みの計算では画像中のどこを畳み込んでいるのかは考慮できておらず、座標を考慮する必要がある問題がうまく解けないということが挙げられます。&lt;br&gt;
-座標を考慮できていないから解けないならば、&lt;!-- raw HTML omitted --&gt;畳み込むときに座標情報を付与すればよいのでは&lt;!-- raw HTML omitted --&gt;、というのがCoordConvの発想です。&lt;/p&gt;
+座標を考慮できていないから解けないならば、&lt;strong&gt;畳み込むときに座標情報を付与すればよいのでは&lt;/strong&gt;、というのがCoordConvの発想です。&lt;/p&gt;
 &lt;p&gt;具体的には以下の右の層がCoordConvになります。
-&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/87ac6257d733ab494c7d120ec4e79a99.png&#34;
+&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/87ac6257d733ab494c7d120ec4e79a99.png&#34;
 	width=&#34;1664&#34;
 	height=&#34;712&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/87ac6257d733ab494c7d120ec4e79a99_hu16631662989163237741.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/87ac6257d733ab494c7d120ec4e79a99_hu15382080971191977537.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/87ac6257d733ab494c7d120ec4e79a99_hu_661bf482ee2249e3.png 480w, https://opqrstuvcut.github.io/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/87ac6257d733ab494c7d120ec4e79a99_hu_5737d4bff5afbef5.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -350,10 +347,10 @@ $$ {\rm (i \ coordinate)} = \begin{bmatrix} -1 &amp;amp; -0.5 &amp;amp; 0 &amp;a
 $${\rm (j \ coordinate)} =  \begin{bmatrix} -1 &amp;amp; -1 &amp;amp; -1 &amp;amp; -1 &amp;amp; -1 \\ -0.5 &amp;amp; -0.5 &amp;amp; -0.5 &amp;amp; -0.5 &amp;amp; -0.5 \\ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 0 \\ 0.5 &amp;amp; 0.5 &amp;amp; 0.5 &amp;amp; 0.5 &amp;amp; 0.5  \\ 1 &amp;amp; 1 &amp;amp; 1 &amp;amp; 1 &amp;amp; 1  \\ \end{bmatrix} $$&lt;/p&gt;
 &lt;p&gt;また、画像の中心からの距離をあらわしたチャネルを追加することでも性能が向上するようで、論文ではこちらも利用されています。&lt;/p&gt;
 &lt;p&gt;CoordConvによってすべてのCNNを代替すべきなのか、一部にしてもどこを置き換えるべきなのかは議論の余地があるかもしれませんが、例えばSupervised Coordinate Classificationの問題では、次の緑の部分にCoordConvが使われています。
-&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/5247bd46b1ead9c2ffa8edbba2461b01.png&#34;
+&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/5247bd46b1ead9c2ffa8edbba2461b01.png&#34;
 	width=&#34;1885&#34;
 	height=&#34;447&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/5247bd46b1ead9c2ffa8edbba2461b01_hu10256628819134450752.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/5247bd46b1ead9c2ffa8edbba2461b01_hu17346559202647513006.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/5247bd46b1ead9c2ffa8edbba2461b01_hu_d055dd0509a4e1b7.png 480w, https://opqrstuvcut.github.io/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/5247bd46b1ead9c2ffa8edbba2461b01_hu_478c8562bdbb6e44.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -371,10 +368,10 @@ $${\rm (j \ coordinate)} =  \begin{bmatrix} -1 &amp;amp; -1 &amp;amp; -1 &amp;am
 &lt;/h1&gt;&lt;p&gt;CoordConvの効果について実験結果を述べていきます。&lt;/p&gt;
 &lt;h2 id=&#34;supervised-coordinate-classificationの結果&#34;&gt;Supervised Coordinate Classificationの結果
 &lt;/h2&gt;&lt;p&gt;Supervised Coordinate Classificationの結果が以下のようになります。
-&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/705031011dfa4737ffd80c35692a89f6.png&#34;
+&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/705031011dfa4737ffd80c35692a89f6.png&#34;
 	width=&#34;1564&#34;
 	height=&#34;812&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/705031011dfa4737ffd80c35692a89f6_hu6412194796038218377.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/705031011dfa4737ffd80c35692a89f6_hu6383311274808518725.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/705031011dfa4737ffd80c35692a89f6_hu_d4455405df5a9f30.png 480w, https://opqrstuvcut.github.io/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/705031011dfa4737ffd80c35692a89f6_hu_5aae1a13d1228725.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -387,10 +384,10 @@ Convolutionの行が通常のCNNの場合、CoordConvの行がCoordConvを使っ
 CoordConvではデータの分割方法によらず、accuracyが1になり、非常にうまく問題が解けるようになります。また、収束性も非常によくなり、通常のCNNでは4000秒かかってテストデータのaccuracyが0.8を超えていますが、CoordConvでは20秒でaccuracyが1になっています。&lt;/p&gt;
 &lt;h2 id=&#34;unsupervised-density-learningの結果&#34;&gt;Unsupervised Density Learningの結果
 &lt;/h2&gt;&lt;p&gt;GANの結果が以下のようになります。
-&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/51109898f0f95841e1d231d11690cc8f.png&#34;
+&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/51109898f0f95841e1d231d11690cc8f.png&#34;
 	width=&#34;1433&#34;
 	height=&#34;750&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/51109898f0f95841e1d231d11690cc8f_hu1256733702289264137.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/51109898f0f95841e1d231d11690cc8f_hu5612951212292351114.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/51109898f0f95841e1d231d11690cc8f_hu_e6cdf62ad735d339.png 480w, https://opqrstuvcut.github.io/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/51109898f0f95841e1d231d11690cc8f_hu_a76a428ada1a9e1e.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -404,10 +401,10 @@ CoordConvではデータの分割方法によらず、accuracyが1になり、�
 &lt;h2 id=&#34;強化学習の結果&#34;&gt;強化学習の結果
 &lt;/h2&gt;&lt;p&gt;論文では実際の問題にも適用して有効性を確認しています。
 強化学習で使われているCNNをCoordConvに置き換えてatariのゲームを学習させています。結果は以下の通りです。
-&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/abd3d59aefc3733c0d7b09215b6e1920.png&#34;
+&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/abd3d59aefc3733c0d7b09215b6e1920.png&#34;
 	width=&#34;1481&#34;
 	height=&#34;710&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/abd3d59aefc3733c0d7b09215b6e1920_hu7054115060547226456.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/abd3d59aefc3733c0d7b09215b6e1920_hu8782341816686286556.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/abd3d59aefc3733c0d7b09215b6e1920_hu_63d20b6c093ddc4c.png 480w, https://opqrstuvcut.github.io/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/abd3d59aefc3733c0d7b09215b6e1920_hu_9a5d0cdd2a46962b.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -446,8 +443,8 @@ CoordConvではデータの分割方法によらず、accuracyが1になり、�
 
 
 	
-	&lt;a href=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/bert%E3%81%A7%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3%E3%81%AE%E8%AA%AC%E6%98%8E%E6%96%87%E7%94%9F%E6%88%90/729b98aa8f9032f789244aa4e870b844.png&#34;&gt;
-	&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/bert%E3%81%A7%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3%E3%81%AE%E8%AA%AC%E6%98%8E%E6%96%87%E7%94%9F%E6%88%90/729b98aa8f9032f789244aa4e870b844_hu544397710337244276.png&#34; alt=&#34;&#34;&gt;
+	&lt;a href=&#34;https://opqrstuvcut.github.io/mblog/posts/bert%E3%81%A7%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3%E3%81%AE%E8%AA%AC%E6%98%8E%E6%96%87%E7%94%9F%E6%88%90/729b98aa8f9032f789244aa4e870b844.png&#34;&gt;
+	&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/bert%E3%81%A7%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3%E3%81%AE%E8%AA%AC%E6%98%8E%E6%96%87%E7%94%9F%E6%88%90/729b98aa8f9032f789244aa4e870b844_hu_2a217fa32c138738.png&#34; alt=&#34;&#34;&gt;
 	&lt;/a&gt;
 
 
@@ -459,7 +456,7 @@ CoordConvではデータの分割方法によらず、accuracyが1になり、�
 &lt;ol&gt;
 &lt;li&gt;ある文がN個のトークンから構成されているときに、ランダムに1つのトークンを[MASK]に置き換える（上の図の例だと2番目のトークンがこれに該当します）。&lt;/li&gt;
 &lt;li&gt;1つのトークンを[MASK]に置き換えたトークン列をBERTに与える。&lt;/li&gt;
-&lt;li&gt;BERTの出力のうち、[MASK]に対応するトークンの出力O&lt;!-- raw HTML omitted --&gt;[MASK]&lt;!-- raw HTML omitted --&gt;に対して全結合層とsoftmaxを適用する（softmaxの結果が全サブワードの出現確率になります）。&lt;/li&gt;
+&lt;li&gt;BERTの出力のうち、[MASK]に対応するトークンの出力${\rm O_{[MASK]}}$に対して全結合層とsoftmaxを適用する（softmaxの結果が全サブワードの出現確率になります）。&lt;/li&gt;
 &lt;li&gt;求められた[MASK]に対応する出現確率のうち、正解となるサブワードの確率が高くなるように、クロスエントロピーを用いて最適化する。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&#34;予測&#34;&gt;予測
@@ -488,15 +485,15 @@ CoordConvではデータの分割方法によらず、accuracyが1になり、�
 &lt;p&gt;こんな感じのポケモンの説明文を自動で生成できたら面白いなぁと思ったので、このデータでやってみました。うまく行けば架空のポケモンが作れますね！&lt;/p&gt;
 &lt;h2 id=&#34;結果&#34;&gt;結果
 &lt;/h2&gt;&lt;p&gt;学習したモデルで予測した結果を示します。ちなみに予測するときにサブワードの数をあらかじめ指定しますが、以下の例ではサブワードの数は20です。&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;生成文1: 弱い獲物を一度捕まえると止まらない。毎日１８時間鳴くチビノーズ。&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;生成文1: 弱い獲物を一度捕まえると止まらない。毎日１８時間鳴くチビノーズ。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;弱い獲物をいたぶっているのか、猟奇的な感じがします。&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;生成文2: この姿に変化して連れ去ることでお腹を自在に操るピィができるのだ。&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;生成文2: この姿に変化して連れ去ることでお腹を自在に操るピィができるのだ。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;お腹を自由に操る…？化して連れ去るあたりは悪いポケモン感が出ていていいですね。&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;生成文3: &lt;strong&gt;ボールのように引っ張るため１匹。だが１匹ゆらゆら数は少ない。&lt;/strong&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;生成文3: ボールのように引っ張るため１匹。だが１匹ゆらゆら数は少ない。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;ちょっと解釈が難しいです。孤高の存在？&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;生成文4: &lt;strong&gt;化石から復活した科学者を科学力で壊し散らす生命力を持つポケモン。&lt;/strong&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;生成文4: 化石から復活した科学者を科学力で壊し散らす生命力を持つポケモン。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;科学力で科学者に勝利するインテリポケモン。&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;生成文5: &lt;strong&gt;ただ絶対に捕まえないので傷ついた相手には容赦しない。なぜだか。&lt;/strong&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;生成文5: ただ絶対に捕まえないので傷ついた相手には容赦しない。なぜだか。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;これは解釈が難しいですが、恐ろしいポケモン感がでてますね。「なぜだか。」がいいアクセントです。&lt;/p&gt;
 &lt;h1 id=&#34;まとめ&#34;&gt;まとめ
 &lt;/h1&gt;&lt;p&gt;それっぽい文はできたけども、意味があまり通らない文が多いかなという印象です。とりあえず学習データが少ないので、文が多い他のデータで実験します。気力のある方はぜひ自分でデータを用意して、学習してみて結果を教えて欲しいです！&lt;/p&gt;

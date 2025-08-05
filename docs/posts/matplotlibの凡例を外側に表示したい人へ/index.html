@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="ja-jp" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="本記事はQrunchからの転載です。 Matplotlibの凡例を外側に出したい人用に色々な例を書いておきます。 次のような凡例の位置をいじらずに表示した状態からいじっていきます。 data = np.random.rand(10, 3) labels = [&#34;a&#34;, &#34;b&#34;, &#34;c&#34;] plt.plot(range(10), data, marker=&#34;o&#34;, linewidth=3) plt.legend(labels) plt.title(&#34;title&#34;) plt.ylabel(&#34;y label&#34;) plt.xlabel(&#34;x label&#34;) plt.show() 右上に表示 凡例の枠の上部をグラフの枠の上部にあわせて、右上に表示するときは以下のようにします。 plt.legend(labels, loc=&#39;upper left&#39;, bbox_to_anchor=(1, 1)) 右中央に表示 凡例の上下の位置をグラフと揃えて、右に表示するときは以下のようにします。 plt.legend(labels, loc=&#39;center left&#39;, bbox_to_anchor=(1., .5)) 上に表示 凡例の左右の位置をグラフと揃えて、上に表示するときは以下のようにします。 ncol=3とすることで横一列に3つ分のグラフの凡例を表示できます。 plt.legend(labels, loc=&#39;lower center&#39;, bbox_to_anchor=(.5, 1.1), ncol=3) 下に表示 凡例の左右の位置をグラフと揃えて、下に表示するときは以下のようにします。 plt.legend(labels, loc=&#39;upper center&#39;, bbox_to_anchor=(.5, -.15), ncol=3) 理屈 plt.legendの引数のlocに指定した凡例の箇所がbbox_to_anchorで指定した座標になるように位置が調整されます。ここで、座標はグラフの枠の左下が(0,0)で右上が(1,1)となります。 例1 loc=&lsquo;upper left&rsquo;、bbox_to_anchor=(1, 1)であるときには、凡例の枠の左上（locがupper leftなので）が(1,1)になるように凡例が配置されます。 例2 loc=&lsquo;lower center&rsquo;、bbox_to_anchor=(0.5, 1.1)であるときには、凡例の枠の中央下（locがlower centerなので）が(0.5,1.1)になるように凡例が配置されます。">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="本記事はQrunchからの転載です。\nMatplotlibの凡例を外側に出したい人用に色々な例を書いておきます。\n次のような凡例の位置をいじらずに表示した状態からいじっていきます。\ndata = np.random.rand(10, 3) labels = [&#34;a&#34;, &#34;b&#34;, &#34;c&#34;] plt.plot(range(10), data, marker=&#34;o&#34;, linewidth=3) plt.legend(labels) plt.title(&#34;title&#34;) plt.ylabel(&#34;y label&#34;) plt.xlabel(&#34;x label&#34;) plt.show() 右上に表示 凡例の枠の上部をグラフの枠の上部にあわせて、右上に表示するときは以下のようにします。\nplt.legend(labels, loc=&#39;upper left&#39;, bbox_to_anchor=(1, 1)) 右中央に表示 凡例の上下の位置をグラフと揃えて、右に表示するときは以下のようにします。\nplt.legend(labels, loc=&#39;center left&#39;, bbox_to_anchor=(1., .5)) 上に表示 凡例の左右の位置をグラフと揃えて、上に表示するときは以下のようにします。 ncol=3とすることで横一列に3つ分のグラフの凡例を表示できます。\nplt.legend(labels, loc=&#39;lower center&#39;, bbox_to_anchor=(.5, 1.1), ncol=3) 下に表示 凡例の左右の位置をグラフと揃えて、下に表示するときは以下のようにします。\nplt.legend(labels, loc=&#39;upper center&#39;, bbox_to_anchor=(.5, -.15), ncol=3) 理屈 plt.legendの引数のlocに指定した凡例の箇所がbbox_to_anchorで指定した座標になるように位置が調整されます。ここで、座標はグラフの枠の左下が(0,0)で右上が(1,1)となります。\n例1 loc=&lsquo;upper left&rsquo;、bbox_to_anchor=(1, 1)であるときには、凡例の枠の左上（locがupper leftなので）が(1,1)になるように凡例が配置されます。\n">
 <title>Matplotlibの凡例を外側に表示したい人へ</title>
 
 <link rel='canonical' href='https://opqrstuvcut.github.io/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/'>
 
-<link rel="stylesheet" href="/mblog/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Matplotlibの凡例を外側に表示したい人へ">
-<meta property='og:description' content="本記事はQrunchからの転載です。 Matplotlibの凡例を外側に出したい人用に色々な例を書いておきます。 次のような凡例の位置をいじらずに表示した状態からいじっていきます。 data = np.random.rand(10, 3) labels = [&#34;a&#34;, &#34;b&#34;, &#34;c&#34;] plt.plot(range(10), data, marker=&#34;o&#34;, linewidth=3) plt.legend(labels) plt.title(&#34;title&#34;) plt.ylabel(&#34;y label&#34;) plt.xlabel(&#34;x label&#34;) plt.show() 右上に表示 凡例の枠の上部をグラフの枠の上部にあわせて、右上に表示するときは以下のようにします。 plt.legend(labels, loc=&#39;upper left&#39;, bbox_to_anchor=(1, 1)) 右中央に表示 凡例の上下の位置をグラフと揃えて、右に表示するときは以下のようにします。 plt.legend(labels, loc=&#39;center left&#39;, bbox_to_anchor=(1., .5)) 上に表示 凡例の左右の位置をグラフと揃えて、上に表示するときは以下のようにします。 ncol=3とすることで横一列に3つ分のグラフの凡例を表示できます。 plt.legend(labels, loc=&#39;lower center&#39;, bbox_to_anchor=(.5, 1.1), ncol=3) 下に表示 凡例の左右の位置をグラフと揃えて、下に表示するときは以下のようにします。 plt.legend(labels, loc=&#39;upper center&#39;, bbox_to_anchor=(.5, -.15), ncol=3) 理屈 plt.legendの引数のlocに指定した凡例の箇所がbbox_to_anchorで指定した座標になるように位置が調整されます。ここで、座標はグラフの枠の左下が(0,0)で右上が(1,1)となります。 例1 loc=&lsquo;upper left&rsquo;、bbox_to_anchor=(1, 1)であるときには、凡例の枠の左上（locがupper leftなので）が(1,1)になるように凡例が配置されます。 例2 loc=&lsquo;lower center&rsquo;、bbox_to_anchor=(0.5, 1.1)であるときには、凡例の枠の中央下（locがlower centerなので）が(0.5,1.1)になるように凡例が配置されます。">
+<link rel="stylesheet" href="/mblog/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="Matplotlibの凡例を外側に表示したい人へ">
+<meta property='og:description' content="本記事はQrunchからの転載です。\nMatplotlibの凡例を外側に出したい人用に色々な例を書いておきます。\n次のような凡例の位置をいじらずに表示した状態からいじっていきます。\ndata = np.random.rand(10, 3) labels = [&#34;a&#34;, &#34;b&#34;, &#34;c&#34;] plt.plot(range(10), data, marker=&#34;o&#34;, linewidth=3) plt.legend(labels) plt.title(&#34;title&#34;) plt.ylabel(&#34;y label&#34;) plt.xlabel(&#34;x label&#34;) plt.show() 右上に表示 凡例の枠の上部をグラフの枠の上部にあわせて、右上に表示するときは以下のようにします。\nplt.legend(labels, loc=&#39;upper left&#39;, bbox_to_anchor=(1, 1)) 右中央に表示 凡例の上下の位置をグラフと揃えて、右に表示するときは以下のようにします。\nplt.legend(labels, loc=&#39;center left&#39;, bbox_to_anchor=(1., .5)) 上に表示 凡例の左右の位置をグラフと揃えて、上に表示するときは以下のようにします。 ncol=3とすることで横一列に3つ分のグラフの凡例を表示できます。\nplt.legend(labels, loc=&#39;lower center&#39;, bbox_to_anchor=(.5, 1.1), ncol=3) 下に表示 凡例の左右の位置をグラフと揃えて、下に表示するときは以下のようにします。\nplt.legend(labels, loc=&#39;upper center&#39;, bbox_to_anchor=(.5, -.15), ncol=3) 理屈 plt.legendの引数のlocに指定した凡例の箇所がbbox_to_anchorで指定した座標になるように位置が調整されます。ここで、座標はグラフの枠の左下が(0,0)で右上が(1,1)となります。\n例1 loc=&lsquo;upper left&rsquo;、bbox_to_anchor=(1, 1)であるときには、凡例の枠の左上（locがupper leftなので）が(1,1)になるように凡例が配置されます。\n">
 <meta property='og:url' content='https://opqrstuvcut.github.io/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/'>
 <meta property='og:site_name' content='MatLoverによるMatlab以外のブログ'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='matplotlib' /><meta property='article:tag' content='Python' /><meta property='article:published_time' content='2020-01-20T21:09:01&#43;09:00'/><meta property='article:modified_time' content='2020-01-20T21:09:01&#43;09:00'/><meta property='og:image' content='https://opqrstuvcut.github.io/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/bc011ef843d7d97092a83521e65e6a15.png' />
 <meta name="twitter:title" content="Matplotlibの凡例を外側に表示したい人へ">
-<meta name="twitter:description" content="本記事はQrunchからの転載です。 Matplotlibの凡例を外側に出したい人用に色々な例を書いておきます。 次のような凡例の位置をいじらずに表示した状態からいじっていきます。 data = np.random.rand(10, 3) labels = [&#34;a&#34;, &#34;b&#34;, &#34;c&#34;] plt.plot(range(10), data, marker=&#34;o&#34;, linewidth=3) plt.legend(labels) plt.title(&#34;title&#34;) plt.ylabel(&#34;y label&#34;) plt.xlabel(&#34;x label&#34;) plt.show() 右上に表示 凡例の枠の上部をグラフの枠の上部にあわせて、右上に表示するときは以下のようにします。 plt.legend(labels, loc=&#39;upper left&#39;, bbox_to_anchor=(1, 1)) 右中央に表示 凡例の上下の位置をグラフと揃えて、右に表示するときは以下のようにします。 plt.legend(labels, loc=&#39;center left&#39;, bbox_to_anchor=(1., .5)) 上に表示 凡例の左右の位置をグラフと揃えて、上に表示するときは以下のようにします。 ncol=3とすることで横一列に3つ分のグラフの凡例を表示できます。 plt.legend(labels, loc=&#39;lower center&#39;, bbox_to_anchor=(.5, 1.1), ncol=3) 下に表示 凡例の左右の位置をグラフと揃えて、下に表示するときは以下のようにします。 plt.legend(labels, loc=&#39;upper center&#39;, bbox_to_anchor=(.5, -.15), ncol=3) 理屈 plt.legendの引数のlocに指定した凡例の箇所がbbox_to_anchorで指定した座標になるように位置が調整されます。ここで、座標はグラフの枠の左下が(0,0)で右上が(1,1)となります。 例1 loc=&lsquo;upper left&rsquo;、bbox_to_anchor=(1, 1)であるときには、凡例の枠の左上（locがupper leftなので）が(1,1)になるように凡例が配置されます。 例2 loc=&lsquo;lower center&rsquo;、bbox_to_anchor=(0.5, 1.1)であるときには、凡例の枠の中央下（locがlower centerなので）が(0.5,1.1)になるように凡例が配置されます。"><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="本記事はQrunchからの転載です。\nMatplotlibの凡例を外側に出したい人用に色々な例を書いておきます。\n次のような凡例の位置をいじらずに表示した状態からいじっていきます。\ndata = np.random.rand(10, 3) labels = [&#34;a&#34;, &#34;b&#34;, &#34;c&#34;] plt.plot(range(10), data, marker=&#34;o&#34;, linewidth=3) plt.legend(labels) plt.title(&#34;title&#34;) plt.ylabel(&#34;y label&#34;) plt.xlabel(&#34;x label&#34;) plt.show() 右上に表示 凡例の枠の上部をグラフの枠の上部にあわせて、右上に表示するときは以下のようにします。\nplt.legend(labels, loc=&#39;upper left&#39;, bbox_to_anchor=(1, 1)) 右中央に表示 凡例の上下の位置をグラフと揃えて、右に表示するときは以下のようにします。\nplt.legend(labels, loc=&#39;center left&#39;, bbox_to_anchor=(1., .5)) 上に表示 凡例の左右の位置をグラフと揃えて、上に表示するときは以下のようにします。 ncol=3とすることで横一列に3つ分のグラフの凡例を表示できます。\nplt.legend(labels, loc=&#39;lower center&#39;, bbox_to_anchor=(.5, 1.1), ncol=3) 下に表示 凡例の左右の位置をグラフと揃えて、下に表示するときは以下のようにします。\nplt.legend(labels, loc=&#39;upper center&#39;, bbox_to_anchor=(.5, -.15), ncol=3) 理屈 plt.legendの引数のlocに指定した凡例の箇所がbbox_to_anchorで指定した座標になるように位置が調整されます。ここで、座標はグラフの枠の左下が(0,0)で右上が(1,1)となります。\n例1 loc=&lsquo;upper left&rsquo;、bbox_to_anchor=(1, 1)であるときには、凡例の枠の左上（locがupper leftなので）が(1,1)になるように凡例が配置されます。\n"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://opqrstuvcut.github.io/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/bc011ef843d7d97092a83521e65e6a15.png' />
     <link rel="shortcut icon" href="/mblog/favicon.ico" />
 
-  
-    
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFC5W8DKV1"></script>
       <script>
         var doNotTrack = false;
@@ -31,11 +29,7 @@
           gtag('js', new Date());
           gtag('config', 'G-LFC5W8DKV1');
         }
-      </script>
-    
-  
-
-<style>
+      </script><style>
   section.article-content h2 {
     background-color: rgb(245, 245, 245);
     padding: 10px;
@@ -92,7 +86,7 @@
                     
                     
                         
-                        <img src="/mblog/img/avatar_hu13660810305696555094.jpeg" width="300"
+                        <img src="/mblog/img/avatar_hu_5bc806b678ac7533.jpeg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -208,8 +202,8 @@
     <header class="article-header">
         <div class="article-image">
             <a href="/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/">
-                <img src="/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/bc011ef843d7d97092a83521e65e6a15_hu15127058536318822455.png"
-                        srcset="/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/bc011ef843d7d97092a83521e65e6a15_hu15127058536318822455.png 800w, /mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/bc011ef843d7d97092a83521e65e6a15_hu12849471550946147039.png 1600w"
+                <img src="/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/bc011ef843d7d97092a83521e65e6a15_hu_3fd5321718354e5b.png"
+                        srcset="/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/bc011ef843d7d97092a83521e65e6a15_hu_3fd5321718354e5b.png 800w, /mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/bc011ef843d7d97092a83521e65e6a15_hu_87afeb84e51747dc.png 1600w"
                         width="800" 
                         height="533" 
                         loading="lazy"
@@ -286,7 +280,7 @@
 </span></span></code></pre></div><p><img src="/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/1f998257aafd4af45a99802b5d2738ca.png"
 	width="432"
 	height="288"
-	srcset="/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/1f998257aafd4af45a99802b5d2738ca_hu6364705879764684872.png 480w, /mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/1f998257aafd4af45a99802b5d2738ca_hu17108532551477838962.png 1024w"
+	srcset="/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/1f998257aafd4af45a99802b5d2738ca_hu_285cd957f44c8737.png 480w, /mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/1f998257aafd4af45a99802b5d2738ca_hu_27b9a827bbc1aa03.png 1024w"
 	loading="lazy"
 	
 	
@@ -301,7 +295,7 @@
 </span></span></code></pre></div><p><img src="/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/046032640d8b955c7fc8ea14004661cd.png"
 	width="431"
 	height="275"
-	srcset="/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/046032640d8b955c7fc8ea14004661cd_hu15592426416838232411.png 480w, /mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/046032640d8b955c7fc8ea14004661cd_hu2806628935940379603.png 1024w"
+	srcset="/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/046032640d8b955c7fc8ea14004661cd_hu_6e1d7b110af747e7.png 480w, /mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/046032640d8b955c7fc8ea14004661cd_hu_2056cf3cecccb2f.png 1024w"
 	loading="lazy"
 	
 	
@@ -316,7 +310,7 @@
 </span></span></code></pre></div><p><img src="/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/b315ee00b7f3b400118ce55c857f86db.png"
 	width="431"
 	height="275"
-	srcset="/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/b315ee00b7f3b400118ce55c857f86db_hu17483595943377209081.png 480w, /mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/b315ee00b7f3b400118ce55c857f86db_hu2127857178753281836.png 1024w"
+	srcset="/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/b315ee00b7f3b400118ce55c857f86db_hu_ca3ee088005134c2.png 480w, /mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/b315ee00b7f3b400118ce55c857f86db_hu_5d3ad84c96117055.png 1024w"
 	loading="lazy"
 	
 	
@@ -332,7 +326,7 @@ ncol=3とすることで横一列に3つ分のグラフの凡例を表示でき�
 </span></span></code></pre></div><p><img src="/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/5df64ab531c69bb196c09ded511a8b9e.png"
 	width="384"
 	height="304"
-	srcset="/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/5df64ab531c69bb196c09ded511a8b9e_hu16448059441345332051.png 480w, /mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/5df64ab531c69bb196c09ded511a8b9e_hu2877634739357187633.png 1024w"
+	srcset="/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/5df64ab531c69bb196c09ded511a8b9e_hu_6eecb1076f6ffe4e.png 480w, /mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/5df64ab531c69bb196c09ded511a8b9e_hu_fe16ea6f7ed6e2e5.png 1024w"
 	loading="lazy"
 	
 	
@@ -347,7 +341,7 @@ ncol=3とすることで横一列に3つ分のグラフの凡例を表示でき�
 </span></span></code></pre></div><p><img src="/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/b76f876a6c79eddc7ad208bc878baa88.png"
 	width="384"
 	height="301"
-	srcset="/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/b76f876a6c79eddc7ad208bc878baa88_hu3449861771774860235.png 480w, /mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/b76f876a6c79eddc7ad208bc878baa88_hu3462920066416656285.png 1024w"
+	srcset="/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/b76f876a6c79eddc7ad208bc878baa88_hu_fd3daf39dfc52efa.png 480w, /mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/b76f876a6c79eddc7ad208bc878baa88_hu_6a95867f09650f4f.png 1024w"
 	loading="lazy"
 	
 	
@@ -361,7 +355,7 @@ ncol=3とすることで横一列に3つ分のグラフの凡例を表示でき�
 <p><img src="/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/bc011ef843d7d97092a83521e65e6a15.png"
 	width="432"
 	height="288"
-	srcset="/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/bc011ef843d7d97092a83521e65e6a15_hu3899036562264132167.png 480w, /mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/bc011ef843d7d97092a83521e65e6a15_hu8902834652568539584.png 1024w"
+	srcset="/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/bc011ef843d7d97092a83521e65e6a15_hu_877e789d0c953a16.png 480w, /mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/bc011ef843d7d97092a83521e65e6a15_hu_e784dded3de9c956.png 1024w"
 	loading="lazy"
 	
 	
@@ -370,9 +364,9 @@ ncol=3とすることで横一列に3つ分のグラフの凡例を表示でき�
 		data-flex-basis="360px"
 	
 ></p>
-<p><!-- raw HTML omitted -->例1<!-- raw HTML omitted -->
+<p><strong>例1</strong>
 loc=&lsquo;upper left&rsquo;、bbox_to_anchor=(1, 1)であるときには、凡例の枠の<strong>左上</strong>（locがupper leftなので）が(1,1)になるように凡例が配置されます。</p>
-<p><!-- raw HTML omitted -->例2<!-- raw HTML omitted -->
+<p><strong>例2</strong>
 loc=&lsquo;lower center&rsquo;、bbox_to_anchor=(0.5, 1.1)であるときには、凡例の枠の<strong>中央下</strong>（locがlower centerなので）が(0.5,1.1)になるように凡例が配置されます。</p>
 
 </section>
@@ -448,7 +442,7 @@ loc=&lsquo;lower center&rsquo;、bbox_to_anchor=(0.5, 1.1)であるときには�
         
         
             <div class="article-image">
-                <img src="/mblog/posts/openai%E3%81%AEpython%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E5%88%A9%E7%94%A8%E3%81%A7unsupported-file-format%E3%81%8C%E3%81%A7%E3%82%8B/thm.2dfe749ebfd51a28d35b26263befc118_hu11733661686859170338.png" 
+                <img src="/mblog/posts/openai%E3%81%AEpython%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E5%88%A9%E7%94%A8%E3%81%A7unsupported-file-format%E3%81%8C%E3%81%A7%E3%82%8B/thm.2dfe749ebfd51a28d35b26263befc118_hu_eb405cfdece0f7ae.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -472,7 +466,7 @@ loc=&lsquo;lower center&rsquo;、bbox_to_anchor=(0.5, 1.1)であるときには�
         
         
             <div class="article-image">
-                <img src="/mblog/posts/magma-nvim%E3%81%A7%E7%90%86%E6%83%B3%E3%81%AB%E8%BF%91%E3%81%84vim%E3%81%A7%E3%81%AEjupyter%E7%92%B0%E5%A2%83%E3%82%92%E4%BD%9C%E3%82%8B/feature.1498aba3b6c107c84ac3e966c8136b0c_hu12003848596311866330.png" 
+                <img src="/mblog/posts/magma-nvim%E3%81%A7%E7%90%86%E6%83%B3%E3%81%AB%E8%BF%91%E3%81%84vim%E3%81%A7%E3%81%AEjupyter%E7%92%B0%E5%A2%83%E3%82%92%E4%BD%9C%E3%82%8B/feature.1498aba3b6c107c84ac3e966c8136b0c_hu_5ba67df008fc5f95.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -509,7 +503,7 @@ loc=&lsquo;lower center&rsquo;、bbox_to_anchor=(0.5, 1.1)であるときには�
         
         
             <div class="article-image">
-                <img src="/mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/sum_tree_example.9f06c3ec1febf09dfaf85027d7a456ac_hu935617176417673750.png" 
+                <img src="/mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/sum_tree_example.9f06c3ec1febf09dfaf85027d7a456ac_hu_1f6ad1a64c23275f.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"

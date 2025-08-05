@@ -29,10 +29,10 @@ $$ E_{X_C}[f(x_i, X_C)] = \int p(X_C) f(x_i, X_C) dX_C .$$
 $$ E_{X_C}[f(x_i, X_C)] = \int p(X_C) f(x_i, X_C) dX_C \approx \frac{1}{n} \sum_{j=1}^n f(x_i,X_{jC}) .$$&lt;/p&gt;
 &lt;h2 id=&#34;年齢に対するpartial-dependence-plot&#34;&gt;年齢に対するPartial Dependence Plot
 &lt;/h2&gt;&lt;p&gt;年齢を$0,5,10,\cdots,65$と変化させてみた結果が以下のとおりです。&lt;br&gt;
-&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/partial-dependence-plot/ppd_age.png&#34;
+&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/partial-dependence-plot/ppd_age.png&#34;
 	width=&#34;907&#34;
 	height=&#34;278&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/partial-dependence-plot/ppd_age_hu337343712515268662.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/partial-dependence-plot/ppd_age_hu11077960252519028782.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/partial-dependence-plot/ppd_age_hu_f2013eedb68a8548.png 480w, https://opqrstuvcut.github.io/mblog/posts/partial-dependence-plot/ppd_age_hu_25b7cdcbe0050c4d.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;年齢に対するPartial Dependence Plot&#34;
@@ -46,10 +46,10 @@ $$ E_{X_C}[f(x_i, X_C)] = \int p(X_C) f(x_i, X_C) dX_C \approx \frac{1}{n} \sum_
 年齢が低いほうが、生存しやすかった傾向が読み取れます。また35歳にピークがありますので、なにか理由がありそうです。例えば、年齢があがるほど客室のクラスが良くなりやすいのかもしれません（そうだとすると年齢と客室のクラスは独立ではないのかという話になりますので、実際にはここの考察が必要になりそうです）。&lt;/p&gt;
 &lt;h2 id=&#34;性別に対するpartial-dependence-plot&#34;&gt;性別に対するPartial Dependence Plot
 &lt;/h2&gt;&lt;p&gt;性別についても結果を示します。&lt;br&gt;
-&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/partial-dependence-plot/ppd_sex.png&#34;
+&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/partial-dependence-plot/ppd_sex.png&#34;
 	width=&#34;907&#34;
 	height=&#34;278&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/partial-dependence-plot/ppd_sex_hu697429830695706603.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/partial-dependence-plot/ppd_sex_hu11100406626365697369.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/partial-dependence-plot/ppd_sex_hu_68b509b68cc59429.png 480w, https://opqrstuvcut.github.io/mblog/posts/partial-dependence-plot/ppd_sex_hu_7038f23634b03913.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;性別に対するPPD&#34;

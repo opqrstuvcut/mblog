@@ -26,19 +26,19 @@
 また、iterationsは何回同様の処理をおこなうかをあらわします。複数回実行することで、より膨張を促すことができます。&lt;/p&gt;
 &lt;p&gt;実際に試した結果が以下のとおりです。&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;元画像&lt;/th&gt;
-&lt;th&gt;iterations=1&lt;/th&gt;
-&lt;th&gt;iterations=2&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/dilate%E3%81%A7%E7%8C%AB%E3%82%92%E8%86%A8%E5%BC%B5%E3%81%95%E3%81%9B%E3%82%8B/bd81dd3573bd9179e4fc3ee58d6261b3.png&#34;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;元画像&lt;/th&gt;
+          &lt;th&gt;iterations=1&lt;/th&gt;
+          &lt;th&gt;iterations=2&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/dilate%E3%81%A7%E7%8C%AB%E3%82%92%E8%86%A8%E5%BC%B5%E3%81%95%E3%81%9B%E3%82%8B/bd81dd3573bd9179e4fc3ee58d6261b3.png&#34;
 	width=&#34;247&#34;
 	height=&#34;252&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/dilate%E3%81%A7%E7%8C%AB%E3%82%92%E8%86%A8%E5%BC%B5%E3%81%95%E3%81%9B%E3%82%8B/bd81dd3573bd9179e4fc3ee58d6261b3_hu15663059655230850390.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/dilate%E3%81%A7%E7%8C%AB%E3%82%92%E8%86%A8%E5%BC%B5%E3%81%95%E3%81%9B%E3%82%8B/bd81dd3573bd9179e4fc3ee58d6261b3_hu2037515783423837581.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/dilate%E3%81%A7%E7%8C%AB%E3%82%92%E8%86%A8%E5%BC%B5%E3%81%95%E3%81%9B%E3%82%8B/bd81dd3573bd9179e4fc3ee58d6261b3_hu_6c01904b0bbce9d9.png 480w, https://opqrstuvcut.github.io/mblog/posts/dilate%E3%81%A7%E7%8C%AB%E3%82%92%E8%86%A8%E5%BC%B5%E3%81%95%E3%81%9B%E3%82%8B/bd81dd3573bd9179e4fc3ee58d6261b3_hu_ade113a94ec018be.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -47,10 +47,10 @@
 		data-flex-basis=&#34;235px&#34;
 	
 &gt;&lt;/td&gt;
-&lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/dilate%E3%81%A7%E7%8C%AB%E3%82%92%E8%86%A8%E5%BC%B5%E3%81%95%E3%81%9B%E3%82%8B/306f74dca7ea0a990908a7eba0cd980e.png&#34;
+          &lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/dilate%E3%81%A7%E7%8C%AB%E3%82%92%E8%86%A8%E5%BC%B5%E3%81%95%E3%81%9B%E3%82%8B/306f74dca7ea0a990908a7eba0cd980e.png&#34;
 	width=&#34;247&#34;
 	height=&#34;252&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/dilate%E3%81%A7%E7%8C%AB%E3%82%92%E8%86%A8%E5%BC%B5%E3%81%95%E3%81%9B%E3%82%8B/306f74dca7ea0a990908a7eba0cd980e_hu3881345513307692775.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/dilate%E3%81%A7%E7%8C%AB%E3%82%92%E8%86%A8%E5%BC%B5%E3%81%95%E3%81%9B%E3%82%8B/306f74dca7ea0a990908a7eba0cd980e_hu8237896291790737222.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/dilate%E3%81%A7%E7%8C%AB%E3%82%92%E8%86%A8%E5%BC%B5%E3%81%95%E3%81%9B%E3%82%8B/306f74dca7ea0a990908a7eba0cd980e_hu_517b125135eb23ca.png 480w, https://opqrstuvcut.github.io/mblog/posts/dilate%E3%81%A7%E7%8C%AB%E3%82%92%E8%86%A8%E5%BC%B5%E3%81%95%E3%81%9B%E3%82%8B/306f74dca7ea0a990908a7eba0cd980e_hu_6314479fa2a10d54.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -59,10 +59,10 @@
 		data-flex-basis=&#34;235px&#34;
 	
 &gt;&lt;/td&gt;
-&lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/dilate%E3%81%A7%E7%8C%AB%E3%82%92%E8%86%A8%E5%BC%B5%E3%81%95%E3%81%9B%E3%82%8B/28690ce14686ae4e18da248ce434c3cc.png&#34;
+          &lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/dilate%E3%81%A7%E7%8C%AB%E3%82%92%E8%86%A8%E5%BC%B5%E3%81%95%E3%81%9B%E3%82%8B/28690ce14686ae4e18da248ce434c3cc.png&#34;
 	width=&#34;247&#34;
 	height=&#34;252&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/dilate%E3%81%A7%E7%8C%AB%E3%82%92%E8%86%A8%E5%BC%B5%E3%81%95%E3%81%9B%E3%82%8B/28690ce14686ae4e18da248ce434c3cc_hu1859746326935373353.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/dilate%E3%81%A7%E7%8C%AB%E3%82%92%E8%86%A8%E5%BC%B5%E3%81%95%E3%81%9B%E3%82%8B/28690ce14686ae4e18da248ce434c3cc_hu6993008825260014861.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/dilate%E3%81%A7%E7%8C%AB%E3%82%92%E8%86%A8%E5%BC%B5%E3%81%95%E3%81%9B%E3%82%8B/28690ce14686ae4e18da248ce434c3cc_hu_20f16263bed1e515.png 480w, https://opqrstuvcut.github.io/mblog/posts/dilate%E3%81%A7%E7%8C%AB%E3%82%92%E8%86%A8%E5%BC%B5%E3%81%95%E3%81%9B%E3%82%8B/28690ce14686ae4e18da248ce434c3cc_hu_4b9b6522810245f8.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -71,8 +71,8 @@
 		data-flex-basis=&#34;235px&#34;
 	
 &gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;猫が太っていっているのがわかるでしょうか？文字のほうがわかりやすいかもしれませんが。
 iterations=2のときのほうが1のときよりも膨張していることがわかります。&lt;/p&gt;

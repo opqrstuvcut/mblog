@@ -3,7 +3,8 @@ languageCode : "ja-jp"
 theme: ["hugo-video", "hugo-theme-stack"]
 disqusShortname: https-opqrstuvcut-github-io-blog
 
-paginate: 10
+pagination:
+    pagerSize: 10
 title: MatLoverによるMatlab以外のブログ  
 
 DefaultContentLanguage: ja

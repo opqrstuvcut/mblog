@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="ja-jp" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="画像分類モデルを作っているときに予測精度をあげるのに役に立ったなぁという方法の一覧のメモです。 簡単にできるものから順に紹介しているつもりです。 ConvolutionとFC層との橋渡しにはGlobal Averaging Poolingを使う ネットにある転移学習の例をコピペすると、畳み込み層の出力を1次元にするところでFlattenを使ってたりします。 でも実はGlobal Averaging Poolingを使ったほうが精度が良くなるかもしれません。 精度を改善するのもそうですが、モデルのパラメーターを大きく減らせることも非常に大きい恩恵だったりもします。 EfficientNetはNoisy Student版を使う 転移学習に素のEfficientNetを利用している方は多いと思いますが、Noisy Stundent版の重みを用いて転移学習することでさらに性能があがるかもしれません。 TensorFlowであれば、こちらのレポジトリが利用可能です。 https://github.com/qubvel/efficientnet Label Smoothingを使う 1か0かのハードラベルではなく、ソフトラベルを使って過学習を抑える方法です。 TensorFlowだと、簡単に使えます。 tf.keras.losses.categorical_crossentropy(y, y_hat, label_smoothing=0.1) Learning Rate Schedulerを使う 学習率のスケジューラーを利用してみると、精度が良くなるかもしれません。 例えば、lossが下がりきったタイミングで学習率を0.1倍にしてみると、lossが少し落ちたりします。 性能が変わらないことも多いので、あまり期待しないほうが良いかも。 RandAugmentを使う RandAugmentは各画像に対して、ランダムにAugmentをいくつか利用する方法です。 RandAugmentのパラメーターはいくつのAugmentを利用するかと各Agumentでのパラメーターを制御するための値の2つのみになります。そのため、Augmentに関するパラメーターのグリッドサーチも一応可能です。 &ldquo;パラメーターがたったの2つでいいの！？&ldquo;と普通の人は効果を疑うかと思いますが、実際に試してみるとかなりうまくいきました。 使うときには、imgaugなどのライブラリを利用すると良いかと思います。次のようにしてRandAugmentを利用可能です。 import imgaug.augmenters as iaa images = iaa.RandAugment(n=2, m=30)(images=images) 論文によると、AutoAugmentよりも性能が良いという結果が出ています。 PyTorch用の実装もネットで適当に探せばすぐに見つかります。 GridMaskを使う GridMaskはAugmentの一つで、Cutoutと同じような種類のAugmentになります。 Cutoutと違い、Grid状のMaskをかける方法になります。 問題によっては結構性能があがりました。 実装はググると色々見つかります。">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="画像分類モデルを作っているときに予測精度をあげるのに役に立ったなぁという方法の一覧のメモです。 簡単にできるものから順に紹介しているつもりです。\nConvolutionとFC層との橋渡しにはGlobal Averaging Poolingを使う ネットにある転移学習の例をコピペすると、畳み込み層の出力を1次元にするところでFlattenを使ってたりします。 でも実はGlobal Averaging Poolingを使ったほうが精度が良くなるかもしれません。\n精度を改善するのもそうですが、モデルのパラメーターを大きく減らせることも非常に大きい恩恵だったりもします。\nEfficientNetはNoisy Student版を使う 転移学習に素のEfficientNetを利用している方は多いと思いますが、Noisy Stundent版の重みを用いて転移学習することでさらに性能があがるかもしれません。\nTensorFlowであれば、こちらのレポジトリが利用可能です。 https://github.com/qubvel/efficientnet\nLabel Smoothingを使う 1か0かのハードラベルではなく、ソフトラベルを使って過学習を抑える方法です。 TensorFlowだと、簡単に使えます。\ntf.keras.losses.categorical_crossentropy(y, y_hat, label_smoothing=0.1) Learning Rate Schedulerを使う 学習率のスケジューラーを利用してみると、精度が良くなるかもしれません。\n例えば、lossが下がりきったタイミングで学習率を0.1倍にしてみると、lossが少し落ちたりします。\n性能が変わらないことも多いので、あまり期待しないほうが良いかも。\nRandAugmentを使う RandAugmentは各画像に対して、ランダムにAugmentをいくつか利用する方法です。 RandAugmentのパラメーターはいくつのAugmentを利用するかと各Agumentでのパラメーターを制御するための値の2つのみになります。そのため、Augmentに関するパラメーターのグリッドサーチも一応可能です。\n&ldquo;パラメーターがたったの2つでいいの！？&ldquo;と普通の人は効果を疑うかと思いますが、実際に試してみるとかなりうまくいきました。\n使うときには、imgaugなどのライブラリを利用すると良いかと思います。次のようにしてRandAugmentを利用可能です。\nimport imgaug.augmenters as iaa images = iaa.RandAugment(n=2, m=30)(images=images) 論文によると、AutoAugmentよりも性能が良いという結果が出ています。\nPyTorch用の実装もネットで適当に探せばすぐに見つかります。\nGridMaskを使う GridMaskはAugmentの一つで、Cutoutと同じような種類のAugmentになります。 Cutoutと違い、Grid状のMaskをかける方法になります。\n問題によっては結構性能があがりました。\n実装はググると色々見つかります。\n">
 <title>画像認識モデルの性能をあげるためのTips</title>
 
 <link rel='canonical' href='https://opqrstuvcut.github.io/mblog/posts/%E7%94%BB%E5%83%8F%E8%AA%8D%E8%AD%98%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E6%80%A7%E8%83%BD%E3%82%92%E3%81%82%E3%81%92%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AEtips/'>
 
-<link rel="stylesheet" href="/mblog/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="画像認識モデルの性能をあげるためのTips">
-<meta property='og:description' content="画像分類モデルを作っているときに予測精度をあげるのに役に立ったなぁという方法の一覧のメモです。 簡単にできるものから順に紹介しているつもりです。 ConvolutionとFC層との橋渡しにはGlobal Averaging Poolingを使う ネットにある転移学習の例をコピペすると、畳み込み層の出力を1次元にするところでFlattenを使ってたりします。 でも実はGlobal Averaging Poolingを使ったほうが精度が良くなるかもしれません。 精度を改善するのもそうですが、モデルのパラメーターを大きく減らせることも非常に大きい恩恵だったりもします。 EfficientNetはNoisy Student版を使う 転移学習に素のEfficientNetを利用している方は多いと思いますが、Noisy Stundent版の重みを用いて転移学習することでさらに性能があがるかもしれません。 TensorFlowであれば、こちらのレポジトリが利用可能です。 https://github.com/qubvel/efficientnet Label Smoothingを使う 1か0かのハードラベルではなく、ソフトラベルを使って過学習を抑える方法です。 TensorFlowだと、簡単に使えます。 tf.keras.losses.categorical_crossentropy(y, y_hat, label_smoothing=0.1) Learning Rate Schedulerを使う 学習率のスケジューラーを利用してみると、精度が良くなるかもしれません。 例えば、lossが下がりきったタイミングで学習率を0.1倍にしてみると、lossが少し落ちたりします。 性能が変わらないことも多いので、あまり期待しないほうが良いかも。 RandAugmentを使う RandAugmentは各画像に対して、ランダムにAugmentをいくつか利用する方法です。 RandAugmentのパラメーターはいくつのAugmentを利用するかと各Agumentでのパラメーターを制御するための値の2つのみになります。そのため、Augmentに関するパラメーターのグリッドサーチも一応可能です。 &ldquo;パラメーターがたったの2つでいいの！？&ldquo;と普通の人は効果を疑うかと思いますが、実際に試してみるとかなりうまくいきました。 使うときには、imgaugなどのライブラリを利用すると良いかと思います。次のようにしてRandAugmentを利用可能です。 import imgaug.augmenters as iaa images = iaa.RandAugment(n=2, m=30)(images=images) 論文によると、AutoAugmentよりも性能が良いという結果が出ています。 PyTorch用の実装もネットで適当に探せばすぐに見つかります。 GridMaskを使う GridMaskはAugmentの一つで、Cutoutと同じような種類のAugmentになります。 Cutoutと違い、Grid状のMaskをかける方法になります。 問題によっては結構性能があがりました。 実装はググると色々見つかります。">
+<link rel="stylesheet" href="/mblog/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="画像認識モデルの性能をあげるためのTips">
+<meta property='og:description' content="画像分類モデルを作っているときに予測精度をあげるのに役に立ったなぁという方法の一覧のメモです。 簡単にできるものから順に紹介しているつもりです。\nConvolutionとFC層との橋渡しにはGlobal Averaging Poolingを使う ネットにある転移学習の例をコピペすると、畳み込み層の出力を1次元にするところでFlattenを使ってたりします。 でも実はGlobal Averaging Poolingを使ったほうが精度が良くなるかもしれません。\n精度を改善するのもそうですが、モデルのパラメーターを大きく減らせることも非常に大きい恩恵だったりもします。\nEfficientNetはNoisy Student版を使う 転移学習に素のEfficientNetを利用している方は多いと思いますが、Noisy Stundent版の重みを用いて転移学習することでさらに性能があがるかもしれません。\nTensorFlowであれば、こちらのレポジトリが利用可能です。 https://github.com/qubvel/efficientnet\nLabel Smoothingを使う 1か0かのハードラベルではなく、ソフトラベルを使って過学習を抑える方法です。 TensorFlowだと、簡単に使えます。\ntf.keras.losses.categorical_crossentropy(y, y_hat, label_smoothing=0.1) Learning Rate Schedulerを使う 学習率のスケジューラーを利用してみると、精度が良くなるかもしれません。\n例えば、lossが下がりきったタイミングで学習率を0.1倍にしてみると、lossが少し落ちたりします。\n性能が変わらないことも多いので、あまり期待しないほうが良いかも。\nRandAugmentを使う RandAugmentは各画像に対して、ランダムにAugmentをいくつか利用する方法です。 RandAugmentのパラメーターはいくつのAugmentを利用するかと各Agumentでのパラメーターを制御するための値の2つのみになります。そのため、Augmentに関するパラメーターのグリッドサーチも一応可能です。\n&ldquo;パラメーターがたったの2つでいいの！？&ldquo;と普通の人は効果を疑うかと思いますが、実際に試してみるとかなりうまくいきました。\n使うときには、imgaugなどのライブラリを利用すると良いかと思います。次のようにしてRandAugmentを利用可能です。\nimport imgaug.augmenters as iaa images = iaa.RandAugment(n=2, m=30)(images=images) 論文によると、AutoAugmentよりも性能が良いという結果が出ています。\nPyTorch用の実装もネットで適当に探せばすぐに見つかります。\nGridMaskを使う GridMaskはAugmentの一つで、Cutoutと同じような種類のAugmentになります。 Cutoutと違い、Grid状のMaskをかける方法になります。\n問題によっては結構性能があがりました。\n実装はググると色々見つかります。\n">
 <meta property='og:url' content='https://opqrstuvcut.github.io/mblog/posts/%E7%94%BB%E5%83%8F%E8%AA%8D%E8%AD%98%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E6%80%A7%E8%83%BD%E3%82%92%E3%81%82%E3%81%92%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AEtips/'>
 <meta property='og:site_name' content='MatLoverによるMatlab以外のブログ'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Deep Learning' /><meta property='article:tag' content='深層学習' /><meta property='article:tag' content='画像' /><meta property='article:tag' content='EfficientNet' /><meta property='article:tag' content='TensorFlow' /><meta property='article:tag' content='PyTorch' /><meta property='article:published_time' content='2021-03-13T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-03-13T00:00:00&#43;00:00'/><meta property='og:image' content='https://opqrstuvcut.github.io/mblog/' />
 <meta name="twitter:title" content="画像認識モデルの性能をあげるためのTips">
-<meta name="twitter:description" content="画像分類モデルを作っているときに予測精度をあげるのに役に立ったなぁという方法の一覧のメモです。 簡単にできるものから順に紹介しているつもりです。 ConvolutionとFC層との橋渡しにはGlobal Averaging Poolingを使う ネットにある転移学習の例をコピペすると、畳み込み層の出力を1次元にするところでFlattenを使ってたりします。 でも実はGlobal Averaging Poolingを使ったほうが精度が良くなるかもしれません。 精度を改善するのもそうですが、モデルのパラメーターを大きく減らせることも非常に大きい恩恵だったりもします。 EfficientNetはNoisy Student版を使う 転移学習に素のEfficientNetを利用している方は多いと思いますが、Noisy Stundent版の重みを用いて転移学習することでさらに性能があがるかもしれません。 TensorFlowであれば、こちらのレポジトリが利用可能です。 https://github.com/qubvel/efficientnet Label Smoothingを使う 1か0かのハードラベルではなく、ソフトラベルを使って過学習を抑える方法です。 TensorFlowだと、簡単に使えます。 tf.keras.losses.categorical_crossentropy(y, y_hat, label_smoothing=0.1) Learning Rate Schedulerを使う 学習率のスケジューラーを利用してみると、精度が良くなるかもしれません。 例えば、lossが下がりきったタイミングで学習率を0.1倍にしてみると、lossが少し落ちたりします。 性能が変わらないことも多いので、あまり期待しないほうが良いかも。 RandAugmentを使う RandAugmentは各画像に対して、ランダムにAugmentをいくつか利用する方法です。 RandAugmentのパラメーターはいくつのAugmentを利用するかと各Agumentでのパラメーターを制御するための値の2つのみになります。そのため、Augmentに関するパラメーターのグリッドサーチも一応可能です。 &ldquo;パラメーターがたったの2つでいいの！？&ldquo;と普通の人は効果を疑うかと思いますが、実際に試してみるとかなりうまくいきました。 使うときには、imgaugなどのライブラリを利用すると良いかと思います。次のようにしてRandAugmentを利用可能です。 import imgaug.augmenters as iaa images = iaa.RandAugment(n=2, m=30)(images=images) 論文によると、AutoAugmentよりも性能が良いという結果が出ています。 PyTorch用の実装もネットで適当に探せばすぐに見つかります。 GridMaskを使う GridMaskはAugmentの一つで、Cutoutと同じような種類のAugmentになります。 Cutoutと違い、Grid状のMaskをかける方法になります。 問題によっては結構性能があがりました。 実装はググると色々見つかります。"><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="画像分類モデルを作っているときに予測精度をあげるのに役に立ったなぁという方法の一覧のメモです。 簡単にできるものから順に紹介しているつもりです。\nConvolutionとFC層との橋渡しにはGlobal Averaging Poolingを使う ネットにある転移学習の例をコピペすると、畳み込み層の出力を1次元にするところでFlattenを使ってたりします。 でも実はGlobal Averaging Poolingを使ったほうが精度が良くなるかもしれません。\n精度を改善するのもそうですが、モデルのパラメーターを大きく減らせることも非常に大きい恩恵だったりもします。\nEfficientNetはNoisy Student版を使う 転移学習に素のEfficientNetを利用している方は多いと思いますが、Noisy Stundent版の重みを用いて転移学習することでさらに性能があがるかもしれません。\nTensorFlowであれば、こちらのレポジトリが利用可能です。 https://github.com/qubvel/efficientnet\nLabel Smoothingを使う 1か0かのハードラベルではなく、ソフトラベルを使って過学習を抑える方法です。 TensorFlowだと、簡単に使えます。\ntf.keras.losses.categorical_crossentropy(y, y_hat, label_smoothing=0.1) Learning Rate Schedulerを使う 学習率のスケジューラーを利用してみると、精度が良くなるかもしれません。\n例えば、lossが下がりきったタイミングで学習率を0.1倍にしてみると、lossが少し落ちたりします。\n性能が変わらないことも多いので、あまり期待しないほうが良いかも。\nRandAugmentを使う RandAugmentは各画像に対して、ランダムにAugmentをいくつか利用する方法です。 RandAugmentのパラメーターはいくつのAugmentを利用するかと各Agumentでのパラメーターを制御するための値の2つのみになります。そのため、Augmentに関するパラメーターのグリッドサーチも一応可能です。\n&ldquo;パラメーターがたったの2つでいいの！？&ldquo;と普通の人は効果を疑うかと思いますが、実際に試してみるとかなりうまくいきました。\n使うときには、imgaugなどのライブラリを利用すると良いかと思います。次のようにしてRandAugmentを利用可能です。\nimport imgaug.augmenters as iaa images = iaa.RandAugment(n=2, m=30)(images=images) 論文によると、AutoAugmentよりも性能が良いという結果が出ています。\nPyTorch用の実装もネットで適当に探せばすぐに見つかります。\nGridMaskを使う GridMaskはAugmentの一つで、Cutoutと同じような種類のAugmentになります。 Cutoutと違い、Grid状のMaskをかける方法になります。\n問題によっては結構性能があがりました。\n実装はググると色々見つかります。\n"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://opqrstuvcut.github.io/mblog/' />
     <link rel="shortcut icon" href="/mblog/favicon.ico" />
 
-  
-    
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFC5W8DKV1"></script>
       <script>
         var doNotTrack = false;
@@ -31,11 +29,7 @@
           gtag('js', new Date());
           gtag('config', 'G-LFC5W8DKV1');
         }
-      </script>
-    
-  
-
-<style>
+      </script><style>
   section.article-content h2 {
     background-color: rgb(245, 245, 245);
     padding: 10px;
@@ -92,7 +86,7 @@
                     
                     
                         
-                        <img src="/mblog/img/avatar_hu13660810305696555094.jpeg" width="300"
+                        <img src="/mblog/img/avatar_hu_5bc806b678ac7533.jpeg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -379,7 +373,7 @@ Cutoutと違い、Grid状のMaskをかける方法になります。<br>
         
         
             <div class="article-image">
-                <img src="/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/fig1.2ac33f689d0a0f9c00d2d7634cb0d0b7_hu17995586559148019995.png" 
+                <img src="/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/fig1.2ac33f689d0a0f9c00d2d7634cb0d0b7_hu_6e3b9a6356fa6ec1.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -403,7 +397,7 @@ Cutoutと違い、Grid状のMaskをかける方法になります。<br>
         
         
             <div class="article-image">
-                <img src="/mblog/posts/tabular%E3%83%87%E3%83%BC%E3%82%BF%E5%90%91%E3%81%91%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%99%E3%82%A4%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%81%AE%E3%81%A7%E3%83%A1%E3%83%A2/fig3.f14ea33c53998f4220459411a7f0e94d_hu17990717691635510547.png" 
+                <img src="/mblog/posts/tabular%E3%83%87%E3%83%BC%E3%82%BF%E5%90%91%E3%81%91%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%99%E3%82%A4%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%81%AE%E3%81%A7%E3%83%A1%E3%83%A2/fig3.f14ea33c53998f4220459411a7f0e94d_hu_1c09104e5b79a191.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -427,7 +421,7 @@ Cutoutと違い、Grid状のMaskをかける方法になります。<br>
         
         
             <div class="article-image">
-                <img src="/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/87ac6257d733ab494c7d120ec4e79a99.6253e0c8a64907253e80df30dc4bd179_hu16372073307251382691.png" 
+                <img src="/mblog/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/87ac6257d733ab494c7d120ec4e79a99.6253e0c8a64907253e80df30dc4bd179_hu_ce09773fdb068c9e.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"

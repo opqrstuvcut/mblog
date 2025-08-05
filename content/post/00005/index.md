@@ -62,10 +62,10 @@ plt.legendの引数の**loc**に指定した凡例の箇所が**bbox_to_anchor**
 
 ![](bc011ef843d7d97092a83521e65e6a15.png)
 
-<u>例1</u>
+**例1**
  loc='upper left'、bbox_to_anchor=(1, 1)であるときには、凡例の枠の**左上**（locがupper leftなので）が(1,1)になるように凡例が配置されます。
 
-<u>例2</u>
+**例2**
  loc='lower center'、bbox_to_anchor=(0.5, 1.1)であるときには、凡例の枠の**中央下**（locがlower centerなので）が(0.5,1.1)になるように凡例が配置されます。
 
 

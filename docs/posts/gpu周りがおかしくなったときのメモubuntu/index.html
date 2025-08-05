@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="ja-jp" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="いまだにちょくちょくGPU周りの設定がおかしくなることがあるのでメモ。たまに問題が起きる毎にメモが追加されます。 ①nvidia-smiが遅い、ubuntuが起動しているのにGUIが何も表示されない 現象 何も画面に映らなくなる現象です。sshとかはいけます。 nvidia-smiを実行すると普通は一瞬でGPUの状況が表示されますが、このケースでは1分以上かかったりします。 解決方法 cudaを入れ直して再起動したら直りました。原因はよくわかりません。 aptでcudaを入れている場合は次のような感じです。 $ sudo apt remove cuda -y $ sudo apt install cuda -y $ sudo reboot now ②突然のNVIDIA-SMI has failed because it couldn&rsquo;t communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running. 現象 PCを起動してnvidia-smiを実行すると、「NVIDIA-SMI has failed because it couldn&rsquo;t communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running.」が表示されます。 もちろんDockerコンテナからのGPU利用もできません。 解決方法 試しにnvccを実行しようとしたところ、nvccが見つからないのでインストール。">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="いまだにちょくちょくGPU周りの設定がおかしくなることがあるのでメモ。たまに問題が起きる毎にメモが追加されます。\n①nvidia-smiが遅い、ubuntuが起動しているのにGUIが何も表示されない 現象 何も画面に映らなくなる現象です。sshとかはいけます。 nvidia-smiを実行すると普通は一瞬でGPUの状況が表示されますが、このケースでは1分以上かかったりします。 解決方法 cudaを入れ直して再起動したら直りました。原因はよくわかりません。\naptでcudaを入れている場合は次のような感じです。\n$ sudo apt remove cuda -y $ sudo apt install cuda -y $ sudo reboot now ②突然のNVIDIA-SMI has failed because it couldn&rsquo;t communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running. 現象 PCを起動してnvidia-smiを実行すると、「NVIDIA-SMI has failed because it couldn&rsquo;t communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running.」が表示されます。 もちろんDockerコンテナからのGPU利用もできません。 解決方法 試しにnvccを実行しようとしたところ、nvccが見つからないのでインストール。\n">
 <title>GPU周りがおかしくなったときのメモ（ubuntu）</title>
 
 <link rel='canonical' href='https://opqrstuvcut.github.io/mblog/posts/gpu%E5%91%A8%E3%82%8A%E3%81%8C%E3%81%8A%E3%81%8B%E3%81%97%E3%81%8F%E3%81%AA%E3%81%A3%E3%81%9F%E3%81%A8%E3%81%8D%E3%81%AE%E3%83%A1%E3%83%A2ubuntu/'>
 
-<link rel="stylesheet" href="/mblog/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="GPU周りがおかしくなったときのメモ（ubuntu）">
-<meta property='og:description' content="いまだにちょくちょくGPU周りの設定がおかしくなることがあるのでメモ。たまに問題が起きる毎にメモが追加されます。 ①nvidia-smiが遅い、ubuntuが起動しているのにGUIが何も表示されない 現象 何も画面に映らなくなる現象です。sshとかはいけます。 nvidia-smiを実行すると普通は一瞬でGPUの状況が表示されますが、このケースでは1分以上かかったりします。 解決方法 cudaを入れ直して再起動したら直りました。原因はよくわかりません。 aptでcudaを入れている場合は次のような感じです。 $ sudo apt remove cuda -y $ sudo apt install cuda -y $ sudo reboot now ②突然のNVIDIA-SMI has failed because it couldn&rsquo;t communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running. 現象 PCを起動してnvidia-smiを実行すると、「NVIDIA-SMI has failed because it couldn&rsquo;t communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running.」が表示されます。 もちろんDockerコンテナからのGPU利用もできません。 解決方法 試しにnvccを実行しようとしたところ、nvccが見つからないのでインストール。">
+<link rel="stylesheet" href="/mblog/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="GPU周りがおかしくなったときのメモ（ubuntu）">
+<meta property='og:description' content="いまだにちょくちょくGPU周りの設定がおかしくなることがあるのでメモ。たまに問題が起きる毎にメモが追加されます。\n①nvidia-smiが遅い、ubuntuが起動しているのにGUIが何も表示されない 現象 何も画面に映らなくなる現象です。sshとかはいけます。 nvidia-smiを実行すると普通は一瞬でGPUの状況が表示されますが、このケースでは1分以上かかったりします。 解決方法 cudaを入れ直して再起動したら直りました。原因はよくわかりません。\naptでcudaを入れている場合は次のような感じです。\n$ sudo apt remove cuda -y $ sudo apt install cuda -y $ sudo reboot now ②突然のNVIDIA-SMI has failed because it couldn&rsquo;t communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running. 現象 PCを起動してnvidia-smiを実行すると、「NVIDIA-SMI has failed because it couldn&rsquo;t communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running.」が表示されます。 もちろんDockerコンテナからのGPU利用もできません。 解決方法 試しにnvccを実行しようとしたところ、nvccが見つからないのでインストール。\n">
 <meta property='og:url' content='https://opqrstuvcut.github.io/mblog/posts/gpu%E5%91%A8%E3%82%8A%E3%81%8C%E3%81%8A%E3%81%8B%E3%81%97%E3%81%8F%E3%81%AA%E3%81%A3%E3%81%9F%E3%81%A8%E3%81%8D%E3%81%AE%E3%83%A1%E3%83%A2ubuntu/'>
 <meta property='og:site_name' content='MatLoverによるMatlab以外のブログ'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='GPU' /><meta property='article:tag' content='CUDA' /><meta property='article:tag' content='NVIDIA' /><meta property='article:published_time' content='2023-07-06T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-07-06T00:00:00&#43;00:00'/><meta property='og:image' content='https://opqrstuvcut.github.io/mblog/posts/gpu%E5%91%A8%E3%82%8A%E3%81%8C%E3%81%8A%E3%81%8B%E3%81%97%E3%81%8F%E3%81%AA%E3%81%A3%E3%81%9F%E3%81%A8%E3%81%8D%E3%81%AE%E3%83%A1%E3%83%A2ubuntu/feature.png' />
 <meta name="twitter:title" content="GPU周りがおかしくなったときのメモ（ubuntu）">
-<meta name="twitter:description" content="いまだにちょくちょくGPU周りの設定がおかしくなることがあるのでメモ。たまに問題が起きる毎にメモが追加されます。 ①nvidia-smiが遅い、ubuntuが起動しているのにGUIが何も表示されない 現象 何も画面に映らなくなる現象です。sshとかはいけます。 nvidia-smiを実行すると普通は一瞬でGPUの状況が表示されますが、このケースでは1分以上かかったりします。 解決方法 cudaを入れ直して再起動したら直りました。原因はよくわかりません。 aptでcudaを入れている場合は次のような感じです。 $ sudo apt remove cuda -y $ sudo apt install cuda -y $ sudo reboot now ②突然のNVIDIA-SMI has failed because it couldn&rsquo;t communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running. 現象 PCを起動してnvidia-smiを実行すると、「NVIDIA-SMI has failed because it couldn&rsquo;t communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running.」が表示されます。 もちろんDockerコンテナからのGPU利用もできません。 解決方法 試しにnvccを実行しようとしたところ、nvccが見つからないのでインストール。"><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="いまだにちょくちょくGPU周りの設定がおかしくなることがあるのでメモ。たまに問題が起きる毎にメモが追加されます。\n①nvidia-smiが遅い、ubuntuが起動しているのにGUIが何も表示されない 現象 何も画面に映らなくなる現象です。sshとかはいけます。 nvidia-smiを実行すると普通は一瞬でGPUの状況が表示されますが、このケースでは1分以上かかったりします。 解決方法 cudaを入れ直して再起動したら直りました。原因はよくわかりません。\naptでcudaを入れている場合は次のような感じです。\n$ sudo apt remove cuda -y $ sudo apt install cuda -y $ sudo reboot now ②突然のNVIDIA-SMI has failed because it couldn&rsquo;t communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running. 現象 PCを起動してnvidia-smiを実行すると、「NVIDIA-SMI has failed because it couldn&rsquo;t communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running.」が表示されます。 もちろんDockerコンテナからのGPU利用もできません。 解決方法 試しにnvccを実行しようとしたところ、nvccが見つからないのでインストール。\n"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://opqrstuvcut.github.io/mblog/posts/gpu%E5%91%A8%E3%82%8A%E3%81%8C%E3%81%8A%E3%81%8B%E3%81%97%E3%81%8F%E3%81%AA%E3%81%A3%E3%81%9F%E3%81%A8%E3%81%8D%E3%81%AE%E3%83%A1%E3%83%A2ubuntu/feature.png' />
     <link rel="shortcut icon" href="/mblog/favicon.ico" />
 
-  
-    
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFC5W8DKV1"></script>
       <script>
         var doNotTrack = false;
@@ -31,11 +29,7 @@
           gtag('js', new Date());
           gtag('config', 'G-LFC5W8DKV1');
         }
-      </script>
-    
-  
-
-<style>
+      </script><style>
   section.article-content h2 {
     background-color: rgb(245, 245, 245);
     padding: 10px;
@@ -92,7 +86,7 @@
                     
                     
                         
-                        <img src="/mblog/img/avatar_hu13660810305696555094.jpeg" width="300"
+                        <img src="/mblog/img/avatar_hu_5bc806b678ac7533.jpeg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -208,8 +202,8 @@
     <header class="article-header">
         <div class="article-image">
             <a href="/mblog/posts/gpu%E5%91%A8%E3%82%8A%E3%81%8C%E3%81%8A%E3%81%8B%E3%81%97%E3%81%8F%E3%81%AA%E3%81%A3%E3%81%9F%E3%81%A8%E3%81%8D%E3%81%AE%E3%83%A1%E3%83%A2ubuntu/">
-                <img src="/mblog/posts/gpu%E5%91%A8%E3%82%8A%E3%81%8C%E3%81%8A%E3%81%8B%E3%81%97%E3%81%8F%E3%81%AA%E3%81%A3%E3%81%9F%E3%81%A8%E3%81%8D%E3%81%AE%E3%83%A1%E3%83%A2ubuntu/feature_hu15071372511798949011.png"
-                        srcset="/mblog/posts/gpu%E5%91%A8%E3%82%8A%E3%81%8C%E3%81%8A%E3%81%8B%E3%81%97%E3%81%8F%E3%81%AA%E3%81%A3%E3%81%9F%E3%81%A8%E3%81%8D%E3%81%AE%E3%83%A1%E3%83%A2ubuntu/feature_hu15071372511798949011.png 800w, /mblog/posts/gpu%E5%91%A8%E3%82%8A%E3%81%8C%E3%81%8A%E3%81%8B%E3%81%97%E3%81%8F%E3%81%AA%E3%81%A3%E3%81%9F%E3%81%A8%E3%81%8D%E3%81%AE%E3%83%A1%E3%83%A2ubuntu/feature_hu9820975071119262378.png 1600w"
+                <img src="/mblog/posts/gpu%E5%91%A8%E3%82%8A%E3%81%8C%E3%81%8A%E3%81%8B%E3%81%97%E3%81%8F%E3%81%AA%E3%81%A3%E3%81%9F%E3%81%A8%E3%81%8D%E3%81%AE%E3%83%A1%E3%83%A2ubuntu/feature_hu_d2253ff345f6ec64.png"
+                        srcset="/mblog/posts/gpu%E5%91%A8%E3%82%8A%E3%81%8C%E3%81%8A%E3%81%8B%E3%81%97%E3%81%8F%E3%81%AA%E3%81%A3%E3%81%9F%E3%81%A8%E3%81%8D%E3%81%AE%E3%83%A1%E3%83%A2ubuntu/feature_hu_d2253ff345f6ec64.png 800w, /mblog/posts/gpu%E5%91%A8%E3%82%8A%E3%81%8C%E3%81%8A%E3%81%8B%E3%81%97%E3%81%8F%E3%81%AA%E3%81%A3%E3%81%9F%E3%81%A8%E3%81%8D%E3%81%AE%E3%83%A1%E3%83%A2ubuntu/feature_hu_534b0380e6832480.png 1600w"
                         width="800" 
                         height="800" 
                         loading="lazy"

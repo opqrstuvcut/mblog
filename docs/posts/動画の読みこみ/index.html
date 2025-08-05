@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="ja-jp" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="本記事はQrunchからの転載です。 今日はOpenCVでの動画の読み書きを扱います。 動画の読み込み 動画の読み込みは簡単です。 最初に次のように保存されている動画を開きます。 import cv2 v = cv2.VideoCapture(&#34;./ex.mp4&#34;) カメラからフレームを取得する場合はデバイスのIDの指定すればよいです。 普通は次のように0を指定すればよいかと思います。 v = cv2.VideoCapture(0) フレームの読み込みは以下のようにします。 ret, frame = v.read() フレームが読み込めれば、retにはTrueが入ってきて、フレームが読み込めない状態になるとFalseが入ります。 これを利用すれば、次のようにしてフレームを次々に読み込めます（保存されているファイルを開いている場合には、動画の終わりまでが読み込まれます）。 while True: ret, frame = v.read() if not ret: break プロパティの取得 動画のフレームの大きさ、FPS、フレーム数は以下のようにして取得できます。 print(v.get(cv2.CAP_PROP_FRAME_WIDTH)) print(v.get(cv2.CAP_PROP_FRAME_HEIGHT)) print(v.get(cv2.CAP_PROP_FPS)) print(v.get(cv2.CAP_PROP_FRAME_COUNT)) 取得できるプロパティは以下に一覧があります。 http://opencv.jp/opencv-2svn/cpp/highgui_reading_and_writing_images_and_video.html">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="本記事はQrunchからの転載です。\n今日はOpenCVでの動画の読み書きを扱います。\n動画の読み込み 動画の読み込みは簡単です。\n最初に次のように保存されている動画を開きます。\nimport cv2 v = cv2.VideoCapture(&#34;./ex.mp4&#34;) カメラからフレームを取得する場合はデバイスのIDの指定すればよいです。 普通は次のように0を指定すればよいかと思います。\nv = cv2.VideoCapture(0) フレームの読み込みは以下のようにします。\nret, frame = v.read() フレームが読み込めれば、retにはTrueが入ってきて、フレームが読み込めない状態になるとFalseが入ります。 これを利用すれば、次のようにしてフレームを次々に読み込めます（保存されているファイルを開いている場合には、動画の終わりまでが読み込まれます）。\nwhile True: ret, frame = v.read() if not ret: break プロパティの取得 動画のフレームの大きさ、FPS、フレーム数は以下のようにして取得できます。\nprint(v.get(cv2.CAP_PROP_FRAME_WIDTH)) print(v.get(cv2.CAP_PROP_FRAME_HEIGHT)) print(v.get(cv2.CAP_PROP_FPS)) print(v.get(cv2.CAP_PROP_FRAME_COUNT)) 取得できるプロパティは以下に一覧があります。 http://opencv.jp/opencv-2svn/cpp/highgui_reading_and_writing_images_and_video.html\n">
 <title>動画の読みこみ</title>
 
 <link rel='canonical' href='https://opqrstuvcut.github.io/mblog/posts/%E5%8B%95%E7%94%BB%E3%81%AE%E8%AA%AD%E3%81%BF%E3%81%93%E3%81%BF/'>
 
-<link rel="stylesheet" href="/mblog/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="動画の読みこみ">
-<meta property='og:description' content="本記事はQrunchからの転載です。 今日はOpenCVでの動画の読み書きを扱います。 動画の読み込み 動画の読み込みは簡単です。 最初に次のように保存されている動画を開きます。 import cv2 v = cv2.VideoCapture(&#34;./ex.mp4&#34;) カメラからフレームを取得する場合はデバイスのIDの指定すればよいです。 普通は次のように0を指定すればよいかと思います。 v = cv2.VideoCapture(0) フレームの読み込みは以下のようにします。 ret, frame = v.read() フレームが読み込めれば、retにはTrueが入ってきて、フレームが読み込めない状態になるとFalseが入ります。 これを利用すれば、次のようにしてフレームを次々に読み込めます（保存されているファイルを開いている場合には、動画の終わりまでが読み込まれます）。 while True: ret, frame = v.read() if not ret: break プロパティの取得 動画のフレームの大きさ、FPS、フレーム数は以下のようにして取得できます。 print(v.get(cv2.CAP_PROP_FRAME_WIDTH)) print(v.get(cv2.CAP_PROP_FRAME_HEIGHT)) print(v.get(cv2.CAP_PROP_FPS)) print(v.get(cv2.CAP_PROP_FRAME_COUNT)) 取得できるプロパティは以下に一覧があります。 http://opencv.jp/opencv-2svn/cpp/highgui_reading_and_writing_images_and_video.html">
+<link rel="stylesheet" href="/mblog/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="動画の読みこみ">
+<meta property='og:description' content="本記事はQrunchからの転載です。\n今日はOpenCVでの動画の読み書きを扱います。\n動画の読み込み 動画の読み込みは簡単です。\n最初に次のように保存されている動画を開きます。\nimport cv2 v = cv2.VideoCapture(&#34;./ex.mp4&#34;) カメラからフレームを取得する場合はデバイスのIDの指定すればよいです。 普通は次のように0を指定すればよいかと思います。\nv = cv2.VideoCapture(0) フレームの読み込みは以下のようにします。\nret, frame = v.read() フレームが読み込めれば、retにはTrueが入ってきて、フレームが読み込めない状態になるとFalseが入ります。 これを利用すれば、次のようにしてフレームを次々に読み込めます（保存されているファイルを開いている場合には、動画の終わりまでが読み込まれます）。\nwhile True: ret, frame = v.read() if not ret: break プロパティの取得 動画のフレームの大きさ、FPS、フレーム数は以下のようにして取得できます。\nprint(v.get(cv2.CAP_PROP_FRAME_WIDTH)) print(v.get(cv2.CAP_PROP_FRAME_HEIGHT)) print(v.get(cv2.CAP_PROP_FPS)) print(v.get(cv2.CAP_PROP_FRAME_COUNT)) 取得できるプロパティは以下に一覧があります。 http://opencv.jp/opencv-2svn/cpp/highgui_reading_and_writing_images_and_video.html\n">
 <meta property='og:url' content='https://opqrstuvcut.github.io/mblog/posts/%E5%8B%95%E7%94%BB%E3%81%AE%E8%AA%AD%E3%81%BF%E3%81%93%E3%81%BF/'>
 <meta property='og:site_name' content='MatLoverによるMatlab以外のブログ'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='OpenCV' /><meta property='article:tag' content='動画' /><meta property='article:tag' content='読み込み' /><meta property='article:published_time' content='2020-07-27T22:53:54&#43;09:00'/><meta property='article:modified_time' content='2020-07-27T22:53:54&#43;09:00'/><meta property='og:image' content='https://opqrstuvcut.github.io/mblog/' />
 <meta name="twitter:title" content="動画の読みこみ">
-<meta name="twitter:description" content="本記事はQrunchからの転載です。 今日はOpenCVでの動画の読み書きを扱います。 動画の読み込み 動画の読み込みは簡単です。 最初に次のように保存されている動画を開きます。 import cv2 v = cv2.VideoCapture(&#34;./ex.mp4&#34;) カメラからフレームを取得する場合はデバイスのIDの指定すればよいです。 普通は次のように0を指定すればよいかと思います。 v = cv2.VideoCapture(0) フレームの読み込みは以下のようにします。 ret, frame = v.read() フレームが読み込めれば、retにはTrueが入ってきて、フレームが読み込めない状態になるとFalseが入ります。 これを利用すれば、次のようにしてフレームを次々に読み込めます（保存されているファイルを開いている場合には、動画の終わりまでが読み込まれます）。 while True: ret, frame = v.read() if not ret: break プロパティの取得 動画のフレームの大きさ、FPS、フレーム数は以下のようにして取得できます。 print(v.get(cv2.CAP_PROP_FRAME_WIDTH)) print(v.get(cv2.CAP_PROP_FRAME_HEIGHT)) print(v.get(cv2.CAP_PROP_FPS)) print(v.get(cv2.CAP_PROP_FRAME_COUNT)) 取得できるプロパティは以下に一覧があります。 http://opencv.jp/opencv-2svn/cpp/highgui_reading_and_writing_images_and_video.html"><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="本記事はQrunchからの転載です。\n今日はOpenCVでの動画の読み書きを扱います。\n動画の読み込み 動画の読み込みは簡単です。\n最初に次のように保存されている動画を開きます。\nimport cv2 v = cv2.VideoCapture(&#34;./ex.mp4&#34;) カメラからフレームを取得する場合はデバイスのIDの指定すればよいです。 普通は次のように0を指定すればよいかと思います。\nv = cv2.VideoCapture(0) フレームの読み込みは以下のようにします。\nret, frame = v.read() フレームが読み込めれば、retにはTrueが入ってきて、フレームが読み込めない状態になるとFalseが入ります。 これを利用すれば、次のようにしてフレームを次々に読み込めます（保存されているファイルを開いている場合には、動画の終わりまでが読み込まれます）。\nwhile True: ret, frame = v.read() if not ret: break プロパティの取得 動画のフレームの大きさ、FPS、フレーム数は以下のようにして取得できます。\nprint(v.get(cv2.CAP_PROP_FRAME_WIDTH)) print(v.get(cv2.CAP_PROP_FRAME_HEIGHT)) print(v.get(cv2.CAP_PROP_FPS)) print(v.get(cv2.CAP_PROP_FRAME_COUNT)) 取得できるプロパティは以下に一覧があります。 http://opencv.jp/opencv-2svn/cpp/highgui_reading_and_writing_images_and_video.html\n"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://opqrstuvcut.github.io/mblog/' />
     <link rel="shortcut icon" href="/mblog/favicon.ico" />
 
-  
-    
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFC5W8DKV1"></script>
       <script>
         var doNotTrack = false;
@@ -31,11 +29,7 @@
           gtag('js', new Date());
           gtag('config', 'G-LFC5W8DKV1');
         }
-      </script>
-    
-  
-
-<style>
+      </script><style>
   section.article-content h2 {
     background-color: rgb(245, 245, 245);
     padding: 10px;
@@ -92,7 +86,7 @@
                     
                     
                         
-                        <img src="/mblog/img/avatar_hu13660810305696555094.jpeg" width="300"
+                        <img src="/mblog/img/avatar_hu_5bc806b678ac7533.jpeg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -379,7 +373,7 @@
         
         
             <div class="article-image">
-                <img src="/mblog/posts/%E5%8B%95%E7%94%BB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%8B%E3%82%89%E5%89%8D%E6%99%AF%E3%81%A8%E8%83%8C%E6%99%AF%E3%82%92%E5%88%86%E9%9B%A2%E3%81%99%E3%82%8B/cbb562e9eaee89cb60ac8ec0be592a80.e87b6e8f6ca22b6b36cca3b2b6690362_hu390705902629083679.png" 
+                <img src="/mblog/posts/%E5%8B%95%E7%94%BB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%8B%E3%82%89%E5%89%8D%E6%99%AF%E3%81%A8%E8%83%8C%E6%99%AF%E3%82%92%E5%88%86%E9%9B%A2%E3%81%99%E3%82%8B/cbb562e9eaee89cb60ac8ec0be592a80.e87b6e8f6ca22b6b36cca3b2b6690362_hu_c5e808e5c63e0847.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -403,7 +397,7 @@
         
         
             <div class="article-image">
-                <img src="/mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/d0411dcb235b3add1e1a55f1a9394d2d.cdc50c30a2665f1bcc4245a119ab8bbb_hu9937509795490170185.png" 
+                <img src="/mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/d0411dcb235b3add1e1a55f1a9394d2d.cdc50c30a2665f1bcc4245a119ab8bbb_hu_5de69ec84782b2c5.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -427,7 +421,7 @@
         
         
             <div class="article-image">
-                <img src="/mblog/posts/findcontours%E3%81%A7%E8%BC%AA%E9%83%AD%E3%81%AE%E6%A4%9C%E5%87%BA/36626599de1a642e7bfec7fa47def298.273ed0912346665a556545fc8c648ab8_hu3379407131511175525.png" 
+                <img src="/mblog/posts/findcontours%E3%81%A7%E8%BC%AA%E9%83%AD%E3%81%AE%E6%A4%9C%E5%87%BA/36626599de1a642e7bfec7fa47def298.273ed0912346665a556545fc8c648ab8_hu_d9ac13c161f3cd90.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -451,7 +445,7 @@
         
         
             <div class="article-image">
-                <img src="/mblog/posts/%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%83%9E%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%8B%E3%82%89%E7%89%A9%E4%BD%93%E3%82%92%E3%81%BF%E3%81%A4%E3%81%91%E3%82%8B/0359ef5bc2687ab5c1e63356c89cc3e0.1e1423b2714291cf4647a1c4677451b8_hu11081041458382776038.png" 
+                <img src="/mblog/posts/%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%83%9E%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%8B%E3%82%89%E7%89%A9%E4%BD%93%E3%82%92%E3%81%BF%E3%81%A4%E3%81%91%E3%82%8B/0359ef5bc2687ab5c1e63356c89cc3e0.1e1423b2714291cf4647a1c4677451b8_hu_3e44667558a206cc.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"

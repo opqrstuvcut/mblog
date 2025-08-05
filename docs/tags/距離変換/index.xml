@@ -26,18 +26,18 @@
 maskSizeには最も近い0の値をもつピクセルまでの距離の近似値を計算するときに使うmaskの大きさを指定します。maskSize=5の例でいえば、maskをあらわす$5\times5$の行列の各要素にはmaskの中心からの距離が格納されています。このmaskを使うことで、正確に距離を計算するよりも速く距離（の近似値）が計算できます。&lt;/p&gt;
 &lt;p&gt;結果は以下のとおりです。&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;入力画像&lt;/th&gt;
-&lt;th&gt;距離変換適用（明るいほど距離大）&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%AE%E8%B7%9D%E9%9B%A2%E5%A4%89%E6%8F%9B%E3%82%92%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86/0b07b8f2f4af88f042743b022481f2b5.png&#34;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;入力画像&lt;/th&gt;
+          &lt;th&gt;距離変換適用（明るいほど距離大）&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%AE%E8%B7%9D%E9%9B%A2%E5%A4%89%E6%8F%9B%E3%82%92%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86/0b07b8f2f4af88f042743b022481f2b5.png&#34;
 	width=&#34;247&#34;
 	height=&#34;252&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%AE%E8%B7%9D%E9%9B%A2%E5%A4%89%E6%8F%9B%E3%82%92%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86/0b07b8f2f4af88f042743b022481f2b5_hu15663059655230850390.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%AE%E8%B7%9D%E9%9B%A2%E5%A4%89%E6%8F%9B%E3%82%92%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86/0b07b8f2f4af88f042743b022481f2b5_hu2037515783423837581.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%AE%E8%B7%9D%E9%9B%A2%E5%A4%89%E6%8F%9B%E3%82%92%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86/0b07b8f2f4af88f042743b022481f2b5_hu_6c01904b0bbce9d9.png 480w, https://opqrstuvcut.github.io/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%AE%E8%B7%9D%E9%9B%A2%E5%A4%89%E6%8F%9B%E3%82%92%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86/0b07b8f2f4af88f042743b022481f2b5_hu_ade113a94ec018be.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -46,10 +46,10 @@ maskSizeには最も近い0の値をもつピクセルまでの距離の近似�
 		data-flex-basis=&#34;235px&#34;
 	
 &gt;&lt;/td&gt;
-&lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%AE%E8%B7%9D%E9%9B%A2%E5%A4%89%E6%8F%9B%E3%82%92%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86/10fec2481837301639f81cf34c21e4b1.png&#34;
+          &lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%AE%E8%B7%9D%E9%9B%A2%E5%A4%89%E6%8F%9B%E3%82%92%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86/10fec2481837301639f81cf34c21e4b1.png&#34;
 	width=&#34;247&#34;
 	height=&#34;252&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%AE%E8%B7%9D%E9%9B%A2%E5%A4%89%E6%8F%9B%E3%82%92%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86/10fec2481837301639f81cf34c21e4b1_hu13466587631441466800.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%AE%E8%B7%9D%E9%9B%A2%E5%A4%89%E6%8F%9B%E3%82%92%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86/10fec2481837301639f81cf34c21e4b1_hu13775969916168491540.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%AE%E8%B7%9D%E9%9B%A2%E5%A4%89%E6%8F%9B%E3%82%92%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86/10fec2481837301639f81cf34c21e4b1_hu_9439bd1ed1dad684.png 480w, https://opqrstuvcut.github.io/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%AE%E8%B7%9D%E9%9B%A2%E5%A4%89%E6%8F%9B%E3%82%92%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86/10fec2481837301639f81cf34c21e4b1_hu_7da6144400b198c3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -58,8 +58,8 @@ maskSizeには最も近い0の値をもつピクセルまでの距離の近似�
 		data-flex-basis=&#34;235px&#34;
 	
 &gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;背景が0の値をもつので、そこまでの距離が反映されています。窓の中心や、猫の顔の中心は背景から遠いので、大きな値をもっています。&lt;/p&gt;
 </description>

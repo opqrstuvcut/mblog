@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="ja-jp" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="本記事はQrunchからの転載です。 画像をpngなどからjpgに変換したいときに、ぱっと思いつくのはファイルを読み込んで、それをjpgの拡張子で書き込みした後に再度読み込みなおすことです。 1度動かすならばそれでも良いのですが、何度も繰り返しおこなう場合にはファイルの読み書きの時間が気になります。 OpenCVではファイルへの読み書きをおこなうことなく、メモリ上でファイル形式を変更できる（jpgへの圧縮などができる）ような方法が提供されています。 流れとしては、imencodeでメモリ上にファイル形式を変更したバイト列を作成し、それをimdecodeで画像に変換するという流れになります。imencodeがファイルへの書き込み、imdecodeがファイルの読み込みに対応する感じになります。 imencode 画像を他のファイルを形式に変更するimencodeは次のようにして利用します。 ret, encoded = cv2.imencode(&#34;.jpg&#34;, img, (cv2.IMWRITE_JPEG_QUALITY, 10)) 1つめの引数がどの拡張子に変換するかをあらわす文字列で、ここではjpgを指定しています。 3つめの引数に指定した拡張子に変換するときのパラメータを指定します。 例えばjpgの場合には画像の質を指定できますので、それをタプルの形式で与えており、ここではjpgの質を10で圧縮するようにしています。 imencodeによって生成されたjpgになった画像の情報はencodedに格納されています。 imdecode メモリ上の画像データを読み込むimdecodeは以下のようにします。 decoded = cv2.imdecode(encoded, flags=cv2.IMREAD_COLOR) 第一引数はimencodeの出力です。 flagsは何かしら指定しないといけないのですが、これはどう読み込むかをあらわすフラグです。 BGRの3channelで読み込む場合にはcv2.IMREAD_COLORを指定し、Gray scaleの1channelで読み込む場合にはcv2.IMREAD_GRAYSCALEを指定します。 適用結果 jpgのqualityを10にしてimencodeした後にimdecodeした結果を元の画像と比較してみます。 元画像 imdecode後の画像 右側の画像はノイズがのっていることが分かるでしょうか？ちゃんとjpgの形式で圧縮されたようです。">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="本記事はQrunchからの転載です。\n画像をpngなどからjpgに変換したいときに、ぱっと思いつくのはファイルを読み込んで、それをjpgの拡張子で書き込みした後に再度読み込みなおすことです。 1度動かすならばそれでも良いのですが、何度も繰り返しおこなう場合にはファイルの読み書きの時間が気になります。\nOpenCVではファイルへの読み書きをおこなうことなく、メモリ上でファイル形式を変更できる（jpgへの圧縮などができる）ような方法が提供されています。\n流れとしては、imencodeでメモリ上にファイル形式を変更したバイト列を作成し、それをimdecodeで画像に変換するという流れになります。imencodeがファイルへの書き込み、imdecodeがファイルの読み込みに対応する感じになります。\nimencode 画像を他のファイルを形式に変更するimencodeは次のようにして利用します。\nret, encoded = cv2.imencode(&#34;.jpg&#34;, img, (cv2.IMWRITE_JPEG_QUALITY, 10)) 1つめの引数がどの拡張子に変換するかをあらわす文字列で、ここではjpgを指定しています。\n3つめの引数に指定した拡張子に変換するときのパラメータを指定します。 例えばjpgの場合には画像の質を指定できますので、それをタプルの形式で与えており、ここではjpgの質を10で圧縮するようにしています。\nimencodeによって生成されたjpgになった画像の情報はencodedに格納されています。\nimdecode メモリ上の画像データを読み込むimdecodeは以下のようにします。\ndecoded = cv2.imdecode(encoded, flags=cv2.IMREAD_COLOR) 第一引数はimencodeの出力です。 flagsは何かしら指定しないといけないのですが、これはどう読み込むかをあらわすフラグです。 BGRの3channelで読み込む場合にはcv2.IMREAD_COLORを指定し、Gray scaleの1channelで読み込む場合にはcv2.IMREAD_GRAYSCALEを指定します。\n適用結果 jpgのqualityを10にしてimencodeした後にimdecodeした結果を元の画像と比較してみます。\n元画像 imdecode後の画像 右側の画像はノイズがのっていることが分かるでしょうか？ちゃんとjpgの形式で圧縮されたようです。\n">
 <title>imencodeとimdecodeによるメモリ上での画像圧縮</title>
 
 <link rel='canonical' href='https://opqrstuvcut.github.io/mblog/posts/imencode%E3%81%A8imdecode%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A1%E3%83%A2%E3%83%AA%E4%B8%8A%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE/'>
 
-<link rel="stylesheet" href="/mblog/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="imencodeとimdecodeによるメモリ上での画像圧縮">
-<meta property='og:description' content="本記事はQrunchからの転載です。 画像をpngなどからjpgに変換したいときに、ぱっと思いつくのはファイルを読み込んで、それをjpgの拡張子で書き込みした後に再度読み込みなおすことです。 1度動かすならばそれでも良いのですが、何度も繰り返しおこなう場合にはファイルの読み書きの時間が気になります。 OpenCVではファイルへの読み書きをおこなうことなく、メモリ上でファイル形式を変更できる（jpgへの圧縮などができる）ような方法が提供されています。 流れとしては、imencodeでメモリ上にファイル形式を変更したバイト列を作成し、それをimdecodeで画像に変換するという流れになります。imencodeがファイルへの書き込み、imdecodeがファイルの読み込みに対応する感じになります。 imencode 画像を他のファイルを形式に変更するimencodeは次のようにして利用します。 ret, encoded = cv2.imencode(&#34;.jpg&#34;, img, (cv2.IMWRITE_JPEG_QUALITY, 10)) 1つめの引数がどの拡張子に変換するかをあらわす文字列で、ここではjpgを指定しています。 3つめの引数に指定した拡張子に変換するときのパラメータを指定します。 例えばjpgの場合には画像の質を指定できますので、それをタプルの形式で与えており、ここではjpgの質を10で圧縮するようにしています。 imencodeによって生成されたjpgになった画像の情報はencodedに格納されています。 imdecode メモリ上の画像データを読み込むimdecodeは以下のようにします。 decoded = cv2.imdecode(encoded, flags=cv2.IMREAD_COLOR) 第一引数はimencodeの出力です。 flagsは何かしら指定しないといけないのですが、これはどう読み込むかをあらわすフラグです。 BGRの3channelで読み込む場合にはcv2.IMREAD_COLORを指定し、Gray scaleの1channelで読み込む場合にはcv2.IMREAD_GRAYSCALEを指定します。 適用結果 jpgのqualityを10にしてimencodeした後にimdecodeした結果を元の画像と比較してみます。 元画像 imdecode後の画像 右側の画像はノイズがのっていることが分かるでしょうか？ちゃんとjpgの形式で圧縮されたようです。">
+<link rel="stylesheet" href="/mblog/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="imencodeとimdecodeによるメモリ上での画像圧縮">
+<meta property='og:description' content="本記事はQrunchからの転載です。\n画像をpngなどからjpgに変換したいときに、ぱっと思いつくのはファイルを読み込んで、それをjpgの拡張子で書き込みした後に再度読み込みなおすことです。 1度動かすならばそれでも良いのですが、何度も繰り返しおこなう場合にはファイルの読み書きの時間が気になります。\nOpenCVではファイルへの読み書きをおこなうことなく、メモリ上でファイル形式を変更できる（jpgへの圧縮などができる）ような方法が提供されています。\n流れとしては、imencodeでメモリ上にファイル形式を変更したバイト列を作成し、それをimdecodeで画像に変換するという流れになります。imencodeがファイルへの書き込み、imdecodeがファイルの読み込みに対応する感じになります。\nimencode 画像を他のファイルを形式に変更するimencodeは次のようにして利用します。\nret, encoded = cv2.imencode(&#34;.jpg&#34;, img, (cv2.IMWRITE_JPEG_QUALITY, 10)) 1つめの引数がどの拡張子に変換するかをあらわす文字列で、ここではjpgを指定しています。\n3つめの引数に指定した拡張子に変換するときのパラメータを指定します。 例えばjpgの場合には画像の質を指定できますので、それをタプルの形式で与えており、ここではjpgの質を10で圧縮するようにしています。\nimencodeによって生成されたjpgになった画像の情報はencodedに格納されています。\nimdecode メモリ上の画像データを読み込むimdecodeは以下のようにします。\ndecoded = cv2.imdecode(encoded, flags=cv2.IMREAD_COLOR) 第一引数はimencodeの出力です。 flagsは何かしら指定しないといけないのですが、これはどう読み込むかをあらわすフラグです。 BGRの3channelで読み込む場合にはcv2.IMREAD_COLORを指定し、Gray scaleの1channelで読み込む場合にはcv2.IMREAD_GRAYSCALEを指定します。\n適用結果 jpgのqualityを10にしてimencodeした後にimdecodeした結果を元の画像と比較してみます。\n元画像 imdecode後の画像 右側の画像はノイズがのっていることが分かるでしょうか？ちゃんとjpgの形式で圧縮されたようです。\n">
 <meta property='og:url' content='https://opqrstuvcut.github.io/mblog/posts/imencode%E3%81%A8imdecode%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A1%E3%83%A2%E3%83%AA%E4%B8%8A%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE/'>
 <meta property='og:site_name' content='MatLoverによるMatlab以外のブログ'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='OpenCV' /><meta property='article:tag' content='圧縮' /><meta property='article:published_time' content='2020-07-16T11:00:00&#43;09:00'/><meta property='article:modified_time' content='2020-07-16T11:00:00&#43;09:00'/><meta property='og:image' content='https://opqrstuvcut.github.io/mblog/posts/imencode%E3%81%A8imdecode%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A1%E3%83%A2%E3%83%AA%E4%B8%8A%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE/ef33a82444b4c9bca9b7fb97cad0d467.png' />
 <meta name="twitter:title" content="imencodeとimdecodeによるメモリ上での画像圧縮">
-<meta name="twitter:description" content="本記事はQrunchからの転載です。 画像をpngなどからjpgに変換したいときに、ぱっと思いつくのはファイルを読み込んで、それをjpgの拡張子で書き込みした後に再度読み込みなおすことです。 1度動かすならばそれでも良いのですが、何度も繰り返しおこなう場合にはファイルの読み書きの時間が気になります。 OpenCVではファイルへの読み書きをおこなうことなく、メモリ上でファイル形式を変更できる（jpgへの圧縮などができる）ような方法が提供されています。 流れとしては、imencodeでメモリ上にファイル形式を変更したバイト列を作成し、それをimdecodeで画像に変換するという流れになります。imencodeがファイルへの書き込み、imdecodeがファイルの読み込みに対応する感じになります。 imencode 画像を他のファイルを形式に変更するimencodeは次のようにして利用します。 ret, encoded = cv2.imencode(&#34;.jpg&#34;, img, (cv2.IMWRITE_JPEG_QUALITY, 10)) 1つめの引数がどの拡張子に変換するかをあらわす文字列で、ここではjpgを指定しています。 3つめの引数に指定した拡張子に変換するときのパラメータを指定します。 例えばjpgの場合には画像の質を指定できますので、それをタプルの形式で与えており、ここではjpgの質を10で圧縮するようにしています。 imencodeによって生成されたjpgになった画像の情報はencodedに格納されています。 imdecode メモリ上の画像データを読み込むimdecodeは以下のようにします。 decoded = cv2.imdecode(encoded, flags=cv2.IMREAD_COLOR) 第一引数はimencodeの出力です。 flagsは何かしら指定しないといけないのですが、これはどう読み込むかをあらわすフラグです。 BGRの3channelで読み込む場合にはcv2.IMREAD_COLORを指定し、Gray scaleの1channelで読み込む場合にはcv2.IMREAD_GRAYSCALEを指定します。 適用結果 jpgのqualityを10にしてimencodeした後にimdecodeした結果を元の画像と比較してみます。 元画像 imdecode後の画像 右側の画像はノイズがのっていることが分かるでしょうか？ちゃんとjpgの形式で圧縮されたようです。"><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="本記事はQrunchからの転載です。\n画像をpngなどからjpgに変換したいときに、ぱっと思いつくのはファイルを読み込んで、それをjpgの拡張子で書き込みした後に再度読み込みなおすことです。 1度動かすならばそれでも良いのですが、何度も繰り返しおこなう場合にはファイルの読み書きの時間が気になります。\nOpenCVではファイルへの読み書きをおこなうことなく、メモリ上でファイル形式を変更できる（jpgへの圧縮などができる）ような方法が提供されています。\n流れとしては、imencodeでメモリ上にファイル形式を変更したバイト列を作成し、それをimdecodeで画像に変換するという流れになります。imencodeがファイルへの書き込み、imdecodeがファイルの読み込みに対応する感じになります。\nimencode 画像を他のファイルを形式に変更するimencodeは次のようにして利用します。\nret, encoded = cv2.imencode(&#34;.jpg&#34;, img, (cv2.IMWRITE_JPEG_QUALITY, 10)) 1つめの引数がどの拡張子に変換するかをあらわす文字列で、ここではjpgを指定しています。\n3つめの引数に指定した拡張子に変換するときのパラメータを指定します。 例えばjpgの場合には画像の質を指定できますので、それをタプルの形式で与えており、ここではjpgの質を10で圧縮するようにしています。\nimencodeによって生成されたjpgになった画像の情報はencodedに格納されています。\nimdecode メモリ上の画像データを読み込むimdecodeは以下のようにします。\ndecoded = cv2.imdecode(encoded, flags=cv2.IMREAD_COLOR) 第一引数はimencodeの出力です。 flagsは何かしら指定しないといけないのですが、これはどう読み込むかをあらわすフラグです。 BGRの3channelで読み込む場合にはcv2.IMREAD_COLORを指定し、Gray scaleの1channelで読み込む場合にはcv2.IMREAD_GRAYSCALEを指定します。\n適用結果 jpgのqualityを10にしてimencodeした後にimdecodeした結果を元の画像と比較してみます。\n元画像 imdecode後の画像 右側の画像はノイズがのっていることが分かるでしょうか？ちゃんとjpgの形式で圧縮されたようです。\n"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://opqrstuvcut.github.io/mblog/posts/imencode%E3%81%A8imdecode%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A1%E3%83%A2%E3%83%AA%E4%B8%8A%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE/ef33a82444b4c9bca9b7fb97cad0d467.png' />
     <link rel="shortcut icon" href="/mblog/favicon.ico" />
 
-  
-    
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFC5W8DKV1"></script>
       <script>
         var doNotTrack = false;
@@ -31,11 +29,7 @@
           gtag('js', new Date());
           gtag('config', 'G-LFC5W8DKV1');
         }
-      </script>
-    
-  
-
-<style>
+      </script><style>
   section.article-content h2 {
     background-color: rgb(245, 245, 245);
     padding: 10px;
@@ -92,7 +86,7 @@
                     
                     
                         
-                        <img src="/mblog/img/avatar_hu13660810305696555094.jpeg" width="300"
+                        <img src="/mblog/img/avatar_hu_5bc806b678ac7533.jpeg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -208,8 +202,8 @@
     <header class="article-header">
         <div class="article-image">
             <a href="/mblog/posts/imencode%E3%81%A8imdecode%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A1%E3%83%A2%E3%83%AA%E4%B8%8A%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE/">
-                <img src="/mblog/posts/imencode%E3%81%A8imdecode%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A1%E3%83%A2%E3%83%AA%E4%B8%8A%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE/ef33a82444b4c9bca9b7fb97cad0d467_hu9796645546291153587.png"
-                        srcset="/mblog/posts/imencode%E3%81%A8imdecode%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A1%E3%83%A2%E3%83%AA%E4%B8%8A%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE/ef33a82444b4c9bca9b7fb97cad0d467_hu9796645546291153587.png 800w, /mblog/posts/imencode%E3%81%A8imdecode%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A1%E3%83%A2%E3%83%AA%E4%B8%8A%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE/ef33a82444b4c9bca9b7fb97cad0d467_hu7892574080379301032.png 1600w"
+                <img src="/mblog/posts/imencode%E3%81%A8imdecode%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A1%E3%83%A2%E3%83%AA%E4%B8%8A%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE/ef33a82444b4c9bca9b7fb97cad0d467_hu_4e6769a26817ca1a.png"
+                        srcset="/mblog/posts/imencode%E3%81%A8imdecode%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A1%E3%83%A2%E3%83%AA%E4%B8%8A%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE/ef33a82444b4c9bca9b7fb97cad0d467_hu_4e6769a26817ca1a.png 800w, /mblog/posts/imencode%E3%81%A8imdecode%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A1%E3%83%A2%E3%83%AA%E4%B8%8A%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE/ef33a82444b4c9bca9b7fb97cad0d467_hu_5dd5957e68cb018b.png 1600w"
                         width="800" 
                         height="816" 
                         loading="lazy"
@@ -296,18 +290,18 @@ BGRの3channelで読み込む場合には<strong>cv2.IMREAD_COLOR</strong>を指
 <h1 id="適用結果">適用結果
 </h1><p>jpgのqualityを10にしてimencodeした後にimdecodeした結果を元の画像と比較してみます。</p>
 <div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>元画像</th>
-<th>imdecode後の画像</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img src="/mblog/posts/imencode%E3%81%A8imdecode%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A1%E3%83%A2%E3%83%AA%E4%B8%8A%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE/92b8b770bc70d432712df04481e7be54.png"
+  <thead>
+      <tr>
+          <th>元画像</th>
+          <th>imdecode後の画像</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><img src="/mblog/posts/imencode%E3%81%A8imdecode%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A1%E3%83%A2%E3%83%AA%E4%B8%8A%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE/92b8b770bc70d432712df04481e7be54.png"
 	width="247"
 	height="252"
-	srcset="/mblog/posts/imencode%E3%81%A8imdecode%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A1%E3%83%A2%E3%83%AA%E4%B8%8A%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE/92b8b770bc70d432712df04481e7be54_hu7478582748216616389.png 480w, /mblog/posts/imencode%E3%81%A8imdecode%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A1%E3%83%A2%E3%83%AA%E4%B8%8A%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE/92b8b770bc70d432712df04481e7be54_hu7927824199827877093.png 1024w"
+	srcset="/mblog/posts/imencode%E3%81%A8imdecode%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A1%E3%83%A2%E3%83%AA%E4%B8%8A%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE/92b8b770bc70d432712df04481e7be54_hu_e81fb55e04aeb81.png 480w, /mblog/posts/imencode%E3%81%A8imdecode%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A1%E3%83%A2%E3%83%AA%E4%B8%8A%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE/92b8b770bc70d432712df04481e7be54_hu_6b2249181321ff10.png 1024w"
 	loading="lazy"
 	
 	
@@ -316,10 +310,10 @@ BGRの3channelで読み込む場合には<strong>cv2.IMREAD_COLOR</strong>を指
 		data-flex-basis="235px"
 	
 ></td>
-<td><img src="/mblog/posts/imencode%E3%81%A8imdecode%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A1%E3%83%A2%E3%83%AA%E4%B8%8A%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE/ef33a82444b4c9bca9b7fb97cad0d467.png"
+          <td><img src="/mblog/posts/imencode%E3%81%A8imdecode%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A1%E3%83%A2%E3%83%AA%E4%B8%8A%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE/ef33a82444b4c9bca9b7fb97cad0d467.png"
 	width="247"
 	height="252"
-	srcset="/mblog/posts/imencode%E3%81%A8imdecode%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A1%E3%83%A2%E3%83%AA%E4%B8%8A%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE/ef33a82444b4c9bca9b7fb97cad0d467_hu15492265129623263215.png 480w, /mblog/posts/imencode%E3%81%A8imdecode%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A1%E3%83%A2%E3%83%AA%E4%B8%8A%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE/ef33a82444b4c9bca9b7fb97cad0d467_hu3211542688413697313.png 1024w"
+	srcset="/mblog/posts/imencode%E3%81%A8imdecode%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A1%E3%83%A2%E3%83%AA%E4%B8%8A%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE/ef33a82444b4c9bca9b7fb97cad0d467_hu_1cc90d18c4d08cbc.png 480w, /mblog/posts/imencode%E3%81%A8imdecode%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A1%E3%83%A2%E3%83%AA%E4%B8%8A%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE/ef33a82444b4c9bca9b7fb97cad0d467_hu_189be83c8959fa1f.png 1024w"
 	loading="lazy"
 	
 	
@@ -328,8 +322,8 @@ BGRの3channelで読み込む場合には<strong>cv2.IMREAD_COLOR</strong>を指
 		data-flex-basis="235px"
 	
 ></td>
-</tr>
-</tbody>
+      </tr>
+  </tbody>
 </table></div>
 <p>右側の画像はノイズがのっていることが分かるでしょうか？ちゃんとjpgの形式で圧縮されたようです。</p>
 
@@ -406,7 +400,7 @@ BGRの3channelで読み込む場合には<strong>cv2.IMREAD_COLOR</strong>を指
         
         
             <div class="article-image">
-                <img src="/mblog/posts/%E5%8B%95%E7%94%BB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%8B%E3%82%89%E5%89%8D%E6%99%AF%E3%81%A8%E8%83%8C%E6%99%AF%E3%82%92%E5%88%86%E9%9B%A2%E3%81%99%E3%82%8B/cbb562e9eaee89cb60ac8ec0be592a80.e87b6e8f6ca22b6b36cca3b2b6690362_hu390705902629083679.png" 
+                <img src="/mblog/posts/%E5%8B%95%E7%94%BB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%8B%E3%82%89%E5%89%8D%E6%99%AF%E3%81%A8%E8%83%8C%E6%99%AF%E3%82%92%E5%88%86%E9%9B%A2%E3%81%99%E3%82%8B/cbb562e9eaee89cb60ac8ec0be592a80.e87b6e8f6ca22b6b36cca3b2b6690362_hu_c5e808e5c63e0847.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -430,7 +424,7 @@ BGRの3channelで読み込む場合には<strong>cv2.IMREAD_COLOR</strong>を指
         
         
             <div class="article-image">
-                <img src="/mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/d0411dcb235b3add1e1a55f1a9394d2d.cdc50c30a2665f1bcc4245a119ab8bbb_hu9937509795490170185.png" 
+                <img src="/mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/d0411dcb235b3add1e1a55f1a9394d2d.cdc50c30a2665f1bcc4245a119ab8bbb_hu_5de69ec84782b2c5.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -454,7 +448,7 @@ BGRの3channelで読み込む場合には<strong>cv2.IMREAD_COLOR</strong>を指
         
         
             <div class="article-image">
-                <img src="/mblog/posts/findcontours%E3%81%A7%E8%BC%AA%E9%83%AD%E3%81%AE%E6%A4%9C%E5%87%BA/36626599de1a642e7bfec7fa47def298.273ed0912346665a556545fc8c648ab8_hu3379407131511175525.png" 
+                <img src="/mblog/posts/findcontours%E3%81%A7%E8%BC%AA%E9%83%AD%E3%81%AE%E6%A4%9C%E5%87%BA/36626599de1a642e7bfec7fa47def298.273ed0912346665a556545fc8c648ab8_hu_d9ac13c161f3cd90.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -478,7 +472,7 @@ BGRの3channelで読み込む場合には<strong>cv2.IMREAD_COLOR</strong>を指
         
         
             <div class="article-image">
-                <img src="/mblog/posts/%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%83%9E%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%8B%E3%82%89%E7%89%A9%E4%BD%93%E3%82%92%E3%81%BF%E3%81%A4%E3%81%91%E3%82%8B/0359ef5bc2687ab5c1e63356c89cc3e0.1e1423b2714291cf4647a1c4677451b8_hu11081041458382776038.png" 
+                <img src="/mblog/posts/%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%83%9E%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%8B%E3%82%89%E7%89%A9%E4%BD%93%E3%82%92%E3%81%BF%E3%81%A4%E3%81%91%E3%82%8B/0359ef5bc2687ab5c1e63356c89cc3e0.1e1423b2714291cf4647a1c4677451b8_hu_3e44667558a206cc.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"

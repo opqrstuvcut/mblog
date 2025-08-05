@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="ja-jp" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="NVIDIAのGPUのdriver更新手順 色々手順はあると思いますが、1つのやり方のメモです。 古いドライバを削除しておく 公式からCUDA Toolkitをダウンロードしてインストールした場合は次で削除できるはず。 $ cd /usr/local/cuda-x/bin $ sudo cuda-uninstaller $ sudo nvidia-uninstall もしapt-getを使って古いドライバを入れていたら次のコマンドで消え去るはず。nvidia containerが入っている場合はそれも消えるので、嫌な人は注意。 sudo apt-get remove --purge nvidia\\* libnvidia-\\* CUDA Toolkitのダウンロードとインストール（Installer Typeはrunfileが一番ラク） CUDA 11.2ならここの手順に従うhttps://developer.nvidia.com/cuda-11.2.1-download-archive 最新版のCUDAはここの手順に従うhttps://developer.nvidia.com/cuda-downloads nvidia-smiコマンドを実行して動けばOK ">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="NVIDIAのGPUのdriver更新手順 色々手順はあると思いますが、1つのやり方のメモです。\n古いドライバを削除しておく 公式からCUDA Toolkitをダウンロードしてインストールした場合は次で削除できるはず。 $ cd /usr/local/cuda-x/bin $ sudo cuda-uninstaller $ sudo nvidia-uninstall もしapt-getを使って古いドライバを入れていたら次のコマンドで消え去るはず。nvidia containerが入っている場合はそれも消えるので、嫌な人は注意。 sudo apt-get remove --purge nvidia\\* libnvidia-\\* CUDA Toolkitのダウンロードとインストール（Installer Typeはrunfileが一番ラク） CUDA 11.2ならここの手順に従うhttps://developer.nvidia.com/cuda-11.2.1-download-archive 最新版のCUDAはここの手順に従うhttps://developer.nvidia.com/cuda-downloads nvidia-smiコマンドを実行して動けばOK ">
 <title>NVIDIAのGPUのdriverの更新</title>
 
 <link rel='canonical' href='https://opqrstuvcut.github.io/mblog/posts/nvidia%E3%81%AEgpu%E3%81%AEdriver%E3%81%AE%E6%9B%B4%E6%96%B0/'>
 
-<link rel="stylesheet" href="/mblog/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="NVIDIAのGPUのdriverの更新">
-<meta property='og:description' content="NVIDIAのGPUのdriver更新手順 色々手順はあると思いますが、1つのやり方のメモです。 古いドライバを削除しておく 公式からCUDA Toolkitをダウンロードしてインストールした場合は次で削除できるはず。 $ cd /usr/local/cuda-x/bin $ sudo cuda-uninstaller $ sudo nvidia-uninstall もしapt-getを使って古いドライバを入れていたら次のコマンドで消え去るはず。nvidia containerが入っている場合はそれも消えるので、嫌な人は注意。 sudo apt-get remove --purge nvidia\\* libnvidia-\\* CUDA Toolkitのダウンロードとインストール（Installer Typeはrunfileが一番ラク） CUDA 11.2ならここの手順に従うhttps://developer.nvidia.com/cuda-11.2.1-download-archive 最新版のCUDAはここの手順に従うhttps://developer.nvidia.com/cuda-downloads nvidia-smiコマンドを実行して動けばOK ">
+<link rel="stylesheet" href="/mblog/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="NVIDIAのGPUのdriverの更新">
+<meta property='og:description' content="NVIDIAのGPUのdriver更新手順 色々手順はあると思いますが、1つのやり方のメモです。\n古いドライバを削除しておく 公式からCUDA Toolkitをダウンロードしてインストールした場合は次で削除できるはず。 $ cd /usr/local/cuda-x/bin $ sudo cuda-uninstaller $ sudo nvidia-uninstall もしapt-getを使って古いドライバを入れていたら次のコマンドで消え去るはず。nvidia containerが入っている場合はそれも消えるので、嫌な人は注意。 sudo apt-get remove --purge nvidia\\* libnvidia-\\* CUDA Toolkitのダウンロードとインストール（Installer Typeはrunfileが一番ラク） CUDA 11.2ならここの手順に従うhttps://developer.nvidia.com/cuda-11.2.1-download-archive 最新版のCUDAはここの手順に従うhttps://developer.nvidia.com/cuda-downloads nvidia-smiコマンドを実行して動けばOK ">
 <meta property='og:url' content='https://opqrstuvcut.github.io/mblog/posts/nvidia%E3%81%AEgpu%E3%81%AEdriver%E3%81%AE%E6%9B%B4%E6%96%B0/'>
 <meta property='og:site_name' content='MatLoverによるMatlab以外のブログ'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='GPU' /><meta property='article:tag' content='NVIDIA' /><meta property='article:published_time' content='2021-12-11T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-12-11T00:00:00&#43;00:00'/><meta property='og:image' content='https://opqrstuvcut.github.io/mblog/' />
 <meta name="twitter:title" content="NVIDIAのGPUのdriverの更新">
-<meta name="twitter:description" content="NVIDIAのGPUのdriver更新手順 色々手順はあると思いますが、1つのやり方のメモです。 古いドライバを削除しておく 公式からCUDA Toolkitをダウンロードしてインストールした場合は次で削除できるはず。 $ cd /usr/local/cuda-x/bin $ sudo cuda-uninstaller $ sudo nvidia-uninstall もしapt-getを使って古いドライバを入れていたら次のコマンドで消え去るはず。nvidia containerが入っている場合はそれも消えるので、嫌な人は注意。 sudo apt-get remove --purge nvidia\\* libnvidia-\\* CUDA Toolkitのダウンロードとインストール（Installer Typeはrunfileが一番ラク） CUDA 11.2ならここの手順に従うhttps://developer.nvidia.com/cuda-11.2.1-download-archive 最新版のCUDAはここの手順に従うhttps://developer.nvidia.com/cuda-downloads nvidia-smiコマンドを実行して動けばOK "><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="NVIDIAのGPUのdriver更新手順 色々手順はあると思いますが、1つのやり方のメモです。\n古いドライバを削除しておく 公式からCUDA Toolkitをダウンロードしてインストールした場合は次で削除できるはず。 $ cd /usr/local/cuda-x/bin $ sudo cuda-uninstaller $ sudo nvidia-uninstall もしapt-getを使って古いドライバを入れていたら次のコマンドで消え去るはず。nvidia containerが入っている場合はそれも消えるので、嫌な人は注意。 sudo apt-get remove --purge nvidia\\* libnvidia-\\* CUDA Toolkitのダウンロードとインストール（Installer Typeはrunfileが一番ラク） CUDA 11.2ならここの手順に従うhttps://developer.nvidia.com/cuda-11.2.1-download-archive 最新版のCUDAはここの手順に従うhttps://developer.nvidia.com/cuda-downloads nvidia-smiコマンドを実行して動けばOK "><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://opqrstuvcut.github.io/mblog/' />
     <link rel="shortcut icon" href="/mblog/favicon.ico" />
 
-  
-    
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFC5W8DKV1"></script>
       <script>
         var doNotTrack = false;
@@ -31,11 +29,7 @@
           gtag('js', new Date());
           gtag('config', 'G-LFC5W8DKV1');
         }
-      </script>
-    
-  
-
-<style>
+      </script><style>
   section.article-content h2 {
     background-color: rgb(245, 245, 245);
     padding: 10px;
@@ -92,7 +86,7 @@
                     
                     
                         
-                        <img src="/mblog/img/avatar_hu13660810305696555094.jpeg" width="300"
+                        <img src="/mblog/img/avatar_hu_5bc806b678ac7533.jpeg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -355,7 +349,7 @@ $ sudo nvidia-uninstall
         
         
             <div class="article-image">
-                <img src="/mblog/posts/gpu%E5%91%A8%E3%82%8A%E3%81%8C%E3%81%8A%E3%81%8B%E3%81%97%E3%81%8F%E3%81%AA%E3%81%A3%E3%81%9F%E3%81%A8%E3%81%8D%E3%81%AE%E3%83%A1%E3%83%A2ubuntu/feature.ce3576f3ae7be71f32a8c83972fa51f2_hu5291140010161181794.png" 
+                <img src="/mblog/posts/gpu%E5%91%A8%E3%82%8A%E3%81%8C%E3%81%8A%E3%81%8B%E3%81%97%E3%81%8F%E3%81%AA%E3%81%A3%E3%81%9F%E3%81%A8%E3%81%8D%E3%81%AE%E3%83%A1%E3%83%A2ubuntu/feature.ce3576f3ae7be71f32a8c83972fa51f2_hu_30a14be9492ea531.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"

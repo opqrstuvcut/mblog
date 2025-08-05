@@ -18,10 +18,10 @@ CANINEってなんて読むべきなんでしょう？&lt;/p&gt;
     &gt;https://arxiv.org/pdf/2103.06874.pdf&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;エンコーダーのアーキテクチャ&#34;&gt;エンコーダーのアーキテクチャ
 &lt;/h1&gt;&lt;p&gt;CANINEのアーキテクチャは以下のようになっています。
-&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/fig1.png&#34;
+&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/fig1.png&#34;
 	width=&#34;1894&#34;
 	height=&#34;870&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/fig1_hu5727611620680059928.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/fig1_hu745097921145227070.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/fig1_hu_8b537831189d0965.png 480w, https://opqrstuvcut.github.io/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/fig1_hu_2d0f0e874316b492.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;CANINEのアーキテクチャ（論文より引用）&#34;
@@ -91,10 +91,10 @@ BERTなどはsubwordに対応したベクトルを参照すれば良いですが
 &lt;/h1&gt;&lt;p&gt;実験はTYDI QAデータセットを用いておこなわれています。&lt;/p&gt;
 &lt;h2 id=&#34;他手法との比較&#34;&gt;他手法との比較
 &lt;/h2&gt;&lt;p&gt;mBERTとの比較が次のテーブルになります。
-&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/table2.png&#34;
+&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/table2.png&#34;
 	width=&#34;2064&#34;
 	height=&#34;518&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/table2_hu3105692230049871730.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/table2_hu17215373382260427039.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/table2_hu_552cc145cea70442.png 480w, https://opqrstuvcut.github.io/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/table2_hu_9a5424c336159a14.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;mBERTとの比較（論文より引用）&#34;
@@ -110,10 +110,10 @@ BERTなどはsubwordに対応したベクトルを参照すれば良いですが
 また、Example/secの列をみると、mBERTは文字単位の入力にすると非常に推論が遅いですが、CANINEはそれに比べると非常に速いです。とはいえ、mBERTのsubword単位の入力の場合に比べると当然遅いです。&lt;/p&gt;
 &lt;h2 id=&#34;ablation-study&#34;&gt;ablation study
 &lt;/h2&gt;&lt;p&gt;ablation studyです。
-&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/table4.png&#34;
+&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/table4.png&#34;
 	width=&#34;1966&#34;
 	height=&#34;794&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/table4_hu3547531543262116005.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/table4_hu14881553281215025394.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/table4_hu_f86658b2cecd28b0.png 480w, https://opqrstuvcut.github.io/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/table4_hu_e501a33a8104c635.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ablation study（論文より引用）&#34;
@@ -152,8 +152,8 @@ embeddingの次元も小さくすると性能が結構下がっていますね�
 
 
 	
-	&lt;a href=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/bert%E3%81%A7%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3%E3%81%AE%E8%AA%AC%E6%98%8E%E6%96%87%E7%94%9F%E6%88%90/729b98aa8f9032f789244aa4e870b844.png&#34;&gt;
-	&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/bert%E3%81%A7%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3%E3%81%AE%E8%AA%AC%E6%98%8E%E6%96%87%E7%94%9F%E6%88%90/729b98aa8f9032f789244aa4e870b844_hu544397710337244276.png&#34; alt=&#34;&#34;&gt;
+	&lt;a href=&#34;https://opqrstuvcut.github.io/mblog/posts/bert%E3%81%A7%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3%E3%81%AE%E8%AA%AC%E6%98%8E%E6%96%87%E7%94%9F%E6%88%90/729b98aa8f9032f789244aa4e870b844.png&#34;&gt;
+	&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/bert%E3%81%A7%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3%E3%81%AE%E8%AA%AC%E6%98%8E%E6%96%87%E7%94%9F%E6%88%90/729b98aa8f9032f789244aa4e870b844_hu_2a217fa32c138738.png&#34; alt=&#34;&#34;&gt;
 	&lt;/a&gt;
 
 
@@ -165,7 +165,7 @@ embeddingの次元も小さくすると性能が結構下がっていますね�
 &lt;ol&gt;
 &lt;li&gt;ある文がN個のトークンから構成されているときに、ランダムに1つのトークンを[MASK]に置き換える（上の図の例だと2番目のトークンがこれに該当します）。&lt;/li&gt;
 &lt;li&gt;1つのトークンを[MASK]に置き換えたトークン列をBERTに与える。&lt;/li&gt;
-&lt;li&gt;BERTの出力のうち、[MASK]に対応するトークンの出力O&lt;!-- raw HTML omitted --&gt;[MASK]&lt;!-- raw HTML omitted --&gt;に対して全結合層とsoftmaxを適用する（softmaxの結果が全サブワードの出現確率になります）。&lt;/li&gt;
+&lt;li&gt;BERTの出力のうち、[MASK]に対応するトークンの出力${\rm O_{[MASK]}}$に対して全結合層とsoftmaxを適用する（softmaxの結果が全サブワードの出現確率になります）。&lt;/li&gt;
 &lt;li&gt;求められた[MASK]に対応する出現確率のうち、正解となるサブワードの確率が高くなるように、クロスエントロピーを用いて最適化する。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;h2 id=&#34;予測&#34;&gt;予測
@@ -194,15 +194,15 @@ embeddingの次元も小さくすると性能が結構下がっていますね�
 &lt;p&gt;こんな感じのポケモンの説明文を自動で生成できたら面白いなぁと思ったので、このデータでやってみました。うまく行けば架空のポケモンが作れますね！&lt;/p&gt;
 &lt;h2 id=&#34;結果&#34;&gt;結果
 &lt;/h2&gt;&lt;p&gt;学習したモデルで予測した結果を示します。ちなみに予測するときにサブワードの数をあらかじめ指定しますが、以下の例ではサブワードの数は20です。&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;生成文1: 弱い獲物を一度捕まえると止まらない。毎日１８時間鳴くチビノーズ。&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;生成文1: 弱い獲物を一度捕まえると止まらない。毎日１８時間鳴くチビノーズ。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;弱い獲物をいたぶっているのか、猟奇的な感じがします。&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;生成文2: この姿に変化して連れ去ることでお腹を自在に操るピィができるのだ。&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;生成文2: この姿に変化して連れ去ることでお腹を自在に操るピィができるのだ。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;お腹を自由に操る…？化して連れ去るあたりは悪いポケモン感が出ていていいですね。&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;生成文3: &lt;strong&gt;ボールのように引っ張るため１匹。だが１匹ゆらゆら数は少ない。&lt;/strong&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;生成文3: ボールのように引っ張るため１匹。だが１匹ゆらゆら数は少ない。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;ちょっと解釈が難しいです。孤高の存在？&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;生成文4: &lt;strong&gt;化石から復活した科学者を科学力で壊し散らす生命力を持つポケモン。&lt;/strong&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;生成文4: 化石から復活した科学者を科学力で壊し散らす生命力を持つポケモン。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;科学力で科学者に勝利するインテリポケモン。&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;生成文5: &lt;strong&gt;ただ絶対に捕まえないので傷ついた相手には容赦しない。なぜだか。&lt;/strong&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;生成文5: ただ絶対に捕まえないので傷ついた相手には容赦しない。なぜだか。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;これは解釈が難しいですが、恐ろしいポケモン感がでてますね。「なぜだか。」がいいアクセントです。&lt;/p&gt;
 &lt;h1 id=&#34;まとめ&#34;&gt;まとめ
 &lt;/h1&gt;&lt;p&gt;それっぽい文はできたけども、意味があまり通らない文が多いかなという印象です。とりあえず学習データが少ないので、文が多い他のデータで実験します。気力のある方はぜひ自分でデータを用意して、学習してみて結果を教えて欲しいです！&lt;/p&gt;

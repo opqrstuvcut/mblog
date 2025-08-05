@@ -35,10 +35,10 @@ $\sigma^2$はノイズの分散になります（OpenCVの関数で実行する�
 &lt;h1 id=&#34;opencvでやってみる&#34;&gt;OpenCVでやってみる
 &lt;/h1&gt;&lt;p&gt;OpenCVでNon-Local Means Denoisingをやってみます。&lt;/p&gt;
 &lt;p&gt;次の左の画像にノイズをのせて右の画像を生成しました。&lt;br&gt;
-&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/c9b2cd84393504aa9ce6c0f9929fe958.png&#34;
+&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/c9b2cd84393504aa9ce6c0f9929fe958.png&#34;
 	width=&#34;251&#34;
 	height=&#34;251&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/c9b2cd84393504aa9ce6c0f9929fe958_hu14923418891219344792.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/c9b2cd84393504aa9ce6c0f9929fe958_hu3845473141346968759.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/c9b2cd84393504aa9ce6c0f9929fe958_hu_e95c275fbf6f4a44.png 480w, https://opqrstuvcut.github.io/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/c9b2cd84393504aa9ce6c0f9929fe958_hu_a005f1fdf2a2189f.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -46,10 +46,10 @@ $\sigma^2$はノイズの分散になります（OpenCVの関数で実行する�
 		data-flex-grow=&#34;100&#34;
 		data-flex-basis=&#34;240px&#34;
 	
-&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/74a87a7adb65b77787e724d2e7e407e5.png&#34;
+&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/74a87a7adb65b77787e724d2e7e407e5.png&#34;
 	width=&#34;251&#34;
 	height=&#34;251&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/74a87a7adb65b77787e724d2e7e407e5_hu14611957910672209521.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/74a87a7adb65b77787e724d2e7e407e5_hu18341489699322377868.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/74a87a7adb65b77787e724d2e7e407e5_hu_dcaa8b31791167a7.png 480w, https://opqrstuvcut.github.io/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/74a87a7adb65b77787e724d2e7e407e5_hu_aa7fb07d8e65fdb1.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -67,18 +67,18 @@ $\sigma^2$はノイズの分散になります（OpenCVの関数で実行する�
 ちなみに、fastNlMeansDenoisingという関数もありますが、カラー画像に対してはfastNlMeansDenoisingColoredが良いらしいです。&lt;/p&gt;
 &lt;p&gt;結果が以下のとおりです。&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;ノイズをのせた画像&lt;/th&gt;
-&lt;th&gt;ノイズ除去後の画像&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/94e96605a92c5ed4a27fc7f1d01b261b.png&#34;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;ノイズをのせた画像&lt;/th&gt;
+          &lt;th&gt;ノイズ除去後の画像&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/94e96605a92c5ed4a27fc7f1d01b261b.png&#34;
 	width=&#34;251&#34;
 	height=&#34;251&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/94e96605a92c5ed4a27fc7f1d01b261b_hu14611957910672209521.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/94e96605a92c5ed4a27fc7f1d01b261b_hu18341489699322377868.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/94e96605a92c5ed4a27fc7f1d01b261b_hu_dcaa8b31791167a7.png 480w, https://opqrstuvcut.github.io/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/94e96605a92c5ed4a27fc7f1d01b261b_hu_aa7fb07d8e65fdb1.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -87,10 +87,10 @@ $\sigma^2$はノイズの分散になります（OpenCVの関数で実行する�
 		data-flex-basis=&#34;240px&#34;
 	
 &gt;&lt;/td&gt;
-&lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/783215bfb0d1c75f10337b84d03a1a34.png&#34;
+          &lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/783215bfb0d1c75f10337b84d03a1a34.png&#34;
 	width=&#34;251&#34;
 	height=&#34;251&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/783215bfb0d1c75f10337b84d03a1a34_hu16725561816468838955.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/783215bfb0d1c75f10337b84d03a1a34_hu3224953916277050605.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/783215bfb0d1c75f10337b84d03a1a34_hu_3ba352269c77a8a4.png 480w, https://opqrstuvcut.github.io/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/783215bfb0d1c75f10337b84d03a1a34_hu_34803be2d4790e9a.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -99,8 +99,8 @@ $\sigma^2$はノイズの分散になります（OpenCVの関数で実行する�
 		data-flex-basis=&#34;240px&#34;
 	
 &gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;体の部分がぼやけていますが、ノイズはきれいにとれてますね。&lt;/p&gt;
 </description>

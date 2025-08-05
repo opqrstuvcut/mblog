@@ -18,10 +18,10 @@
 今回はOpenCVで修復をおこなってみます。&lt;/p&gt;
 &lt;h1 id=&#34;opencvでやってみる&#34;&gt;OpenCVでやってみる
 &lt;/h1&gt;&lt;p&gt;次の画像にノイズをのせていきます。&lt;br&gt;
-&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/6cfb060c01c9e2a5a569b5c14ee05620.png&#34;
+&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/6cfb060c01c9e2a5a569b5c14ee05620.png&#34;
 	width=&#34;247&#34;
 	height=&#34;252&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/6cfb060c01c9e2a5a569b5c14ee05620_hu7478582748216616389.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/6cfb060c01c9e2a5a569b5c14ee05620_hu7927824199827877093.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/6cfb060c01c9e2a5a569b5c14ee05620_hu_e81fb55e04aeb81.png 480w, https://opqrstuvcut.github.io/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/6cfb060c01c9e2a5a569b5c14ee05620_hu_6b2249181321ff10.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -45,18 +45,18 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;plt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;gray&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;plt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;show&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;ノイズがのった画像&lt;/th&gt;
-&lt;th&gt;ノイズ部分のmask画像&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/9b56f97f2e546e2112f37cb52fe29f70.png&#34;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;ノイズがのった画像&lt;/th&gt;
+          &lt;th&gt;ノイズ部分のmask画像&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/9b56f97f2e546e2112f37cb52fe29f70.png&#34;
 	width=&#34;247&#34;
 	height=&#34;252&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/9b56f97f2e546e2112f37cb52fe29f70_hu13218691895873629392.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/9b56f97f2e546e2112f37cb52fe29f70_hu5393342234062253012.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/9b56f97f2e546e2112f37cb52fe29f70_hu_6368364401f793d5.png 480w, https://opqrstuvcut.github.io/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/9b56f97f2e546e2112f37cb52fe29f70_hu_9285a7538a30b2fe.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -65,10 +65,10 @@
 		data-flex-basis=&#34;235px&#34;
 	
 &gt;&lt;/td&gt;
-&lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/b5fb92837ffca156c74b247e0a00b76f.png&#34;
+          &lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/b5fb92837ffca156c74b247e0a00b76f.png&#34;
 	width=&#34;247&#34;
 	height=&#34;252&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/b5fb92837ffca156c74b247e0a00b76f_hu17188677267479297105.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/b5fb92837ffca156c74b247e0a00b76f_hu17648248887772836854.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/b5fb92837ffca156c74b247e0a00b76f_hu_318b8f2543d207d.png 480w, https://opqrstuvcut.github.io/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/b5fb92837ffca156c74b247e0a00b76f_hu_b143abf624a578cb.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -77,26 +77,26 @@
 		data-flex-basis=&#34;235px&#34;
 	
 &gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;OpenCVのinpaint関数を使うと、このノイズがのった画像をある程度復元できます。
 次のように利用します。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Python&#34; data-lang=&#34;Python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;inpainted&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cv2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;inpaint&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;img&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mask&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cv2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;INPAINT_NS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;第一引数に復元したい画像を指定し、第二引数に復元したい箇所をあらわしたマスク画像を指定します。第三引数が復元時に周辺のピクセルをいくつ利用するかを指定します。第四引数に復元のアルゴリズムを指定します。INPAINT_NS（Navier Stokes法）かINPAINT_TELEA（Alexandru Telea法）を指定できます。&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Navier Stokes法&lt;/th&gt;
-&lt;th&gt;Alexandru Telea法&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/a575c7ee0289b3e759d2ad759aad4bb7.png&#34;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;Navier Stokes法&lt;/th&gt;
+          &lt;th&gt;Alexandru Telea法&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/a575c7ee0289b3e759d2ad759aad4bb7.png&#34;
 	width=&#34;247&#34;
 	height=&#34;252&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/a575c7ee0289b3e759d2ad759aad4bb7_hu13207410595735681584.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/a575c7ee0289b3e759d2ad759aad4bb7_hu9763257622114465113.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/a575c7ee0289b3e759d2ad759aad4bb7_hu_d4797fe2ec625d6.png 480w, https://opqrstuvcut.github.io/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/a575c7ee0289b3e759d2ad759aad4bb7_hu_5f0024761cb3afc0.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -105,10 +105,10 @@
 		data-flex-basis=&#34;235px&#34;
 	
 &gt;&lt;/td&gt;
-&lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/8dfa48b36ca2cd45a71e1cae46d65918.png&#34;
+          &lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/8dfa48b36ca2cd45a71e1cae46d65918.png&#34;
 	width=&#34;247&#34;
 	height=&#34;252&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/8dfa48b36ca2cd45a71e1cae46d65918_hu5328548177663010498.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/8dfa48b36ca2cd45a71e1cae46d65918_hu5353702894888596796.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/8dfa48b36ca2cd45a71e1cae46d65918_hu_29f8dde004a6c1c0.png 480w, https://opqrstuvcut.github.io/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/8dfa48b36ca2cd45a71e1cae46d65918_hu_99f40d43dca717c4.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -117,15 +117,15 @@
 		data-flex-basis=&#34;235px&#34;
 	
 &gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;どちらも結構いい感じに復元できています。右図のほうが文字の部分などはきれいに復元できている気がします。&lt;/p&gt;
 &lt;p&gt;ちなみにAlexandru Telea法で第三引数を10まで大きくしてみると、以下のようになります。&lt;br&gt;
-&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/c2c2a44c41b8f7e20682e1f9b8ddbe6f.png&#34;
+&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/c2c2a44c41b8f7e20682e1f9b8ddbe6f.png&#34;
 	width=&#34;247&#34;
 	height=&#34;252&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/c2c2a44c41b8f7e20682e1f9b8ddbe6f_hu8369005060817196100.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/c2c2a44c41b8f7e20682e1f9b8ddbe6f_hu7605747601264853069.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/c2c2a44c41b8f7e20682e1f9b8ddbe6f_hu_32cb775da266fa3f.png 480w, https://opqrstuvcut.github.io/mblog/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/c2c2a44c41b8f7e20682e1f9b8ddbe6f_hu_a2d7ccaa8d76923b.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	

@@ -33,12 +33,13 @@ $$ \mathbf{x}^T A \mathbf{x} \leq 0.$$
 # 証明    
 本題の証明に使うため、以下を先に証明しておきます。
 ## 凸関数の一次条件
-<div style="padding: 10px; margin-bottom: 10px; border: 1px dashed #333333;">
-関数$f:\mathbb{R}^{n} \rightarrow \mathbb{R}$が上に凸であるとき、任意の元$\mathbf{x}^{(1)}, \mathbf{x}^{(2)} \in \mathbb{R}^{n}$に対して以下が成り立ちます。
+
+>関数$f:\mathbb{R}^{n} \rightarrow \mathbb{R}$が上に凸であるとき、任意の元$\mathbf{x}^{(1)}, \mathbf{x}^{(2)} \in \mathbb{R}^{n}$に対して以下が成り立ちます。
 $$ f(\mathbf{x}^{(2)}) - f(\mathbf{x}^{(1)})\leq \nabla f(\mathbf{x}^{(1)})^T(\mathbf{x}^{(2)}- \mathbf{x}^{(1)}).$$
 また、この逆も成り立ちます。</div>
 
-<u>証明</u>
+**証明**
+
 $(\Rightarrow)$
  上に凸であることの定義から、
 $$ \begin{aligned} f(t\mathbf{x}^{(2)} + (1 -t)\mathbf{x}^{(1)}) \geq & tf(\mathbf{x}^{(2)}) + (1 -t) f(\mathbf{x}^{(1)}) \cr
@@ -92,27 +93,24 @@ http://mathgotchas.blogspot.com/2011/10/proof-for-first-order-condition-of.html
 ## テイラーの定理
 本題の証明に用いるため、テイラーの定理の特別な場合を紹介しておきます。
 テイラーの定理の証明はここではしません。また実際は成り立つための条件がありますが、ここでは以下のように利用できるとします。
-<div style="padding: 10px; margin-bottom: 10px; border: 1px dashed #333333;">
-$f(\mathbf{x} + \mathbf{y})$を以下のようにあらわせます。
+
+> $f(\mathbf{x} + \mathbf{y})$を以下のようにあらわせます。
 $$ f(\mathbf{x} + \mathbf{y})  = f(\mathbf{x}) + \nabla f(\mathbf{x})^T  \mathbf{y} +  \frac{1}{2} \mathbf{y}^T  H_f(\mathbf{x}) \mathbf{y} + o(||\mathbf{y}||_2^2). $$
-ここで$o(x^n)$は
+>> ここで$o(x^n)$は
 $$
 \lim_{x\rightarrow 0} \frac{o(x^n)}{x^n} = 0
 $$
 となります。
-</div>
+
 あるいは次の形式であらわすこともできます。
-<div style="padding: 10px; margin-bottom: 10px; border: 1px dashed #333333;">
-ある$0 < t < 1$を用いて$f(\mathbf{x} + \mathbf{y})$を以下のようにあらわせます。
+>ある$0 < t < 1$を用いて$f(\mathbf{x} + \mathbf{y})$を以下のようにあらわせます。
 $$ \begin{aligned} f(\mathbf{x} + \mathbf{y})  = &f(\mathbf{x}) + \nabla f(\mathbf{x})^T\mathbf{y}  +  \frac{1}{2} \mathbf{y}^T H_f(\mathbf{x} + t\mathbf{y}) \mathbf{y}. \end{aligned}$$
-</div>
 
 ## 関数が上に凸であることの必要十分条件がヘッセ行列が半負定値であることの証明
 本題の証明です。
-<div style="padding: 10px; margin-bottom: 10px; border: 1px dashed #333333;">
-関数$f:\mathbb{R}^{n} \rightarrow \mathbb{R}$が上に凸であることの必要十分条件は任意の$\mathbf{x}$においてヘッセ行列$H_f(\mathbf{x})$が半負定値であることです。</div>
+> 関数$f:\mathbb{R}^{n} \rightarrow \mathbb{R}$が上に凸であることの必要十分条件は任意の$\mathbf{x}$においてヘッセ行列$H_f(\mathbf{x})$が半負定値であることです。
 
-<u>証明</u>
+**証明**
 $(\Rightarrow)$
 適当な元$\mathbf{x}, \mathbf{y} \in \mathbb{R}^{n}$を考えます。テイラーの定理より以下が成り立ちます。
 $$ \begin{aligned} f(\mathbf{x} + \mathbf{y})  = &f(\mathbf{x}) + \nabla f(\mathbf{x})^T\mathbf{y}  + \frac{1}{2} \mathbf{y}^T H_f(\mathbf{x}) \mathbf{y} + o(||\mathbf{y}||^2_2).\tag{1} \end{aligned}$$

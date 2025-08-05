@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="ja-jp" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="本記事はQrunchからの転載です。 Uberが公開している機械学習モデルの予測と特徴量の関係性を可視化するツールであるManifoldを紹介します。 Manifoldを試す Manifoldでできることを見ていきます。 インストール レポジトリをgit cloneしてから、githubのページにあるように以下のようにしてインストールできました。 # under the root directory, install all dependencies yarn # demo app is in examples/manifold directory cd examples/manifold # instal demo app dependencies yarn # start the app npm run start 準備 まずユーザーは次の3つのデータを用意します。 入力データの特徴量を記述したcsv 入力データに対するラベル 入力データに対するモデルの予測値（分類問題の場合には各クラスに属する確率になります） モデルはなんでも良く、必要なのは予測値であることに注意してください。 今回はkaggleのタイタニックのデータから適当にテストデータを作ってみました。\b テストデータとlightgbmのモデルを用いて、次のような感じでManifoldに必要なデータを作ってます。 with open(&#34;./titanic_res/features.csv&#34;, &#34;w&#34;) as f: columns = &#34;,&#34;.join(list(X_test.columns)) # X_testがテストデータの特徴量 f.write(f&#34;{columns}\\n&#34;) for i, features in X_test.iterrows():\u3000f_string = &#34;,&#34;.join([str(x) for x in features]) f.write(f&#34;{f_string}\\n&#34;) with open(&#34;.">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="本記事はQrunchからの転載です。\nUberが公開している機械学習モデルの予測と特徴量の関係性を可視化するツールであるManifoldを紹介します。\nManifoldを試す Manifoldでできることを見ていきます。\nインストール レポジトリをgit cloneしてから、githubのページにあるように以下のようにしてインストールできました。\n# under the root directory, install all dependencies yarn # demo app is in examples/manifold directory cd examples/manifold # instal demo app dependencies yarn # start the app npm run start 準備 まずユーザーは次の3つのデータを用意します。\n入力データの特徴量を記述したcsv 入力データに対するラベル 入力データに対するモデルの予測値（分類問題の場合には各クラスに属する確率になります） モデルはなんでも良く、必要なのは予測値であることに注意してください。\n今回はkaggleのタイタニックのデータから適当にテストデータを作ってみました。\b テストデータとlightgbmのモデルを用いて、次のような感じでManifoldに必要なデータを作ってます。\nwith open(&#34;./titanic_res/features.csv&#34;, &#34;w&#34;) as f: columns = &#34;,&#34;.join(list(X_test.columns)) # X_testがテストデータの特徴量 f.write(f&#34;{columns}\\n&#34;) for i, features in X_test.iterrows():\u3000f_string = &#34;,&#34;.join([str(x) for x in features]) f.write(f&#34;{f_string}\\n&#34;) with open(&#34;./titanic_res/pred.csv&#34;, &#34;w&#34;) as f: pred = bst.predict(X_test) # bstがlightgbmのモデル f.write(&#34;survived,death\\n&#34;) for prob in pred: f.write(f&#34;{prob},{1-prob}\\n&#34;) with open(&#34;./titanic_res/truth.csv&#34;, &#34;w&#34;) as f: f.write(&#34;truth\\n&#34;) for truth in y_test: # y_testがテストデータのラベル label = &#34;survived&#34; if truth == 1 else &#34;death&#34; f.write(f&#34;{label}\\n&#34;) Manifoldでの可視化 アップロード npm run startを実行すると、ブラウザ上でアプリが立ち上がります。 立ち上げ直後はファイルのアップロードを促されるので、準備したファイルをドラッグアンドドロップしてアップロードします。 ">
 <title>Uber製の機械学習モデルのデバッグツールManifold</title>
 
 <link rel='canonical' href='https://opqrstuvcut.github.io/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/'>
 
-<link rel="stylesheet" href="/mblog/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Uber製の機械学習モデルのデバッグツールManifold">
-<meta property='og:description' content="本記事はQrunchからの転載です。 Uberが公開している機械学習モデルの予測と特徴量の関係性を可視化するツールであるManifoldを紹介します。 Manifoldを試す Manifoldでできることを見ていきます。 インストール レポジトリをgit cloneしてから、githubのページにあるように以下のようにしてインストールできました。 # under the root directory, install all dependencies yarn # demo app is in examples/manifold directory cd examples/manifold # instal demo app dependencies yarn # start the app npm run start 準備 まずユーザーは次の3つのデータを用意します。 入力データの特徴量を記述したcsv 入力データに対するラベル 入力データに対するモデルの予測値（分類問題の場合には各クラスに属する確率になります） モデルはなんでも良く、必要なのは予測値であることに注意してください。 今回はkaggleのタイタニックのデータから適当にテストデータを作ってみました。\b テストデータとlightgbmのモデルを用いて、次のような感じでManifoldに必要なデータを作ってます。 with open(&#34;./titanic_res/features.csv&#34;, &#34;w&#34;) as f: columns = &#34;,&#34;.join(list(X_test.columns)) # X_testがテストデータの特徴量 f.write(f&#34;{columns}\\n&#34;) for i, features in X_test.iterrows():\u3000f_string = &#34;,&#34;.join([str(x) for x in features]) f.write(f&#34;{f_string}\\n&#34;) with open(&#34;.">
+<link rel="stylesheet" href="/mblog/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="Uber製の機械学習モデルのデバッグツールManifold">
+<meta property='og:description' content="本記事はQrunchからの転載です。\nUberが公開している機械学習モデルの予測と特徴量の関係性を可視化するツールであるManifoldを紹介します。\nManifoldを試す Manifoldでできることを見ていきます。\nインストール レポジトリをgit cloneしてから、githubのページにあるように以下のようにしてインストールできました。\n# under the root directory, install all dependencies yarn # demo app is in examples/manifold directory cd examples/manifold # instal demo app dependencies yarn # start the app npm run start 準備 まずユーザーは次の3つのデータを用意します。\n入力データの特徴量を記述したcsv 入力データに対するラベル 入力データに対するモデルの予測値（分類問題の場合には各クラスに属する確率になります） モデルはなんでも良く、必要なのは予測値であることに注意してください。\n今回はkaggleのタイタニックのデータから適当にテストデータを作ってみました。\b テストデータとlightgbmのモデルを用いて、次のような感じでManifoldに必要なデータを作ってます。\nwith open(&#34;./titanic_res/features.csv&#34;, &#34;w&#34;) as f: columns = &#34;,&#34;.join(list(X_test.columns)) # X_testがテストデータの特徴量 f.write(f&#34;{columns}\\n&#34;) for i, features in X_test.iterrows():\u3000f_string = &#34;,&#34;.join([str(x) for x in features]) f.write(f&#34;{f_string}\\n&#34;) with open(&#34;./titanic_res/pred.csv&#34;, &#34;w&#34;) as f: pred = bst.predict(X_test) # bstがlightgbmのモデル f.write(&#34;survived,death\\n&#34;) for prob in pred: f.write(f&#34;{prob},{1-prob}\\n&#34;) with open(&#34;./titanic_res/truth.csv&#34;, &#34;w&#34;) as f: f.write(&#34;truth\\n&#34;) for truth in y_test: # y_testがテストデータのラベル label = &#34;survived&#34; if truth == 1 else &#34;death&#34; f.write(f&#34;{label}\\n&#34;) Manifoldでの可視化 アップロード npm run startを実行すると、ブラウザ上でアプリが立ち上がります。 立ち上げ直後はファイルのアップロードを促されるので、準備したファイルをドラッグアンドドロップしてアップロードします。 ">
 <meta property='og:url' content='https://opqrstuvcut.github.io/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/'>
 <meta property='og:site_name' content='MatLoverによるMatlab以外のブログ'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='manifold' /><meta property='article:tag' content='機械学習' /><meta property='article:tag' content='特徴量' /><meta property='article:tag' content='Python' /><meta property='article:published_time' content='2020-01-28T22:52:36&#43;09:00'/><meta property='article:modified_time' content='2020-01-28T22:52:36&#43;09:00'/><meta property='og:image' content='https://opqrstuvcut.github.io/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/2f11d99ea2c3cf569c040d9555f5ab2c.png' />
 <meta name="twitter:title" content="Uber製の機械学習モデルのデバッグツールManifold">
-<meta name="twitter:description" content="本記事はQrunchからの転載です。 Uberが公開している機械学習モデルの予測と特徴量の関係性を可視化するツールであるManifoldを紹介します。 Manifoldを試す Manifoldでできることを見ていきます。 インストール レポジトリをgit cloneしてから、githubのページにあるように以下のようにしてインストールできました。 # under the root directory, install all dependencies yarn # demo app is in examples/manifold directory cd examples/manifold # instal demo app dependencies yarn # start the app npm run start 準備 まずユーザーは次の3つのデータを用意します。 入力データの特徴量を記述したcsv 入力データに対するラベル 入力データに対するモデルの予測値（分類問題の場合には各クラスに属する確率になります） モデルはなんでも良く、必要なのは予測値であることに注意してください。 今回はkaggleのタイタニックのデータから適当にテストデータを作ってみました。\b テストデータとlightgbmのモデルを用いて、次のような感じでManifoldに必要なデータを作ってます。 with open(&#34;./titanic_res/features.csv&#34;, &#34;w&#34;) as f: columns = &#34;,&#34;.join(list(X_test.columns)) # X_testがテストデータの特徴量 f.write(f&#34;{columns}\\n&#34;) for i, features in X_test.iterrows():\u3000f_string = &#34;,&#34;.join([str(x) for x in features]) f.write(f&#34;{f_string}\\n&#34;) with open(&#34;."><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="本記事はQrunchからの転載です。\nUberが公開している機械学習モデルの予測と特徴量の関係性を可視化するツールであるManifoldを紹介します。\nManifoldを試す Manifoldでできることを見ていきます。\nインストール レポジトリをgit cloneしてから、githubのページにあるように以下のようにしてインストールできました。\n# under the root directory, install all dependencies yarn # demo app is in examples/manifold directory cd examples/manifold # instal demo app dependencies yarn # start the app npm run start 準備 まずユーザーは次の3つのデータを用意します。\n入力データの特徴量を記述したcsv 入力データに対するラベル 入力データに対するモデルの予測値（分類問題の場合には各クラスに属する確率になります） モデルはなんでも良く、必要なのは予測値であることに注意してください。\n今回はkaggleのタイタニックのデータから適当にテストデータを作ってみました。\b テストデータとlightgbmのモデルを用いて、次のような感じでManifoldに必要なデータを作ってます。\nwith open(&#34;./titanic_res/features.csv&#34;, &#34;w&#34;) as f: columns = &#34;,&#34;.join(list(X_test.columns)) # X_testがテストデータの特徴量 f.write(f&#34;{columns}\\n&#34;) for i, features in X_test.iterrows():\u3000f_string = &#34;,&#34;.join([str(x) for x in features]) f.write(f&#34;{f_string}\\n&#34;) with open(&#34;./titanic_res/pred.csv&#34;, &#34;w&#34;) as f: pred = bst.predict(X_test) # bstがlightgbmのモデル f.write(&#34;survived,death\\n&#34;) for prob in pred: f.write(f&#34;{prob},{1-prob}\\n&#34;) with open(&#34;./titanic_res/truth.csv&#34;, &#34;w&#34;) as f: f.write(&#34;truth\\n&#34;) for truth in y_test: # y_testがテストデータのラベル label = &#34;survived&#34; if truth == 1 else &#34;death&#34; f.write(f&#34;{label}\\n&#34;) Manifoldでの可視化 アップロード npm run startを実行すると、ブラウザ上でアプリが立ち上がります。 立ち上げ直後はファイルのアップロードを促されるので、準備したファイルをドラッグアンドドロップしてアップロードします。 "><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://opqrstuvcut.github.io/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/2f11d99ea2c3cf569c040d9555f5ab2c.png' />
     <link rel="shortcut icon" href="/mblog/favicon.ico" />
 
-  
-    
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFC5W8DKV1"></script>
       <script>
         var doNotTrack = false;
@@ -31,11 +29,7 @@
           gtag('js', new Date());
           gtag('config', 'G-LFC5W8DKV1');
         }
-      </script>
-    
-  
-
-<style>
+      </script><style>
   section.article-content h2 {
     background-color: rgb(245, 245, 245);
     padding: 10px;
@@ -92,7 +86,7 @@
                     
                     
                         
-                        <img src="/mblog/img/avatar_hu13660810305696555094.jpeg" width="300"
+                        <img src="/mblog/img/avatar_hu_5bc806b678ac7533.jpeg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -208,8 +202,8 @@
     <header class="article-header">
         <div class="article-image">
             <a href="/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/">
-                <img src="/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/2f11d99ea2c3cf569c040d9555f5ab2c_hu4991793047716632326.png"
-                        srcset="/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/2f11d99ea2c3cf569c040d9555f5ab2c_hu4991793047716632326.png 800w, /mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/2f11d99ea2c3cf569c040d9555f5ab2c_hu4505239100320152730.png 1600w"
+                <img src="/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/2f11d99ea2c3cf569c040d9555f5ab2c_hu_d1a24579a6d55c3b.png"
+                        srcset="/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/2f11d99ea2c3cf569c040d9555f5ab2c_hu_d1a24579a6d55c3b.png 800w, /mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/2f11d99ea2c3cf569c040d9555f5ab2c_hu_4c46f1da9fb69c35.png 1600w"
                         width="800" 
                         height="426" 
                         loading="lazy"
@@ -321,7 +315,7 @@
 <img src="/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/1031826c887d80ad190bb59649cdbb48.png"
 	width="1200"
 	height="868"
-	srcset="/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/1031826c887d80ad190bb59649cdbb48_hu9280480562647874341.png 480w, /mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/1031826c887d80ad190bb59649cdbb48_hu15435857664537984534.png 1024w"
+	srcset="/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/1031826c887d80ad190bb59649cdbb48_hu_e5aae611fcd5e416.png 480w, /mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/1031826c887d80ad190bb59649cdbb48_hu_9fd3a2c6ed1cbd4.png 1024w"
 	loading="lazy"
 	
 	
@@ -335,7 +329,7 @@
 <img src="/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/30a5a67fea020bf8b04e12576d2317d2.png"
 	width="2876"
 	height="1530"
-	srcset="/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/30a5a67fea020bf8b04e12576d2317d2_hu3855017382333919797.png 480w, /mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/30a5a67fea020bf8b04e12576d2317d2_hu16432191736414497549.png 1024w"
+	srcset="/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/30a5a67fea020bf8b04e12576d2317d2_hu_d24c8bf0f25b34a3.png 480w, /mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/30a5a67fea020bf8b04e12576d2317d2_hu_8998e84de475e21c.png 1024w"
 	loading="lazy"
 	
 	
@@ -355,7 +349,7 @@ segment0に含まれるデータは性能が良く、segment3に含まれるデ�
 <img src="/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/47067194819153d6cc72c968965ce47e.png"
 	width="2876"
 	height="1530"
-	srcset="/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/47067194819153d6cc72c968965ce47e_hu7251450522915568825.png 480w, /mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/47067194819153d6cc72c968965ce47e_hu10800898343569755754.png 1024w"
+	srcset="/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/47067194819153d6cc72c968965ce47e_hu_ccffc69641067c52.png 480w, /mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/47067194819153d6cc72c968965ce47e_hu_6f0f7a25ec2013e0.png 1024w"
 	loading="lazy"
 	
 	
@@ -368,7 +362,7 @@ segment0に含まれるデータは性能が良く、segment3に含まれるデ�
 <img src="/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/2f11d99ea2c3cf569c040d9555f5ab2c.png"
 	width="2876"
 	height="1530"
-	srcset="/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/2f11d99ea2c3cf569c040d9555f5ab2c_hu2135436493372741207.png 480w, /mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/2f11d99ea2c3cf569c040d9555f5ab2c_hu1973847946822195271.png 1024w"
+	srcset="/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/2f11d99ea2c3cf569c040d9555f5ab2c_hu_4a032448631c4a76.png 480w, /mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/2f11d99ea2c3cf569c040d9555f5ab2c_hu_7b974e1b293c4078.png 1024w"
 	loading="lazy"
 	
 	
@@ -382,7 +376,7 @@ segment0に含まれるデータは性能が良く、segment3に含まれるデ�
 <img src="/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/837bdb8363f352975fdb197d05287473.png"
 	width="2876"
 	height="1530"
-	srcset="/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/837bdb8363f352975fdb197d05287473_hu3081930767704644002.png 480w, /mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/837bdb8363f352975fdb197d05287473_hu8070454898579217814.png 1024w"
+	srcset="/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/837bdb8363f352975fdb197d05287473_hu_f2743ffcd578f97a.png 480w, /mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/837bdb8363f352975fdb197d05287473_hu_b9158af593eabf24.png 1024w"
 	loading="lazy"
 	
 	
@@ -478,7 +472,7 @@ segment0に含まれるデータは性能が良く、segment3に含まれるデ�
         
         
             <div class="article-image">
-                <img src="/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/983be7a190c4aaf3488cd6c3d4471158.5fd68928c059f3729a21e2a0196af853_hu12198422181045893918.png" 
+                <img src="/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/983be7a190c4aaf3488cd6c3d4471158.5fd68928c059f3729a21e2a0196af853_hu_72d3f9ee3aff1e40.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -502,7 +496,7 @@ segment0に含まれるデータは性能が良く、segment3に含まれるデ�
         
         
             <div class="article-image">
-                <img src="/mblog/posts/individual-conditional-expectation/ice_age.26ff831ff50b624b98609ee2d468b39b_hu8755700613912631342.png" 
+                <img src="/mblog/posts/individual-conditional-expectation/ice_age.26ff831ff50b624b98609ee2d468b39b_hu_823d1fa79231ed69.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -526,7 +520,7 @@ segment0に含まれるデータは性能が良く、segment3に含まれるデ�
         
         
             <div class="article-image">
-                <img src="/mblog/posts/partial-dependence-plot/ppd_sex.49c9c0277e3b4b6943b7fa54e0526084_hu14698450521249734743.png" 
+                <img src="/mblog/posts/partial-dependence-plot/ppd_sex.49c9c0277e3b4b6943b7fa54e0526084_hu_2a3dfa070cf7952c.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -563,7 +557,7 @@ segment0に含まれるデータは性能が良く、segment3に含まれるデ�
         
         
             <div class="article-image">
-                <img src="/mblog/posts/rt-detr-v2%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%B3%E3%83%81%E3%83%A5%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0/feature.8985c97388772c490dbf73e2b3715015_hu11971730977879425794.png" 
+                <img src="/mblog/posts/rt-detr-v2%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%B3%E3%83%81%E3%83%A5%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0/feature.8985c97388772c490dbf73e2b3715015_hu_e157db471add07a3.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"

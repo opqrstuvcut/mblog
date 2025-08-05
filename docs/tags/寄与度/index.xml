@@ -30,16 +30,15 @@ Integrated Gradientsの場合もその考え方を用います。
 &lt;h2 id=&#34;sensitivitya&#34;&gt;Sensitivity(a)
 &lt;/h2&gt;&lt;p&gt;Sensitivity(a)の定義は以下のとおりです（ちなみにaと書いてあるのはbもあるということです。詳しく知りたい方は論文を参照ください）。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Sensitivity(a): 入力値に対する出力がbaselineの出力と異なったとき、baselineと異なる値をもつ入力の特徴量の寄与は非ゼロである。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Sensitivity(a): 入力値に対する出力がbaselineの出力と異なったとき、baselineと異なる値をもつ入力の特徴量の寄与は非ゼロである。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;次のような例を考えると、勾配を用いる手法におけるSensitivity(a)の必要性がわかります。
 $f(x) = 1 - {\rm Relu}(1-x)$というネットワークを考えます。baselineが$x=0$、入力値が$x=2$とします。$f(0)=0$、$f(2)=1$となりますのでbaselineとは出力値が変わっています。しかしながら、$x=2$では勾配が$0$になりますので、例えば「勾配×入力値」で寄与を求める場合、寄与も$0$になります。
 baselineに比べて出力値が変わったのに、寄与が$0$というのはおかしい結果だというのは納得いく話かなと思います。
 このため、Sensitivity(a)は寄与を求める手法として満たすべきものだと著者は主張しています。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E5%90%91%E3%81%91%E3%81%AE%E7%89%B9%E5%BE%B4%E9%87%8F%E3%81%AE%E5%AF%84%E4%B8%8E%E3%82%92%E6%B1%82%E3%82%81%E3%82%8Bintegrated-gradients%E3%81%AE%E8%A7%A3%E8%AA%AC/53d896e3bb5aef4b00f65f9615a86e72.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E5%90%91%E3%81%91%E3%81%AE%E7%89%B9%E5%BE%B4%E9%87%8F%E3%81%AE%E5%AF%84%E4%B8%8E%E3%82%92%E6%B1%82%E3%82%81%E3%82%8Bintegrated-gradients%E3%81%AE%E8%A7%A3%E8%AA%AC/53d896e3bb5aef4b00f65f9615a86e72.png&#34;
 	width=&#34;1689&#34;
 	height=&#34;1125&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E5%90%91%E3%81%91%E3%81%AE%E7%89%B9%E5%BE%B4%E9%87%8F%E3%81%AE%E5%AF%84%E4%B8%8E%E3%82%92%E6%B1%82%E3%82%81%E3%82%8Bintegrated-gradients%E3%81%AE%E8%A7%A3%E8%AA%AC/53d896e3bb5aef4b00f65f9615a86e72_hu11229027380320123652.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E5%90%91%E3%81%91%E3%81%AE%E7%89%B9%E5%BE%B4%E9%87%8F%E3%81%AE%E5%AF%84%E4%B8%8E%E3%82%92%E6%B1%82%E3%82%81%E3%82%8Bintegrated-gradients%E3%81%AE%E8%A7%A3%E8%AA%AC/53d896e3bb5aef4b00f65f9615a86e72_hu5274726128719126120.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E5%90%91%E3%81%91%E3%81%AE%E7%89%B9%E5%BE%B4%E9%87%8F%E3%81%AE%E5%AF%84%E4%B8%8E%E3%82%92%E6%B1%82%E3%82%81%E3%82%8Bintegrated-gradients%E3%81%AE%E8%A7%A3%E8%AA%AC/53d896e3bb5aef4b00f65f9615a86e72_hu_24a00a076fba4cc0.png 480w, https://opqrstuvcut.github.io/mblog/posts/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E5%90%91%E3%81%91%E3%81%AE%E7%89%B9%E5%BE%B4%E9%87%8F%E3%81%AE%E5%AF%84%E4%B8%8E%E3%82%92%E6%B1%82%E3%82%81%E3%82%8Bintegrated-gradients%E3%81%AE%E8%A7%A3%E8%AA%AC/53d896e3bb5aef4b00f65f9615a86e72_hu_6ccffe92396a59bc.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -51,17 +50,16 @@ baselineに比べて出力値が変わったのに、寄与が$0$というのは
 &lt;h2 id=&#34;implementation-invariance&#34;&gt;Implementation Invariance
 &lt;/h2&gt;&lt;p&gt;Implementation Invarianceの定義は以下のとおりです。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Implementation Invariance: 実装方法が異なっていても、同じ入力に対しては求まる寄与値は等しい。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Implementation Invariance: 実装方法が異なっていても、同じ入力に対しては求まる寄与値は等しい。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;具体例を次に示します。&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;Implementation Invarianceの例&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;strong&gt;Implementation Invarianceの例&lt;/strong&gt;
 例えば勾配${\partial f}/{\partial x}$を計算する手法の場合、この計算は隠れ層の出力$h$を使って、 $$\frac{\partial f}{\partial x} = \frac{\partial f}{\partial h}\frac{\partial h}{\partial x}$$
 とあらわせます。
 勾配を求める際に${\partial f}/{\partial x}$を直接計算しても、連鎖律を使って右辺の計算を用いても結果は一緒になります。
 このケースはImplementation Invarianceを満たします。&lt;/p&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;Implementation Invarianceではない例&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;strong&gt;Implementation Invarianceではない例&lt;/strong&gt;
 DeepLiftの場合は離散化した勾配を用いて寄与を計算します。
-連続値を扱っている限りは連鎖律が成り立ちますが、離散化すると連鎖律が成り立たなくなります。
+連続値を扱っている限りは連鎖律が成り立ちますが、離散化すると連鎖律が成り立たなくな**。
 つまり、
 $$ \frac{f(x_1) - f(x_0)}{x_1 - x_0} \neq \frac{f(x_1) - f(x_0)}{h(x_1) - h(x_0)} \frac{h(x_1) - h(x_0)}{x_1 -x_0}$$
 となります。
@@ -84,10 +82,10 @@ $$ {\rm Integrated\ Gradients} = (x - x&amp;rsquo;) \int_{0}^{1} \nabla F(x&amp;
 &lt;h1 id=&#34;integrated-gradientsの適用結果&#34;&gt;Integrated Gradientsの適用結果
 &lt;/h1&gt;&lt;h2 id=&#34;画像の分類問題の例&#34;&gt;画像の分類問題の例
 &lt;/h2&gt;&lt;p&gt;GoogleNetを使って画像の分類問題を学習させ、それにIntegrated Gradientsを適用した結果が以下のとおりです。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E5%90%91%E3%81%91%E3%81%AE%E7%89%B9%E5%BE%B4%E9%87%8F%E3%81%AE%E5%AF%84%E4%B8%8E%E3%82%92%E6%B1%82%E3%82%81%E3%82%8Bintegrated-gradients%E3%81%AE%E8%A7%A3%E8%AA%AC/33ce0e44d5ce1595ba0980aaa9a27c83.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E5%90%91%E3%81%91%E3%81%AE%E7%89%B9%E5%BE%B4%E9%87%8F%E3%81%AE%E5%AF%84%E4%B8%8E%E3%82%92%E6%B1%82%E3%82%81%E3%82%8Bintegrated-gradients%E3%81%AE%E8%A7%A3%E8%AA%AC/33ce0e44d5ce1595ba0980aaa9a27c83.jpg&#34;
 	width=&#34;938&#34;
 	height=&#34;1588&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E5%90%91%E3%81%91%E3%81%AE%E7%89%B9%E5%BE%B4%E9%87%8F%E3%81%AE%E5%AF%84%E4%B8%8E%E3%82%92%E6%B1%82%E3%82%81%E3%82%8Bintegrated-gradients%E3%81%AE%E8%A7%A3%E8%AA%AC/33ce0e44d5ce1595ba0980aaa9a27c83_hu918285005443533211.jpg 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E5%90%91%E3%81%91%E3%81%AE%E7%89%B9%E5%BE%B4%E9%87%8F%E3%81%AE%E5%AF%84%E4%B8%8E%E3%82%92%E6%B1%82%E3%82%81%E3%82%8Bintegrated-gradients%E3%81%AE%E8%A7%A3%E8%AA%AC/33ce0e44d5ce1595ba0980aaa9a27c83_hu9227064275821860929.jpg 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E5%90%91%E3%81%91%E3%81%AE%E7%89%B9%E5%BE%B4%E9%87%8F%E3%81%AE%E5%AF%84%E4%B8%8E%E3%82%92%E6%B1%82%E3%82%81%E3%82%8Bintegrated-gradients%E3%81%AE%E8%A7%A3%E8%AA%AC/33ce0e44d5ce1595ba0980aaa9a27c83_hu_abf8f24ff755da31.jpg 480w, https://opqrstuvcut.github.io/mblog/posts/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E5%90%91%E3%81%91%E3%81%AE%E7%89%B9%E5%BE%B4%E9%87%8F%E3%81%AE%E5%AF%84%E4%B8%8E%E3%82%92%E6%B1%82%E3%82%81%E3%82%8Bintegrated-gradients%E3%81%AE%E8%A7%A3%E8%AA%AC/33ce0e44d5ce1595ba0980aaa9a27c83_hu_4376b1720c7be0fe.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -102,10 +100,10 @@ $$ {\rm Integrated\ Gradients} = (x - x&amp;rsquo;) \int_{0}^{1} \nabla F(x&amp;
 &lt;/h2&gt;&lt;p&gt;次にテキストの分類問題の例です。
 質問の答えがどういった種類の回答かを予測する問題です。例えば答えが数値なのか、日付なのかなどを予測します。&lt;/p&gt;
 &lt;p&gt;下が予測モデルにIntegrated Gradientsを適用した結果です。
-&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E5%90%91%E3%81%91%E3%81%AE%E7%89%B9%E5%BE%B4%E9%87%8F%E3%81%AE%E5%AF%84%E4%B8%8E%E3%82%92%E6%B1%82%E3%82%81%E3%82%8Bintegrated-gradients%E3%81%AE%E8%A7%A3%E8%AA%AC/d541b6da271324e7264bb858ba8c3835.png&#34;
+&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E5%90%91%E3%81%91%E3%81%AE%E7%89%B9%E5%BE%B4%E9%87%8F%E3%81%AE%E5%AF%84%E4%B8%8E%E3%82%92%E6%B1%82%E3%82%81%E3%82%8Bintegrated-gradients%E3%81%AE%E8%A7%A3%E8%AA%AC/d541b6da271324e7264bb858ba8c3835.png&#34;
 	width=&#34;1556&#34;
 	height=&#34;480&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E5%90%91%E3%81%91%E3%81%AE%E7%89%B9%E5%BE%B4%E9%87%8F%E3%81%AE%E5%AF%84%E4%B8%8E%E3%82%92%E6%B1%82%E3%82%81%E3%82%8Bintegrated-gradients%E3%81%AE%E8%A7%A3%E8%AA%AC/d541b6da271324e7264bb858ba8c3835_hu1417952466149686468.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E5%90%91%E3%81%91%E3%81%AE%E7%89%B9%E5%BE%B4%E9%87%8F%E3%81%AE%E5%AF%84%E4%B8%8E%E3%82%92%E6%B1%82%E3%82%81%E3%82%8Bintegrated-gradients%E3%81%AE%E8%A7%A3%E8%AA%AC/d541b6da271324e7264bb858ba8c3835_hu2440693140937833247.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E5%90%91%E3%81%91%E3%81%AE%E7%89%B9%E5%BE%B4%E9%87%8F%E3%81%AE%E5%AF%84%E4%B8%8E%E3%82%92%E6%B1%82%E3%82%81%E3%82%8Bintegrated-gradients%E3%81%AE%E8%A7%A3%E8%AA%AC/d541b6da271324e7264bb858ba8c3835_hu_4dc6d75b9916fef3.png 480w, https://opqrstuvcut.github.io/mblog/posts/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E5%90%91%E3%81%91%E3%81%AE%E7%89%B9%E5%BE%B4%E9%87%8F%E3%81%AE%E5%AF%84%E4%B8%8E%E3%82%92%E6%B1%82%E3%82%81%E3%82%8Bintegrated-gradients%E3%81%AE%E8%A7%A3%E8%AA%AC/d541b6da271324e7264bb858ba8c3835_hu_44d7a57a57da60ce.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	

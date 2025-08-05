@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="ja-jp" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="かなり前に「渡辺澄夫ベイズ理論100問 with R/Stan」を読み終わったのもあり、忘れないうちにWAICを自分なりにまとめておきます． WAIC WAICの適用範囲 情報量基準のAICやTICは正則性を仮定していますが、実際には正則性が成り立たないケースが多いです． WAICは正則性を仮定せずとも利用できる情報量基準になっていて、適用範囲が広いです．ただし、どんなケースでもOKかといえばそうではなく、次の条件を満たしている必要があります（「渡辺澄夫ベイズ理論100問 with R/Stan」の(1.21)）． $$ \\mathbb{E}_X \\left[\\left \\{ \\log \\frac{p(X| \\theta_{*})}{p(X|\\theta)} \\right \\}^2 \\right] \\leq c \\mathbb{E}_X \\left[\\log \\frac{p(X| \\theta_{*})}{p(X|\\theta)} \\right]. $$ 上記の$c&gt;0$は定数、$\\theta$はモデルのパラメーター、$\\theta_{*}$は真の分布$q$とのKLダイバージェンスを最も小さくするモデルのパラメーターをあらわします． この条件を満たすとき、統計モデル$\\{p(\\cdot|\\theta)\\}_{\\theta \\in \\Theta}$および真の分布$q$に対して対数尤度比関数が相対的に有限な分散をもつといいます．これが意味するところを考えてみます． 左辺は対数尤度比の二乗の期待値ですが、 $V[X] = \\mathbb{E}[X^2] - \\mathbb{E}[X]^2 \\leq \\mathbb{E}[X^2]$ですから、 $$ V_X \\left[\\log \\frac{p(X| \\theta*)}{p(X|\\theta)} \\right] \\leq c \\mathbb{E}_X \\left[\\log \\frac{p(X| \\theta*)}{p(X|\\theta)} \\right]. $$ といえます．このため、対数尤度比の分散は期待値に比例した値以下になるという解釈で良さそうです． 「相対的に」の意味は書籍からははっきりとは読み取れなかったのですが、（右辺の期待値に対して）相対的に有限ということなのかなと思っています． WAICの定義 さて、WAICはどうやって計算するのかという話になりますが、以下のようにWAICが定義されています． $$ {\\rm WAIC_n} := T_n + \\frac{1}{n}V_n. $$ 上記の$T_n$は経験損失をあらわし $$ \\begin{align*} T_n &amp;:= - \\frac{1}{n}\\sum_{i=1}^n \\log r(x_i|x_1,\\cdots, x_n), \\\\ r(x|x_1,\\cdots,x_n) &amp;:= \\int_{\\Theta} p(x|\\theta) p(\\theta|x_1,\\cdots,x_n) {\\rm d}\\theta \\end{align*} $$">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="かなり前に「渡辺澄夫ベイズ理論100問 with R/Stan」を読み終わったのもあり、忘れないうちにWAICを自分なりにまとめておきます．\nWAIC WAICの適用範囲 情報量基準のAICやTICは正則性を仮定していますが、実際には正則性が成り立たないケースが多いです．\nWAICは正則性を仮定せずとも利用できる情報量基準になっていて、適用範囲が広いです．ただし、どんなケースでもOKかといえばそうではなく、次の条件を満たしている必要があります（「渡辺澄夫ベイズ理論100問 with R/Stan」の(1.21)）．\n$$ \\mathbb{E}_X \\left[\\left \\{ \\log \\frac{p(X| \\theta_{*})}{p(X|\\theta)} \\right \\}^2 \\right] \\leq c \\mathbb{E}_X \\left[\\log \\frac{p(X| \\theta_{*})}{p(X|\\theta)} \\right]. $$\n上記の$c&gt;0$は定数、$\\theta$はモデルのパラメーター、$\\theta_{*}$は真の分布$q$とのKLダイバージェンスを最も小さくするモデルのパラメーターをあらわします．\nこの条件を満たすとき、統計モデル$\\{p(\\cdot|\\theta)\\}_{\\theta \\in \\Theta}$および真の分布$q$に対して対数尤度比関数が相対的に有限な分散をもつといいます．これが意味するところを考えてみます．\n左辺は対数尤度比の二乗の期待値ですが、 $V[X] = \\mathbb{E}[X^2] - \\mathbb{E}[X]^2 \\leq \\mathbb{E}[X^2]$ですから、\n$$ V_X \\left[\\log \\frac{p(X| \\theta*)}{p(X|\\theta)} \\right] \\leq c \\mathbb{E}_X \\left[\\log \\frac{p(X| \\theta*)}{p(X|\\theta)} \\right]. $$\nといえます．このため、対数尤度比の分散は期待値に比例した値以下になるという解釈で良さそうです．\n「相対的に」の意味は書籍からははっきりとは読み取れなかったのですが、（右辺の期待値に対して）相対的に有限ということなのかなと思っています．\nWAICの定義 さて、WAICはどうやって計算するのかという話になりますが、以下のようにWAICが定義されています．\n$$ {\\rm WAIC_n} := T_n + \\frac{1}{n}V_n. $$\n上記の$T_n$は経験損失をあらわし\n$$ \\begin{align*} T_n &amp;:= - \\frac{1}{n}\\sum_{i=1}^n \\log r(x_i|x_1,\\cdots, x_n), \\\\ r(x|x_1,\\cdots,x_n) &amp;:= \\int_{\\Theta} p(x|\\theta) p(\\theta|x_1,\\cdots,x_n) {\\rm d}\\theta \\end{align*} $$\n">
 <title>WAIC</title>
 
 <link rel='canonical' href='https://opqrstuvcut.github.io/mblog/posts/waic/'>
 
-<link rel="stylesheet" href="/mblog/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="WAIC">
-<meta property='og:description' content="かなり前に「渡辺澄夫ベイズ理論100問 with R/Stan」を読み終わったのもあり、忘れないうちにWAICを自分なりにまとめておきます． WAIC WAICの適用範囲 情報量基準のAICやTICは正則性を仮定していますが、実際には正則性が成り立たないケースが多いです． WAICは正則性を仮定せずとも利用できる情報量基準になっていて、適用範囲が広いです．ただし、どんなケースでもOKかといえばそうではなく、次の条件を満たしている必要があります（「渡辺澄夫ベイズ理論100問 with R/Stan」の(1.21)）． $$ \\mathbb{E}_X \\left[\\left \\{ \\log \\frac{p(X| \\theta_{*})}{p(X|\\theta)} \\right \\}^2 \\right] \\leq c \\mathbb{E}_X \\left[\\log \\frac{p(X| \\theta_{*})}{p(X|\\theta)} \\right]. $$ 上記の$c&gt;0$は定数、$\\theta$はモデルのパラメーター、$\\theta_{*}$は真の分布$q$とのKLダイバージェンスを最も小さくするモデルのパラメーターをあらわします． この条件を満たすとき、統計モデル$\\{p(\\cdot|\\theta)\\}_{\\theta \\in \\Theta}$および真の分布$q$に対して対数尤度比関数が相対的に有限な分散をもつといいます．これが意味するところを考えてみます． 左辺は対数尤度比の二乗の期待値ですが、 $V[X] = \\mathbb{E}[X^2] - \\mathbb{E}[X]^2 \\leq \\mathbb{E}[X^2]$ですから、 $$ V_X \\left[\\log \\frac{p(X| \\theta*)}{p(X|\\theta)} \\right] \\leq c \\mathbb{E}_X \\left[\\log \\frac{p(X| \\theta*)}{p(X|\\theta)} \\right]. $$ といえます．このため、対数尤度比の分散は期待値に比例した値以下になるという解釈で良さそうです． 「相対的に」の意味は書籍からははっきりとは読み取れなかったのですが、（右辺の期待値に対して）相対的に有限ということなのかなと思っています． WAICの定義 さて、WAICはどうやって計算するのかという話になりますが、以下のようにWAICが定義されています． $$ {\\rm WAIC_n} := T_n + \\frac{1}{n}V_n. $$ 上記の$T_n$は経験損失をあらわし $$ \\begin{align*} T_n &amp;:= - \\frac{1}{n}\\sum_{i=1}^n \\log r(x_i|x_1,\\cdots, x_n), \\\\ r(x|x_1,\\cdots,x_n) &amp;:= \\int_{\\Theta} p(x|\\theta) p(\\theta|x_1,\\cdots,x_n) {\\rm d}\\theta \\end{align*} $$">
+<link rel="stylesheet" href="/mblog/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="WAIC">
+<meta property='og:description' content="かなり前に「渡辺澄夫ベイズ理論100問 with R/Stan」を読み終わったのもあり、忘れないうちにWAICを自分なりにまとめておきます．\nWAIC WAICの適用範囲 情報量基準のAICやTICは正則性を仮定していますが、実際には正則性が成り立たないケースが多いです．\nWAICは正則性を仮定せずとも利用できる情報量基準になっていて、適用範囲が広いです．ただし、どんなケースでもOKかといえばそうではなく、次の条件を満たしている必要があります（「渡辺澄夫ベイズ理論100問 with R/Stan」の(1.21)）．\n$$ \\mathbb{E}_X \\left[\\left \\{ \\log \\frac{p(X| \\theta_{*})}{p(X|\\theta)} \\right \\}^2 \\right] \\leq c \\mathbb{E}_X \\left[\\log \\frac{p(X| \\theta_{*})}{p(X|\\theta)} \\right]. $$\n上記の$c&gt;0$は定数、$\\theta$はモデルのパラメーター、$\\theta_{*}$は真の分布$q$とのKLダイバージェンスを最も小さくするモデルのパラメーターをあらわします．\nこの条件を満たすとき、統計モデル$\\{p(\\cdot|\\theta)\\}_{\\theta \\in \\Theta}$および真の分布$q$に対して対数尤度比関数が相対的に有限な分散をもつといいます．これが意味するところを考えてみます．\n左辺は対数尤度比の二乗の期待値ですが、 $V[X] = \\mathbb{E}[X^2] - \\mathbb{E}[X]^2 \\leq \\mathbb{E}[X^2]$ですから、\n$$ V_X \\left[\\log \\frac{p(X| \\theta*)}{p(X|\\theta)} \\right] \\leq c \\mathbb{E}_X \\left[\\log \\frac{p(X| \\theta*)}{p(X|\\theta)} \\right]. $$\nといえます．このため、対数尤度比の分散は期待値に比例した値以下になるという解釈で良さそうです．\n「相対的に」の意味は書籍からははっきりとは読み取れなかったのですが、（右辺の期待値に対して）相対的に有限ということなのかなと思っています．\nWAICの定義 さて、WAICはどうやって計算するのかという話になりますが、以下のようにWAICが定義されています．\n$$ {\\rm WAIC_n} := T_n + \\frac{1}{n}V_n. $$\n上記の$T_n$は経験損失をあらわし\n$$ \\begin{align*} T_n &amp;:= - \\frac{1}{n}\\sum_{i=1}^n \\log r(x_i|x_1,\\cdots, x_n), \\\\ r(x|x_1,\\cdots,x_n) &amp;:= \\int_{\\Theta} p(x|\\theta) p(\\theta|x_1,\\cdots,x_n) {\\rm d}\\theta \\end{align*} $$\n">
 <meta property='og:url' content='https://opqrstuvcut.github.io/mblog/posts/waic/'>
 <meta property='og:site_name' content='MatLoverによるMatlab以外のブログ'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='WAIC' /><meta property='article:tag' content='AIC' /><meta property='article:tag' content='PyMC' /><meta property='article:tag' content='ベイズ' /><meta property='article:tag' content='情報量基準' /><meta property='article:tag' content='Python' /><meta property='article:tag' content='渡辺澄夫ベイズ' /><meta property='article:tag' content='TIC' /><meta property='article:published_time' content='2025-01-18T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2025-01-18T00:00:00&#43;00:00'/><meta property='og:image' content='https://opqrstuvcut.github.io/mblog/' />
 <meta name="twitter:title" content="WAIC">
-<meta name="twitter:description" content="かなり前に「渡辺澄夫ベイズ理論100問 with R/Stan」を読み終わったのもあり、忘れないうちにWAICを自分なりにまとめておきます． WAIC WAICの適用範囲 情報量基準のAICやTICは正則性を仮定していますが、実際には正則性が成り立たないケースが多いです． WAICは正則性を仮定せずとも利用できる情報量基準になっていて、適用範囲が広いです．ただし、どんなケースでもOKかといえばそうではなく、次の条件を満たしている必要があります（「渡辺澄夫ベイズ理論100問 with R/Stan」の(1.21)）． $$ \\mathbb{E}_X \\left[\\left \\{ \\log \\frac{p(X| \\theta_{*})}{p(X|\\theta)} \\right \\}^2 \\right] \\leq c \\mathbb{E}_X \\left[\\log \\frac{p(X| \\theta_{*})}{p(X|\\theta)} \\right]. $$ 上記の$c&gt;0$は定数、$\\theta$はモデルのパラメーター、$\\theta_{*}$は真の分布$q$とのKLダイバージェンスを最も小さくするモデルのパラメーターをあらわします． この条件を満たすとき、統計モデル$\\{p(\\cdot|\\theta)\\}_{\\theta \\in \\Theta}$および真の分布$q$に対して対数尤度比関数が相対的に有限な分散をもつといいます．これが意味するところを考えてみます． 左辺は対数尤度比の二乗の期待値ですが、 $V[X] = \\mathbb{E}[X^2] - \\mathbb{E}[X]^2 \\leq \\mathbb{E}[X^2]$ですから、 $$ V_X \\left[\\log \\frac{p(X| \\theta*)}{p(X|\\theta)} \\right] \\leq c \\mathbb{E}_X \\left[\\log \\frac{p(X| \\theta*)}{p(X|\\theta)} \\right]. $$ といえます．このため、対数尤度比の分散は期待値に比例した値以下になるという解釈で良さそうです． 「相対的に」の意味は書籍からははっきりとは読み取れなかったのですが、（右辺の期待値に対して）相対的に有限ということなのかなと思っています． WAICの定義 さて、WAICはどうやって計算するのかという話になりますが、以下のようにWAICが定義されています． $$ {\\rm WAIC_n} := T_n + \\frac{1}{n}V_n. $$ 上記の$T_n$は経験損失をあらわし $$ \\begin{align*} T_n &amp;:= - \\frac{1}{n}\\sum_{i=1}^n \\log r(x_i|x_1,\\cdots, x_n), \\\\ r(x|x_1,\\cdots,x_n) &amp;:= \\int_{\\Theta} p(x|\\theta) p(\\theta|x_1,\\cdots,x_n) {\\rm d}\\theta \\end{align*} $$"><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="かなり前に「渡辺澄夫ベイズ理論100問 with R/Stan」を読み終わったのもあり、忘れないうちにWAICを自分なりにまとめておきます．\nWAIC WAICの適用範囲 情報量基準のAICやTICは正則性を仮定していますが、実際には正則性が成り立たないケースが多いです．\nWAICは正則性を仮定せずとも利用できる情報量基準になっていて、適用範囲が広いです．ただし、どんなケースでもOKかといえばそうではなく、次の条件を満たしている必要があります（「渡辺澄夫ベイズ理論100問 with R/Stan」の(1.21)）．\n$$ \\mathbb{E}_X \\left[\\left \\{ \\log \\frac{p(X| \\theta_{*})}{p(X|\\theta)} \\right \\}^2 \\right] \\leq c \\mathbb{E}_X \\left[\\log \\frac{p(X| \\theta_{*})}{p(X|\\theta)} \\right]. $$\n上記の$c&gt;0$は定数、$\\theta$はモデルのパラメーター、$\\theta_{*}$は真の分布$q$とのKLダイバージェンスを最も小さくするモデルのパラメーターをあらわします．\nこの条件を満たすとき、統計モデル$\\{p(\\cdot|\\theta)\\}_{\\theta \\in \\Theta}$および真の分布$q$に対して対数尤度比関数が相対的に有限な分散をもつといいます．これが意味するところを考えてみます．\n左辺は対数尤度比の二乗の期待値ですが、 $V[X] = \\mathbb{E}[X^2] - \\mathbb{E}[X]^2 \\leq \\mathbb{E}[X^2]$ですから、\n$$ V_X \\left[\\log \\frac{p(X| \\theta*)}{p(X|\\theta)} \\right] \\leq c \\mathbb{E}_X \\left[\\log \\frac{p(X| \\theta*)}{p(X|\\theta)} \\right]. $$\nといえます．このため、対数尤度比の分散は期待値に比例した値以下になるという解釈で良さそうです．\n「相対的に」の意味は書籍からははっきりとは読み取れなかったのですが、（右辺の期待値に対して）相対的に有限ということなのかなと思っています．\nWAICの定義 さて、WAICはどうやって計算するのかという話になりますが、以下のようにWAICが定義されています．\n$$ {\\rm WAIC_n} := T_n + \\frac{1}{n}V_n. $$\n上記の$T_n$は経験損失をあらわし\n$$ \\begin{align*} T_n &amp;:= - \\frac{1}{n}\\sum_{i=1}^n \\log r(x_i|x_1,\\cdots, x_n), \\\\ r(x|x_1,\\cdots,x_n) &amp;:= \\int_{\\Theta} p(x|\\theta) p(\\theta|x_1,\\cdots,x_n) {\\rm d}\\theta \\end{align*} $$\n"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://opqrstuvcut.github.io/mblog/' />
     <link rel="shortcut icon" href="/mblog/favicon.ico" />
 
-  
-    
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFC5W8DKV1"></script>
       <script>
         var doNotTrack = false;
@@ -31,11 +29,7 @@
           gtag('js', new Date());
           gtag('config', 'G-LFC5W8DKV1');
         }
-      </script>
-    
-  
-
-<style>
+      </script><style>
   section.article-content h2 {
     background-color: rgb(245, 245, 245);
     padding: 10px;
@@ -92,7 +86,7 @@
                     
                     
                         
-                        <img src="/mblog/img/avatar_hu13660810305696555094.jpeg" width="300"
+                        <img src="/mblog/img/avatar_hu_5bc806b678ac7533.jpeg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -274,8 +268,7 @@ WAICは正則性を仮定せずとも利用できる情報量基準になって�
 <blockquote>
 <p>$$
 \mathbb{E}_X \left[\left \{ \log \frac{p(X| \theta_{*})}{p(X|\theta)} \right \}^2 \right] \leq c \mathbb{E}_X \left[\log \frac{p(X| \theta_{*})}{p(X|\theta)}  \right].
-$$</p>
-</blockquote>
+$$</p></blockquote>
 <p>上記の$c&gt;0$は定数、$\theta$はモデルのパラメーター、$\theta_{*}$は真の分布$q$とのKLダイバージェンスを最も小さくするモデルのパラメーターをあらわします．</p>
 <p>この条件を満たすとき、統計モデル$\{p(\cdot|\theta)\}_{\theta \in \Theta}$および真の分布$q$に対して対数尤度比関数が相対的に有限な分散をもつといいます．これが意味するところを考えてみます．<br>
 左辺は対数尤度比の二乗の期待値ですが、
@@ -342,7 +335,7 @@ WAICの場合も同じように、経験損失はデータへの適合度合い�
 <p><img src="/mblog/posts/waic/data_dist.jpg"
 	width="635"
 	height="491"
-	srcset="/mblog/posts/waic/data_dist_hu14143675755262953370.jpg 480w, /mblog/posts/waic/data_dist_hu8296524929381894066.jpg 1024w"
+	srcset="/mblog/posts/waic/data_dist_hu_201567ef836dbda3.jpg 480w, /mblog/posts/waic/data_dist_hu_7c9c4c7f4991f783.jpg 1024w"
 	loading="lazy"
 	
 		alt="データ分布"
@@ -380,7 +373,7 @@ WAICの場合も同じように、経験損失はデータへの適合度合い�
 </span></span></code></pre></div><p><img src="/mblog/posts/waic/waic_gauss_mixture.jpg"
 	width="653"
 	height="491"
-	srcset="/mblog/posts/waic/waic_gauss_mixture_hu4627374122417855018.jpg 480w, /mblog/posts/waic/waic_gauss_mixture_hu13087900325670094657.jpg 1024w"
+	srcset="/mblog/posts/waic/waic_gauss_mixture_hu_523e5519b375ec82.jpg 480w, /mblog/posts/waic/waic_gauss_mixture_hu_9f9357faee09c6db.jpg 1024w"
 	loading="lazy"
 	
 		alt="WAICの値"
@@ -481,7 +474,7 @@ WAICの場合も同じように、経験損失はデータへの適合度合い�
         
         
             <div class="article-image">
-                <img src="/mblog/posts/%E3%82%B9%E3%83%94%E3%82%A2%E3%83%9E%E3%83%B3%E3%81%AE%E9%A0%86%E4%BD%8D%E7%9B%B8%E9%96%A2%E4%BF%82%E6%95%B0%E3%81%AE%E5%B0%8E%E5%87%BA/feature.e0802ba87f6e71740f826649bacb8759_hu4944846215274327765.png" 
+                <img src="/mblog/posts/%E3%82%B9%E3%83%94%E3%82%A2%E3%83%9E%E3%83%B3%E3%81%AE%E9%A0%86%E4%BD%8D%E7%9B%B8%E9%96%A2%E4%BF%82%E6%95%B0%E3%81%AE%E5%B0%8E%E5%87%BA/feature.e0802ba87f6e71740f826649bacb8759_hu_debe44c99b33a0c3.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"

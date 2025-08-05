@@ -42,15 +42,15 @@ Implementation Invarianceの定義は以下のとおりです。
 
 具体例を次に示します。
 
-<u>Implementation Invarianceの例</u>
+**Implementation Invarianceの例**
 例えば勾配${\partial f}/{\partial x}$を計算する手法の場合、この計算は隠れ層の出力$h$を使って、 $$\frac{\partial f}{\partial x} = \frac{\partial f}{\partial h}\frac{\partial h}{\partial x}$$
 とあらわせます。
 勾配を求める際に${\partial f}/{\partial x}$を直接計算しても、連鎖律を使って右辺の計算を用いても結果は一緒になります。
 このケースはImplementation Invarianceを満たします。
 
-<u>Implementation Invarianceではない例</u>
+**Implementation Invarianceではない例**
 DeepLiftの場合は離散化した勾配を用いて寄与を計算します。
-連続値を扱っている限りは連鎖律が成り立ちますが、離散化すると連鎖律が成り立たなくなります。
+連続値を扱っている限りは連鎖律が成り立ちますが、離散化すると連鎖律が成り立たなくな**。
 つまり、
 $$ \frac{f(x_1) - f(x_0)}{x_1 - x_0} \neq \frac{f(x_1) - f(x_0)}{h(x_1) - h(x_0)} \frac{h(x_1) - h(x_0)}{x_1 -x_0}$$
 となります。

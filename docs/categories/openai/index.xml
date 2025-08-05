@@ -30,8 +30,7 @@
 &lt;blockquote&gt;
 &lt;p&gt;OpenAI API (Whisper含む) は「ファイル名や拡張子」を見てファイル形式を判断していることがあります。
 open(&amp;ldquo;tmp.mp3&amp;rdquo;, &amp;ldquo;rb&amp;rdquo;)で渡す場合はname属性にファイル名（tmp.mp3）が付与されていますが、
-io.BytesIOの場合はname属性がないため、「拡張子が分からず、形式不明」とみなされ、サポート外エラーになります。&lt;/p&gt;
-&lt;/blockquote&gt;
+io.BytesIOの場合はname属性がないため、「拡張子が分からず、形式不明」とみなされ、サポート外エラーになります。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;これに従い、下記のようにf.nameの設定を追加したところ、うまくいくようになりました。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;openai&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;client&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;openai&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;OpenAI&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;

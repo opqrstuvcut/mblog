@@ -45,19 +45,19 @@ Canny法のしきい値は2つあり、1つはこの値より大きければエ�
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;threshold1がしきい値の小さい方で、threshold2がしきい値の大きい方です。apertureSizeにSobelフィルタのサイズを指定しています。また勾配の大きさに2ノルムを使う場合にはL2gradientをTrueにします。&lt;/p&gt;
 &lt;p&gt;結果を以下に示します。&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;元画像&lt;/th&gt;
-&lt;th&gt;canny（2ノルム）&lt;/th&gt;
-&lt;th&gt;canny（1ノルム）&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/canny%E6%B3%95%E3%81%A7%E3%82%A8%E3%83%83%E3%82%B8%E6%A4%9C%E5%87%BA/8defd1c89359b1b8b5f6142e6e0105bf.jpg&#34;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;元画像&lt;/th&gt;
+          &lt;th&gt;canny（2ノルム）&lt;/th&gt;
+          &lt;th&gt;canny（1ノルム）&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/canny%E6%B3%95%E3%81%A7%E3%82%A8%E3%83%83%E3%82%B8%E6%A4%9C%E5%87%BA/8defd1c89359b1b8b5f6142e6e0105bf.jpg&#34;
 	width=&#34;3024&#34;
 	height=&#34;4032&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/canny%E6%B3%95%E3%81%A7%E3%82%A8%E3%83%83%E3%82%B8%E6%A4%9C%E5%87%BA/8defd1c89359b1b8b5f6142e6e0105bf_hu10106790156502342545.jpg 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/canny%E6%B3%95%E3%81%A7%E3%82%A8%E3%83%83%E3%82%B8%E6%A4%9C%E5%87%BA/8defd1c89359b1b8b5f6142e6e0105bf_hu1504518782120272037.jpg 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/canny%E6%B3%95%E3%81%A7%E3%82%A8%E3%83%83%E3%82%B8%E6%A4%9C%E5%87%BA/8defd1c89359b1b8b5f6142e6e0105bf_hu_f40f8a9a8805e939.jpg 480w, https://opqrstuvcut.github.io/mblog/posts/canny%E6%B3%95%E3%81%A7%E3%82%A8%E3%83%83%E3%82%B8%E6%A4%9C%E5%87%BA/8defd1c89359b1b8b5f6142e6e0105bf_hu_8c8cbb6b84a74c45.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -66,10 +66,10 @@ Canny法のしきい値は2つあり、1つはこの値より大きければエ�
 		data-flex-basis=&#34;180px&#34;
 	
 &gt;&lt;/td&gt;
-&lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/canny%E6%B3%95%E3%81%A7%E3%82%A8%E3%83%83%E3%82%B8%E6%A4%9C%E5%87%BA/a0d7c2f605896b780afcc1f54a4acaad.jpg&#34;
+          &lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/canny%E6%B3%95%E3%81%A7%E3%82%A8%E3%83%83%E3%82%B8%E6%A4%9C%E5%87%BA/a0d7c2f605896b780afcc1f54a4acaad.jpg&#34;
 	width=&#34;3024&#34;
 	height=&#34;4032&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/canny%E6%B3%95%E3%81%A7%E3%82%A8%E3%83%83%E3%82%B8%E6%A4%9C%E5%87%BA/a0d7c2f605896b780afcc1f54a4acaad_hu15624357841214211383.jpg 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/canny%E6%B3%95%E3%81%A7%E3%82%A8%E3%83%83%E3%82%B8%E6%A4%9C%E5%87%BA/a0d7c2f605896b780afcc1f54a4acaad_hu9342360765527083918.jpg 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/canny%E6%B3%95%E3%81%A7%E3%82%A8%E3%83%83%E3%82%B8%E6%A4%9C%E5%87%BA/a0d7c2f605896b780afcc1f54a4acaad_hu_548fbfc7ca209fd5.jpg 480w, https://opqrstuvcut.github.io/mblog/posts/canny%E6%B3%95%E3%81%A7%E3%82%A8%E3%83%83%E3%82%B8%E6%A4%9C%E5%87%BA/a0d7c2f605896b780afcc1f54a4acaad_hu_9acc4cdc155716c0.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -78,10 +78,10 @@ Canny法のしきい値は2つあり、1つはこの値より大きければエ�
 		data-flex-basis=&#34;180px&#34;
 	
 &gt;&lt;/td&gt;
-&lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/canny%E6%B3%95%E3%81%A7%E3%82%A8%E3%83%83%E3%82%B8%E6%A4%9C%E5%87%BA/5154e105157ba91bf3bf7306d1cfffe1.jpg&#34;
+          &lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/canny%E6%B3%95%E3%81%A7%E3%82%A8%E3%83%83%E3%82%B8%E6%A4%9C%E5%87%BA/5154e105157ba91bf3bf7306d1cfffe1.jpg&#34;
 	width=&#34;3024&#34;
 	height=&#34;4032&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/canny%E6%B3%95%E3%81%A7%E3%82%A8%E3%83%83%E3%82%B8%E6%A4%9C%E5%87%BA/5154e105157ba91bf3bf7306d1cfffe1_hu10432122628112339669.jpg 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/canny%E6%B3%95%E3%81%A7%E3%82%A8%E3%83%83%E3%82%B8%E6%A4%9C%E5%87%BA/5154e105157ba91bf3bf7306d1cfffe1_hu16068309918226079719.jpg 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/canny%E6%B3%95%E3%81%A7%E3%82%A8%E3%83%83%E3%82%B8%E6%A4%9C%E5%87%BA/5154e105157ba91bf3bf7306d1cfffe1_hu_5663cf623cd33e1c.jpg 480w, https://opqrstuvcut.github.io/mblog/posts/canny%E6%B3%95%E3%81%A7%E3%82%A8%E3%83%83%E3%82%B8%E6%A4%9C%E5%87%BA/5154e105157ba91bf3bf7306d1cfffe1_hu_e680eada66c216cf.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -90,8 +90,8 @@ Canny法のしきい値は2つあり、1つはこの値より大きければエ�
 		data-flex-basis=&#34;180px&#34;
 	
 &gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;2ノルムのほうがきれいにエッジが取れている気がします。&lt;/p&gt;
 </description>

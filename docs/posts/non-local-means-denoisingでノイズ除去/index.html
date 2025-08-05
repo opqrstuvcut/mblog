@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="ja-jp" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="本記事はQrunchからの転載です。 Non-Local Means Denoisingのアイデア 今回はノイズ除去を扱うのですが、特にガウスノイズを考えます。 これは平均が0となるノイズですので、着目しているピクセルにある意味で似ているピクセルを画像中から探してきて、それらの平均を取れば、ノイズの影響が消えたピクセルが得られるはずです。 これがNon-Local Means Denoisingのアイデアになります。 似ているピクセルをどう定義するか Non-Local Means Denoisingでは着目しているピクセルの値自体ではなく、着目しているピクセルの周辺の値同士の差分を取ることで、似ているかどうかを考えます。 この考えから定義されるピクセル$p$と$q$間の距離は以下のようになります。 $$ d^2(B(p, f), B(q,f)) = \\frac{1}{3(2f + 1)^2} \\sum_{c=1}^3 \\sum_{j \\in B(0, f)} (I_c(p+j) - I_c(q+j))^2. $$ ここで$B(p,f)$は着目しているピクセル$p$のサイズの周辺のピクセルで、サイズが$(2f + 1) \\times (2f + 1)$となっています。$I_c(p+j)$が周辺ピクセルの$c$番目のchannelの値をあらわします。 平均値の取り方 \b先程定義した距離を使って以下のような重みを計算します。 $$ w(p,q) = e^{-\\max(d^2 - 2\\sigma^2, 0) / h^2}. $$ $\\sigma^2$はノイズの分散になります（OpenCVの関数で実行するときには特にこれを指定しないので、上手く処理されている？）。$h$は与えるパラメーターで、大きいほど$w$の値に差がつきづらくなります。 距離$d^2$が小さいと$w$が1に近い値を取り、$d^2$が大きいほど$w$は小さい値になります。 この$w$を重みとしたピクセル値の重み付き平均を取ることがNon-Local Means Denoisingでの処理になります。 この重み付き平均をとることで、似ているピクセルは強く考慮されますが、似ていないピクセルはほとんど影響を与えないため、似ているピクセルだけでの平均が取れるような計算処理になっています。 なお、すべてのピクセル同士で距離$d^2$を計算すると、当然計算量が大変なことになります。 このため、実際には着目しているピクセルの周辺のどこまでを考慮するかを指定します。 OpenCVでやってみる OpenCVでNon-Local Means Denoisingをやってみます。 次の左の画像にノイズをのせて右の画像を生成しました。 これに対して次のようにして、Non-Local Means Denoisingを適用します。 denoised = cv2.fastNlMeansDenoisingColored(img, h=3, templateWindowSize=7, searchWindowSize=21) hはさきほどの重みで出てきた$h$と同じで、templateWindowSizeは$d^2$の計算で使われる$f$と同じで、searchWindowSizeは着目しているピクセルの周辺をどこまで考慮するかをあらわします。 ちなみに、fastNlMeansDenoisingという関数もありますが、カラー画像に対してはfastNlMeansDenoisingColoredが良いらしいです。">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="本記事はQrunchからの転載です。\nNon-Local Means Denoisingのアイデア 今回はノイズ除去を扱うのですが、特にガウスノイズを考えます。 これは平均が0となるノイズですので、着目しているピクセルにある意味で似ているピクセルを画像中から探してきて、それらの平均を取れば、ノイズの影響が消えたピクセルが得られるはずです。 これがNon-Local Means Denoisingのアイデアになります。\n似ているピクセルをどう定義するか Non-Local Means Denoisingでは着目しているピクセルの値自体ではなく、着目しているピクセルの周辺の値同士の差分を取ることで、似ているかどうかを考えます。 この考えから定義されるピクセル$p$と$q$間の距離は以下のようになります。 $$ d^2(B(p, f), B(q,f)) = \\frac{1}{3(2f + 1)^2} \\sum_{c=1}^3 \\sum_{j \\in B(0, f)} (I_c(p+j) - I_c(q+j))^2. $$ ここで$B(p,f)$は着目しているピクセル$p$のサイズの周辺のピクセルで、サイズが$(2f + 1) \\times (2f + 1)$となっています。$I_c(p+j)$が周辺ピクセルの$c$番目のchannelの値をあらわします。\n平均値の取り方 \b先程定義した距離を使って以下のような重みを計算します。 $$ w(p,q) = e^{-\\max(d^2 - 2\\sigma^2, 0) / h^2}. $$ $\\sigma^2$はノイズの分散になります（OpenCVの関数で実行するときには特にこれを指定しないので、上手く処理されている？）。$h$は与えるパラメーターで、大きいほど$w$の値に差がつきづらくなります。 距離$d^2$が小さいと$w$が1に近い値を取り、$d^2$が大きいほど$w$は小さい値になります。 この$w$を重みとしたピクセル値の重み付き平均を取ることがNon-Local Means Denoisingでの処理になります。\nこの重み付き平均をとることで、似ているピクセルは強く考慮されますが、似ていないピクセルはほとんど影響を与えないため、似ているピクセルだけでの平均が取れるような計算処理になっています。\nなお、すべてのピクセル同士で距離$d^2$を計算すると、当然計算量が大変なことになります。 このため、実際には着目しているピクセルの周辺のどこまでを考慮するかを指定します。\nOpenCVでやってみる OpenCVでNon-Local Means Denoisingをやってみます。\n次の左の画像にノイズをのせて右の画像を生成しました。\n">
 <title>Non-Local Means Denoisingでノイズ除去</title>
 
 <link rel='canonical' href='https://opqrstuvcut.github.io/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/'>
 
-<link rel="stylesheet" href="/mblog/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="Non-Local Means Denoisingでノイズ除去">
-<meta property='og:description' content="本記事はQrunchからの転載です。 Non-Local Means Denoisingのアイデア 今回はノイズ除去を扱うのですが、特にガウスノイズを考えます。 これは平均が0となるノイズですので、着目しているピクセルにある意味で似ているピクセルを画像中から探してきて、それらの平均を取れば、ノイズの影響が消えたピクセルが得られるはずです。 これがNon-Local Means Denoisingのアイデアになります。 似ているピクセルをどう定義するか Non-Local Means Denoisingでは着目しているピクセルの値自体ではなく、着目しているピクセルの周辺の値同士の差分を取ることで、似ているかどうかを考えます。 この考えから定義されるピクセル$p$と$q$間の距離は以下のようになります。 $$ d^2(B(p, f), B(q,f)) = \\frac{1}{3(2f + 1)^2} \\sum_{c=1}^3 \\sum_{j \\in B(0, f)} (I_c(p+j) - I_c(q+j))^2. $$ ここで$B(p,f)$は着目しているピクセル$p$のサイズの周辺のピクセルで、サイズが$(2f + 1) \\times (2f + 1)$となっています。$I_c(p+j)$が周辺ピクセルの$c$番目のchannelの値をあらわします。 平均値の取り方 \b先程定義した距離を使って以下のような重みを計算します。 $$ w(p,q) = e^{-\\max(d^2 - 2\\sigma^2, 0) / h^2}. $$ $\\sigma^2$はノイズの分散になります（OpenCVの関数で実行するときには特にこれを指定しないので、上手く処理されている？）。$h$は与えるパラメーターで、大きいほど$w$の値に差がつきづらくなります。 距離$d^2$が小さいと$w$が1に近い値を取り、$d^2$が大きいほど$w$は小さい値になります。 この$w$を重みとしたピクセル値の重み付き平均を取ることがNon-Local Means Denoisingでの処理になります。 この重み付き平均をとることで、似ているピクセルは強く考慮されますが、似ていないピクセルはほとんど影響を与えないため、似ているピクセルだけでの平均が取れるような計算処理になっています。 なお、すべてのピクセル同士で距離$d^2$を計算すると、当然計算量が大変なことになります。 このため、実際には着目しているピクセルの周辺のどこまでを考慮するかを指定します。 OpenCVでやってみる OpenCVでNon-Local Means Denoisingをやってみます。 次の左の画像にノイズをのせて右の画像を生成しました。 これに対して次のようにして、Non-Local Means Denoisingを適用します。 denoised = cv2.fastNlMeansDenoisingColored(img, h=3, templateWindowSize=7, searchWindowSize=21) hはさきほどの重みで出てきた$h$と同じで、templateWindowSizeは$d^2$の計算で使われる$f$と同じで、searchWindowSizeは着目しているピクセルの周辺をどこまで考慮するかをあらわします。 ちなみに、fastNlMeansDenoisingという関数もありますが、カラー画像に対してはfastNlMeansDenoisingColoredが良いらしいです。">
+<link rel="stylesheet" href="/mblog/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="Non-Local Means Denoisingでノイズ除去">
+<meta property='og:description' content="本記事はQrunchからの転載です。\nNon-Local Means Denoisingのアイデア 今回はノイズ除去を扱うのですが、特にガウスノイズを考えます。 これは平均が0となるノイズですので、着目しているピクセルにある意味で似ているピクセルを画像中から探してきて、それらの平均を取れば、ノイズの影響が消えたピクセルが得られるはずです。 これがNon-Local Means Denoisingのアイデアになります。\n似ているピクセルをどう定義するか Non-Local Means Denoisingでは着目しているピクセルの値自体ではなく、着目しているピクセルの周辺の値同士の差分を取ることで、似ているかどうかを考えます。 この考えから定義されるピクセル$p$と$q$間の距離は以下のようになります。 $$ d^2(B(p, f), B(q,f)) = \\frac{1}{3(2f + 1)^2} \\sum_{c=1}^3 \\sum_{j \\in B(0, f)} (I_c(p+j) - I_c(q+j))^2. $$ ここで$B(p,f)$は着目しているピクセル$p$のサイズの周辺のピクセルで、サイズが$(2f + 1) \\times (2f + 1)$となっています。$I_c(p+j)$が周辺ピクセルの$c$番目のchannelの値をあらわします。\n平均値の取り方 \b先程定義した距離を使って以下のような重みを計算します。 $$ w(p,q) = e^{-\\max(d^2 - 2\\sigma^2, 0) / h^2}. $$ $\\sigma^2$はノイズの分散になります（OpenCVの関数で実行するときには特にこれを指定しないので、上手く処理されている？）。$h$は与えるパラメーターで、大きいほど$w$の値に差がつきづらくなります。 距離$d^2$が小さいと$w$が1に近い値を取り、$d^2$が大きいほど$w$は小さい値になります。 この$w$を重みとしたピクセル値の重み付き平均を取ることがNon-Local Means Denoisingでの処理になります。\nこの重み付き平均をとることで、似ているピクセルは強く考慮されますが、似ていないピクセルはほとんど影響を与えないため、似ているピクセルだけでの平均が取れるような計算処理になっています。\nなお、すべてのピクセル同士で距離$d^2$を計算すると、当然計算量が大変なことになります。 このため、実際には着目しているピクセルの周辺のどこまでを考慮するかを指定します。\nOpenCVでやってみる OpenCVでNon-Local Means Denoisingをやってみます。\n次の左の画像にノイズをのせて右の画像を生成しました。\n">
 <meta property='og:url' content='https://opqrstuvcut.github.io/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/'>
 <meta property='og:site_name' content='MatLoverによるMatlab以外のブログ'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='OpenCV' /><meta property='article:tag' content='FNLMD' /><meta property='article:tag' content='ノイズ除去' /><meta property='article:published_time' content='2020-08-01T10:04:00&#43;09:00'/><meta property='article:modified_time' content='2020-08-01T10:04:00&#43;09:00'/><meta property='og:image' content='https://opqrstuvcut.github.io/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/783215bfb0d1c75f10337b84d03a1a34.png' />
 <meta name="twitter:title" content="Non-Local Means Denoisingでノイズ除去">
-<meta name="twitter:description" content="本記事はQrunchからの転載です。 Non-Local Means Denoisingのアイデア 今回はノイズ除去を扱うのですが、特にガウスノイズを考えます。 これは平均が0となるノイズですので、着目しているピクセルにある意味で似ているピクセルを画像中から探してきて、それらの平均を取れば、ノイズの影響が消えたピクセルが得られるはずです。 これがNon-Local Means Denoisingのアイデアになります。 似ているピクセルをどう定義するか Non-Local Means Denoisingでは着目しているピクセルの値自体ではなく、着目しているピクセルの周辺の値同士の差分を取ることで、似ているかどうかを考えます。 この考えから定義されるピクセル$p$と$q$間の距離は以下のようになります。 $$ d^2(B(p, f), B(q,f)) = \\frac{1}{3(2f + 1)^2} \\sum_{c=1}^3 \\sum_{j \\in B(0, f)} (I_c(p+j) - I_c(q+j))^2. $$ ここで$B(p,f)$は着目しているピクセル$p$のサイズの周辺のピクセルで、サイズが$(2f + 1) \\times (2f + 1)$となっています。$I_c(p+j)$が周辺ピクセルの$c$番目のchannelの値をあらわします。 平均値の取り方 \b先程定義した距離を使って以下のような重みを計算します。 $$ w(p,q) = e^{-\\max(d^2 - 2\\sigma^2, 0) / h^2}. $$ $\\sigma^2$はノイズの分散になります（OpenCVの関数で実行するときには特にこれを指定しないので、上手く処理されている？）。$h$は与えるパラメーターで、大きいほど$w$の値に差がつきづらくなります。 距離$d^2$が小さいと$w$が1に近い値を取り、$d^2$が大きいほど$w$は小さい値になります。 この$w$を重みとしたピクセル値の重み付き平均を取ることがNon-Local Means Denoisingでの処理になります。 この重み付き平均をとることで、似ているピクセルは強く考慮されますが、似ていないピクセルはほとんど影響を与えないため、似ているピクセルだけでの平均が取れるような計算処理になっています。 なお、すべてのピクセル同士で距離$d^2$を計算すると、当然計算量が大変なことになります。 このため、実際には着目しているピクセルの周辺のどこまでを考慮するかを指定します。 OpenCVでやってみる OpenCVでNon-Local Means Denoisingをやってみます。 次の左の画像にノイズをのせて右の画像を生成しました。 これに対して次のようにして、Non-Local Means Denoisingを適用します。 denoised = cv2.fastNlMeansDenoisingColored(img, h=3, templateWindowSize=7, searchWindowSize=21) hはさきほどの重みで出てきた$h$と同じで、templateWindowSizeは$d^2$の計算で使われる$f$と同じで、searchWindowSizeは着目しているピクセルの周辺をどこまで考慮するかをあらわします。 ちなみに、fastNlMeansDenoisingという関数もありますが、カラー画像に対してはfastNlMeansDenoisingColoredが良いらしいです。"><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="本記事はQrunchからの転載です。\nNon-Local Means Denoisingのアイデア 今回はノイズ除去を扱うのですが、特にガウスノイズを考えます。 これは平均が0となるノイズですので、着目しているピクセルにある意味で似ているピクセルを画像中から探してきて、それらの平均を取れば、ノイズの影響が消えたピクセルが得られるはずです。 これがNon-Local Means Denoisingのアイデアになります。\n似ているピクセルをどう定義するか Non-Local Means Denoisingでは着目しているピクセルの値自体ではなく、着目しているピクセルの周辺の値同士の差分を取ることで、似ているかどうかを考えます。 この考えから定義されるピクセル$p$と$q$間の距離は以下のようになります。 $$ d^2(B(p, f), B(q,f)) = \\frac{1}{3(2f + 1)^2} \\sum_{c=1}^3 \\sum_{j \\in B(0, f)} (I_c(p+j) - I_c(q+j))^2. $$ ここで$B(p,f)$は着目しているピクセル$p$のサイズの周辺のピクセルで、サイズが$(2f + 1) \\times (2f + 1)$となっています。$I_c(p+j)$が周辺ピクセルの$c$番目のchannelの値をあらわします。\n平均値の取り方 \b先程定義した距離を使って以下のような重みを計算します。 $$ w(p,q) = e^{-\\max(d^2 - 2\\sigma^2, 0) / h^2}. $$ $\\sigma^2$はノイズの分散になります（OpenCVの関数で実行するときには特にこれを指定しないので、上手く処理されている？）。$h$は与えるパラメーターで、大きいほど$w$の値に差がつきづらくなります。 距離$d^2$が小さいと$w$が1に近い値を取り、$d^2$が大きいほど$w$は小さい値になります。 この$w$を重みとしたピクセル値の重み付き平均を取ることがNon-Local Means Denoisingでの処理になります。\nこの重み付き平均をとることで、似ているピクセルは強く考慮されますが、似ていないピクセルはほとんど影響を与えないため、似ているピクセルだけでの平均が取れるような計算処理になっています。\nなお、すべてのピクセル同士で距離$d^2$を計算すると、当然計算量が大変なことになります。 このため、実際には着目しているピクセルの周辺のどこまでを考慮するかを指定します。\nOpenCVでやってみる OpenCVでNon-Local Means Denoisingをやってみます。\n次の左の画像にノイズをのせて右の画像を生成しました。\n"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://opqrstuvcut.github.io/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/783215bfb0d1c75f10337b84d03a1a34.png' />
     <link rel="shortcut icon" href="/mblog/favicon.ico" />
 
-  
-    
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFC5W8DKV1"></script>
       <script>
         var doNotTrack = false;
@@ -31,11 +29,7 @@
           gtag('js', new Date());
           gtag('config', 'G-LFC5W8DKV1');
         }
-      </script>
-    
-  
-
-<style>
+      </script><style>
   section.article-content h2 {
     background-color: rgb(245, 245, 245);
     padding: 10px;
@@ -92,7 +86,7 @@
                     
                     
                         
-                        <img src="/mblog/img/avatar_hu13660810305696555094.jpeg" width="300"
+                        <img src="/mblog/img/avatar_hu_5bc806b678ac7533.jpeg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -208,8 +202,8 @@
     <header class="article-header">
         <div class="article-image">
             <a href="/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/">
-                <img src="/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/783215bfb0d1c75f10337b84d03a1a34_hu14003747045412544228.png"
-                        srcset="/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/783215bfb0d1c75f10337b84d03a1a34_hu14003747045412544228.png 800w, /mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/783215bfb0d1c75f10337b84d03a1a34_hu9990131059082911067.png 1600w"
+                <img src="/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/783215bfb0d1c75f10337b84d03a1a34_hu_d047761b7f024d01.png"
+                        srcset="/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/783215bfb0d1c75f10337b84d03a1a34_hu_d047761b7f024d01.png 800w, /mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/783215bfb0d1c75f10337b84d03a1a34_hu_12640cf3bfbab0d6.png 1600w"
                         width="800" 
                         height="800" 
                         loading="lazy"
@@ -300,7 +294,7 @@ $\sigma^2$はノイズの分散になります（OpenCVの関数で実行する�
 <img src="/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/c9b2cd84393504aa9ce6c0f9929fe958.png"
 	width="251"
 	height="251"
-	srcset="/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/c9b2cd84393504aa9ce6c0f9929fe958_hu14923418891219344792.png 480w, /mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/c9b2cd84393504aa9ce6c0f9929fe958_hu3845473141346968759.png 1024w"
+	srcset="/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/c9b2cd84393504aa9ce6c0f9929fe958_hu_e95c275fbf6f4a44.png 480w, /mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/c9b2cd84393504aa9ce6c0f9929fe958_hu_a005f1fdf2a2189f.png 1024w"
 	loading="lazy"
 	
 	
@@ -311,7 +305,7 @@ $\sigma^2$はノイズの分散になります（OpenCVの関数で実行する�
 ><img src="/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/74a87a7adb65b77787e724d2e7e407e5.png"
 	width="251"
 	height="251"
-	srcset="/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/74a87a7adb65b77787e724d2e7e407e5_hu14611957910672209521.png 480w, /mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/74a87a7adb65b77787e724d2e7e407e5_hu18341489699322377868.png 1024w"
+	srcset="/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/74a87a7adb65b77787e724d2e7e407e5_hu_dcaa8b31791167a7.png 480w, /mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/74a87a7adb65b77787e724d2e7e407e5_hu_aa7fb07d8e65fdb1.png 1024w"
 	loading="lazy"
 	
 	
@@ -329,18 +323,18 @@ $\sigma^2$はノイズの分散になります（OpenCVの関数で実行する�
 ちなみに、fastNlMeansDenoisingという関数もありますが、カラー画像に対してはfastNlMeansDenoisingColoredが良いらしいです。</p>
 <p>結果が以下のとおりです。</p>
 <div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>ノイズをのせた画像</th>
-<th>ノイズ除去後の画像</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img src="/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/94e96605a92c5ed4a27fc7f1d01b261b.png"
+  <thead>
+      <tr>
+          <th>ノイズをのせた画像</th>
+          <th>ノイズ除去後の画像</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><img src="/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/94e96605a92c5ed4a27fc7f1d01b261b.png"
 	width="251"
 	height="251"
-	srcset="/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/94e96605a92c5ed4a27fc7f1d01b261b_hu14611957910672209521.png 480w, /mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/94e96605a92c5ed4a27fc7f1d01b261b_hu18341489699322377868.png 1024w"
+	srcset="/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/94e96605a92c5ed4a27fc7f1d01b261b_hu_dcaa8b31791167a7.png 480w, /mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/94e96605a92c5ed4a27fc7f1d01b261b_hu_aa7fb07d8e65fdb1.png 1024w"
 	loading="lazy"
 	
 	
@@ -349,10 +343,10 @@ $\sigma^2$はノイズの分散になります（OpenCVの関数で実行する�
 		data-flex-basis="240px"
 	
 ></td>
-<td><img src="/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/783215bfb0d1c75f10337b84d03a1a34.png"
+          <td><img src="/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/783215bfb0d1c75f10337b84d03a1a34.png"
 	width="251"
 	height="251"
-	srcset="/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/783215bfb0d1c75f10337b84d03a1a34_hu16725561816468838955.png 480w, /mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/783215bfb0d1c75f10337b84d03a1a34_hu3224953916277050605.png 1024w"
+	srcset="/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/783215bfb0d1c75f10337b84d03a1a34_hu_3ba352269c77a8a4.png 480w, /mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/783215bfb0d1c75f10337b84d03a1a34_hu_34803be2d4790e9a.png 1024w"
 	loading="lazy"
 	
 	
@@ -361,8 +355,8 @@ $\sigma^2$はノイズの分散になります（OpenCVの関数で実行する�
 		data-flex-basis="240px"
 	
 ></td>
-</tr>
-</tbody>
+      </tr>
+  </tbody>
 </table></div>
 <p>体の部分がぼやけていますが、ノイズはきれいにとれてますね。</p>
 
@@ -441,7 +435,7 @@ $\sigma^2$はノイズの分散になります（OpenCVの関数で実行する�
         
         
             <div class="article-image">
-                <img src="/mblog/posts/%E5%8B%95%E7%94%BB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%8B%E3%82%89%E5%89%8D%E6%99%AF%E3%81%A8%E8%83%8C%E6%99%AF%E3%82%92%E5%88%86%E9%9B%A2%E3%81%99%E3%82%8B/cbb562e9eaee89cb60ac8ec0be592a80.e87b6e8f6ca22b6b36cca3b2b6690362_hu390705902629083679.png" 
+                <img src="/mblog/posts/%E5%8B%95%E7%94%BB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%8B%E3%82%89%E5%89%8D%E6%99%AF%E3%81%A8%E8%83%8C%E6%99%AF%E3%82%92%E5%88%86%E9%9B%A2%E3%81%99%E3%82%8B/cbb562e9eaee89cb60ac8ec0be592a80.e87b6e8f6ca22b6b36cca3b2b6690362_hu_c5e808e5c63e0847.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -465,7 +459,7 @@ $\sigma^2$はノイズの分散になります（OpenCVの関数で実行する�
         
         
             <div class="article-image">
-                <img src="/mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/d0411dcb235b3add1e1a55f1a9394d2d.cdc50c30a2665f1bcc4245a119ab8bbb_hu9937509795490170185.png" 
+                <img src="/mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/d0411dcb235b3add1e1a55f1a9394d2d.cdc50c30a2665f1bcc4245a119ab8bbb_hu_5de69ec84782b2c5.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -489,7 +483,7 @@ $\sigma^2$はノイズの分散になります（OpenCVの関数で実行する�
         
         
             <div class="article-image">
-                <img src="/mblog/posts/findcontours%E3%81%A7%E8%BC%AA%E9%83%AD%E3%81%AE%E6%A4%9C%E5%87%BA/36626599de1a642e7bfec7fa47def298.273ed0912346665a556545fc8c648ab8_hu3379407131511175525.png" 
+                <img src="/mblog/posts/findcontours%E3%81%A7%E8%BC%AA%E9%83%AD%E3%81%AE%E6%A4%9C%E5%87%BA/36626599de1a642e7bfec7fa47def298.273ed0912346665a556545fc8c648ab8_hu_d9ac13c161f3cd90.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -513,7 +507,7 @@ $\sigma^2$はノイズの分散になります（OpenCVの関数で実行する�
         
         
             <div class="article-image">
-                <img src="/mblog/posts/%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%83%9E%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%8B%E3%82%89%E7%89%A9%E4%BD%93%E3%82%92%E3%81%BF%E3%81%A4%E3%81%91%E3%82%8B/0359ef5bc2687ab5c1e63356c89cc3e0.1e1423b2714291cf4647a1c4677451b8_hu11081041458382776038.png" 
+                <img src="/mblog/posts/%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%83%9E%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%8B%E3%82%89%E7%89%A9%E4%BD%93%E3%82%92%E3%81%BF%E3%81%A4%E3%81%91%E3%82%8B/0359ef5bc2687ab5c1e63356c89cc3e0.1e1423b2714291cf4647a1c4677451b8_hu_3e44667558a206cc.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"

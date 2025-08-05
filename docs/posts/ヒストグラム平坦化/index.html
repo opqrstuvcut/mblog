@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="ja-jp" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="本記事はQrunchからの転載です。 今日はヒストグラム平坦化を扱います。 ヒストグラム平坦化はコントラストが偏っているような画像を補正します。 結果として、コントラストがある程度平坦化された結果が得られます。 処理の中身としては、実際には画像のピクセル値の累積分布関数で写像したうえで、最大値と最小値が広がるように調整してあげるというイメージです。 OpenCVでヒストグラム平坦化 次の画像にヒストグラム平坦化を適用してみます。このままだと全くみえません。 この画像の画素値のヒストグラムは以下のとおりです。だいぶ偏ってますね。 ヒストグラム平坦化は次のようにしておこなえます。めちゃくちゃ簡単です。 res = cv2.equalizeHist(img) ちゃんと見えるようになりましたね。 この画像の画素値のヒストグラムは以下のとおりです。">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="本記事はQrunchからの転載です。\n今日はヒストグラム平坦化を扱います。\nヒストグラム平坦化はコントラストが偏っているような画像を補正します。 結果として、コントラストがある程度平坦化された結果が得られます。\n処理の中身としては、実際には画像のピクセル値の累積分布関数で写像したうえで、最大値と最小値が広がるように調整してあげるというイメージです。\nOpenCVでヒストグラム平坦化 次の画像にヒストグラム平坦化を適用してみます。このままだと全くみえません。\nこの画像の画素値のヒストグラムは以下のとおりです。だいぶ偏ってますね。\nヒストグラム平坦化は次のようにしておこなえます。めちゃくちゃ簡単です。\nres = cv2.equalizeHist(img) ちゃんと見えるようになりましたね。\nこの画像の画素値のヒストグラムは以下のとおりです。\n">
 <title>ヒストグラム平坦化</title>
 
 <link rel='canonical' href='https://opqrstuvcut.github.io/mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/'>
 
-<link rel="stylesheet" href="/mblog/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="ヒストグラム平坦化">
-<meta property='og:description' content="本記事はQrunchからの転載です。 今日はヒストグラム平坦化を扱います。 ヒストグラム平坦化はコントラストが偏っているような画像を補正します。 結果として、コントラストがある程度平坦化された結果が得られます。 処理の中身としては、実際には画像のピクセル値の累積分布関数で写像したうえで、最大値と最小値が広がるように調整してあげるというイメージです。 OpenCVでヒストグラム平坦化 次の画像にヒストグラム平坦化を適用してみます。このままだと全くみえません。 この画像の画素値のヒストグラムは以下のとおりです。だいぶ偏ってますね。 ヒストグラム平坦化は次のようにしておこなえます。めちゃくちゃ簡単です。 res = cv2.equalizeHist(img) ちゃんと見えるようになりましたね。 この画像の画素値のヒストグラムは以下のとおりです。">
+<link rel="stylesheet" href="/mblog/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="ヒストグラム平坦化">
+<meta property='og:description' content="本記事はQrunchからの転載です。\n今日はヒストグラム平坦化を扱います。\nヒストグラム平坦化はコントラストが偏っているような画像を補正します。 結果として、コントラストがある程度平坦化された結果が得られます。\n処理の中身としては、実際には画像のピクセル値の累積分布関数で写像したうえで、最大値と最小値が広がるように調整してあげるというイメージです。\nOpenCVでヒストグラム平坦化 次の画像にヒストグラム平坦化を適用してみます。このままだと全くみえません。\nこの画像の画素値のヒストグラムは以下のとおりです。だいぶ偏ってますね。\nヒストグラム平坦化は次のようにしておこなえます。めちゃくちゃ簡単です。\nres = cv2.equalizeHist(img) ちゃんと見えるようになりましたね。\nこの画像の画素値のヒストグラムは以下のとおりです。\n">
 <meta property='og:url' content='https://opqrstuvcut.github.io/mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/'>
 <meta property='og:site_name' content='MatLoverによるMatlab以外のブログ'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='OpenCV' /><meta property='article:tag' content='ヒストグラム平坦化' /><meta property='article:published_time' content='2020-08-02T22:50:29&#43;09:00'/><meta property='article:modified_time' content='2020-08-02T22:50:29&#43;09:00'/><meta property='og:image' content='https://opqrstuvcut.github.io/mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/e534d7e8e9969a0405e4a1b8f7eea112.png' />
 <meta name="twitter:title" content="ヒストグラム平坦化">
-<meta name="twitter:description" content="本記事はQrunchからの転載です。 今日はヒストグラム平坦化を扱います。 ヒストグラム平坦化はコントラストが偏っているような画像を補正します。 結果として、コントラストがある程度平坦化された結果が得られます。 処理の中身としては、実際には画像のピクセル値の累積分布関数で写像したうえで、最大値と最小値が広がるように調整してあげるというイメージです。 OpenCVでヒストグラム平坦化 次の画像にヒストグラム平坦化を適用してみます。このままだと全くみえません。 この画像の画素値のヒストグラムは以下のとおりです。だいぶ偏ってますね。 ヒストグラム平坦化は次のようにしておこなえます。めちゃくちゃ簡単です。 res = cv2.equalizeHist(img) ちゃんと見えるようになりましたね。 この画像の画素値のヒストグラムは以下のとおりです。"><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="本記事はQrunchからの転載です。\n今日はヒストグラム平坦化を扱います。\nヒストグラム平坦化はコントラストが偏っているような画像を補正します。 結果として、コントラストがある程度平坦化された結果が得られます。\n処理の中身としては、実際には画像のピクセル値の累積分布関数で写像したうえで、最大値と最小値が広がるように調整してあげるというイメージです。\nOpenCVでヒストグラム平坦化 次の画像にヒストグラム平坦化を適用してみます。このままだと全くみえません。\nこの画像の画素値のヒストグラムは以下のとおりです。だいぶ偏ってますね。\nヒストグラム平坦化は次のようにしておこなえます。めちゃくちゃ簡単です。\nres = cv2.equalizeHist(img) ちゃんと見えるようになりましたね。\nこの画像の画素値のヒストグラムは以下のとおりです。\n"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://opqrstuvcut.github.io/mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/e534d7e8e9969a0405e4a1b8f7eea112.png' />
     <link rel="shortcut icon" href="/mblog/favicon.ico" />
 
-  
-    
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFC5W8DKV1"></script>
       <script>
         var doNotTrack = false;
@@ -31,11 +29,7 @@
           gtag('js', new Date());
           gtag('config', 'G-LFC5W8DKV1');
         }
-      </script>
-    
-  
-
-<style>
+      </script><style>
   section.article-content h2 {
     background-color: rgb(245, 245, 245);
     padding: 10px;
@@ -92,7 +86,7 @@
                     
                     
                         
-                        <img src="/mblog/img/avatar_hu13660810305696555094.jpeg" width="300"
+                        <img src="/mblog/img/avatar_hu_5bc806b678ac7533.jpeg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -208,8 +202,8 @@
     <header class="article-header">
         <div class="article-image">
             <a href="/mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/">
-                <img src="/mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/e534d7e8e9969a0405e4a1b8f7eea112_hu11475324281875596491.png"
-                        srcset="/mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/e534d7e8e9969a0405e4a1b8f7eea112_hu11475324281875596491.png 800w, /mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/e534d7e8e9969a0405e4a1b8f7eea112_hu5664507879383982973.png 1600w"
+                <img src="/mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/e534d7e8e9969a0405e4a1b8f7eea112_hu_33446d6400bd754.png"
+                        srcset="/mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/e534d7e8e9969a0405e4a1b8f7eea112_hu_33446d6400bd754.png 800w, /mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/e534d7e8e9969a0405e4a1b8f7eea112_hu_a4fb2e1cf2ceb935.png 1600w"
                         width="800" 
                         height="965" 
                         loading="lazy"
@@ -285,7 +279,7 @@
 <img src="/mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/51cf7f08ccc657141d3e65ef1b466e4e.png"
 	width="209"
 	height="252"
-	srcset="/mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/51cf7f08ccc657141d3e65ef1b466e4e_hu9625023380941256167.png 480w, /mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/51cf7f08ccc657141d3e65ef1b466e4e_hu3066794175911279574.png 1024w"
+	srcset="/mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/51cf7f08ccc657141d3e65ef1b466e4e_hu_9c21279a4a1088d.png 480w, /mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/51cf7f08ccc657141d3e65ef1b466e4e_hu_7e745828370fc225.png 1024w"
 	loading="lazy"
 	
 	
@@ -298,7 +292,7 @@
 <img src="/mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/de36036169c411bbe353ffdf628df858.png"
 	width="375"
 	height="259"
-	srcset="/mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/de36036169c411bbe353ffdf628df858_hu18178570525567475431.png 480w, /mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/de36036169c411bbe353ffdf628df858_hu3161033725075353831.png 1024w"
+	srcset="/mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/de36036169c411bbe353ffdf628df858_hu_366d5876795a59c7.png 480w, /mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/de36036169c411bbe353ffdf628df858_hu_787f6a90cde2e7cb.png 1024w"
 	loading="lazy"
 	
 	
@@ -312,7 +306,7 @@
 </span></span></code></pre></div><p><img src="/mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/e534d7e8e9969a0405e4a1b8f7eea112.png"
 	width="209"
 	height="252"
-	srcset="/mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/e534d7e8e9969a0405e4a1b8f7eea112_hu1354128241343740435.png 480w, /mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/e534d7e8e9969a0405e4a1b8f7eea112_hu6308019897362071136.png 1024w"
+	srcset="/mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/e534d7e8e9969a0405e4a1b8f7eea112_hu_d62cc8641752dd44.png 480w, /mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/e534d7e8e9969a0405e4a1b8f7eea112_hu_b1fd0a1dc3c6133e.png 1024w"
 	loading="lazy"
 	
 	
@@ -326,7 +320,7 @@
 <img src="/mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/e250638d16771a11e5bf8cc073ff4caf.png"
 	width="375"
 	height="259"
-	srcset="/mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/e250638d16771a11e5bf8cc073ff4caf_hu12003558812728251890.png 480w, /mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/e250638d16771a11e5bf8cc073ff4caf_hu15463117642999468197.png 1024w"
+	srcset="/mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/e250638d16771a11e5bf8cc073ff4caf_hu_ba36474e35d530b2.png 480w, /mblog/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/e250638d16771a11e5bf8cc073ff4caf_hu_c68df4367adaa2b7.png 1024w"
 	loading="lazy"
 	
 	
@@ -409,7 +403,7 @@
         
         
             <div class="article-image">
-                <img src="/mblog/posts/hough%E3%83%8F%E3%83%95%E5%A4%89%E6%8F%9B%E3%81%A7%E7%9B%B4%E7%B7%9A%E3%82%92%E8%A6%8B%E3%81%A4%E3%81%91%E3%82%88%E3%81%86/f57bd9c6dc056b82e658a2f6ca7b6258.1e31616014e9eedfeada969a85e491f8_hu13016057715122183095.png" 
+                <img src="/mblog/posts/hough%E3%83%8F%E3%83%95%E5%A4%89%E6%8F%9B%E3%81%A7%E7%9B%B4%E7%B7%9A%E3%82%92%E8%A6%8B%E3%81%A4%E3%81%91%E3%82%88%E3%81%86/f57bd9c6dc056b82e658a2f6ca7b6258.1e31616014e9eedfeada969a85e491f8_hu_ed7c73ba461602d3.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -433,7 +427,7 @@
         
         
             <div class="article-image">
-                <img src="/mblog/posts/canny%E6%B3%95%E3%81%A7%E3%82%A8%E3%83%83%E3%82%B8%E6%A4%9C%E5%87%BA/5154e105157ba91bf3bf7306d1cfffe1.2b98e2e961d6a7eaf43470fc599626c3_hu12811414614560607839.jpg" 
+                <img src="/mblog/posts/canny%E6%B3%95%E3%81%A7%E3%82%A8%E3%83%83%E3%82%B8%E6%A4%9C%E5%87%BA/5154e105157ba91bf3bf7306d1cfffe1.2b98e2e961d6a7eaf43470fc599626c3_hu_361f41c194af8f33.jpg" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -457,7 +451,7 @@
         
         
             <div class="article-image">
-                <img src="/mblog/posts/%E3%81%84%E3%81%A4%E3%81%AE%E9%96%93%E3%81%AB%E3%81%8Bopencv%E3%81%AEvideocapture%E3%81%8C%E6%AD%A3%E3%81%97%E3%81%8F%E5%90%91%E3%81%8D%E3%81%AB%E5%AF%BE%E5%BF%9C%E3%81%A7%E3%81%8D%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%81%9F/feature.6431cd4ea34bce3324169b1bd58ae120_hu13168033926891088985.png" 
+                <img src="/mblog/posts/%E3%81%84%E3%81%A4%E3%81%AE%E9%96%93%E3%81%AB%E3%81%8Bopencv%E3%81%AEvideocapture%E3%81%8C%E6%AD%A3%E3%81%97%E3%81%8F%E5%90%91%E3%81%8D%E3%81%AB%E5%AF%BE%E5%BF%9C%E3%81%A7%E3%81%8D%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%81%9F/feature.6431cd4ea34bce3324169b1bd58ae120_hu_eda726ee9ade2019.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -481,7 +475,7 @@
         
         
             <div class="article-image">
-                <img src="/mblog/posts/%E5%8B%95%E7%94%BB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%8B%E3%82%89%E5%89%8D%E6%99%AF%E3%81%A8%E8%83%8C%E6%99%AF%E3%82%92%E5%88%86%E9%9B%A2%E3%81%99%E3%82%8B/cbb562e9eaee89cb60ac8ec0be592a80.e87b6e8f6ca22b6b36cca3b2b6690362_hu390705902629083679.png" 
+                <img src="/mblog/posts/%E5%8B%95%E7%94%BB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%8B%E3%82%89%E5%89%8D%E6%99%AF%E3%81%A8%E8%83%8C%E6%99%AF%E3%82%92%E5%88%86%E9%9B%A2%E3%81%99%E3%82%8B/cbb562e9eaee89cb60ac8ec0be592a80.e87b6e8f6ca22b6b36cca3b2b6690362_hu_c5e808e5c63e0847.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -505,7 +499,7 @@
         
         
             <div class="article-image">
-                <img src="/mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/d0411dcb235b3add1e1a55f1a9394d2d.cdc50c30a2665f1bcc4245a119ab8bbb_hu9937509795490170185.png" 
+                <img src="/mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/d0411dcb235b3add1e1a55f1a9394d2d.cdc50c30a2665f1bcc4245a119ab8bbb_hu_5de69ec84782b2c5.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"

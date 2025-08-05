@@ -18,10 +18,10 @@ CANINEってなんて読むべきなんでしょう？&lt;/p&gt;
     &gt;https://arxiv.org/pdf/2103.06874.pdf&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;エンコーダーのアーキテクチャ&#34;&gt;エンコーダーのアーキテクチャ
 &lt;/h1&gt;&lt;p&gt;CANINEのアーキテクチャは以下のようになっています。
-&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/fig1.png&#34;
+&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/fig1.png&#34;
 	width=&#34;1894&#34;
 	height=&#34;870&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/fig1_hu5727611620680059928.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/fig1_hu745097921145227070.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/fig1_hu_8b537831189d0965.png 480w, https://opqrstuvcut.github.io/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/fig1_hu_2d0f0e874316b492.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;CANINEのアーキテクチャ（論文より引用）&#34;
@@ -91,10 +91,10 @@ BERTなどはsubwordに対応したベクトルを参照すれば良いですが
 &lt;/h1&gt;&lt;p&gt;実験はTYDI QAデータセットを用いておこなわれています。&lt;/p&gt;
 &lt;h2 id=&#34;他手法との比較&#34;&gt;他手法との比較
 &lt;/h2&gt;&lt;p&gt;mBERTとの比較が次のテーブルになります。
-&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/table2.png&#34;
+&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/table2.png&#34;
 	width=&#34;2064&#34;
 	height=&#34;518&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/table2_hu3105692230049871730.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/table2_hu17215373382260427039.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/table2_hu_552cc145cea70442.png 480w, https://opqrstuvcut.github.io/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/table2_hu_9a5424c336159a14.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;mBERTとの比較（論文より引用）&#34;
@@ -110,10 +110,10 @@ BERTなどはsubwordに対応したベクトルを参照すれば良いですが
 また、Example/secの列をみると、mBERTは文字単位の入力にすると非常に推論が遅いですが、CANINEはそれに比べると非常に速いです。とはいえ、mBERTのsubword単位の入力の場合に比べると当然遅いです。&lt;/p&gt;
 &lt;h2 id=&#34;ablation-study&#34;&gt;ablation study
 &lt;/h2&gt;&lt;p&gt;ablation studyです。
-&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/table4.png&#34;
+&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/table4.png&#34;
 	width=&#34;1966&#34;
 	height=&#34;794&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/table4_hu3547531543262116005.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/table4_hu14881553281215025394.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/table4_hu_f86658b2cecd28b0.png 480w, https://opqrstuvcut.github.io/mblog/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/table4_hu_e501a33a8104c635.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;ablation study（論文より引用）&#34;

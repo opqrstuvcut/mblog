@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="ja-jp" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="本記事はQrunchからの転載です。 アフィン変換といえば、普通は2次元上の点や図形を拡大縮小したり、回転したり、平行移動したりといった変換をさします。 式の話をすると、ある2次元上の点$(x,y)$の$(x&rsquo;, y&rsquo;)$へのアフィン変換は次のようにして表現できます。 $$\\begin{pmatrix}x&rsquo; \\\\ y&rsquo; \\\\ 1 \\end{pmatrix} =\\begin{pmatrix} a &amp; b &amp; c\\\\ e &amp; f &amp; g \\\\ 0 &amp; 0 &amp; 1 \\end{pmatrix} \\begin{pmatrix}x \\\\ y \\\\ 1 \\end{pmatrix}. $$ $a,b,e,f$の値によって拡大縮小、回転をおこなうようにできますし、$c,g$の値によって平行移動が可能です。 今回はこのアフィン変換をOpenCVを使っておこないます。 アフィン変換のやり方 OpenCVでは次のようにしてアフィン変換をおこないます。 transformed_img = cv2.warpAffine(img, affine_mat, (width, height)) affine_matとしているのが、アフィン変換で用いる行列です。 widthとheightは変換後の画像のサイズになります。 以下では次の画像に対するアフィン変換の例を示します。 平行移動 平行移動をするときは次のようなアフィン変換になります。 $$\\begin{pmatrix}x&rsquo; \\\\ y&rsquo; \\\\ 1 \\end{pmatrix} =\\begin{pmatrix} 1 &amp; 0 &amp; c\\\\ 0 &amp; 1 &amp; g \\\\ 0 &amp; 0 &amp; 1 \\end{pmatrix} \\begin{pmatrix}x \\\\ y \\\\ 1 \\end{pmatrix}.">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="本記事はQrunchからの転載です。\nアフィン変換といえば、普通は2次元上の点や図形を拡大縮小したり、回転したり、平行移動したりといった変換をさします。 式の話をすると、ある2次元上の点$(x,y)$の$(x&rsquo;, y&rsquo;)$へのアフィン変換は次のようにして表現できます。 $$\\begin{pmatrix}x&rsquo; \\\\ y&rsquo; \\\\ 1 \\end{pmatrix} =\\begin{pmatrix} a &amp; b &amp; c\\\\ e &amp; f &amp; g \\\\ 0 &amp; 0 &amp; 1 \\end{pmatrix} \\begin{pmatrix}x \\\\ y \\\\ 1 \\end{pmatrix}. $$ $a,b,e,f$の値によって拡大縮小、回転をおこなうようにできますし、$c,g$の値によって平行移動が可能です。\n今回はこのアフィン変換をOpenCVを使っておこないます。\nアフィン変換のやり方 OpenCVでは次のようにしてアフィン変換をおこないます。\ntransformed_img = cv2.warpAffine(img, affine_mat, (width, height)) affine_matとしているのが、アフィン変換で用いる行列です。 widthとheightは変換後の画像のサイズになります。\n以下では次の画像に対するアフィン変換の例を示します。 平行移動 平行移動をするときは次のようなアフィン変換になります。 $$\\begin{pmatrix}x&rsquo; \\\\ y&rsquo; \\\\ 1 \\end{pmatrix} =\\begin{pmatrix} 1 &amp; 0 &amp; c\\\\ 0 &amp; 1 &amp; g \\\\ 0 &amp; 0 &amp; 1 \\end{pmatrix} \\begin{pmatrix}x \\\\ y \\\\ 1 \\end{pmatrix}. $$ もう少し式を書きくだせば、 $$\\begin{eqnarray}x&rsquo; &amp;=&amp; x + c, \\\\y&rsquo;&amp;=&amp;y+g\\end{eqnarray}$$ となるので、平行移動だとわかりますね。\n">
 <title>画像へのアフィン変換</title>
 
 <link rel='canonical' href='https://opqrstuvcut.github.io/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/'>
 
-<link rel="stylesheet" href="/mblog/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="画像へのアフィン変換">
-<meta property='og:description' content="本記事はQrunchからの転載です。 アフィン変換といえば、普通は2次元上の点や図形を拡大縮小したり、回転したり、平行移動したりといった変換をさします。 式の話をすると、ある2次元上の点$(x,y)$の$(x&rsquo;, y&rsquo;)$へのアフィン変換は次のようにして表現できます。 $$\\begin{pmatrix}x&rsquo; \\\\ y&rsquo; \\\\ 1 \\end{pmatrix} =\\begin{pmatrix} a &amp; b &amp; c\\\\ e &amp; f &amp; g \\\\ 0 &amp; 0 &amp; 1 \\end{pmatrix} \\begin{pmatrix}x \\\\ y \\\\ 1 \\end{pmatrix}. $$ $a,b,e,f$の値によって拡大縮小、回転をおこなうようにできますし、$c,g$の値によって平行移動が可能です。 今回はこのアフィン変換をOpenCVを使っておこないます。 アフィン変換のやり方 OpenCVでは次のようにしてアフィン変換をおこないます。 transformed_img = cv2.warpAffine(img, affine_mat, (width, height)) affine_matとしているのが、アフィン変換で用いる行列です。 widthとheightは変換後の画像のサイズになります。 以下では次の画像に対するアフィン変換の例を示します。 平行移動 平行移動をするときは次のようなアフィン変換になります。 $$\\begin{pmatrix}x&rsquo; \\\\ y&rsquo; \\\\ 1 \\end{pmatrix} =\\begin{pmatrix} 1 &amp; 0 &amp; c\\\\ 0 &amp; 1 &amp; g \\\\ 0 &amp; 0 &amp; 1 \\end{pmatrix} \\begin{pmatrix}x \\\\ y \\\\ 1 \\end{pmatrix}.">
+<link rel="stylesheet" href="/mblog/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="画像へのアフィン変換">
+<meta property='og:description' content="本記事はQrunchからの転載です。\nアフィン変換といえば、普通は2次元上の点や図形を拡大縮小したり、回転したり、平行移動したりといった変換をさします。 式の話をすると、ある2次元上の点$(x,y)$の$(x&rsquo;, y&rsquo;)$へのアフィン変換は次のようにして表現できます。 $$\\begin{pmatrix}x&rsquo; \\\\ y&rsquo; \\\\ 1 \\end{pmatrix} =\\begin{pmatrix} a &amp; b &amp; c\\\\ e &amp; f &amp; g \\\\ 0 &amp; 0 &amp; 1 \\end{pmatrix} \\begin{pmatrix}x \\\\ y \\\\ 1 \\end{pmatrix}. $$ $a,b,e,f$の値によって拡大縮小、回転をおこなうようにできますし、$c,g$の値によって平行移動が可能です。\n今回はこのアフィン変換をOpenCVを使っておこないます。\nアフィン変換のやり方 OpenCVでは次のようにしてアフィン変換をおこないます。\ntransformed_img = cv2.warpAffine(img, affine_mat, (width, height)) affine_matとしているのが、アフィン変換で用いる行列です。 widthとheightは変換後の画像のサイズになります。\n以下では次の画像に対するアフィン変換の例を示します。 平行移動 平行移動をするときは次のようなアフィン変換になります。 $$\\begin{pmatrix}x&rsquo; \\\\ y&rsquo; \\\\ 1 \\end{pmatrix} =\\begin{pmatrix} 1 &amp; 0 &amp; c\\\\ 0 &amp; 1 &amp; g \\\\ 0 &amp; 0 &amp; 1 \\end{pmatrix} \\begin{pmatrix}x \\\\ y \\\\ 1 \\end{pmatrix}. $$ もう少し式を書きくだせば、 $$\\begin{eqnarray}x&rsquo; &amp;=&amp; x + c, \\\\y&rsquo;&amp;=&amp;y+g\\end{eqnarray}$$ となるので、平行移動だとわかりますね。\n">
 <meta property='og:url' content='https://opqrstuvcut.github.io/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/'>
 <meta property='og:site_name' content='MatLoverによるMatlab以外のブログ'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='OpenCV' /><meta property='article:tag' content='affine' /><meta property='article:tag' content='アフィン変換' /><meta property='article:published_time' content='2020-07-29T11:03:00&#43;09:00'/><meta property='article:modified_time' content='2020-07-29T11:03:00&#43;09:00'/><meta property='og:image' content='https://opqrstuvcut.github.io/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/81a46863d26154ebd07353949e4d8171.png' />
 <meta name="twitter:title" content="画像へのアフィン変換">
-<meta name="twitter:description" content="本記事はQrunchからの転載です。 アフィン変換といえば、普通は2次元上の点や図形を拡大縮小したり、回転したり、平行移動したりといった変換をさします。 式の話をすると、ある2次元上の点$(x,y)$の$(x&rsquo;, y&rsquo;)$へのアフィン変換は次のようにして表現できます。 $$\\begin{pmatrix}x&rsquo; \\\\ y&rsquo; \\\\ 1 \\end{pmatrix} =\\begin{pmatrix} a &amp; b &amp; c\\\\ e &amp; f &amp; g \\\\ 0 &amp; 0 &amp; 1 \\end{pmatrix} \\begin{pmatrix}x \\\\ y \\\\ 1 \\end{pmatrix}. $$ $a,b,e,f$の値によって拡大縮小、回転をおこなうようにできますし、$c,g$の値によって平行移動が可能です。 今回はこのアフィン変換をOpenCVを使っておこないます。 アフィン変換のやり方 OpenCVでは次のようにしてアフィン変換をおこないます。 transformed_img = cv2.warpAffine(img, affine_mat, (width, height)) affine_matとしているのが、アフィン変換で用いる行列です。 widthとheightは変換後の画像のサイズになります。 以下では次の画像に対するアフィン変換の例を示します。 平行移動 平行移動をするときは次のようなアフィン変換になります。 $$\\begin{pmatrix}x&rsquo; \\\\ y&rsquo; \\\\ 1 \\end{pmatrix} =\\begin{pmatrix} 1 &amp; 0 &amp; c\\\\ 0 &amp; 1 &amp; g \\\\ 0 &amp; 0 &amp; 1 \\end{pmatrix} \\begin{pmatrix}x \\\\ y \\\\ 1 \\end{pmatrix}."><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="本記事はQrunchからの転載です。\nアフィン変換といえば、普通は2次元上の点や図形を拡大縮小したり、回転したり、平行移動したりといった変換をさします。 式の話をすると、ある2次元上の点$(x,y)$の$(x&rsquo;, y&rsquo;)$へのアフィン変換は次のようにして表現できます。 $$\\begin{pmatrix}x&rsquo; \\\\ y&rsquo; \\\\ 1 \\end{pmatrix} =\\begin{pmatrix} a &amp; b &amp; c\\\\ e &amp; f &amp; g \\\\ 0 &amp; 0 &amp; 1 \\end{pmatrix} \\begin{pmatrix}x \\\\ y \\\\ 1 \\end{pmatrix}. $$ $a,b,e,f$の値によって拡大縮小、回転をおこなうようにできますし、$c,g$の値によって平行移動が可能です。\n今回はこのアフィン変換をOpenCVを使っておこないます。\nアフィン変換のやり方 OpenCVでは次のようにしてアフィン変換をおこないます。\ntransformed_img = cv2.warpAffine(img, affine_mat, (width, height)) affine_matとしているのが、アフィン変換で用いる行列です。 widthとheightは変換後の画像のサイズになります。\n以下では次の画像に対するアフィン変換の例を示します。 平行移動 平行移動をするときは次のようなアフィン変換になります。 $$\\begin{pmatrix}x&rsquo; \\\\ y&rsquo; \\\\ 1 \\end{pmatrix} =\\begin{pmatrix} 1 &amp; 0 &amp; c\\\\ 0 &amp; 1 &amp; g \\\\ 0 &amp; 0 &amp; 1 \\end{pmatrix} \\begin{pmatrix}x \\\\ y \\\\ 1 \\end{pmatrix}. $$ もう少し式を書きくだせば、 $$\\begin{eqnarray}x&rsquo; &amp;=&amp; x + c, \\\\y&rsquo;&amp;=&amp;y+g\\end{eqnarray}$$ となるので、平行移動だとわかりますね。\n"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://opqrstuvcut.github.io/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/81a46863d26154ebd07353949e4d8171.png' />
     <link rel="shortcut icon" href="/mblog/favicon.ico" />
 
-  
-    
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFC5W8DKV1"></script>
       <script>
         var doNotTrack = false;
@@ -31,11 +29,7 @@
           gtag('js', new Date());
           gtag('config', 'G-LFC5W8DKV1');
         }
-      </script>
-    
-  
-
-<style>
+      </script><style>
   section.article-content h2 {
     background-color: rgb(245, 245, 245);
     padding: 10px;
@@ -92,7 +86,7 @@
                     
                     
                         
-                        <img src="/mblog/img/avatar_hu13660810305696555094.jpeg" width="300"
+                        <img src="/mblog/img/avatar_hu_5bc806b678ac7533.jpeg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -208,8 +202,8 @@
     <header class="article-header">
         <div class="article-image">
             <a href="/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/">
-                <img src="/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/81a46863d26154ebd07353949e4d8171_hu3620224883562234420.png"
-                        srcset="/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/81a46863d26154ebd07353949e4d8171_hu3620224883562234420.png 800w, /mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/81a46863d26154ebd07353949e4d8171_hu14557545383819771467.png 1600w"
+                <img src="/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/81a46863d26154ebd07353949e4d8171_hu_d570fdf875687754.png"
+                        srcset="/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/81a46863d26154ebd07353949e4d8171_hu_d570fdf875687754.png 800w, /mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/81a46863d26154ebd07353949e4d8171_hu_65c2de1bbfcc4aec.png 1600w"
                         width="800" 
                         height="916" 
                         loading="lazy"
@@ -290,7 +284,7 @@ widthとheightは変換後の画像のサイズになります。</p>
 <img src="/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/c4583d46713f7a842568e73b04422d57.png"
 	width="220"
 	height="252"
-	srcset="/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/c4583d46713f7a842568e73b04422d57_hu8144782731882458258.png 480w, /mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/c4583d46713f7a842568e73b04422d57_hu17834146622853901468.png 1024w"
+	srcset="/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/c4583d46713f7a842568e73b04422d57_hu_4e63b70e474586d.png 480w, /mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/c4583d46713f7a842568e73b04422d57_hu_ab6347e434b039de.png 1024w"
 	loading="lazy"
 	
 	
@@ -311,7 +305,7 @@ $$\begin{eqnarray}x&rsquo; &amp;=&amp; x + c, \\y&rsquo;&amp;=&amp;y+g\end{eqnar
 </span></span></code></pre></div><p><img src="/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/e67a3339f922d116791a0f04c0193d6c.png"
 	width="220"
 	height="252"
-	srcset="/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/e67a3339f922d116791a0f04c0193d6c_hu16724901418555687476.png 480w, /mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/e67a3339f922d116791a0f04c0193d6c_hu4586409649753006738.png 1024w"
+	srcset="/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/e67a3339f922d116791a0f04c0193d6c_hu_20462a2d0bcee855.png 480w, /mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/e67a3339f922d116791a0f04c0193d6c_hu_fd284acacb76688c.png 1024w"
 	loading="lazy"
 	
 	
@@ -332,7 +326,7 @@ $$\begin{eqnarray}x&rsquo; &amp;=&amp; ax \\y&rsquo;&amp;=&amp;ey\end{eqnarray}$
 </span></span></code></pre></div><p><img src="/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/5f7ba51ac85c99e5269c488185e05009.png"
 	width="220"
 	height="252"
-	srcset="/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/5f7ba51ac85c99e5269c488185e05009_hu13738330196556415008.png 480w, /mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/5f7ba51ac85c99e5269c488185e05009_hu487162602192325098.png 1024w"
+	srcset="/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/5f7ba51ac85c99e5269c488185e05009_hu_41d4145c93ada252.png 480w, /mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/5f7ba51ac85c99e5269c488185e05009_hu_7526a6cda3aebab8.png 1024w"
 	loading="lazy"
 	
 	
@@ -353,7 +347,7 @@ $$\begin{pmatrix}x&rsquo; \\ y&rsquo;  \\ 1 \end{pmatrix} =\begin{pmatrix}\cos\t
 </span></span></code></pre></div><p><img src="/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/81a46863d26154ebd07353949e4d8171.png"
 	width="220"
 	height="252"
-	srcset="/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/81a46863d26154ebd07353949e4d8171_hu3722951491929355690.png 480w, /mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/81a46863d26154ebd07353949e4d8171_hu12486507665285401057.png 1024w"
+	srcset="/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/81a46863d26154ebd07353949e4d8171_hu_b60d0c7a05e949b6.png 480w, /mblog/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/81a46863d26154ebd07353949e4d8171_hu_21b2c7f41e72609f.png 1024w"
 	loading="lazy"
 	
 	
@@ -438,7 +432,7 @@ $$\begin{pmatrix}x&rsquo; \\ y&rsquo;  \\ 1 \end{pmatrix} =\begin{pmatrix}\cos\t
         
         
             <div class="article-image">
-                <img src="/mblog/posts/%E5%8B%95%E7%94%BB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%8B%E3%82%89%E5%89%8D%E6%99%AF%E3%81%A8%E8%83%8C%E6%99%AF%E3%82%92%E5%88%86%E9%9B%A2%E3%81%99%E3%82%8B/cbb562e9eaee89cb60ac8ec0be592a80.e87b6e8f6ca22b6b36cca3b2b6690362_hu390705902629083679.png" 
+                <img src="/mblog/posts/%E5%8B%95%E7%94%BB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%8B%E3%82%89%E5%89%8D%E6%99%AF%E3%81%A8%E8%83%8C%E6%99%AF%E3%82%92%E5%88%86%E9%9B%A2%E3%81%99%E3%82%8B/cbb562e9eaee89cb60ac8ec0be592a80.e87b6e8f6ca22b6b36cca3b2b6690362_hu_c5e808e5c63e0847.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -462,7 +456,7 @@ $$\begin{pmatrix}x&rsquo; \\ y&rsquo;  \\ 1 \end{pmatrix} =\begin{pmatrix}\cos\t
         
         
             <div class="article-image">
-                <img src="/mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/d0411dcb235b3add1e1a55f1a9394d2d.cdc50c30a2665f1bcc4245a119ab8bbb_hu9937509795490170185.png" 
+                <img src="/mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/d0411dcb235b3add1e1a55f1a9394d2d.cdc50c30a2665f1bcc4245a119ab8bbb_hu_5de69ec84782b2c5.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -486,7 +480,7 @@ $$\begin{pmatrix}x&rsquo; \\ y&rsquo;  \\ 1 \end{pmatrix} =\begin{pmatrix}\cos\t
         
         
             <div class="article-image">
-                <img src="/mblog/posts/findcontours%E3%81%A7%E8%BC%AA%E9%83%AD%E3%81%AE%E6%A4%9C%E5%87%BA/36626599de1a642e7bfec7fa47def298.273ed0912346665a556545fc8c648ab8_hu3379407131511175525.png" 
+                <img src="/mblog/posts/findcontours%E3%81%A7%E8%BC%AA%E9%83%AD%E3%81%AE%E6%A4%9C%E5%87%BA/36626599de1a642e7bfec7fa47def298.273ed0912346665a556545fc8c648ab8_hu_d9ac13c161f3cd90.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -510,7 +504,7 @@ $$\begin{pmatrix}x&rsquo; \\ y&rsquo;  \\ 1 \end{pmatrix} =\begin{pmatrix}\cos\t
         
         
             <div class="article-image">
-                <img src="/mblog/posts/%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%83%9E%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%8B%E3%82%89%E7%89%A9%E4%BD%93%E3%82%92%E3%81%BF%E3%81%A4%E3%81%91%E3%82%8B/0359ef5bc2687ab5c1e63356c89cc3e0.1e1423b2714291cf4647a1c4677451b8_hu11081041458382776038.png" 
+                <img src="/mblog/posts/%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%83%9E%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%8B%E3%82%89%E7%89%A9%E4%BD%93%E3%82%92%E3%81%BF%E3%81%A4%E3%81%91%E3%82%8B/0359ef5bc2687ab5c1e63356c89cc3e0.1e1423b2714291cf4647a1c4677451b8_hu_3e44667558a206cc.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"

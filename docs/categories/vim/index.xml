@@ -26,8 +26,8 @@
     &gt;magma-nvim&lt;/a&gt;はJupyterカーネルに選択したコードの実行をさせて、結果をvim上に表示するためのプラグインです。&lt;br&gt;
 上記のリンク先にデモ動画が載っていますが、自分が用意したものを載せておきます。
 &lt;video controls preload=&#34;auto&#34; width=&#34;100%&#34;  playsinline class=&#34;html-video&#34;&gt;
-    &lt;source src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/magma-nvim%E3%81%A7%E7%90%86%E6%83%B3%E3%81%AB%E8%BF%91%E3%81%84vim%E3%81%A7%E3%81%AEjupyter%E7%92%B0%E5%A2%83%E3%82%92%E4%BD%9C%E3%82%8B/magma-sample.webm&#34; type=&#34;video/webm&#34;&gt;
-  &lt;span&gt;お使いのブラウザは埋め込み動画をサポートしていませんが、&lt;a href=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/magma-nvim%E3%81%A7%E7%90%86%E6%83%B3%E3%81%AB%E8%BF%91%E3%81%84vim%E3%81%A7%E3%81%AEjupyter%E7%92%B0%E5%A2%83%E3%82%92%E4%BD%9C%E3%82%8B/magma-sample.webm&#34;&gt;ダウンロード&lt;/a&gt; して、お好きなメディアプレーヤーで再生できます。&lt;/span&gt;
+    &lt;source src=&#34;https://opqrstuvcut.github.io/mblog/posts/magma-nvim%E3%81%A7%E7%90%86%E6%83%B3%E3%81%AB%E8%BF%91%E3%81%84vim%E3%81%A7%E3%81%AEjupyter%E7%92%B0%E5%A2%83%E3%82%92%E4%BD%9C%E3%82%8B/magma-sample.webm&#34; type=&#34;video/webm&#34;&gt;
+  &lt;span&gt;お使いのブラウザは埋め込み動画をサポートしていませんが、&lt;a href=&#34;https://opqrstuvcut.github.io/mblog/posts/magma-nvim%E3%81%A7%E7%90%86%E6%83%B3%E3%81%AB%E8%BF%91%E3%81%84vim%E3%81%A7%E3%81%AEjupyter%E7%92%B0%E5%A2%83%E3%82%92%E4%BD%9C%E3%82%8B/magma-sample.webm&#34;&gt;ダウンロード&lt;/a&gt; して、お好きなメディアプレーヤーで再生できます。&lt;/span&gt;
 &lt;/video&gt;&lt;/p&gt;
 &lt;p&gt;これが本当に素晴らしくよくできています。magma-nvimの存在を知ったときはテンション爆あがりでした。&lt;/p&gt;
 &lt;p&gt;が、自分の運用上はだいぶ困った点がありました。&lt;/p&gt;

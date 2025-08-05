@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="ja-jp" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="問題発生時の状況 AWSのECS上にFastAPI + uvicornの構成でのサーバーをたてました。内容的には普通のREST APIです。 とりあえずは順調に動作していたのですが、たまにコンテナが再起動しているっぽいけどなんだろうと思って調べていたところ、メモリ使用量が次のようになっていました。 時間経過でメモリ使用量が勝手に増えているような振る舞いです。 実装上はこんなことにならないはず…。 解決方法 調べてみると、同じようなissueが存在していました。 https://github.com/tiangolo/fastapi/issues/1624 https://github.com/encode/uvicorn/issues/1226 uvicorn側のissueをみると、uvicornのバージョンが0.17.0でこのような問題が起こるようです。 利用しているバージョンがちょうど0.17.0でしたので、0.17.6へとバージョンしてみると、見事に解決しました！ バージョンアップ後のメモリ使用量が以下のグラフの右端の平らな部分です。時間経過でメモリ使用量が増えるようなことがなくなっています。">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="問題発生時の状況 AWSのECS上にFastAPI + uvicornの構成でのサーバーをたてました。内容的には普通のREST APIです。\nとりあえずは順調に動作していたのですが、たまにコンテナが再起動しているっぽいけどなんだろうと思って調べていたところ、メモリ使用量が次のようになっていました。\n時間経過でメモリ使用量が勝手に増えているような振る舞いです。 実装上はこんなことにならないはず…。\n解決方法 調べてみると、同じようなissueが存在していました。\nhttps://github.com/tiangolo/fastapi/issues/1624 https://github.com/encode/uvicorn/issues/1226 uvicorn側のissueをみると、uvicornのバージョンが0.17.0でこのような問題が起こるようです。\n利用しているバージョンがちょうど0.17.0でしたので、0.17.6へとバージョンしてみると、見事に解決しました！\nバージョンアップ後のメモリ使用量が以下のグラフの右端の平らな部分です。時間経過でメモリ使用量が増えるようなことがなくなっています。\n">
 <title>FastAPI &#43; uvicornの構成のサーバーで時間経過でメモリ使用量が増えるとき</title>
 
 <link rel='canonical' href='https://opqrstuvcut.github.io/mblog/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/'>
 
-<link rel="stylesheet" href="/mblog/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="FastAPI + uvicornの構成のサーバーで時間経過でメモリ使用量が増えるとき">
-<meta property='og:description' content="問題発生時の状況 AWSのECS上にFastAPI + uvicornの構成でのサーバーをたてました。内容的には普通のREST APIです。 とりあえずは順調に動作していたのですが、たまにコンテナが再起動しているっぽいけどなんだろうと思って調べていたところ、メモリ使用量が次のようになっていました。 時間経過でメモリ使用量が勝手に増えているような振る舞いです。 実装上はこんなことにならないはず…。 解決方法 調べてみると、同じようなissueが存在していました。 https://github.com/tiangolo/fastapi/issues/1624 https://github.com/encode/uvicorn/issues/1226 uvicorn側のissueをみると、uvicornのバージョンが0.17.0でこのような問題が起こるようです。 利用しているバージョンがちょうど0.17.0でしたので、0.17.6へとバージョンしてみると、見事に解決しました！ バージョンアップ後のメモリ使用量が以下のグラフの右端の平らな部分です。時間経過でメモリ使用量が増えるようなことがなくなっています。">
+<link rel="stylesheet" href="/mblog/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="FastAPI + uvicornの構成のサーバーで時間経過でメモリ使用量が増えるとき">
+<meta property='og:description' content="問題発生時の状況 AWSのECS上にFastAPI + uvicornの構成でのサーバーをたてました。内容的には普通のREST APIです。\nとりあえずは順調に動作していたのですが、たまにコンテナが再起動しているっぽいけどなんだろうと思って調べていたところ、メモリ使用量が次のようになっていました。\n時間経過でメモリ使用量が勝手に増えているような振る舞いです。 実装上はこんなことにならないはず…。\n解決方法 調べてみると、同じようなissueが存在していました。\nhttps://github.com/tiangolo/fastapi/issues/1624 https://github.com/encode/uvicorn/issues/1226 uvicorn側のissueをみると、uvicornのバージョンが0.17.0でこのような問題が起こるようです。\n利用しているバージョンがちょうど0.17.0でしたので、0.17.6へとバージョンしてみると、見事に解決しました！\nバージョンアップ後のメモリ使用量が以下のグラフの右端の平らな部分です。時間経過でメモリ使用量が増えるようなことがなくなっています。\n">
 <meta property='og:url' content='https://opqrstuvcut.github.io/mblog/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/'>
 <meta property='og:site_name' content='MatLoverによるMatlab以外のブログ'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='AWS' /><meta property='article:tag' content='ECS' /><meta property='article:tag' content='FastAPI' /><meta property='article:tag' content='uvicorn' /><meta property='article:tag' content='Python' /><meta property='article:published_time' content='2022-03-20T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-03-20T00:00:00&#43;00:00'/><meta property='og:image' content='https://opqrstuvcut.github.io/mblog/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/memory_usage_ng.png' />
 <meta name="twitter:title" content="FastAPI + uvicornの構成のサーバーで時間経過でメモリ使用量が増えるとき">
-<meta name="twitter:description" content="問題発生時の状況 AWSのECS上にFastAPI + uvicornの構成でのサーバーをたてました。内容的には普通のREST APIです。 とりあえずは順調に動作していたのですが、たまにコンテナが再起動しているっぽいけどなんだろうと思って調べていたところ、メモリ使用量が次のようになっていました。 時間経過でメモリ使用量が勝手に増えているような振る舞いです。 実装上はこんなことにならないはず…。 解決方法 調べてみると、同じようなissueが存在していました。 https://github.com/tiangolo/fastapi/issues/1624 https://github.com/encode/uvicorn/issues/1226 uvicorn側のissueをみると、uvicornのバージョンが0.17.0でこのような問題が起こるようです。 利用しているバージョンがちょうど0.17.0でしたので、0.17.6へとバージョンしてみると、見事に解決しました！ バージョンアップ後のメモリ使用量が以下のグラフの右端の平らな部分です。時間経過でメモリ使用量が増えるようなことがなくなっています。"><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="問題発生時の状況 AWSのECS上にFastAPI + uvicornの構成でのサーバーをたてました。内容的には普通のREST APIです。\nとりあえずは順調に動作していたのですが、たまにコンテナが再起動しているっぽいけどなんだろうと思って調べていたところ、メモリ使用量が次のようになっていました。\n時間経過でメモリ使用量が勝手に増えているような振る舞いです。 実装上はこんなことにならないはず…。\n解決方法 調べてみると、同じようなissueが存在していました。\nhttps://github.com/tiangolo/fastapi/issues/1624 https://github.com/encode/uvicorn/issues/1226 uvicorn側のissueをみると、uvicornのバージョンが0.17.0でこのような問題が起こるようです。\n利用しているバージョンがちょうど0.17.0でしたので、0.17.6へとバージョンしてみると、見事に解決しました！\nバージョンアップ後のメモリ使用量が以下のグラフの右端の平らな部分です。時間経過でメモリ使用量が増えるようなことがなくなっています。\n"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://opqrstuvcut.github.io/mblog/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/memory_usage_ng.png' />
     <link rel="shortcut icon" href="/mblog/favicon.ico" />
 
-  
-    
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFC5W8DKV1"></script>
       <script>
         var doNotTrack = false;
@@ -31,11 +29,7 @@
           gtag('js', new Date());
           gtag('config', 'G-LFC5W8DKV1');
         }
-      </script>
-    
-  
-
-<style>
+      </script><style>
   section.article-content h2 {
     background-color: rgb(245, 245, 245);
     padding: 10px;
@@ -92,7 +86,7 @@
                     
                     
                         
-                        <img src="/mblog/img/avatar_hu13660810305696555094.jpeg" width="300"
+                        <img src="/mblog/img/avatar_hu_5bc806b678ac7533.jpeg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -208,8 +202,8 @@
     <header class="article-header">
         <div class="article-image">
             <a href="/mblog/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/">
-                <img src="/mblog/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/memory_usage_ng_hu6238039986820792990.png"
-                        srcset="/mblog/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/memory_usage_ng_hu6238039986820792990.png 800w, /mblog/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/memory_usage_ng_hu4919844896630485046.png 1600w"
+                <img src="/mblog/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/memory_usage_ng_hu_131827d263fa62e6.png"
+                        srcset="/mblog/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/memory_usage_ng_hu_131827d263fa62e6.png 800w, /mblog/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/memory_usage_ng_hu_4c0518514830d9b3.png 1600w"
                         width="800" 
                         height="471" 
                         loading="lazy"
@@ -278,7 +272,7 @@
 
 	
 	<a href="/mblog/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/memory_usage_ng.png">
-	<img src="/mblog/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/memory_usage_ng_hu944618716889460683.png" alt="メモリ使用量">
+	<img src="/mblog/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/memory_usage_ng_hu_827a181089c8ec1f.png" alt="メモリ使用量">
 	</a>
 
 </p>
@@ -299,7 +293,7 @@
 
 	
 	<a href="/mblog/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/memory_usage_improved.png">
-	<img src="/mblog/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/memory_usage_improved_hu17318454284546302220.png" alt="メモリ使用量">
+	<img src="/mblog/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/memory_usage_improved_hu_a543cc76e303d952.png" alt="メモリ使用量">
 	</a>
 
 </p>
@@ -396,7 +390,7 @@
         
         
             <div class="article-image">
-                <img src="/mblog/posts/minio%E3%81%A7%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%81%ABs3%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AA%E3%82%82%E3%81%AE%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%A6%E9%96%8B%E7%99%BA%E3%81%99%E3%82%8B/2d89cc4c8b3b3d34194b32b843ff40bf.f2cb16dd23b1919c16c3c83d022ae7a9_hu1696095725116569352.png" 
+                <img src="/mblog/posts/minio%E3%81%A7%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%81%ABs3%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AA%E3%82%82%E3%81%AE%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%A6%E9%96%8B%E7%99%BA%E3%81%99%E3%82%8B/2d89cc4c8b3b3d34194b32b843ff40bf.f2cb16dd23b1919c16c3c83d022ae7a9_hu_28f9d44ef8dc4694.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -420,7 +414,7 @@
         
         
             <div class="article-image">
-                <img src="/mblog/posts/app-runner%E3%82%92%E5%AE%9F%E6%88%A6%E6%8A%95%E5%85%A5%E3%81%97%E3%81%A6%E3%81%AE%E3%83%A1%E3%83%A2/feature.0c1c2c859f28cc469ae9ba38a5d48ced_hu5881553293964946171.png" 
+                <img src="/mblog/posts/app-runner%E3%82%92%E5%AE%9F%E6%88%A6%E6%8A%95%E5%85%A5%E3%81%97%E3%81%A6%E3%81%AE%E3%83%A1%E3%83%A2/feature.0c1c2c859f28cc469ae9ba38a5d48ced_hu_75a36750f48a3423.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -444,7 +438,7 @@
         
         
             <div class="article-image">
-                <img src="/mblog/posts/docker-compose%E3%81%A7aws-ecs%E3%81%AB%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%99%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AEtips/feature.718432b5a8bbbcfe516a16f7c85afe67_hu16302300365520880167.png" 
+                <img src="/mblog/posts/docker-compose%E3%81%A7aws-ecs%E3%81%AB%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%99%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AEtips/feature.718432b5a8bbbcfe516a16f7c85afe67_hu_9e231ed0ebb9dded.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"

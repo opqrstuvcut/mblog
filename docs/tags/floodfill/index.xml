@@ -31,18 +31,18 @@ newValに塗りつぶす色を指定します。
 seedPointに指定したピクセルの値からloDiffを引いた値とseedPointに指定したピクセルの値にupDiffを加えた値の間に入っているピクセルをseedPointの隣から順に塗りつぶしていきます。&lt;/p&gt;
 &lt;p&gt;結果は以下のとおりです。&lt;/p&gt;
 &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;入力画像&lt;/th&gt;
-&lt;th&gt;floodFillの結果&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/floodfill%E3%81%A7%E9%A0%98%E5%9F%9F%E3%81%AB%E8%89%B2%E3%82%92%E5%A1%97%E3%82%8B/b944ecdbe70bf25c0767c5274622e44a.png&#34;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;入力画像&lt;/th&gt;
+          &lt;th&gt;floodFillの結果&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/floodfill%E3%81%A7%E9%A0%98%E5%9F%9F%E3%81%AB%E8%89%B2%E3%82%92%E5%A1%97%E3%82%8B/b944ecdbe70bf25c0767c5274622e44a.png&#34;
 	width=&#34;247&#34;
 	height=&#34;252&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/floodfill%E3%81%A7%E9%A0%98%E5%9F%9F%E3%81%AB%E8%89%B2%E3%82%92%E5%A1%97%E3%82%8B/b944ecdbe70bf25c0767c5274622e44a_hu7478582748216616389.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/floodfill%E3%81%A7%E9%A0%98%E5%9F%9F%E3%81%AB%E8%89%B2%E3%82%92%E5%A1%97%E3%82%8B/b944ecdbe70bf25c0767c5274622e44a_hu7927824199827877093.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/floodfill%E3%81%A7%E9%A0%98%E5%9F%9F%E3%81%AB%E8%89%B2%E3%82%92%E5%A1%97%E3%82%8B/b944ecdbe70bf25c0767c5274622e44a_hu_e81fb55e04aeb81.png 480w, https://opqrstuvcut.github.io/mblog/posts/floodfill%E3%81%A7%E9%A0%98%E5%9F%9F%E3%81%AB%E8%89%B2%E3%82%92%E5%A1%97%E3%82%8B/b944ecdbe70bf25c0767c5274622e44a_hu_6b2249181321ff10.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -51,10 +51,10 @@ seedPointに指定したピクセルの値からloDiffを引いた値とseedPoin
 		data-flex-basis=&#34;235px&#34;
 	
 &gt;&lt;/td&gt;
-&lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/floodfill%E3%81%A7%E9%A0%98%E5%9F%9F%E3%81%AB%E8%89%B2%E3%82%92%E5%A1%97%E3%82%8B/b7d4e85930d3ec37e0350ab3fe75e877.png&#34;
+          &lt;td&gt;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/floodfill%E3%81%A7%E9%A0%98%E5%9F%9F%E3%81%AB%E8%89%B2%E3%82%92%E5%A1%97%E3%82%8B/b7d4e85930d3ec37e0350ab3fe75e877.png&#34;
 	width=&#34;247&#34;
 	height=&#34;252&#34;
-	srcset=&#34;https://opqrstuvcut.github.io/mblog/mblog/posts/floodfill%E3%81%A7%E9%A0%98%E5%9F%9F%E3%81%AB%E8%89%B2%E3%82%92%E5%A1%97%E3%82%8B/b7d4e85930d3ec37e0350ab3fe75e877_hu10837064970380925357.png 480w, https://opqrstuvcut.github.io/mblog/mblog/posts/floodfill%E3%81%A7%E9%A0%98%E5%9F%9F%E3%81%AB%E8%89%B2%E3%82%92%E5%A1%97%E3%82%8B/b7d4e85930d3ec37e0350ab3fe75e877_hu5778262926017582048.png 1024w&#34;
+	srcset=&#34;https://opqrstuvcut.github.io/mblog/posts/floodfill%E3%81%A7%E9%A0%98%E5%9F%9F%E3%81%AB%E8%89%B2%E3%82%92%E5%A1%97%E3%82%8B/b7d4e85930d3ec37e0350ab3fe75e877_hu_a15222bb1cd309ed.png 480w, https://opqrstuvcut.github.io/mblog/posts/floodfill%E3%81%A7%E9%A0%98%E5%9F%9F%E3%81%AB%E8%89%B2%E3%82%92%E5%A1%97%E3%82%8B/b7d4e85930d3ec37e0350ab3fe75e877_hu_ac030c92ae12fd45.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 	
@@ -63,8 +63,8 @@ seedPointに指定したピクセルの値からloDiffを引いた値とseedPoin
 		data-flex-basis=&#34;235px&#34;
 	
 &gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 </description>
         </item>

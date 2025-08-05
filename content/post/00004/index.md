@@ -68,11 +68,11 @@ $$C_{\Delta x \Delta y} = \Delta y $$です。
 ## saturation problemとdiscontinuous gradientsの解決
 Linear RuleとRescale Ruleの2つを定義しましたが、このルールに則って寄与を計算することで、前述した2つの問題を解決することができます（どちらもRescale Rule絡みになりますが）。
 
-<u>saturation problem</u>
+**saturation problem**
 以下の図のように、DeepLiftでは勾配が0になる状況でも寄与は0になりません。
 ![](7d9d6c0a6fa52841fa18e2cf4cb227a8.png)
 
-<u>discontinuous gradients</u>
+**discontinuous gradients**
 以下の3列目がDeepLiftでの寄与をあらわしたグラフです。DeepLiftでは寄与が不連続になりません。
 ![](f2103e478f29951e3faa9d398d626a56.png)
 

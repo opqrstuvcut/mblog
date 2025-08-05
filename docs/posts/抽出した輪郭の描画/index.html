@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="ja-jp" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="本記事はQrunchからの転載です。 OpenCVのfindContoursで見つけた輪郭はdrawContoursで簡単に描画できます。 次のようにして使えます。 drawed = cv2.drawContours(img, contours=contours, contourIdx=-1, color=(255, 0, 0), thickness=10, lineType=8, hierarchy=hierarcies, maxLevel=1) 引数の意味はそれぞれ次のとおりです。必須なのはcolorまでです。 引数 意味 contours findContoursで見つかった輪郭 contourIdx 描画する輪郭のインデックスを指定する（-1だと全て描画） color 描画する輪郭の色 thickness 描画する輪郭の太さ lineType 4、8、cv2.LINE_AAのどれかを指定し、後のほうがきれいに描画される hierarchy findContoursで見つかった輪郭の階層構造 maxLevel 描画する最大の階層を指定する maxLevelを1にしたときと、2にしたときの違いを次に示します。 maxLevel=1 maxLevel=2 maxLevelが2のときには外側の輪郭の中まで輪郭が描画されていますね。">
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="本記事はQrunchからの転載です。\nOpenCVのfindContoursで見つけた輪郭はdrawContoursで簡単に描画できます。 次のようにして使えます。\ndrawed = cv2.drawContours(img, contours=contours, contourIdx=-1, color=(255, 0, 0), thickness=10, lineType=8, hierarchy=hierarcies, maxLevel=1) 引数の意味はそれぞれ次のとおりです。必須なのはcolorまでです。\n引数 意味 contours findContoursで見つかった輪郭 contourIdx 描画する輪郭のインデックスを指定する（-1だと全て描画） color 描画する輪郭の色 thickness 描画する輪郭の太さ lineType 4、8、cv2.LINE_AAのどれかを指定し、後のほうがきれいに描画される hierarchy findContoursで見つかった輪郭の階層構造 maxLevel 描画する最大の階層を指定する maxLevelを1にしたときと、2にしたときの違いを次に示します。\nmaxLevel=1 maxLevel=2 maxLevelが2のときには外側の輪郭の中まで輪郭が描画されていますね。\n">
 <title>抽出した輪郭の描画</title>
 
 <link rel='canonical' href='https://opqrstuvcut.github.io/mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/'>
 
-<link rel="stylesheet" href="/mblog/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css"><meta property='og:title' content="抽出した輪郭の描画">
-<meta property='og:description' content="本記事はQrunchからの転載です。 OpenCVのfindContoursで見つけた輪郭はdrawContoursで簡単に描画できます。 次のようにして使えます。 drawed = cv2.drawContours(img, contours=contours, contourIdx=-1, color=(255, 0, 0), thickness=10, lineType=8, hierarchy=hierarcies, maxLevel=1) 引数の意味はそれぞれ次のとおりです。必須なのはcolorまでです。 引数 意味 contours findContoursで見つかった輪郭 contourIdx 描画する輪郭のインデックスを指定する（-1だと全て描画） color 描画する輪郭の色 thickness 描画する輪郭の太さ lineType 4、8、cv2.LINE_AAのどれかを指定し、後のほうがきれいに描画される hierarchy findContoursで見つかった輪郭の階層構造 maxLevel 描画する最大の階層を指定する maxLevelを1にしたときと、2にしたときの違いを次に示します。 maxLevel=1 maxLevel=2 maxLevelが2のときには外側の輪郭の中まで輪郭が描画されていますね。">
+<link rel="stylesheet" href="/mblog/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="抽出した輪郭の描画">
+<meta property='og:description' content="本記事はQrunchからの転載です。\nOpenCVのfindContoursで見つけた輪郭はdrawContoursで簡単に描画できます。 次のようにして使えます。\ndrawed = cv2.drawContours(img, contours=contours, contourIdx=-1, color=(255, 0, 0), thickness=10, lineType=8, hierarchy=hierarcies, maxLevel=1) 引数の意味はそれぞれ次のとおりです。必須なのはcolorまでです。\n引数 意味 contours findContoursで見つかった輪郭 contourIdx 描画する輪郭のインデックスを指定する（-1だと全て描画） color 描画する輪郭の色 thickness 描画する輪郭の太さ lineType 4、8、cv2.LINE_AAのどれかを指定し、後のほうがきれいに描画される hierarchy findContoursで見つかった輪郭の階層構造 maxLevel 描画する最大の階層を指定する maxLevelを1にしたときと、2にしたときの違いを次に示します。\nmaxLevel=1 maxLevel=2 maxLevelが2のときには外側の輪郭の中まで輪郭が描画されていますね。\n">
 <meta property='og:url' content='https://opqrstuvcut.github.io/mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/'>
 <meta property='og:site_name' content='MatLoverによるMatlab以外のブログ'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='OpenCV' /><meta property='article:tag' content='drawContours' /><meta property='article:tag' content='輪郭' /><meta property='article:published_time' content='2020-08-17T11:03:00&#43;09:00'/><meta property='article:modified_time' content='2020-08-17T11:03:00&#43;09:00'/><meta property='og:image' content='https://opqrstuvcut.github.io/mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/d0411dcb235b3add1e1a55f1a9394d2d.png' />
 <meta name="twitter:title" content="抽出した輪郭の描画">
-<meta name="twitter:description" content="本記事はQrunchからの転載です。 OpenCVのfindContoursで見つけた輪郭はdrawContoursで簡単に描画できます。 次のようにして使えます。 drawed = cv2.drawContours(img, contours=contours, contourIdx=-1, color=(255, 0, 0), thickness=10, lineType=8, hierarchy=hierarcies, maxLevel=1) 引数の意味はそれぞれ次のとおりです。必須なのはcolorまでです。 引数 意味 contours findContoursで見つかった輪郭 contourIdx 描画する輪郭のインデックスを指定する（-1だと全て描画） color 描画する輪郭の色 thickness 描画する輪郭の太さ lineType 4、8、cv2.LINE_AAのどれかを指定し、後のほうがきれいに描画される hierarchy findContoursで見つかった輪郭の階層構造 maxLevel 描画する最大の階層を指定する maxLevelを1にしたときと、2にしたときの違いを次に示します。 maxLevel=1 maxLevel=2 maxLevelが2のときには外側の輪郭の中まで輪郭が描画されていますね。"><meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="本記事はQrunchからの転載です。\nOpenCVのfindContoursで見つけた輪郭はdrawContoursで簡単に描画できます。 次のようにして使えます。\ndrawed = cv2.drawContours(img, contours=contours, contourIdx=-1, color=(255, 0, 0), thickness=10, lineType=8, hierarchy=hierarcies, maxLevel=1) 引数の意味はそれぞれ次のとおりです。必須なのはcolorまでです。\n引数 意味 contours findContoursで見つかった輪郭 contourIdx 描画する輪郭のインデックスを指定する（-1だと全て描画） color 描画する輪郭の色 thickness 描画する輪郭の太さ lineType 4、8、cv2.LINE_AAのどれかを指定し、後のほうがきれいに描画される hierarchy findContoursで見つかった輪郭の階層構造 maxLevel 描画する最大の階層を指定する maxLevelを1にしたときと、2にしたときの違いを次に示します。\nmaxLevel=1 maxLevel=2 maxLevelが2のときには外側の輪郭の中まで輪郭が描画されていますね。\n"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://opqrstuvcut.github.io/mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/d0411dcb235b3add1e1a55f1a9394d2d.png' />
     <link rel="shortcut icon" href="/mblog/favicon.ico" />
 
-  
-    
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFC5W8DKV1"></script>
       <script>
         var doNotTrack = false;
@@ -31,11 +29,7 @@
           gtag('js', new Date());
           gtag('config', 'G-LFC5W8DKV1');
         }
-      </script>
-    
-  
-
-<style>
+      </script><style>
   section.article-content h2 {
     background-color: rgb(245, 245, 245);
     padding: 10px;
@@ -92,7 +86,7 @@
                     
                     
                         
-                        <img src="/mblog/img/avatar_hu13660810305696555094.jpeg" width="300"
+                        <img src="/mblog/img/avatar_hu_5bc806b678ac7533.jpeg" width="300"
                             height="300" class="site-logo" loading="lazy" alt="Avatar">
                     
                 
@@ -208,8 +202,8 @@
     <header class="article-header">
         <div class="article-image">
             <a href="/mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/">
-                <img src="/mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/d0411dcb235b3add1e1a55f1a9394d2d_hu15366937593455168840.png"
-                        srcset="/mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/d0411dcb235b3add1e1a55f1a9394d2d_hu15366937593455168840.png 800w, /mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/d0411dcb235b3add1e1a55f1a9394d2d_hu1292572728214829981.png 1600w"
+                <img src="/mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/d0411dcb235b3add1e1a55f1a9394d2d_hu_3c504980b4aa3ee2.png"
+                        srcset="/mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/d0411dcb235b3add1e1a55f1a9394d2d_hu_3c504980b4aa3ee2.png 800w, /mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/d0411dcb235b3add1e1a55f1a9394d2d_hu_63d9319f0bb5cb2c.png 1600w"
                         width="800" 
                         height="1055" 
                         loading="lazy"
@@ -288,57 +282,57 @@
 </span></span><span class="line"><span class="cl">                          <span class="n">maxLevel</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </span></span></code></pre></div><p>引数の意味はそれぞれ次のとおりです。必須なのはcolorまでです。</p>
 <div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>引数</th>
-<th>意味</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>contours</td>
-<td>findContoursで見つかった輪郭</td>
-</tr>
-<tr>
-<td>contourIdx</td>
-<td>描画する輪郭のインデックスを指定する（-1だと全て描画）</td>
-</tr>
-<tr>
-<td>color</td>
-<td>描画する輪郭の色</td>
-</tr>
-<tr>
-<td>thickness</td>
-<td>描画する輪郭の太さ</td>
-</tr>
-<tr>
-<td>lineType</td>
-<td>4、8、cv2.LINE_AAのどれかを指定し、後のほうがきれいに描画される</td>
-</tr>
-<tr>
-<td>hierarchy</td>
-<td>findContoursで見つかった輪郭の階層構造</td>
-</tr>
-<tr>
-<td>maxLevel</td>
-<td>描画する最大の階層を指定する</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>引数</th>
+          <th>意味</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>contours</td>
+          <td>findContoursで見つかった輪郭</td>
+      </tr>
+      <tr>
+          <td>contourIdx</td>
+          <td>描画する輪郭のインデックスを指定する（-1だと全て描画）</td>
+      </tr>
+      <tr>
+          <td>color</td>
+          <td>描画する輪郭の色</td>
+      </tr>
+      <tr>
+          <td>thickness</td>
+          <td>描画する輪郭の太さ</td>
+      </tr>
+      <tr>
+          <td>lineType</td>
+          <td>4、8、cv2.LINE_AAのどれかを指定し、後のほうがきれいに描画される</td>
+      </tr>
+      <tr>
+          <td>hierarchy</td>
+          <td>findContoursで見つかった輪郭の階層構造</td>
+      </tr>
+      <tr>
+          <td>maxLevel</td>
+          <td>描画する最大の階層を指定する</td>
+      </tr>
+  </tbody>
 </table></div>
 <p>maxLevelを1にしたときと、2にしたときの違いを次に示します。</p>
 <div class="table-wrapper"><table>
-<thead>
-<tr>
-<th>maxLevel=1</th>
-<th>maxLevel=2</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><img src="/mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/d0411dcb235b3add1e1a55f1a9394d2d.png"
+  <thead>
+      <tr>
+          <th>maxLevel=1</th>
+          <th>maxLevel=2</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><img src="/mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/d0411dcb235b3add1e1a55f1a9394d2d.png"
 	width="191"
 	height="252"
-	srcset="/mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/d0411dcb235b3add1e1a55f1a9394d2d_hu1025864027178649423.png 480w, /mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/d0411dcb235b3add1e1a55f1a9394d2d_hu11810570215488114350.png 1024w"
+	srcset="/mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/d0411dcb235b3add1e1a55f1a9394d2d_hu_da4370611c4990ab.png 480w, /mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/d0411dcb235b3add1e1a55f1a9394d2d_hu_324a94385b4f01fb.png 1024w"
 	loading="lazy"
 	
 	
@@ -347,10 +341,10 @@
 		data-flex-basis="181px"
 	
 ></td>
-<td><img src="/mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/2befea557cb26cffa707b61c3f373954.png"
+          <td><img src="/mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/2befea557cb26cffa707b61c3f373954.png"
 	width="191"
 	height="252"
-	srcset="/mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/2befea557cb26cffa707b61c3f373954_hu2805491340527880693.png 480w, /mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/2befea557cb26cffa707b61c3f373954_hu11341786924191887069.png 1024w"
+	srcset="/mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/2befea557cb26cffa707b61c3f373954_hu_cbf4b04b12c0dbbf.png 480w, /mblog/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/2befea557cb26cffa707b61c3f373954_hu_9373a6efb9de0f1c.png 1024w"
 	loading="lazy"
 	
 	
@@ -359,8 +353,8 @@
 		data-flex-basis="181px"
 	
 ></td>
-</tr>
-</tbody>
+      </tr>
+  </tbody>
 </table></div>
 <p>maxLevelが2のときには外側の輪郭の中まで輪郭が描画されていますね。</p>
 
@@ -439,7 +433,7 @@
         
         
             <div class="article-image">
-                <img src="/mblog/posts/%E5%8B%95%E7%94%BB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%8B%E3%82%89%E5%89%8D%E6%99%AF%E3%81%A8%E8%83%8C%E6%99%AF%E3%82%92%E5%88%86%E9%9B%A2%E3%81%99%E3%82%8B/cbb562e9eaee89cb60ac8ec0be592a80.e87b6e8f6ca22b6b36cca3b2b6690362_hu390705902629083679.png" 
+                <img src="/mblog/posts/%E5%8B%95%E7%94%BB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%8B%E3%82%89%E5%89%8D%E6%99%AF%E3%81%A8%E8%83%8C%E6%99%AF%E3%82%92%E5%88%86%E9%9B%A2%E3%81%99%E3%82%8B/cbb562e9eaee89cb60ac8ec0be592a80.e87b6e8f6ca22b6b36cca3b2b6690362_hu_c5e808e5c63e0847.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -463,7 +457,7 @@
         
         
             <div class="article-image">
-                <img src="/mblog/posts/findcontours%E3%81%A7%E8%BC%AA%E9%83%AD%E3%81%AE%E6%A4%9C%E5%87%BA/36626599de1a642e7bfec7fa47def298.273ed0912346665a556545fc8c648ab8_hu3379407131511175525.png" 
+                <img src="/mblog/posts/findcontours%E3%81%A7%E8%BC%AA%E9%83%AD%E3%81%AE%E6%A4%9C%E5%87%BA/36626599de1a642e7bfec7fa47def298.273ed0912346665a556545fc8c648ab8_hu_d9ac13c161f3cd90.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -487,7 +481,7 @@
         
         
             <div class="article-image">
-                <img src="/mblog/posts/%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%83%9E%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%8B%E3%82%89%E7%89%A9%E4%BD%93%E3%82%92%E3%81%BF%E3%81%A4%E3%81%91%E3%82%8B/0359ef5bc2687ab5c1e63356c89cc3e0.1e1423b2714291cf4647a1c4677451b8_hu11081041458382776038.png" 
+                <img src="/mblog/posts/%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%83%9E%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%8B%E3%82%89%E7%89%A9%E4%BD%93%E3%82%92%E3%81%BF%E3%81%A4%E3%81%91%E3%82%8B/0359ef5bc2687ab5c1e63356c89cc3e0.1e1423b2714291cf4647a1c4677451b8_hu_3e44667558a206cc.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
@@ -524,7 +518,7 @@
         
         
             <div class="article-image">
-                <img src="/mblog/posts/comphist%E3%81%A7%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E6%AF%94%E8%BC%83%E3%82%92%E3%81%84%E3%82%8D%E3%81%84%E3%82%8D%E3%81%AA%E3%82%84%E3%82%8A%E6%96%B9%E3%81%A7%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86/ae3cebef75b7a49ca03c77500f3925a0.7f70073bd12d74a1a8cd41d390ac25ec_hu15880869493974800633.png" 
+                <img src="/mblog/posts/comphist%E3%81%A7%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E6%AF%94%E8%BC%83%E3%82%92%E3%81%84%E3%82%8D%E3%81%84%E3%82%8D%E3%81%AA%E3%82%84%E3%82%8A%E6%96%B9%E3%81%A7%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86/ae3cebef75b7a49ca03c77500f3925a0.7f70073bd12d74a1a8cd41d390ac25ec_hu_ce0507722240d5c5.png" 
                         width="250" 
                         height="150" 
                         loading="lazy"
