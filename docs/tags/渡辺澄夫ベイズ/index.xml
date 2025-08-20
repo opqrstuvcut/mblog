@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>渡辺澄夫ベイズ on MatLoverによるMatlab以外のブログ</title>
-    <link>http://localhost:1313/mblog/tags/%E6%B8%A1%E8%BE%BA%E6%BE%84%E5%A4%AB%E3%83%99%E3%82%A4%E3%82%BA/</link>
+    <link>https://opqrstuvcut.github.io/mblog/tags/%E6%B8%A1%E8%BE%BA%E6%BE%84%E5%A4%AB%E3%83%99%E3%82%A4%E3%82%BA/</link>
     <description>Recent content in 渡辺澄夫ベイズ on MatLoverによるMatlab以外のブログ</description>
     <generator>Hugo</generator>
     <language>ja</language>
     <lastBuildDate>Sat, 18 Jan 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/mblog/tags/%E6%B8%A1%E8%BE%BA%E6%BE%84%E5%A4%AB%E3%83%99%E3%82%A4%E3%82%BA/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://opqrstuvcut.github.io/mblog/tags/%E6%B8%A1%E8%BE%BA%E6%BE%84%E5%A4%AB%E3%83%99%E3%82%A4%E3%82%BA/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>WAIC</title>
-      <link>http://localhost:1313/mblog/posts/waic/</link>
+      <link>https://opqrstuvcut.github.io/mblog/posts/waic/</link>
       <pubDate>Sat, 18 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/mblog/posts/waic/</guid>
-      <description>&lt;p&gt;かなり前に「渡辺澄夫ベイズ理論100問 with R/Stan」を読み終わったのもあり、忘れないうちにWAICを自分なりにまとめておきます．&lt;/p&gt;&#xA;&lt;h2 id=&#34;waic&#34;&gt;WAIC&lt;/h2&gt;&#xA;&lt;h3 id=&#34;waicの適用範囲&#34;&gt;WAICの適用範囲&lt;/h3&gt;&#xA;&lt;p&gt;情報量基準のAICやTICは正則性を仮定していますが、実際には正則性が成り立たないケースが多いです．&lt;br&gt;&#xA;WAICは正則性を仮定せずとも利用できる情報量基準になっていて、適用範囲が広いです．ただし、どんなケースでもOKかといえばそうではなく、次の条件を満たしている必要があります（「渡辺澄夫ベイズ理論100問 with R/Stan」の(1.21)）．&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;$$&#xA;\mathbb{E}_X \left[\left \{ \log \frac{p(X| \theta_{*})}{p(X|\theta)} \right \}^2 \right] \leq c \mathbb{E}_X \left[\log \frac{p(X| \theta_{*})}{p(X|\theta)}  \right].&#xA;$$&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;上記の$c&amp;gt;0$は定数、$\theta$はモデルのパラメーター、$\theta_{*}$は真の分布$q$とのKLダイバージェンスを最も小さくするモデルのパラメーターをあらわします．&lt;/p&gt;&#xA;&lt;p&gt;この条件を満たすとき、統計モデル$\{p(\cdot|\theta)\}_{\theta \in \Theta}$および真の分布$q$に対して対数尤度比関数が相対的に有限な分散をもつといいます．これが意味するところを考えてみます．&lt;br&gt;&#xA;左辺は対数尤度比の二乗の期待値ですが、&#xA;$V[X] = \mathbb{E}[X^2] - \mathbb{E}[X]^2 \leq \mathbb{E}[X^2]$ですから、&lt;/p&gt;&#xA;&lt;p&gt;$$&#xA;V_X \left[\log \frac{p(X| \theta*)}{p(X|\theta)}  \right] \leq c \mathbb{E}_X \left[\log \frac{p(X| \theta*)}{p(X|\theta)}  \right].&#xA;$$&lt;/p&gt;&#xA;&lt;p&gt;といえます．このため、対数尤度比の分散は期待値に比例した値以下になるという解釈で良さそうです．&lt;br&gt;&#xA;「相対的に」の意味は書籍からははっきりとは読み取れなかったのですが、（右辺の期待値に対して）相対的に有限ということなのかなと思っています．&lt;/p&gt;&#xA;&lt;h3 id=&#34;waicの定義&#34;&gt;WAICの定義&lt;/h3&gt;&#xA;&lt;p&gt;さて、WAICはどうやって計算するのかという話になりますが、以下のようにWAICが定義されています．&lt;/p&gt;&#xA;&lt;p&gt;$$&#xA;{\rm WAIC_n} := T_n + \frac{1}{n}V_n.&#xA;$$&lt;/p&gt;&#xA;&lt;p&gt;上記の$T_n$は経験損失をあらわし&lt;/p&gt;&#xA;&lt;p&gt;$$&#xA;\begin{align*}&#xA;T_n &amp;amp;:= - \frac{1}{n}\sum_{i=1}^n \log r(x_i|x_1,\cdots, x_n), \\&#xA;r(x|x_1,\cdots,x_n) &amp;amp;:= \int_{\Theta} p(x|\theta) p(\theta|x_1,\cdots,x_n) {\rm d}\theta&#xA;\end{align*}&#xA;$$&lt;/p&gt;</description>
+      <guid>https://opqrstuvcut.github.io/mblog/posts/waic/</guid>
+      <description>&lt;p&gt;かなり前に「渡辺澄夫ベイズ理論100問 with R/Stan」を読み終わったのもあり、忘れないうちにWAICを自分なりにまとめておきます．&lt;/p&gt;&#xA;&lt;h2 id=&#34;waic&#34;&gt;WAIC&lt;/h2&gt;&#xA;&lt;h3 id=&#34;waicの適用範囲&#34;&gt;WAICの適用範囲&lt;/h3&gt;&#xA;&lt;p&gt;情報量基準のAICやTICは正則性を仮定していますが、実際には正則性が成り立たないケースが多いです．&lt;br&gt;&#xA;WAICは正則性を仮定せずとも利用できる情報量基準になっていて、適用範囲が広いです．ただし、どんなケースでもOKかといえばそうではなく、次の条件を満たしている必要があります（「渡辺澄夫ベイズ理論100問 with R/Stan」の(1.21)）．&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

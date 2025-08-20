@@ -1,0 +1,32 @@
+
+<script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  let fuse;
+  const input = document.getElementById("search-box");
+  const resultsList = document.getElementById("search-results");
+
+  if (!input) return; // 要素がなければ終了
+
+  fetch("{{ "index.json" | relLangURL }}")
+    .then(res => res.json())
+    .then(data => {
+      fuse = new Fuse(data, {
+        keys: ["title", "summary"],
+        threshold: 0.3,
+      });
+
+      input.addEventListener("input", () => {
+        if (!fuse) return;
+        const results = fuse.search(input.value);
+        resultsList.innerHTML = "";
+        results.slice(0, 5).forEach(r => {
+          const li = document.createElement("li");
+          li.innerHTML = `<a href="${r.item.url}">${r.item.title}</a>`;
+          resultsList.appendChild(li);
+        });
+      });
+    });
+});
+</script>
+

@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>GRU on MatLoverによるMatlab以外のブログ</title>
-    <link>http://localhost:1313/mblog/tags/gru/</link>
+    <link>https://opqrstuvcut.github.io/mblog/tags/gru/</link>
     <description>Recent content in GRU on MatLoverによるMatlab以外のブログ</description>
     <generator>Hugo</generator>
     <language>ja</language>
     <lastBuildDate>Sun, 01 Dec 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/mblog/tags/gru/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://opqrstuvcut.github.io/mblog/tags/gru/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Were RNNs All We Needed?を読んだのでまとめ</title>
-      <link>http://localhost:1313/mblog/posts/were-rnns-all-we-needed%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%81%AE%E3%81%A7%E3%81%BE%E3%81%A8%E3%82%81/</link>
+      <link>https://opqrstuvcut.github.io/mblog/posts/were-rnns-all-we-needed%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%81%AE%E3%81%A7%E3%81%BE%E3%81%A8%E3%82%81/</link>
       <pubDate>Sun, 01 Dec 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/mblog/posts/were-rnns-all-we-needed%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%81%AE%E3%81%A7%E3%81%BE%E3%81%A8%E3%82%81/</guid>
-      <description>&lt;p&gt;Were RNNs All We Needed?を読んだので、その内容をまとめておきます。&lt;br&gt;&#xA;&lt;a href=&#34;https://arxiv.org/abs/2410.01201&#34;&gt;https://arxiv.org/abs/2410.01201&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;&#xA;&lt;p&gt;Transformerを用いたアーキテクチャの場合、推論に時系列長の二乗に比例した計算量が必要となるため、単純には非常に長い時系列データを扱うことはできません．&lt;br&gt;&#xA;ちょうど一年前くらいにMambaという状態空間モデルベースの手法が提案されており、このMambaならば時系列長に比例した計算量となるため計算量的にはMambaが好ましいです．また学習も効率良くおこなえるうえ、精度的にも良い性能が得られることが分かってきており、有望な手法の1つです．&lt;/p&gt;&#xA;&lt;p&gt;旧来のLSTMやGRUといったRNNベースの手法の場合はMambaとも似ているように思えますが、BPTTをおこなって学習をしていく必要があり、この点が長い時系列の学習においてネックとなります．というのも、BPTTでは時系列を遡って順に計算をおこなっていく必要があり、これは時系列長の分だけ深いネットワークを利用しているようなもので、どうしても計算時間が長くなってしまいます．&#xA;一方でTransformerはBPTTが不要で、必要な計算は並列化して効率よく学習ができます．&lt;br&gt;&#xA;本論文では状態空間モデルベースの手法からインスパイアされた、LSTMやGRUを修正して効率的に学習をおこなえるようにした手法を提案しています．&lt;/p&gt;&#xA;&lt;h2 id=&#34;mamba&#34;&gt;Mamba&lt;/h2&gt;&#xA;&lt;p&gt;Mambaをさらっと説明すると、次のように入力 $x_t \in \mathbb{R}$ と1つ前の時刻の隠れ状態 $h_{t-1} \in \mathbb{R}^n$ を用いて、次の時刻の隠れ状態 $h_t$と出力$ y_t \in \mathbb{R}$ を計算するモデルです．&lt;/p&gt;&#xA;&lt;p&gt;$$&#xA;\begin{align*}&#xA;h_t &amp;amp;= A_t h_{t - 1} + B_t x_t \\&#xA;y_t &amp;amp;= C_t h_t&#xA;\end{align*}.&#xA;$$&#xA;ここで、 $A_t \in \mathbb{R}^{n\times n}, B_t \in \mathbb{R}^n, C_t \in \mathbb{R}^{1 \times n} $ です．&lt;/p&gt;&#xA;&lt;p&gt;上記の隠れ状態の更新と出力値の計算方法より、&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;時系列長に比例した計算量で推論が可能&lt;/li&gt;&#xA;&lt;li&gt;時系列長に依存しないメモリ使用量&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;とわかります．&lt;/p&gt;&#xA;&lt;h3 id=&#34;選択メカニズム&#34;&gt;選択メカニズム&lt;/h3&gt;&#xA;&lt;p&gt;Mambaの大事なポイントとして、係数$A_t \in \mathbb{R}^{n\times n}, B_t \in \mathbb{R}^n, C_t \in \mathbb{R}^{1 \times n} $ は入力$ x_t $に依存する値です．これにより、Selective Copying TaskとInduction Heads Taskを解けるようになっています．これは隠れ状態へ入力に関する情報を取り込むかどうか、あるいは隠れ状態の情報を捨てるかを入力値に依存して動的に変えることでモデルの性能が高まったということを意味します．&lt;br&gt;&#xA;また、これはRNNのゲート機構を内包した形になっていることも論文中で示されています．&lt;br&gt;&#xA;詳しくは&lt;a href=&#34;https://arxiv.org/abs/2312.00752&#34;&gt;Mambaの論文&lt;/a&gt;を参照して下さい．&lt;/p&gt;</description>
+      <guid>https://opqrstuvcut.github.io/mblog/posts/were-rnns-all-we-needed%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%81%AE%E3%81%A7%E3%81%BE%E3%81%A8%E3%82%81/</guid>
+      <description>&lt;p&gt;Were RNNs All We Needed?を読んだので、その内容をまとめておきます。&lt;br&gt;&#xA;&lt;a href=&#34;https://arxiv.org/abs/2410.01201&#34;&gt;https://arxiv.org/abs/2410.01201&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;&#xA;&lt;p&gt;Transformerを用いたアーキテクチャの場合、推論に時系列長の二乗に比例した計算量が必要となるため、単純には非常に長い時系列データを扱うことはできません．&lt;br&gt;&#xA;ちょうど一年前くらいにMambaという状態空間モデルベースの手法が提案されており、このMambaならば時系列長に比例した計算量となるため計算量的にはMambaが好ましいです．また学習も効率良くおこなえるうえ、精度的にも良い性能が得られることが分かってきており、有望な手法の1つです．&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

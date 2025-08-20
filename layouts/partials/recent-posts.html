@@ -1,0 +1,35 @@
+<aside id="sidebar">
+	<h3>最近の記事</h3>
+	<ul class="recent-posts">
+		{{- $ctype := site.Params.contentTypeName | default "posts" -}}
+		{{- $pages := where site.RegularPages "Type" $ctype -}}
+		{{- range first 8 (sort $pages "Date" "desc") -}}
+		<li>
+			<a href="{{ .RelPermalink }}">{{ .Title }}</a>
+			<small class="date">{{ .Date.Format "2006-01-02" }}</small>
+		</li>
+		{{- end -}}
+	</ul>
+
+
+	<h3>カテゴリ</h3>
+	<ul class="categories">
+		{{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+		<li>
+			<a href="{{ (printf " categories/%s" ($name | urlize)) | relLangURL }}">{{ $name }}</a>
+
+			({{ len $taxonomy }})
+		</li>
+		{{ end }}
+	</ul>
+
+	<h3>タグ</h3>
+	<ul class="tags">
+		{{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+		<li>
+			<a href="{{ (printf " tags/%s" ($name | urlize)) | relLangURL }}">{{ $name }}</a>
+			({{ len $taxonomy }})
+		</li>
+		{{ end }}
+	</ul>
+</aside>

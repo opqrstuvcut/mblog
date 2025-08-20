@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>IoU on MatLoverによるMatlab以外のブログ</title>
-    <link>http://localhost:1313/mblog/tags/iou/</link>
+    <link>https://opqrstuvcut.github.io/mblog/tags/iou/</link>
     <description>Recent content in IoU on MatLoverによるMatlab以外のブログ</description>
     <generator>Hugo</generator>
     <language>ja</language>
     <lastBuildDate>Sat, 22 Mar 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/mblog/tags/iou/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://opqrstuvcut.github.io/mblog/tags/iou/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>回転しているBounding Box向けのIoUのKFIoU</title>
-      <link>http://localhost:1313/mblog/posts/%E5%9B%9E%E8%BB%A2%E3%81%97%E3%81%A6%E3%81%84%E3%82%8Bbounding-box%E5%90%91%E3%81%91%E3%81%AEiou%E3%81%AEkfiou/</link>
+      <link>https://opqrstuvcut.github.io/mblog/posts/%E5%9B%9E%E8%BB%A2%E3%81%97%E3%81%A6%E3%81%84%E3%82%8Bbounding-box%E5%90%91%E3%81%91%E3%81%AEiou%E3%81%AEkfiou/</link>
       <pubDate>Sat, 22 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/mblog/posts/%E5%9B%9E%E8%BB%A2%E3%81%97%E3%81%A6%E3%81%84%E3%82%8Bbounding-box%E5%90%91%E3%81%91%E3%81%AEiou%E3%81%AEkfiou/</guid>
-      <description>&lt;h2 id=&#34;従来手法の問題点&#34;&gt;従来手法の問題点&lt;/h2&gt;&#xA;&lt;p&gt;回転しているBounding Box向けの微分可能なIoUの計算というのは簡単ではありません．既存手法としてGWDやKLDがありますが、問題ごとにハイパーパラメータの調整が必要になります．これを解決してより扱いやすく性能が高い手法になったのが&lt;a href=&#34;https://arxiv.org/abs/2201.12558&#34;&gt;KFIoU&lt;/a&gt;になります．&lt;/p&gt;&#xA;&lt;h2 id=&#34;kfiou&#34;&gt;KFIoU&lt;/h2&gt;&#xA;&lt;h3 id=&#34;bounding-boxの正規分布への変換&#34;&gt;Bounding Boxの正規分布への変換&lt;/h3&gt;&#xA;&lt;p&gt;KFIoUを計算するための前段階として、正解のBounding Boxと予測されたBounding Boxを正規分布に変換します．&lt;br&gt;&#xA;具体的には、Bounding Boxが中心を$(x, y)$、横幅と縦幅を$w, h$, 回転角度を$\theta$としたときに次で定義される平均$\mu$、共分散行列$\Sigma$の正規分布に変換します．&#xA;$$&#xA;\Sigma = R \Lambda R^T, \ \mu = \begin{pmatrix}x, y\end{pmatrix}.&#xA;$$&lt;/p&gt;&#xA;&lt;p&gt;ここで&#xA;$$&#xA;R = \begin{pmatrix} \cos \theta &amp;amp; -\sin \theta \\ \sin \theta &amp;amp; \cos \theta  \end{pmatrix}, \Lambda = \begin{pmatrix} \frac{w^2}{4} &amp;amp; 0 \\ 0 &amp;amp; \frac{h^2}{4}  \end{pmatrix}&#xA;$$&lt;/p&gt;&#xA;&lt;p&gt;です．  回転しているBounding Boxのそれぞれの辺に沿ったベクトルが$R$の列になっています．&#xA;一見、なぞの変換ではあるのですが、このように定義すると以下のようにしてBounding Boxの面積$\mathcal{V_B}(\Sigma)$を求めることができます．&lt;/p&gt;&#xA;&lt;p&gt;$$&#xA;\mathcal{V_B}(\Sigma) = 2^2 |\Sigma|^{1/2}.&#xA;$$&lt;/p&gt;&#xA;&lt;p&gt;$R$が回転行列であることを用いれば&#xA;$$&#xA;|\Sigma| = |R \Lambda R^T| = |R| |\Lambda| |R| = |\Lambda| = \frac{w^2h^2}{16}&#xA;$$&#xA;ですので、$\mathcal{V_B}(\Sigma)=wh$ となり、無事にBounding Boxの面積に一致します．&lt;/p&gt;</description>
+      <guid>https://opqrstuvcut.github.io/mblog/posts/%E5%9B%9E%E8%BB%A2%E3%81%97%E3%81%A6%E3%81%84%E3%82%8Bbounding-box%E5%90%91%E3%81%91%E3%81%AEiou%E3%81%AEkfiou/</guid>
+      <description>&lt;h2 id=&#34;従来手法の問題点&#34;&gt;従来手法の問題点&lt;/h2&gt;&#xA;&lt;p&gt;回転しているBounding Box向けの微分可能なIoUの計算というのは簡単ではありません．既存手法としてGWDやKLDがありますが、問題ごとにハイパーパラメータの調整が必要になります．これを解決してより扱いやすく性能が高い手法になったのが&lt;a href=&#34;https://arxiv.org/abs/2201.12558&#34;&gt;KFIoU&lt;/a&gt;になります．&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

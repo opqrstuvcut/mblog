@@ -1,11 +1,12 @@
-baseURL: "https://opqrstuvcut.github.io/mblog"
+baseURL: "https://opqrstuvcut.github.io/mblog/"
 languageCode : "ja-jp"
 theme: ["hugo-video", "terminal"]
-disqusShortname: https-opqrstuvcut-github-io-blog
+# disqusShortname: https-opqrstuvcut-github-io-blog
 
 pagination:
     pagerSize: 10
 title: MatLoverによるMatlab以外のブログ  
+hasCJKLanguage: true
 
 DefaultContentLanguage: ja
 enableInlineShortcodes: true
@@ -19,8 +20,11 @@ permalinks:
 sitemap:
   filename: sitemap.xml
 
-enableRobotsTXT: false
+# enableRobotsTXT: false
 
+taxonomies:
+  category: categories
+  tag: tags
 
 params:
     fullWidthTheme: true
@@ -28,35 +32,16 @@ params:
     mainSections:
         - post
     featuredImageField: image
-    rssFullContent: true
-    favicon: favicon.ico
-    assets:
-      favicon: favicon.ico
+    # rssFullContent: true
+    # favicon: ./static/favicon.ico
+    # assets:
+    #   favicon: favicon.ico
 
     footer:
         since: 2019
 
-    sidebar:
-        emoji: 🐾
-        subtitle: 機械学習や関連内容のブログです。仕事の依頼などはvikz2713[あっとマーク]gmail.com まで。
-        avatar:
-            local: true
-            src: img/avatar.jpeg
-
-    article:
-        math: true 
-        license:
-            enabled: true
-            default: Licensed under CC BY-NC-SA 4.0
-        readingTime: false
-        toc: true 
-
     widgets:
         homepage:
-          - type: search
-          - type: archives
-            params:
-                limit: 5
           - type: categories
             params:
                 limit: 10
@@ -93,9 +78,9 @@ params:
     #         enabled: true
     #     content:
     #         enabled: true
-    comments:
-        enabled: true 
-        provider: disqus
+    # comments:
+    #     enabled: true 
+    #     provider: disqus
 
     contentTypeName: "post"
     showMenuItems: 10
@@ -107,6 +92,12 @@ languages:
       title: MatLoverによるMatlab以外のブログ  
       menuMore: "Show more"
       readMore: "Read more"
+      logo:
+        logoText: MatLoverによるMatlab以外のブログ
+    menu:
+      - identifier: "about"
+        name: "About"
+        url: "/about"
 
 menu:
     social:
