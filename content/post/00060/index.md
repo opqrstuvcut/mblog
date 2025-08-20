@@ -3,7 +3,7 @@ title: Sum Treeで重みにそってサンプリングする（Python実装）
 tags: ["Python", "Sum Tree", "サンプリング"]
 categories: ["Python"]
 date: 2021-01-17
-image: sum_tree_example.png
+Cover: sum_tree_example.png
 ---
 
 # 問題設定

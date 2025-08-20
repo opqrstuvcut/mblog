@@ -1,20 +1,29 @@
 <!DOCTYPE html>
-<html lang="ja-jp" dir="ltr">
-    <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="本記事はQrunchからの転載です。\nPandasのgroupbyについては雰囲気でやっていたところがありますので、ちょっと真面目に使い方を調べてみました。使っているPandasのバージョンは1.0.1です。\n以下では次のようなDataFrameを使用します。\ndf = pd.DataFrame({&#34;名字&#34;: [&#34;田中&#34;, &#34;山田&#34;, &#34;上田&#34;, &#34;田中&#34;, &#34;田中&#34;], &#34;年齢&#34;: [10, 20, 30, 40, 50], &#34;出身&#34;: [&#34;北海道&#34;, &#34;東京&#34;, None, &#34;沖縄&#34;, &#34;北海道&#34;]}) 名字 年齢 出身 0 田中 10 北海道 1 山田 20 東京 2 上田 30 3 田中 40 沖縄 4 田中 50 北海道 Pandasのgroupby PandasのgroupbyはSQLにおけるgroupbyと似たような働きになります。つまるところ、主に集計に使われます。\n例えば名字という列をキーとしてgroupbyするときには次のようにします。\ndf.groupby(&#34;名字&#34;) ただしこれだけでは全く意味がありません。 以下ではgroupbyをしたあとにどう利用することができるかを示します。\nグループ毎にDataFrameを取り出す forを使う forを使ってグループ毎にDataFrameとしてデータを取り出せます。\nfor name, grouped_df in df.groupby(&#34;名字&#34;): print(f&#34;名字：{name}&#34;) print(grouped_df) 名字：上田\n名字 年齢 出身 2 上田 30 名字：山田\n名字 年齢 出身 1 山田 20 東京 名字：田中\n名字 年齢 出身 0 田中 10 北海道 3 田中 40 沖縄 4 田中 50 北海道 get_groupを使う get_groupを使えば1つのグループを指定することもできます。\n">
-<title>Pandasのgroupbyの使い方をまとめる</title>
+<html lang="ja">
+<head><script src="/mblog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=mblog/livereload" data-no-instant defer></script>
+  
+    <title>Pandasのgroupbyの使い方をまとめる :: MatLoverによるMatlab以外のブログ</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="本記事はQrunchからの転載です。
+Pandasのgroupbyについては雰囲気でやっていたところがありますので、ちょっと真面目に使い方を調べてみました。使っているPandasのバージョンは1.0.1です。
+以下では次のようなDataFrameを使用します。
+df = pd.DataFrame({&#34;名字&#34;: [&#34;田中&#34;, &#34;山田&#34;, &#34;上田&#34;, &#34;田中&#34;, &#34;田中&#34;], &#34;年齢&#34;: [10, 20, 30, 40, 50], &#34;出身&#34;: [&#34;北海道&#34;, &#34;東京&#34;, None, &#34;沖縄&#34;, &#34;北海道&#34;]}) 名字 年齢 出身 0 田中 10 北海道 1 山田 20 東京 2 上田 30 3 田中 40 沖縄 4 田中 50 北海道 Pandasのgroupby PandasのgroupbyはSQLにおけるgroupbyと似たような働きになります。つまるところ、主に集計に使われます。
+例えば名字という列をキーとしてgroupbyするときには次のようにします。
+df.groupby(&#34;名字&#34;) ただしこれだけでは全く意味がありません。 以下ではgroupbyをしたあとにどう利用することができるかを示します。
+グループ毎にDataFrameを取り出す forを使う forを使ってグループ毎にDataFrameとしてデータを取り出せます。
+for name, grouped_df in df.groupby(&#34;名字&#34;): print(f&#34;名字：{name}&#34;) print(grouped_df) 名字：上田
+名字 年齢 出身 2 上田 30 名字：山田
+名字 年齢 出身 1 山田 20 東京 名字：田中
+名字 年齢 出身 0 田中 10 北海道 3 田中 40 沖縄 4 田中 50 北海道 get_groupを使う get_groupを使えば1つのグループを指定することもできます。
+" />
+<meta name="keywords" content="" />
 
-<link rel='canonical' href='https://opqrstuvcut.github.io/mblog/posts/pandas%E3%81%AEgroupby%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%82%92%E3%81%BE%E3%81%A8%E3%82%81%E3%82%8B/'>
+  <meta name="robots" content="noodp" />
 
-<link rel="stylesheet" href="/mblog/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="Pandasのgroupbyの使い方をまとめる">
-<meta property='og:description' content="本記事はQrunchからの転載です。\nPandasのgroupbyについては雰囲気でやっていたところがありますので、ちょっと真面目に使い方を調べてみました。使っているPandasのバージョンは1.0.1です。\n以下では次のようなDataFrameを使用します。\ndf = pd.DataFrame({&#34;名字&#34;: [&#34;田中&#34;, &#34;山田&#34;, &#34;上田&#34;, &#34;田中&#34;, &#34;田中&#34;], &#34;年齢&#34;: [10, 20, 30, 40, 50], &#34;出身&#34;: [&#34;北海道&#34;, &#34;東京&#34;, None, &#34;沖縄&#34;, &#34;北海道&#34;]}) 名字 年齢 出身 0 田中 10 北海道 1 山田 20 東京 2 上田 30 3 田中 40 沖縄 4 田中 50 北海道 Pandasのgroupby PandasのgroupbyはSQLにおけるgroupbyと似たような働きになります。つまるところ、主に集計に使われます。\n例えば名字という列をキーとしてgroupbyするときには次のようにします。\ndf.groupby(&#34;名字&#34;) ただしこれだけでは全く意味がありません。 以下ではgroupbyをしたあとにどう利用することができるかを示します。\nグループ毎にDataFrameを取り出す forを使う forを使ってグループ毎にDataFrameとしてデータを取り出せます。\nfor name, grouped_df in df.groupby(&#34;名字&#34;): print(f&#34;名字：{name}&#34;) print(grouped_df) 名字：上田\n名字 年齢 出身 2 上田 30 名字：山田\n名字 年齢 出身 1 山田 20 東京 名字：田中\n名字 年齢 出身 0 田中 10 北海道 3 田中 40 沖縄 4 田中 50 北海道 get_groupを使う get_groupを使えば1つのグループを指定することもできます。\n">
-<meta property='og:url' content='https://opqrstuvcut.github.io/mblog/posts/pandas%E3%81%AEgroupby%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%82%92%E3%81%BE%E3%81%A8%E3%82%81%E3%82%8B/'>
-<meta property='og:site_name' content='MatLoverによるMatlab以外のブログ'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Python' /><meta property='article:tag' content='Pabdas' /><meta property='article:tag' content='GroupBy' /><meta property='article:tag' content='集計' /><meta property='article:published_time' content='2020-02-14T12:04:01&#43;09:00'/><meta property='article:modified_time' content='2020-02-14T12:04:01&#43;09:00'/><meta property='og:image' content='https://opqrstuvcut.github.io/mblog/' />
-<meta name="twitter:title" content="Pandasのgroupbyの使い方をまとめる">
-<meta name="twitter:description" content="本記事はQrunchからの転載です。\nPandasのgroupbyについては雰囲気でやっていたところがありますので、ちょっと真面目に使い方を調べてみました。使っているPandasのバージョンは1.0.1です。\n以下では次のようなDataFrameを使用します。\ndf = pd.DataFrame({&#34;名字&#34;: [&#34;田中&#34;, &#34;山田&#34;, &#34;上田&#34;, &#34;田中&#34;, &#34;田中&#34;], &#34;年齢&#34;: [10, 20, 30, 40, 50], &#34;出身&#34;: [&#34;北海道&#34;, &#34;東京&#34;, None, &#34;沖縄&#34;, &#34;北海道&#34;]}) 名字 年齢 出身 0 田中 10 北海道 1 山田 20 東京 2 上田 30 3 田中 40 沖縄 4 田中 50 北海道 Pandasのgroupby PandasのgroupbyはSQLにおけるgroupbyと似たような働きになります。つまるところ、主に集計に使われます。\n例えば名字という列をキーとしてgroupbyするときには次のようにします。\ndf.groupby(&#34;名字&#34;) ただしこれだけでは全く意味がありません。 以下ではgroupbyをしたあとにどう利用することができるかを示します。\nグループ毎にDataFrameを取り出す forを使う forを使ってグループ毎にDataFrameとしてデータを取り出せます。\nfor name, grouped_df in df.groupby(&#34;名字&#34;): print(f&#34;名字：{name}&#34;) print(grouped_df) 名字：上田\n名字 年齢 出身 2 上田 30 名字：山田\n名字 年齢 出身 1 山田 20 東京 名字：田中\n名字 年齢 出身 0 田中 10 北海道 3 田中 40 沖縄 4 田中 50 北海道 get_groupを使う get_groupを使えば1つのグループを指定することもできます。\n"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://opqrstuvcut.github.io/mblog/' />
-    <link rel="shortcut icon" href="/mblog/favicon.ico" />
+<link rel="canonical" href="http://localhost:1313/mblog/posts/pandas%E3%81%AEgroupby%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%82%92%E3%81%BE%E3%81%A8%E3%82%81%E3%82%8B/" />
+
 
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFC5W8DKV1"></script>
       <script>
@@ -29,7 +38,135 @@
           gtag('js', new Date());
           gtag('config', 'G-LFC5W8DKV1');
         }
-      </script><style>
+      </script>
+
+
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/custom.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/code.min.d529ea4b2fb8d34328d7d31afc5466d5f7bc2f0bc9abdd98b69385335d7baee4.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/main.min.775ac2af004d44c22a6d000fbd1d9af529642f5cef27399d0280d180af2c2e9b.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/menu.min.310d32205bdedd6f43144e3c3273c9deecd238eba5f9108db5ea96ca0cfbe377.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/post.min.ad50c7f4d00e7975918f37fc74c6029e1959a40d66fb5b2c6564a8715e985573.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/syntax.min.e9ab635cf918bc84b901eb65c0b2caa74c9544245e3647c1af5c129896ef276e.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/terminal.min.77ee67c1d456ac0c280223661a10b75c7729c59aeb33001424a72a14b363e310.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="http://localhost:1313/mblog/favicon.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/mblog/apple-touch-icon.png">
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="ja" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Pandasのgroupbyの使い方をまとめる">
+<meta property="og:description" content="本記事はQrunchからの転載です。
+Pandasのgroupbyについては雰囲気でやっていたところがありますので、ちょっと真面目に使い方を調べてみました。使っているPandasのバージョンは1.0.1です。
+以下では次のようなDataFrameを使用します。
+df = pd.DataFrame({&#34;名字&#34;: [&#34;田中&#34;, &#34;山田&#34;, &#34;上田&#34;, &#34;田中&#34;, &#34;田中&#34;], &#34;年齢&#34;: [10, 20, 30, 40, 50], &#34;出身&#34;: [&#34;北海道&#34;, &#34;東京&#34;, None, &#34;沖縄&#34;, &#34;北海道&#34;]}) 名字 年齢 出身 0 田中 10 北海道 1 山田 20 東京 2 上田 30 3 田中 40 沖縄 4 田中 50 北海道 Pandasのgroupby PandasのgroupbyはSQLにおけるgroupbyと似たような働きになります。つまるところ、主に集計に使われます。
+例えば名字という列をキーとしてgroupbyするときには次のようにします。
+df.groupby(&#34;名字&#34;) ただしこれだけでは全く意味がありません。 以下ではgroupbyをしたあとにどう利用することができるかを示します。
+グループ毎にDataFrameを取り出す forを使う forを使ってグループ毎にDataFrameとしてデータを取り出せます。
+for name, grouped_df in df.groupby(&#34;名字&#34;): print(f&#34;名字：{name}&#34;) print(grouped_df) 名字：上田
+名字 年齢 出身 2 上田 30 名字：山田
+名字 年齢 出身 1 山田 20 東京 名字：田中
+名字 年齢 出身 0 田中 10 北海道 3 田中 40 沖縄 4 田中 50 北海道 get_groupを使う get_groupを使えば1つのグループを指定することもできます。
+" />
+<meta property="og:url" content="http://localhost:1313/mblog/posts/pandas%E3%81%AEgroupby%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%82%92%E3%81%BE%E3%81%A8%E3%82%81%E3%82%8B/" />
+<meta property="og:site_name" content="MatLoverによるMatlab以外のブログ" />
+
+  <meta property="og:image" content="http://localhost:1313/mblog/og-image.png">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+  <meta property="article:section" content="SQL" />
+
+  <meta property="article:section" content="機械学習" />
+
+
+  <meta property="article:published_time" content="2020-02-14 12:04:01 &#43;0900 JST" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
+    integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5"
+    crossorigin="anonymous">
+
+<script defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js"
+    integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd"
+    crossorigin="anonymous"></script>
+
+<script defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+            ],
+            throwOnError : false
+        });
+    });
+</script>
+
+
+<style>
   section.article-content h2 {
     background-color: rgb(245, 245, 245);
     padding: 10px;
@@ -45,225 +182,110 @@
 
 </style>
 
-    </head>
-    <body class="
-    article-page
-    ">
-    <script>
-        (function() {
-            const colorSchemeKey = 'StackColorScheme';
-            localStorage.setItem(colorSchemeKey, "light");
-        })();
-    </script><script>
-    (function() {
-        const colorSchemeKey = 'StackColorScheme';
-        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
-        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
 
-        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
-            
-
-            document.documentElement.dataset.scheme = 'dark';
-        } else {
-            document.documentElement.dataset.scheme = 'light';
-        }
-    })();
-</script>
-<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="メニューを開く・閉じる">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header>
-        
-            
-            <figure class="site-avatar">
-                <a href="/mblog/">
-                
-                    
-                    
-                    
-                        
-                        <img src="/mblog/img/avatar_hu_5bc806b678ac7533.jpeg" width="300"
-                            height="300" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-                </a>
-                
-                    <span class="emoji">🐾</span>
-                
-            </figure>
-            
-        
-        
-        <div class="site-meta">
-            <h1 class="site-name"><a href="/mblog">MatLoverによるMatlab以外のブログ</a></h1>
-            <h2 class="site-description">機械学習や関連内容のブログです。仕事の依頼などはvikz2713[あっとマーク]gmail.com まで。</h2>
-        </div>
-    </header><ol class="menu-social">
-            
-                <li>
-                    <a 
-                        href='https://github.com/opqrstuvcut'
-                        target="_blank"
-                        title="GitHub"
-                        rel="me"
-                    >
-                        
-                        
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
-</svg>
+</head>
+<body>
 
 
+<div class="container full">
 
-                        
-                    </a>
-                </li>
-            
-        </ol><ol class="menu" id="main-menu">
-        
-        
-        
-        <li >
-            <a href='/mblog/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <polyline points="5 12 3 12 12 3 21 12 19 12" />
-  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
-</svg>
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="http://localhost:1313/mblog/">
+  <div class="logo">
+    Terminal
+  </div>
+</a>
 
-
-
-                
-                <span>Home</span>
-            </a>
-        </li>
-        
-        
-        <li >
-            <a href='/mblog/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-        <li >
-            <a href='/mblog/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-        <li class="menu-bottom-section">
-            <ol class="menu">
-
-                
-            </ol>
-        </li>
-    </ol>
-</aside>
-
-    
-
-            <main class="main full-width">
-    <article class="main-article">
-    <header class="article-header">
-
-    <div class="article-details">
-    
-    <header class="article-category">
-        
-            <a href="/mblog/categories/sql/" >
-                SQL
-            </a>
-        
-            <a href="/mblog/categories/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/" >
-                機械学習
-            </a>
-        
-    </header>
-    
-
-    <div class="article-title-wrapper">
-        <h2 class="article-title">
-            <a href="/mblog/posts/pandas%E3%81%AEgroupby%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%82%92%E3%81%BE%E3%81%A8%E3%82%81%E3%82%8B/">Pandasのgroupbyの使い方をまとめる</a>
-        </h2>
-    
-        
     </div>
-
     
-    
-    
-    
-    <footer class="article-time">
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
         
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">2月 14, 2020</time>
-            </div>
+          <li><a href="/mblog/">Home</a></li>
         
-
+      
         
-    </footer>
-    
+          <li><a href="/mblog/archives/">Archives</a></li>
+        
+      
+        
+          <li><a href="/mblog/search/">Search</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
 
     
-</div>
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/mblog/" >Home</a></li>
+        
+      
+        
+          <li><a href="/mblog/archives/" >Archives</a></li>
+        
+      
+        
+          <li><a href="/mblog/search/" >Search</a></li>
+        
+      
+      
+    
+  </ul>
+</nav>
 
+  
 </header>
 
-    <section class="article-content">
+
+  <div class="content">
     
-    
-    <p>本記事はQrunchからの転載です。</p>
+<article class="post">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/mblog/posts/pandas%E3%81%AEgroupby%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%82%92%E3%81%BE%E3%81%A8%E3%82%81%E3%82%8B/">Pandasのgroupbyの使い方をまとめる</a>
+  </h1>
+  <div class="post-meta"><time class="post-date">2020-02-14</time></div>
+
+  
+    <span class="post-tags">
+      
+      #<a href="http://localhost:1313/mblog/tags/python/">Python</a>&nbsp;
+      
+      #<a href="http://localhost:1313/mblog/tags/pabdas/">Pabdas</a>&nbsp;
+      
+      #<a href="http://localhost:1313/mblog/tags/groupby/">GroupBy</a>&nbsp;
+      
+      #<a href="http://localhost:1313/mblog/tags/%E9%9B%86%E8%A8%88/">集計</a>&nbsp;
+      
+    </span>
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <p>本記事はQrunchからの転載です。</p>
 <hr>
 <p>Pandasのgroupbyについては雰囲気でやっていたところがありますので、ちょっと真面目に使い方を調べてみました。使っているPandasのバージョンは1.0.1です。</p>
 <p>以下では次のようなDataFrameを使用します。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&#34;名字&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;田中&#34;</span><span class="p">,</span> <span class="s2">&#34;山田&#34;</span><span class="p">,</span> <span class="s2">&#34;上田&#34;</span><span class="p">,</span> <span class="s2">&#34;田中&#34;</span><span class="p">,</span> <span class="s2">&#34;田中&#34;</span><span class="p">],</span> 
 </span></span><span class="line"><span class="cl">                            <span class="s2">&#34;年齢&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> 
 </span></span><span class="line"><span class="cl">                            <span class="s2">&#34;出身&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;北海道&#34;</span><span class="p">,</span> <span class="s2">&#34;東京&#34;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&#34;沖縄&#34;</span><span class="p">,</span> <span class="s2">&#34;北海道&#34;</span><span class="p">]})</span>
-</span></span></code></pre></div><div class="table-wrapper"><table>
+</span></span></code></pre></div><table>
   <thead>
       <tr>
           <th style="text-align: right">　</th>
@@ -304,21 +326,21 @@
           <td style="text-align: left">北海道</td>
       </tr>
   </tbody>
-</table></div>
-<h1 id="pandasのgroupby">Pandasのgroupby
-</h1><p>PandasのgroupbyはSQLにおけるgroupbyと似たような働きになります。つまるところ、主に集計に使われます。</p>
+</table>
+<h1 id="pandasのgroupby">Pandasのgroupby<a href="#pandasのgroupby" class="hanchor" ariaLabel="Anchor">#</a> </h1>
+<p>PandasのgroupbyはSQLにおけるgroupbyと似たような働きになります。つまるところ、主に集計に使われます。</p>
 <p>例えば名字という列をキーとしてgroupbyするときには次のようにします。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&#34;名字&#34;</span><span class="p">)</span>
 </span></span></code></pre></div><p>ただしこれだけでは全く意味がありません。
 以下ではgroupbyをしたあとにどう利用することができるかを示します。</p>
-<h1 id="グループ毎にdataframeを取り出す">グループ毎にDataFrameを取り出す
-</h1><h2 id="forを使う">forを使う
-</h2><p>forを使ってグループ毎にDataFrameとしてデータを取り出せます。</p>
+<h1 id="グループ毎にdataframeを取り出す">グループ毎にDataFrameを取り出す<a href="#グループ毎にdataframeを取り出す" class="hanchor" ariaLabel="Anchor">#</a> </h1>
+<h2 id="forを使う">forを使う<a href="#forを使う" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>forを使ってグループ毎にDataFrameとしてデータを取り出せます。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">grouped_df</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&#34;名字&#34;</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;名字：</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">grouped_df</span><span class="p">)</span>
 </span></span></code></pre></div><p>名字：上田</p>
-<div class="table-wrapper"><table>
+<table>
   <thead>
       <tr>
           <th style="text-align: right">　</th>
@@ -335,9 +357,9 @@
           <td style="text-align: left"></td>
       </tr>
   </tbody>
-</table></div>
+</table>
 <p>名字：山田</p>
-<div class="table-wrapper"><table>
+<table>
   <thead>
       <tr>
           <th style="text-align: right">　</th>
@@ -354,9 +376,9 @@
           <td style="text-align: left">東京</td>
       </tr>
   </tbody>
-</table></div>
+</table>
 <p>名字：田中</p>
-<div class="table-wrapper"><table>
+<table>
   <thead>
       <tr>
           <th style="text-align: right">　</th>
@@ -385,11 +407,11 @@
           <td style="text-align: left">北海道</td>
       </tr>
   </tbody>
-</table></div>
-<h2 id="get_groupを使う">get_groupを使う
-</h2><p>get_groupを使えば1つのグループを指定することもできます。</p>
+</table>
+<h2 id="get_groupを使う">get_groupを使う<a href="#get_groupを使う" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>get_groupを使えば1つのグループを指定することもできます。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&#34;名字&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="s2">&#34;田中&#34;</span><span class="p">)</span>
-</span></span></code></pre></div><div class="table-wrapper"><table>
+</span></span></code></pre></div><table>
   <thead>
       <tr>
           <th style="text-align: right">　</th>
@@ -418,12 +440,12 @@
           <td style="text-align: left">北海道</td>
       </tr>
   </tbody>
-</table></div>
-<h1 id="groupbyを用いた集計">groupbyを用いた集計
-</h1><h2 id="describe">describe
-</h2><p>グループごとに統計量を色々計算できます。</p>
+</table>
+<h1 id="groupbyを用いた集計">groupbyを用いた集計<a href="#groupbyを用いた集計" class="hanchor" ariaLabel="Anchor">#</a> </h1>
+<h2 id="describe">describe<a href="#describe" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>グループごとに統計量を色々計算できます。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&#34;名字&#34;</span><span class="p">)[</span><span class="s2">&#34;年齢&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
-</span></span></code></pre></div><div class="table-wrapper"><table>
+</span></span></code></pre></div><table>
   <thead>
       <tr>
           <th style="text-align: left">名字</th>
@@ -472,11 +494,11 @@
           <td style="text-align: right">50</td>
       </tr>
   </tbody>
-</table></div>
-<h2 id="グループの個数のカウント">グループの個数のカウント
-</h2><p>グループごとに行数が数えられます。</p>
+</table>
+<h2 id="グループの個数のカウント">グループの個数のカウント<a href="#グループの個数のカウント" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>グループごとに行数が数えられます。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&#34;名字&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
-</span></span></code></pre></div><div class="table-wrapper"><table>
+</span></span></code></pre></div><table>
   <thead>
       <tr>
           <th style="text-align: left">名字</th>
@@ -497,10 +519,10 @@
           <td style="text-align: right">3</td>
       </tr>
   </tbody>
-</table></div>
+</table>
 <p>次のcountも似たような感じで行数を数えます。ただし、欠損値はカウントされませんので、次のcountの結果とsizeの結果は異なります。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&#34;名字&#34;</span><span class="p">)[</span><span class="s2">&#34;出身&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
-</span></span></code></pre></div><div class="table-wrapper"><table>
+</span></span></code></pre></div><table>
   <thead>
       <tr>
           <th style="text-align: left">名字</th>
@@ -521,12 +543,12 @@
           <td style="text-align: right">3</td>
       </tr>
   </tbody>
-</table></div>
-<h2 id="演算">演算
-</h2><h3 id="和">和
-</h3><p>グループごとに和を計算します。</p>
+</table>
+<h2 id="演算">演算<a href="#演算" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<h3 id="和">和<a href="#和" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>グループごとに和を計算します。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&#34;名字&#34;</span><span class="p">)[</span><span class="s2">&#34;年齢&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-</span></span></code></pre></div><div class="table-wrapper"><table>
+</span></span></code></pre></div><table>
   <thead>
       <tr>
           <th style="text-align: left">名字</th>
@@ -547,11 +569,11 @@
           <td style="text-align: right">100</td>
       </tr>
   </tbody>
-</table></div>
-<h3 id="平均">平均
-</h3><p>グループごとに平均を計算します。</p>
+</table>
+<h3 id="平均">平均<a href="#平均" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>グループごとに平均を計算します。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&#34;名字&#34;</span><span class="p">)[</span><span class="s2">&#34;年齢&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</span></span></code></pre></div><div class="table-wrapper"><table>
+</span></span></code></pre></div><table>
   <thead>
       <tr>
           <th style="text-align: left">名字</th>
@@ -572,11 +594,11 @@
           <td style="text-align: right">33.3333</td>
       </tr>
   </tbody>
-</table></div>
-<h3 id="特定のデータ取得">特定のデータ取得
-</h3><p>グループの先頭を取得します。</p>
+</table>
+<h3 id="特定のデータ取得">特定のデータ取得<a href="#特定のデータ取得" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>グループの先頭を取得します。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&#34;名字&#34;</span><span class="p">)[</span><span class="s2">&#34;年齢&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-</span></span></code></pre></div><div class="table-wrapper"><table>
+</span></span></code></pre></div><table>
   <thead>
       <tr>
           <th style="text-align: left">名字</th>
@@ -597,10 +619,10 @@
           <td style="text-align: right">10</td>
       </tr>
   </tbody>
-</table></div>
+</table>
 <p>次のnthでもグループの先頭を取得できます。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&#34;名字&#34;</span><span class="p">)[</span><span class="s2">&#34;年齢&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">nth</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</span></span></code></pre></div><div class="table-wrapper"><table>
+</span></span></code></pre></div><table>
   <thead>
       <tr>
           <th style="text-align: left">名字</th>
@@ -621,11 +643,11 @@
           <td style="text-align: right">10</td>
       </tr>
   </tbody>
-</table></div>
+</table>
 <p>nthの引数を1にするとグループの2番目のデータが取得できます。
 dfでは名字が&quot;田中&quot;のケースのみが複数行存在しますので、&ldquo;田中&quot;の2番目だけが取得されます。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&#34;名字&#34;</span><span class="p">)[</span><span class="s2">&#34;年齢&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">nth</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</span></span></code></pre></div><div class="table-wrapper"><table>
+</span></span></code></pre></div><table>
   <thead>
       <tr>
           <th style="text-align: left">名字</th>
@@ -638,11 +660,11 @@ dfでは名字が&quot;田中&quot;のケースのみが複数行存在します
           <td style="text-align: right">40</td>
       </tr>
   </tbody>
-</table></div>
-<h2 id="関数を渡して計算">関数を渡して計算
-</h2><p>次のように任意の関数をaggregateに渡すことで、好きなように集計できます。</p>
+</table>
+<h2 id="関数を渡して計算">関数を渡して計算<a href="#関数を渡して計算" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>次のように任意の関数をaggregateに渡すことで、好きなように集計できます。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&#34;名字&#34;</span><span class="p">)[</span><span class="s2">&#34;年齢&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">)</span>
-</span></span></code></pre></div><div class="table-wrapper"><table>
+</span></span></code></pre></div><table>
   <thead>
       <tr>
           <th style="text-align: left">名字</th>
@@ -663,10 +685,10 @@ dfでは名字が&quot;田中&quot;のケースのみが複数行存在します
           <td style="text-align: right">100</td>
       </tr>
   </tbody>
-</table></div>
+</table>
 <p>aggregateに渡す関数はもちろんlambda式でもOKです。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&#34;名字&#34;</span><span class="p">)[</span><span class="s2">&#34;年齢&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="k">lambda</span> <span class="n">vals</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="n">vals</span><span class="p">))</span>
-</span></span></code></pre></div><div class="table-wrapper"><table>
+</span></span></code></pre></div><table>
   <thead>
       <tr>
           <th style="text-align: left">名字</th>
@@ -687,10 +709,10 @@ dfでは名字が&quot;田中&quot;のケースのみが複数行存在します
           <td style="text-align: right">100</td>
       </tr>
   </tbody>
-</table></div>
+</table>
 <p>ちなみにこんな感じで複数個の関数を渡すこともできます。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&#34;名字&#34;</span><span class="p">)[</span><span class="s2">&#34;年齢&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">aggregate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">vals</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="n">vals</span><span class="p">)])</span>
-</span></span></code></pre></div><div class="table-wrapper"><table>
+</span></span></code></pre></div><table>
   <thead>
       <tr>
           <th style="text-align: left">名字</th>
@@ -719,10 +741,10 @@ dfでは名字が&quot;田中&quot;のケースのみが複数行存在します
           <td style="text-align: right">100</td>
       </tr>
   </tbody>
-</table></div>
+</table>
 <p>集計結果に名前をつけることもできます。以下ではmax_ageという名前の集計結果が得られます。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&#34;名字&#34;</span><span class="p">)[</span><span class="s2">&#34;年齢&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">max_age</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">NamedAgg</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s2">&#34;年齢&#34;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">))</span>
-</span></span></code></pre></div><div class="table-wrapper"><table>
+</span></span></code></pre></div><table>
   <thead>
       <tr>
           <th style="text-align: left">名字</th>
@@ -743,13 +765,13 @@ dfでは名字が&quot;田中&quot;のケースのみが複数行存在します
           <td style="text-align: right">50</td>
       </tr>
   </tbody>
-</table></div>
-<h1 id="transformでグループの集計結果と各行の値から計算">transformでグループの集計結果と各行の値から計算
-</h1><p>transformを使えばグループの集計結果と行の値を組み合わせた値を計算できます。</p>
-<h2 id="例1">例1
-</h2><p>以下のようにして、行の値とグループの平均との差を計算できます。lambda式のxがグループの各行であり、x.mean()でグループの平均を計算しています。</p>
+</table>
+<h1 id="transformでグループの集計結果と各行の値から計算">transformでグループの集計結果と各行の値から計算<a href="#transformでグループの集計結果と各行の値から計算" class="hanchor" ariaLabel="Anchor">#</a> </h1>
+<p>transformを使えばグループの集計結果と行の値を組み合わせた値を計算できます。</p>
+<h2 id="例1">例1<a href="#例1" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>以下のようにして、行の値とグループの平均との差を計算できます。lambda式のxがグループの各行であり、x.mean()でグループの平均を計算しています。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&#34;名字&#34;</span><span class="p">)[</span><span class="s2">&#34;年齢&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-</span></span></code></pre></div><div class="table-wrapper"><table>
+</span></span></code></pre></div><table>
   <thead>
       <tr>
           <th style="text-align: right">　</th>
@@ -778,11 +800,11 @@ dfでは名字が&quot;田中&quot;のケースのみが複数行存在します
           <td style="text-align: right">16.6667</td>
       </tr>
   </tbody>
-</table></div>
-<h2 id="例2">例2
-</h2><p>グループの平均よりも大きいかどうかをあらわすbooleanが得られます。</p>
+</table>
+<h2 id="例2">例2<a href="#例2" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>グループの平均よりも大きいかどうかをあらわすbooleanが得られます。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&#34;名字&#34;</span><span class="p">)[</span><span class="s2">&#34;年齢&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-</span></span></code></pre></div><div class="table-wrapper"><table>
+</span></span></code></pre></div><table>
   <thead>
       <tr>
           <th style="text-align: right">　</th>
@@ -811,11 +833,11 @@ dfでは名字が&quot;田中&quot;のケースのみが複数行存在します
           <td style="text-align: right">1</td>
       </tr>
   </tbody>
-</table></div>
-<h2 id="ブロードキャストの例">ブロードキャストの例
-</h2><p>transformに渡す関数がスカラ値を返せば、同じグループのなかで同じ値をもつことになります。</p>
+</table>
+<h2 id="ブロードキャストの例">ブロードキャストの例<a href="#ブロードキャストの例" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>transformに渡す関数がスカラ値を返せば、同じグループのなかで同じ値をもつことになります。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&#34;名字&#34;</span><span class="p">)[</span><span class="s2">&#34;年齢&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-</span></span></code></pre></div><div class="table-wrapper"><table>
+</span></span></code></pre></div><table>
   <thead>
       <tr>
           <th style="text-align: right">　</th>
@@ -844,12 +866,12 @@ dfでは名字が&quot;田中&quot;のケースのみが複数行存在します
           <td style="text-align: right">33.3333</td>
       </tr>
   </tbody>
-</table></div>
-<h1 id="前後の値を使う計算">前後の値を使う計算
-</h1><h2 id="rolling">rolling
-</h2><p>移動平均の計算などで使うrollingはグループ単位でおこなえます。</p>
+</table>
+<h1 id="前後の値を使う計算">前後の値を使う計算<a href="#前後の値を使う計算" class="hanchor" ariaLabel="Anchor">#</a> </h1>
+<h2 id="rolling">rolling<a href="#rolling" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>移動平均の計算などで使うrollingはグループ単位でおこなえます。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&#34;名字&#34;</span><span class="p">)[</span><span class="s2">&#34;年齢&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</span></span></code></pre></div><div class="table-wrapper"><table>
+</span></span></code></pre></div><table>
   <thead>
       <tr>
           <th style="text-align: left">　</th>
@@ -878,11 +900,11 @@ dfでは名字が&quot;田中&quot;のケースのみが複数行存在します
           <td style="text-align: right">45</td>
       </tr>
   </tbody>
-</table></div>
-<h2 id="cumsum">cumsum
-</h2><p>累積和もグループ単位でおこなえます。</p>
+</table>
+<h2 id="cumsum">cumsum<a href="#cumsum" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>累積和もグループ単位でおこなえます。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&#34;名字&#34;</span><span class="p">)[</span><span class="s2">&#34;年齢&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
-</span></span></code></pre></div><div class="table-wrapper"><table>
+</span></span></code></pre></div><table>
   <thead>
       <tr>
           <th style="text-align: right">　</th>
@@ -911,10 +933,10 @@ dfでは名字が&quot;田中&quot;のケースのみが複数行存在します
           <td style="text-align: right">100</td>
       </tr>
   </tbody>
-</table></div>
+</table>
 <p>累積和は以下のようにしても計算できます。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&#34;名字&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">expanding</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-</span></span></code></pre></div><div class="table-wrapper"><table>
+</span></span></code></pre></div><table>
   <thead>
       <tr>
           <th style="text-align: left">　</th>
@@ -943,15 +965,15 @@ dfでは名字が&quot;田中&quot;のケースのみが複数行存在します
           <td style="text-align: right">100</td>
       </tr>
   </tbody>
-</table></div>
-<h1 id="applyでグループ毎に好き勝手に処理する">applyでグループ毎に好き勝手に処理する
-</h1><p>applyを使えば、グループ単位のDataFrameを好きに処理したあとにconcatできます。
+</table>
+<h1 id="applyでグループ毎に好き勝手に処理する">applyでグループ毎に好き勝手に処理する<a href="#applyでグループ毎に好き勝手に処理する" class="hanchor" ariaLabel="Anchor">#</a> </h1>
+<p>applyを使えば、グループ単位のDataFrameを好きに処理したあとにconcatできます。
 以下の例を参照ください。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&#34;name&#34;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&#34;名字&#34;</span><span class="p">],</span> <span class="s2">&#34;age&#34;</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&#34;年齢&#34;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s2">&#34;年齢&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()})</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&#34;名字&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-</span></span></code></pre></div><div class="table-wrapper"><table>
+</span></span></code></pre></div><table>
   <thead>
       <tr>
           <th style="text-align: right">　</th>
@@ -986,13 +1008,13 @@ dfでは名字が&quot;田中&quot;のケースのみが複数行存在します
           <td style="text-align: right">16.6667</td>
       </tr>
   </tbody>
-</table></div>
-<h1 id="グループをfilteringする">グループをfilteringする
-</h1><p>filterを使えば、条件を満たすグループのみを残すような処理が可能です。</p>
-<h2 id="例1-1">例1
-</h2><p>グループ内の個数が1より大きいグループだけを残す。</p>
+</table>
+<h1 id="グループをfilteringする">グループをfilteringする<a href="#グループをfilteringする" class="hanchor" ariaLabel="Anchor">#</a> </h1>
+<p>filterを使えば、条件を満たすグループのみを残すような処理が可能です。</p>
+<h2 id="例1-1">例1<a href="#例1-1" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>グループ内の個数が1より大きいグループだけを残す。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&#34;名字&#34;</span><span class="p">)[</span><span class="s2">&#34;年齢&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span>
-</span></span></code></pre></div><div class="table-wrapper"><table>
+</span></span></code></pre></div><table>
   <thead>
       <tr>
           <th style="text-align: right">　</th>
@@ -1013,11 +1035,11 @@ dfでは名字が&quot;田中&quot;のケースのみが複数行存在します
           <td style="text-align: right">50</td>
       </tr>
   </tbody>
-</table></div>
-<h2 id="例2-1">例2
-</h2><p>グループの値の最大値が40未満であるグループだけを残す。</p>
+</table>
+<h2 id="例2-1">例2<a href="#例2-1" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>グループの値の最大値が40未満であるグループだけを残す。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&#34;名字&#34;</span><span class="p">)[</span><span class="s2">&#34;年齢&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">40</span><span class="p">)</span>
-</span></span></code></pre></div><div class="table-wrapper"><table>
+</span></span></code></pre></div><table>
   <thead>
       <tr>
           <th style="text-align: right">　</th>
@@ -1034,11 +1056,11 @@ dfでは名字が&quot;田中&quot;のケースのみが複数行存在します
           <td style="text-align: right">30</td>
       </tr>
   </tbody>
-</table></div>
-<h2 id="例3">例3
-</h2><p>グループに北海道出身の人が含まれるグループだけを残す。</p>
+</table>
+<h2 id="例3">例3<a href="#例3" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>グループに北海道出身の人が含まれるグループだけを残す。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&#34;名字&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s2">&#34;北海道&#34;</span> <span class="ow">in</span> <span class="n">x</span><span class="p">[</span><span class="s2">&#34;出身&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-</span></span></code></pre></div><div class="table-wrapper"><table>
+</span></span></code></pre></div><table>
   <thead>
       <tr>
           <th style="text-align: right">　</th>
@@ -1067,362 +1089,70 @@ dfでは名字が&quot;田中&quot;のケースのみが複数行存在します
           <td style="text-align: left">北海道</td>
       </tr>
   </tbody>
-</table></div>
+</table>
 
-</section>
+      </div></div>
 
-
-    <footer class="article-footer">
+  
     
-    <section class="article-tags">
-        
-            <a href="/mblog/tags/python/">Python</a>
-        
-            <a href="/mblog/tags/pabdas/">Pabdas</a>
-        
-            <a href="/mblog/tags/groupby/">GroupBy</a>
-        
-            <a href="/mblog/tags/%E9%9B%86%E8%A8%88/">集計</a>
-        
-    </section>
-
-
+<div class="pagination">
+  <div class="pagination__title">
+    <span class="pagination__title-h"></span>
+    <hr />
+  </div>
+  <div class="pagination__buttons">
     
-    <section class="article-copyright">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
-</svg>
-
-
-
-        <span>Licensed under CC BY-NC-SA 4.0</span>
-    </section>
-    </footer>
-
-
-    
-        <link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
-            ><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
-                defer
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
-                defer
-                >
-            </script><script>
-    window.addEventListener("DOMContentLoaded", () => {
-	const mainArticleElement = document.querySelector(".main-article");
-        renderMathInElement(mainArticleElement, {
-            delimiters: [
-                { left: "$$", right: "$$", display: true },
-                { left: "$", right: "$", display: false },
-                { left: "\\(", right: "\\)", display: false },
-                { left: "\\[", right: "\\]", display: true }
-            ],
-            ignoredClasses: ["gist"]
-        });})
-</script>
-
-    
-</article>
-
-    
-
-    
-
-<aside class="related-content--wrapper">
-    <h2 class="section-title">関連するコンテンツ</h2>
-    <div class="related-content">
-        <div class="flex article-list--tile">
-            
-                
-<article class="has-image">
-    <a href="/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/">
-        
-        
-            <div class="article-image">
-                <img src="/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/983be7a190c4aaf3488cd6c3d4471158.5fd68928c059f3729a21e2a0196af853_hu_72d3f9ee3aff1e40.png" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post KL divergenceに与える分布を入れ替えることの意味をまじめに考えたことあります？"
-                        
-                        data-hash="md5-X9aJKMBZ83KaIeKgGWr4Uw==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">KL divergenceに与える分布を入れ替えることの意味をまじめに考えたことあります？</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/">
-        
-        
-            <div class="article-image">
-                <img src="/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/2f11d99ea2c3cf569c040d9555f5ab2c.3ced59648d77241e574d30c9c71b03b6_hu_acba5e5b489d0c35.png" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post Uber製の機械学習モデルのデバッグツールManifold"
-                        
-                        data-hash="md5-PO1ZZI13JB5XTTDJxxsDtg==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Uber製の機械学習モデルのデバッグツールManifold</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/mblog/posts/rt-detr-v2%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%B3%E3%83%81%E3%83%A5%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0/">
-        
-        
-            <div class="article-image">
-                <img src="/mblog/posts/rt-detr-v2%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%B3%E3%83%81%E3%83%A5%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0/feature.8985c97388772c490dbf73e2b3715015_hu_e157db471add07a3.png" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post RT-DETR v2のファインチューニング"
-                        
-                        data-hash="md5-iYXJc4h3LEkNv3Pis3FQFQ==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">RT-DETR v2のファインチューニング</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/mblog/posts/were-rnns-all-we-needed%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%81%AE%E3%81%A7%E3%81%BE%E3%81%A8%E3%82%81/">
-        
-        
-            <div class="article-image">
-                <img src="/mblog/posts/were-rnns-all-we-needed%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%81%AE%E3%81%A7%E3%81%BE%E3%81%A8%E3%82%81/feature.88ed4e446988210af393d6748a112e2f_hu_ba083adec8879e6e.png" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post Were RNNs All We Needed?を読んだのでまとめ"
-                        
-                        data-hash="md5-iO1ORGmIIQrzk9Z0ihEuLw==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Were RNNs All We Needed?を読んだのでまとめ</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/mblog/posts/tabular%E3%83%87%E3%83%BC%E3%82%BF%E5%90%91%E3%81%91%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%99%E3%82%A4%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%81%AE%E3%81%A7%E3%83%A1%E3%83%A2/">
-        
-        
-            <div class="article-image">
-                <img src="/mblog/posts/tabular%E3%83%87%E3%83%BC%E3%82%BF%E5%90%91%E3%81%91%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%99%E3%82%A4%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%81%AE%E3%81%A7%E3%83%A1%E3%83%A2/fig3.f14ea33c53998f4220459411a7f0e94d_hu_1c09104e5b79a191.png" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post Tabularデータ向けのサーベイ論文を読んだのでメモ"
-                        
-                        data-hash="md5-8U6jPFOZj0IgRZQRp/DpTQ==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Tabularデータ向けのサーベイ論文を読んだのでメモ</h2>
-        </div>
-    </a>
-</article>
-
-            
-        </div>
-    </div>
-</aside>
-
-     
-    
-        
-    <div class="disqus-container">
-    <div id="disqus_thread"></div>
-<script>
-    window.disqus_config = function () {
+      <a href="http://localhost:1313/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%A8%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E3%81%A7%E3%81%AE%E3%83%9E%E3%83%AB%E3%83%81%E3%83%A2%E3%83%BC%E3%83%80%E3%83%AB%E3%81%AAimagebert/" class="button inline prev">
+        &lt; [<span class="button__text">画像と自然言語でのマルチモーダルなImageBERT</span>]
+      </a>
     
     
+      ::
     
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "https-opqrstuvcut-github-io-blog" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+      <a href="http://localhost:1313/mblog/posts/pandas%E3%81%AEdataframe%E3%82%92%E6%9C%80%E9%AB%98%E3%81%AB%E7%B0%A1%E5%8D%98%E3%81%ABmarkdown%E3%81%AE%E8%A1%A8%E3%81%A8%E3%81%97%E3%81%A6%E5%87%BA%E5%8A%9B/" class="button inline next">
+         [<span class="button__text">PandasのDataFrameを最高に簡単にMarkdownの表として出力</span>] &gt;
+      </a>
+    
+  </div>
 </div>
 
-<style>
-    .disqus-container {
-        background-color: var(--card-background);
-        border-radius: var(--card-border-radius);
-        box-shadow: var(--shadow-l1);
-        padding: var(--card-padding);
-    }
-</style>
 
-<script>
-    window.addEventListener('onColorSchemeChange', (e) => {
-        if (typeof DISQUS == 'object') {
-            DISQUS.reset({
-                reload: true
-            });
-        }
-    })
-</script>
+  
 
+  
     
 
-    <footer class="site-footer">
-    <section class="copyright">
-        &copy; 
-        
-            2019 - 
-        
-        2025 MatLoverによるMatlab以外のブログ
-    </section>
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
     
-    <section class="powerby">
-        <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> で構築されています。 <br />
-        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
-    </section>
+      <div class="copyright">
+        <span>© 2025 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
 </footer>
 
 
-    
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
-    
-    <div class="pswp__bg"></div>
 
-    
-    <div class="pswp__scroll-wrap">
 
-        
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
 
-        
-        <div class="pswp__ui pswp__ui--hidden">
+<script type="text/javascript" src="/mblog/bundle.min.js"></script>
 
-            <div class="pswp__top-bar">
 
-                
 
-                <div class="pswp__counter"></div>
 
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
 
-                <button class="pswp__button pswp__button--share" title="Share"></button>
+  
+</div>
 
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                
-                
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer
-                >
-            </script><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
-            ><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
-            >
-
-            </main>
-        </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
-                
-                >
-            </script><script type="text/javascript" src="/mblog/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
-<script>
-    (function () {
-        const customFont = document.createElement('link');
-        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
-
-        customFont.type = "text/css";
-        customFont.rel = "stylesheet";
-
-        document.head.appendChild(customFont);
-    }());
-</script>
-
-    </body>
+</body>
 </html>

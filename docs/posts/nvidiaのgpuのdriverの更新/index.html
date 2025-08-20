@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html lang="ja-jp" dir="ltr">
-    <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="NVIDIAのGPUのdriver更新手順 色々手順はあると思いますが、1つのやり方のメモです。\n古いドライバを削除しておく 公式からCUDA Toolkitをダウンロードしてインストールした場合は次で削除できるはず。 $ cd /usr/local/cuda-x/bin $ sudo cuda-uninstaller $ sudo nvidia-uninstall もしapt-getを使って古いドライバを入れていたら次のコマンドで消え去るはず。nvidia containerが入っている場合はそれも消えるので、嫌な人は注意。 sudo apt-get remove --purge nvidia\\* libnvidia-\\* CUDA Toolkitのダウンロードとインストール（Installer Typeはrunfileが一番ラク） CUDA 11.2ならここの手順に従うhttps://developer.nvidia.com/cuda-11.2.1-download-archive 最新版のCUDAはここの手順に従うhttps://developer.nvidia.com/cuda-downloads nvidia-smiコマンドを実行して動けばOK ">
-<title>NVIDIAのGPUのdriverの更新</title>
+<html lang="ja">
+<head><script src="/mblog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=mblog/livereload" data-no-instant defer></script>
+  
+    <title>NVIDIAのGPUのdriverの更新 :: MatLoverによるMatlab以外のブログ</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="NVIDIAのGPUのdriver更新手順 色々手順はあると思いますが、1つのやり方のメモです。
+古いドライバを削除しておく 公式からCUDA Toolkitをダウンロードしてインストールした場合は次で削除できるはず。 $ cd /usr/local/cuda-x/bin $ sudo cuda-uninstaller $ sudo nvidia-uninstall もしapt-getを使って古いドライバを入れていたら次のコマンドで消え去るはず。nvidia containerが入っている場合はそれも消えるので、嫌な人は注意。 sudo apt-get remove --purge nvidia\* libnvidia-\* CUDA Toolkitのダウンロードとインストール（Installer Typeはrunfileが一番ラク） CUDA 11.2ならここの手順に従うhttps://developer.nvidia.com/cuda-11.2.1-download-archive 最新版のCUDAはここの手順に従うhttps://developer.nvidia.com/cuda-downloads nvidia-smiコマンドを実行して動けばOK " />
+<meta name="keywords" content="" />
 
-<link rel='canonical' href='https://opqrstuvcut.github.io/mblog/posts/nvidia%E3%81%AEgpu%E3%81%AEdriver%E3%81%AE%E6%9B%B4%E6%96%B0/'>
+  <meta name="robots" content="noodp" />
 
-<link rel="stylesheet" href="/mblog/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="NVIDIAのGPUのdriverの更新">
-<meta property='og:description' content="NVIDIAのGPUのdriver更新手順 色々手順はあると思いますが、1つのやり方のメモです。\n古いドライバを削除しておく 公式からCUDA Toolkitをダウンロードしてインストールした場合は次で削除できるはず。 $ cd /usr/local/cuda-x/bin $ sudo cuda-uninstaller $ sudo nvidia-uninstall もしapt-getを使って古いドライバを入れていたら次のコマンドで消え去るはず。nvidia containerが入っている場合はそれも消えるので、嫌な人は注意。 sudo apt-get remove --purge nvidia\\* libnvidia-\\* CUDA Toolkitのダウンロードとインストール（Installer Typeはrunfileが一番ラク） CUDA 11.2ならここの手順に従うhttps://developer.nvidia.com/cuda-11.2.1-download-archive 最新版のCUDAはここの手順に従うhttps://developer.nvidia.com/cuda-downloads nvidia-smiコマンドを実行して動けばOK ">
-<meta property='og:url' content='https://opqrstuvcut.github.io/mblog/posts/nvidia%E3%81%AEgpu%E3%81%AEdriver%E3%81%AE%E6%9B%B4%E6%96%B0/'>
-<meta property='og:site_name' content='MatLoverによるMatlab以外のブログ'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='GPU' /><meta property='article:tag' content='NVIDIA' /><meta property='article:published_time' content='2021-12-11T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-12-11T00:00:00&#43;00:00'/><meta property='og:image' content='https://opqrstuvcut.github.io/mblog/' />
-<meta name="twitter:title" content="NVIDIAのGPUのdriverの更新">
-<meta name="twitter:description" content="NVIDIAのGPUのdriver更新手順 色々手順はあると思いますが、1つのやり方のメモです。\n古いドライバを削除しておく 公式からCUDA Toolkitをダウンロードしてインストールした場合は次で削除できるはず。 $ cd /usr/local/cuda-x/bin $ sudo cuda-uninstaller $ sudo nvidia-uninstall もしapt-getを使って古いドライバを入れていたら次のコマンドで消え去るはず。nvidia containerが入っている場合はそれも消えるので、嫌な人は注意。 sudo apt-get remove --purge nvidia\\* libnvidia-\\* CUDA Toolkitのダウンロードとインストール（Installer Typeはrunfileが一番ラク） CUDA 11.2ならここの手順に従うhttps://developer.nvidia.com/cuda-11.2.1-download-archive 最新版のCUDAはここの手順に従うhttps://developer.nvidia.com/cuda-downloads nvidia-smiコマンドを実行して動けばOK "><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://opqrstuvcut.github.io/mblog/' />
-    <link rel="shortcut icon" href="/mblog/favicon.ico" />
+<link rel="canonical" href="http://localhost:1313/mblog/posts/nvidia%E3%81%AEgpu%E3%81%AEdriver%E3%81%AE%E6%9B%B4%E6%96%B0/" />
+
 
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFC5W8DKV1"></script>
       <script>
@@ -29,7 +28,123 @@
           gtag('js', new Date());
           gtag('config', 'G-LFC5W8DKV1');
         }
-      </script><style>
+      </script>
+
+
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/custom.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/code.min.d529ea4b2fb8d34328d7d31afc5466d5f7bc2f0bc9abdd98b69385335d7baee4.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/main.min.775ac2af004d44c22a6d000fbd1d9af529642f5cef27399d0280d180af2c2e9b.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/menu.min.310d32205bdedd6f43144e3c3273c9deecd238eba5f9108db5ea96ca0cfbe377.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/post.min.ad50c7f4d00e7975918f37fc74c6029e1959a40d66fb5b2c6564a8715e985573.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/syntax.min.e9ab635cf918bc84b901eb65c0b2caa74c9544245e3647c1af5c129896ef276e.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/terminal.min.77ee67c1d456ac0c280223661a10b75c7729c59aeb33001424a72a14b363e310.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="http://localhost:1313/mblog/favicon.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/mblog/apple-touch-icon.png">
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="ja" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="NVIDIAのGPUのdriverの更新">
+<meta property="og:description" content="NVIDIAのGPUのdriver更新手順 色々手順はあると思いますが、1つのやり方のメモです。
+古いドライバを削除しておく 公式からCUDA Toolkitをダウンロードしてインストールした場合は次で削除できるはず。 $ cd /usr/local/cuda-x/bin $ sudo cuda-uninstaller $ sudo nvidia-uninstall もしapt-getを使って古いドライバを入れていたら次のコマンドで消え去るはず。nvidia containerが入っている場合はそれも消えるので、嫌な人は注意。 sudo apt-get remove --purge nvidia\* libnvidia-\* CUDA Toolkitのダウンロードとインストール（Installer Typeはrunfileが一番ラク） CUDA 11.2ならここの手順に従うhttps://developer.nvidia.com/cuda-11.2.1-download-archive 最新版のCUDAはここの手順に従うhttps://developer.nvidia.com/cuda-downloads nvidia-smiコマンドを実行して動けばOK " />
+<meta property="og:url" content="http://localhost:1313/mblog/posts/nvidia%E3%81%AEgpu%E3%81%AEdriver%E3%81%AE%E6%9B%B4%E6%96%B0/" />
+<meta property="og:site_name" content="MatLoverによるMatlab以外のブログ" />
+
+  <meta property="og:image" content="http://localhost:1313/mblog/og-image.png">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+  <meta property="article:section" content="GPU" />
+
+
+  <meta property="article:published_time" content="2021-12-11 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
+    integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5"
+    crossorigin="anonymous">
+
+<script defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js"
+    integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd"
+    crossorigin="anonymous"></script>
+
+<script defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+            ],
+            throwOnError : false
+        });
+    });
+</script>
+
+
+<style>
   section.article-content h2 {
     background-color: rgb(245, 245, 245);
     padding: 10px;
@@ -45,215 +160,100 @@
 
 </style>
 
-    </head>
-    <body class="
-    article-page
-    ">
-    <script>
-        (function() {
-            const colorSchemeKey = 'StackColorScheme';
-            localStorage.setItem(colorSchemeKey, "light");
-        })();
-    </script><script>
-    (function() {
-        const colorSchemeKey = 'StackColorScheme';
-        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
-        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
 
-        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
-            
-
-            document.documentElement.dataset.scheme = 'dark';
-        } else {
-            document.documentElement.dataset.scheme = 'light';
-        }
-    })();
-</script>
-<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="メニューを開く・閉じる">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header>
-        
-            
-            <figure class="site-avatar">
-                <a href="/mblog/">
-                
-                    
-                    
-                    
-                        
-                        <img src="/mblog/img/avatar_hu_5bc806b678ac7533.jpeg" width="300"
-                            height="300" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-                </a>
-                
-                    <span class="emoji">🐾</span>
-                
-            </figure>
-            
-        
-        
-        <div class="site-meta">
-            <h1 class="site-name"><a href="/mblog">MatLoverによるMatlab以外のブログ</a></h1>
-            <h2 class="site-description">機械学習や関連内容のブログです。仕事の依頼などはvikz2713[あっとマーク]gmail.com まで。</h2>
-        </div>
-    </header><ol class="menu-social">
-            
-                <li>
-                    <a 
-                        href='https://github.com/opqrstuvcut'
-                        target="_blank"
-                        title="GitHub"
-                        rel="me"
-                    >
-                        
-                        
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
-</svg>
+</head>
+<body>
 
 
+<div class="container full">
 
-                        
-                    </a>
-                </li>
-            
-        </ol><ol class="menu" id="main-menu">
-        
-        
-        
-        <li >
-            <a href='/mblog/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <polyline points="5 12 3 12 12 3 21 12 19 12" />
-  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
-</svg>
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="http://localhost:1313/mblog/">
+  <div class="logo">
+    Terminal
+  </div>
+</a>
 
-
-
-                
-                <span>Home</span>
-            </a>
-        </li>
-        
-        
-        <li >
-            <a href='/mblog/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-        <li >
-            <a href='/mblog/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-        <li class="menu-bottom-section">
-            <ol class="menu">
-
-                
-            </ol>
-        </li>
-    </ol>
-</aside>
-
-    
-
-            <main class="main full-width">
-    <article class="main-article">
-    <header class="article-header">
-
-    <div class="article-details">
-    
-    <header class="article-category">
-        
-            <a href="/mblog/categories/gpu/" >
-                GPU
-            </a>
-        
-    </header>
-    
-
-    <div class="article-title-wrapper">
-        <h2 class="article-title">
-            <a href="/mblog/posts/nvidia%E3%81%AEgpu%E3%81%AEdriver%E3%81%AE%E6%9B%B4%E6%96%B0/">NVIDIAのGPUのdriverの更新</a>
-        </h2>
-    
-        
     </div>
-
     
-    
-    
-    
-    <footer class="article-time">
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
         
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">12月 11, 2021</time>
-            </div>
+          <li><a href="/mblog/">Home</a></li>
         
-
+      
         
-    </footer>
-    
+          <li><a href="/mblog/archives/">Archives</a></li>
+        
+      
+        
+          <li><a href="/mblog/search/">Search</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
 
     
-</div>
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/mblog/" >Home</a></li>
+        
+      
+        
+          <li><a href="/mblog/archives/" >Archives</a></li>
+        
+      
+        
+          <li><a href="/mblog/search/" >Search</a></li>
+        
+      
+      
+    
+  </ul>
+</nav>
 
+  
 </header>
 
-    <section class="article-content">
+
+  <div class="content">
     
-    
-    <h1 id="nvidiaのgpuのdriver更新手順">NVIDIAのGPUのdriver更新手順
-</h1><p>色々手順はあると思いますが、1つのやり方のメモです。</p>
+<article class="post">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/mblog/posts/nvidia%E3%81%AEgpu%E3%81%AEdriver%E3%81%AE%E6%9B%B4%E6%96%B0/">NVIDIAのGPUのdriverの更新</a>
+  </h1>
+  <div class="post-meta"><time class="post-date">2021-12-11</time></div>
+
+  
+    <span class="post-tags">
+      
+      #<a href="http://localhost:1313/mblog/tags/gpu/">GPU</a>&nbsp;
+      
+      #<a href="http://localhost:1313/mblog/tags/nvidia/">NVIDIA</a>&nbsp;
+      
+    </span>
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <h1 id="nvidiaのgpuのdriver更新手順">NVIDIAのGPUのdriver更新手順<a href="#nvidiaのgpuのdriver更新手順" class="hanchor" ariaLabel="Anchor">#</a> </h1>
+<p>色々手順はあると思いますが、1つのやり方のメモです。</p>
 <ol>
 <li>古いドライバを削除しておく
 <ul>
@@ -276,260 +276,68 @@ $ sudo nvidia-uninstall
 <li>nvidia-smiコマンドを実行して動けばOK</li>
 </ol>
 
-</section>
+      </div></div>
 
-
-    <footer class="article-footer">
+  
     
-    <section class="article-tags">
-        
-            <a href="/mblog/tags/gpu/">GPU</a>
-        
-            <a href="/mblog/tags/nvidia/">NVIDIA</a>
-        
-    </section>
-
-
+<div class="pagination">
+  <div class="pagination__title">
+    <span class="pagination__title-h"></span>
+    <hr />
+  </div>
+  <div class="pagination__buttons">
     
-    <section class="article-copyright">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
-</svg>
-
-
-
-        <span>Licensed under CC BY-NC-SA 4.0</span>
-    </section>
-    </footer>
-
-
-    
-        <link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
-            ><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
-                defer
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
-                defer
-                >
-            </script><script>
-    window.addEventListener("DOMContentLoaded", () => {
-	const mainArticleElement = document.querySelector(".main-article");
-        renderMathInElement(mainArticleElement, {
-            delimiters: [
-                { left: "$$", right: "$$", display: true },
-                { left: "$", right: "$", display: false },
-                { left: "\\(", right: "\\)", display: false },
-                { left: "\\[", right: "\\]", display: true }
-            ],
-            ignoredClasses: ["gist"]
-        });})
-</script>
-
-    
-</article>
-
-    
-
-    
-
-<aside class="related-content--wrapper">
-    <h2 class="section-title">関連するコンテンツ</h2>
-    <div class="related-content">
-        <div class="flex article-list--tile">
-            
-                
-<article class="has-image">
-    <a href="/mblog/posts/gpu%E5%91%A8%E3%82%8A%E3%81%8C%E3%81%8A%E3%81%8B%E3%81%97%E3%81%8F%E3%81%AA%E3%81%A3%E3%81%9F%E3%81%A8%E3%81%8D%E3%81%AE%E3%83%A1%E3%83%A2ubuntu/">
-        
-        
-            <div class="article-image">
-                <img src="/mblog/posts/gpu%E5%91%A8%E3%82%8A%E3%81%8C%E3%81%8A%E3%81%8B%E3%81%97%E3%81%8F%E3%81%AA%E3%81%A3%E3%81%9F%E3%81%A8%E3%81%8D%E3%81%AE%E3%83%A1%E3%83%A2ubuntu/feature.ce3576f3ae7be71f32a8c83972fa51f2_hu_30a14be9492ea531.png" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post GPU周りがおかしくなったときのメモ（ubuntu）"
-                        
-                        data-hash="md5-zjV286575x8yqMg5cvpR8g==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">GPU周りがおかしくなったときのメモ（ubuntu）</h2>
-        </div>
-    </a>
-</article>
-
-            
-        </div>
-    </div>
-</aside>
-
-     
-    
-        
-    <div class="disqus-container">
-    <div id="disqus_thread"></div>
-<script>
-    window.disqus_config = function () {
+      <a href="http://localhost:1313/mblog/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/" class="button inline prev">
+        &lt; [<span class="button__text">FastAPI &#43; uvicornの構成のサーバーで時間経過でメモリ使用量が増えるとき</span>]
+      </a>
     
     
+      ::
     
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "https-opqrstuvcut-github-io-blog" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+      <a href="http://localhost:1313/mblog/posts/individual-conditional-expectation/" class="button inline next">
+         [<span class="button__text">Individual Conditional Expectation</span>] &gt;
+      </a>
+    
+  </div>
 </div>
 
-<style>
-    .disqus-container {
-        background-color: var(--card-background);
-        border-radius: var(--card-border-radius);
-        box-shadow: var(--shadow-l1);
-        padding: var(--card-padding);
-    }
-</style>
 
-<script>
-    window.addEventListener('onColorSchemeChange', (e) => {
-        if (typeof DISQUS == 'object') {
-            DISQUS.reset({
-                reload: true
-            });
-        }
-    })
-</script>
+  
 
+  
     
 
-    <footer class="site-footer">
-    <section class="copyright">
-        &copy; 
-        
-            2019 - 
-        
-        2025 MatLoverによるMatlab以外のブログ
-    </section>
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
     
-    <section class="powerby">
-        <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> で構築されています。 <br />
-        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
-    </section>
+      <div class="copyright">
+        <span>© 2025 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
 </footer>
 
 
-    
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
-    
-    <div class="pswp__bg"></div>
 
-    
-    <div class="pswp__scroll-wrap">
 
-        
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
 
-        
-        <div class="pswp__ui pswp__ui--hidden">
+<script type="text/javascript" src="/mblog/bundle.min.js"></script>
 
-            <div class="pswp__top-bar">
 
-                
 
-                <div class="pswp__counter"></div>
 
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
 
-                <button class="pswp__button pswp__button--share" title="Share"></button>
+  
+</div>
 
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                
-                
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer
-                >
-            </script><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
-            ><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
-            >
-
-            </main>
-        </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
-                
-                >
-            </script><script type="text/javascript" src="/mblog/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
-<script>
-    (function () {
-        const customFont = document.createElement('link');
-        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
-
-        customFont.type = "text/css";
-        customFont.rel = "stylesheet";
-
-        document.head.appendChild(customFont);
-    }());
-</script>
-
-    </body>
+</body>
 </html>

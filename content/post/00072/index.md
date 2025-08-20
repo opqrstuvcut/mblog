@@ -3,7 +3,7 @@ title: スピアマンの順位相関係数の導出
 tags: ["統計", "スピアマンの順位相関係数"] 
 categories: ["統計"]
 date: 2022-07-18
-image: feature.png
+Cover: feature.png
 ---
 
 スピアマンの順位相関係数の導出のメモになります。

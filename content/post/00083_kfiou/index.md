@@ -3,7 +3,7 @@ title: 回転しているBounding Box向けのIoUのKFIoU
 tags: ["ディープラーニング", "IoU", "物体検出", "カルマンフィルター", "Rotated Bounding Box", "CV", "KFIoU", "SkewIoU"]
 categories: ["ディープラーニング", "物体検出"]
 date: 2025-03-22
-image: thm.png
+Cover: thm.png
 ---
 
 ## 従来手法の問題点

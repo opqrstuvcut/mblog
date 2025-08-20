@@ -3,7 +3,7 @@ title: Laplacianで画像の2階微分
 tags:  ["OpenCV", "laplacian"]
 categories:  ["画像処理", "OpenCV"]
 date: 2020-07-18 13:05:29 +0900
-image: 87a340899433b8d46b1c936e1a54fad5.png
+Cover: 87a340899433b8d46b1c936e1a54fad5.png
 ---
 本記事はQrunchからの転載です。
 ___

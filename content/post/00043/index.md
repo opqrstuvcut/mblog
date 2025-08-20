@@ -3,7 +3,7 @@ title: 透過変換で斜めから撮った画像を上から見下ろす
 tags:  ["OpenCV", "透過変換"]
 categories:  ["OpenCV", "画像処理"]
 date: 2020-07-30 11:04:00 +0900
-image: 80ab2bb0c531b5c091411d41a9dd10a4.png
+Cover: 80ab2bb0c531b5c091411d41a9dd10a4.png
 ---
 本記事はQrunchからの転載です。
 ___

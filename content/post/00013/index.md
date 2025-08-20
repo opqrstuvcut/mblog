@@ -4,7 +4,7 @@ tags:  ["MinIO", "Python", "boto3", "AWS", "S3", "Docker"]
 categories:  ["AWS"]
 date: 2019-11-09 12:48:01 +0900
 showtoc: true
-image: 2d89cc4c8b3b3d34194b32b843ff40bf.png
+Cover: 2d89cc4c8b3b3d34194b32b843ff40bf.png
 ---
 本記事はQrunchからの転載です。
 ___

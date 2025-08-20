@@ -3,7 +3,7 @@ title: サンプルコードでなにかとあらわれるガウス平滑化
 tags:  ["OpenCV", "平滑化", "ガウス平滑化"]
 categories:  ["OpenCV", "画像処理"]
 date: 2020-07-14 18:30:00 +0900
-image: bc05ecb93cbcd05f4c4724aca94cb99d.png
+Cover: bc05ecb93cbcd05f4c4724aca94cb99d.png
 ---
 本記事はQrunchからの転載です。
 ___

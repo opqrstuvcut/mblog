@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><script src="/mblog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=mblog/livereload" data-no-instant defer></script>
+  
+    <title>Posts :: MatLoverによるMatlab以外のブログ</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="http://localhost:1313/mblog/post/" />
+
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFC5W8DKV1"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-LFC5W8DKV1');
+        }
+      </script>
+
+
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/custom.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/code.min.d529ea4b2fb8d34328d7d31afc5466d5f7bc2f0bc9abdd98b69385335d7baee4.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/main.min.775ac2af004d44c22a6d000fbd1d9af529642f5cef27399d0280d180af2c2e9b.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/menu.min.310d32205bdedd6f43144e3c3273c9deecd238eba5f9108db5ea96ca0cfbe377.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/post.min.ad50c7f4d00e7975918f37fc74c6029e1959a40d66fb5b2c6564a8715e985573.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/syntax.min.e9ab635cf918bc84b901eb65c0b2caa74c9544245e3647c1af5c129896ef276e.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/terminal.min.77ee67c1d456ac0c280223661a10b75c7729c59aeb33001424a72a14b363e310.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="http://localhost:1313/mblog/favicon.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/mblog/apple-touch-icon.png">
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="ja" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Posts">
+<meta property="og:description" content="" />
+<meta property="og:url" content="http://localhost:1313/mblog/post/" />
+<meta property="og:site_name" content="MatLoverによるMatlab以外のブログ" />
+
+  <meta property="og:image" content="http://localhost:1313/mblog/og-image.png">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+
+
+
+  <link href="/mblog/post/index.xml" rel="alternate" type="application/rss+xml" title="MatLoverによるMatlab以外のブログ" />
+
+
+
+
+
+
+
+<link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
+    integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5"
+    crossorigin="anonymous">
+
+<script defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js"
+    integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd"
+    crossorigin="anonymous"></script>
+
+<script defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+            ],
+            throwOnError : false
+        });
+    });
+</script>
+
+
+<style>
+  section.article-content h2 {
+    background-color: rgb(245, 245, 245);
+    padding: 10px;
+  }
+
+  :root {
+    --ja-font-family: "メイリオ", "Meiryo";
+    --base-font-family: "Lato", var(--sys-font-family), var(--ja-font-family),
+      sans-serif;
+    --body-background: #ffffe0;
+  }
+
+
+</style>
+
+
+</head>
+<body>
+
+
+<div class="container full">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="http://localhost:1313/mblog/">
+  <div class="logo">
+    Terminal
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/mblog/">Home</a></li>
+        
+      
+        
+          <li><a href="/mblog/archives/">Archives</a></li>
+        
+      
+        
+          <li><a href="/mblog/search/">Search</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/mblog/" >Home</a></li>
+        
+      
+        
+          <li><a href="/mblog/archives/" >Archives</a></li>
+        
+      
+        
+          <li><a href="/mblog/search/" >Search</a></li>
+        
+      
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+  
+  <div class="posts">
+    
+      <article class="post on-list">
+        <h2 class="post-title">
+          <a href="http://localhost:1313/mblog/posts/flutter%E3%81%A7s3%E3%81%AB%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E3%82%A2%E3%83%83%E3%83%97%E3%83%AD%E3%83%BC%E3%83%89%E3%81%99%E3%82%8B/">FlutterでS3にファイルをアップロードする</a>
+        </h2>
+        <div class="post-meta"><time class="post-date">2019-12-08</time></div>
+
+        
+          <span class="post-tags">
+            
+            #<a href="http://localhost:1313/mblog/tags/aws/">AWS</a>&nbsp;
+            
+            #<a href="http://localhost:1313/mblog/tags/s3/">S3</a>&nbsp;
+            
+            #<a href="http://localhost:1313/mblog/tags/flutter/">flutter</a>&nbsp;
+            
+            #<a href="http://localhost:1313/mblog/tags/dart/">Dart</a>&nbsp;
+            
+            #<a href="http://localhost:1313/mblog/tags/cognito/">Cognito</a>&nbsp;
+            
+          </span>
+        
+
+        
+  <img src="/mblog/posts/flutter%E3%81%A7s3%E3%81%AB%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E3%82%A2%E3%83%83%E3%83%97%E3%83%AD%E3%83%BC%E3%83%89%E3%81%99%E3%82%8B/5156acb6c29b977915456e21c1d96fb8.png"
+    class="post-cover"
+    alt="FlutterでS3にファイルをアップロードする"
+    title="Cover Image" />
+
+
+        <div class="post-content">
+          
+            <p>本記事はQrunchからの転載です。</p>
+<hr>
+<p>FlutterでS3へファイルをアップロードするための公式のライブラリはありませんが、有志によるライブラリ<a href="https://pub.dev/packages/amazon_s3_cognito">amazon_s3_cognito</a>があります。
+今回はこちらの紹介+forkしてちょっと修正したのでよければ使ってねという話になります。</p>
+<h1 id="事前準備">事前準備</h1>
+<p>AWS cognitoでIDプールを作っておく必要があります。
+cognitoのページを開くと以下のような表示がされるので、「IDプールの管理」を押します。
+<img src="51dca99b7523115a42a0e5331b29bba1.png" alt=""></p>
+<p>新しいIDプールの作成を押し、以下のような感じで設定をします。
+<img src="f29b36e4c772d25380ee184e5d4b7128.png" alt=""></p>
+<p>次のページでRoleのポリシーの設定ができますので、「詳細を表示」 -&gt; 「ポリシードキュメントを表示」 からポリシーを編集します。Uauthと書いてある方だけ編集すればOKです。
+<img src="ec491a947954374fa40c7f89a030e67b.png" alt=""></p>
+<p>ポリシーは以下のようにすれば大丈夫ですが、バケット名は自分で適当なものに変更してください。</p>
+<pre tabindex="0"><code>{
+    &#34;Version&#34;: &#34;2012-10-17&#34;,
+    &#34;Statement&#34;: [
+        {
+            &#34;Sid&#34;: &#34;VisualEditor0&#34;,
+            &#34;Effect&#34;: &#34;Allow&#34;,
+            &#34;Action&#34;: [
+                &#34;mobileanalytics:PutEvents&#34;,
+                &#34;cognito-sync:*&#34;
+            ],
+            &#34;Resource&#34;: &#34;*&#34;
+        },
+        {
+            &#34;Sid&#34;: &#34;VisualEditor1&#34;,
+            &#34;Effect&#34;: &#34;Allow&#34;,
+            &#34;Action&#34;: &#34;s3:*Object&#34;,
+            &#34;Resource&#34;: &#34;arn:aws:s3:::(バケット名)*&#34;
+        }
+    ]
+}
+</code></pre><p>おそらくこれでAWS側の設定は大丈夫かと思います。</p>
+<h1 id="flutter側からファイルを送信する">Flutter側からファイルを送信する</h1>
+<p>amazon_s3_cognitoをpubspec.yamlに追加して、flutter pub getしたら使う準備はできました。
+次のようなコードでファイルをS3に送ることができます。</p>
+<pre tabindex="0"><code>import &#39;package:amazon_s3_cognito/amazon_s3_cognito.dart&#39;;
+import &#39;package:amazon_s3_cognito/aws_region.dart&#39;;
+
+String uploadedImageUrl = await AmazonS3Cognito.upload(
+            imagePath,
+            BUCKET_NAME,
+            IDENTITY_POOL_ID,
+            IMAGE_NAME,
+            AwsRegion.AP_NORTHEAST_1,
+            AwsRegion.AP_NORTHEAST_1)
+</code></pre><ul>
+<li>imagePathはスマートフォン内の送りたいファイルのパスを指定します。</li>
+<li>BUCKET_NAMEはS3のバケット名を指定します。</li>
+<li>IDENTITY_POOL_IDはさきほど設定したAWS cognitoから次のような詳細ページにいくことで、取得できます。以下のIDプールのIDと書かれている行のダブルクォーテーションの部分をコピペすればOKです。
+<img src="5156acb6c29b977915456e21c1d96fb8.png" alt=""></li>
+<li>IMAGE_NAMEはS3のバケット以下のファイルの保存先のパスを指定します。</li>
+<li>AwsRegion.AP_NORTHEAST_1はregionを指定しています。2つ目はsub region？の設定らしいですが、なければ同じもので特に問題ありません。</li>
+</ul>
+<p>返り値はS3上の保存先のファイルパスになります。失敗したときは&quot;Failed&quot;だったり空のパスが渡ってきます。</p>
+          
+        </div>
+
+        
+           <div>
+            <a class="read-more button inline" href="/mblog/posts/flutter%E3%81%A7s3%E3%81%AB%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E3%82%A2%E3%83%83%E3%83%97%E3%83%AD%E3%83%BC%E3%83%89%E3%81%99%E3%82%8B/">[]</a>
+          </div>
+        
+      </article>
+    
+
+    <div class="pagination">
+  <div class="pagination__buttons">
+    
+      <a href="/mblog/post/page/81/" class="button inline prev">
+        &lt; [<span class="button__text">Newer posts</span>]
+      </a>
+    
+    
+      ::
+    
+    
+      <a href="/mblog/post/page/83/" class="button inline next">
+        [<span class="button__text">Older posts</span>] &gt;
+      </a>
+    
+  </div>
+</div>
+
+  </div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2025 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/mblog/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

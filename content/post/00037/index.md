@@ -3,7 +3,7 @@ title: Hough変換で円を検出
 tags:  ["OpenCV", "Hough変換", "円検出"]
 categories:  ["OpenCV", "画像処理"]
 date: 2020-08-05 11:05:00 +0900
-image: 51aa777f4487689837d45257fa1eba91.png
+Cover: 51aa777f4487689837d45257fa1eba91.png
 ---
 本記事はQrunchからの転載です。
 ___

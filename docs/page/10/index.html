@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta name="generator" content="Hugo 0.148.2"><script src="/mblog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=mblog/livereload" data-no-instant defer></script>
+  
+    <title>MatLoverによるMatlab以外のブログ</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="http://localhost:1313/mblog/" />
+
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFC5W8DKV1"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-LFC5W8DKV1');
+        }
+      </script>
+
+
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/custom.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/code.min.d529ea4b2fb8d34328d7d31afc5466d5f7bc2f0bc9abdd98b69385335d7baee4.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/main.min.775ac2af004d44c22a6d000fbd1d9af529642f5cef27399d0280d180af2c2e9b.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/menu.min.310d32205bdedd6f43144e3c3273c9deecd238eba5f9108db5ea96ca0cfbe377.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/post.min.ad50c7f4d00e7975918f37fc74c6029e1959a40d66fb5b2c6564a8715e985573.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/syntax.min.e9ab635cf918bc84b901eb65c0b2caa74c9544245e3647c1af5c129896ef276e.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/terminal.min.77ee67c1d456ac0c280223661a10b75c7729c59aeb33001424a72a14b363e310.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="http://localhost:1313/mblog/favicon.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/mblog/apple-touch-icon.png">
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="ja" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="MatLoverによるMatlab以外のブログ">
+<meta property="og:description" content="" />
+<meta property="og:url" content="http://localhost:1313/mblog/" />
+<meta property="og:site_name" content="MatLoverによるMatlab以外のブログ" />
+
+  <meta property="og:image" content="http://localhost:1313/mblog/og-image.png">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+
+
+
+  <link href="/mblog/index.xml" rel="alternate" type="application/rss+xml" title="MatLoverによるMatlab以外のブログ" />
+
+
+
+
+
+
+
+<link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
+    integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5"
+    crossorigin="anonymous">
+
+<script defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js"
+    integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd"
+    crossorigin="anonymous"></script>
+
+<script defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+            ],
+            throwOnError : false
+        });
+    });
+</script>
+
+
+<style>
+  section.article-content h2 {
+    background-color: rgb(245, 245, 245);
+    padding: 10px;
+  }
+
+  :root {
+    --ja-font-family: "メイリオ", "Meiryo";
+    --base-font-family: "Lato", var(--sys-font-family), var(--ja-font-family),
+      sans-serif;
+    --body-background: #ffffe0;
+  }
+
+
+</style>
+
+
+</head>
+<body>
+
+
+<div class="container full">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="http://localhost:1313/mblog/">
+  <div class="logo">
+    Terminal
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/mblog/">Home</a></li>
+        
+      
+        
+          <li><a href="/mblog/archives/">Archives</a></li>
+        
+      
+        
+          <li><a href="/mblog/search/">Search</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/mblog/" >Home</a></li>
+        
+      
+        
+          <li><a href="/mblog/archives/" >Archives</a></li>
+        
+      
+        
+          <li><a href="/mblog/search/" >Search</a></li>
+        
+      
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+  
+  <div class="posts">
+    
+    
+
+    
+    
+      
+    
+    
+
+    
+      <article class="post on-list">
+        <h2 class="post-title">
+          <a href="http://localhost:1313/mblog/posts/were-rnns-all-we-needed%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%81%AE%E3%81%A7%E3%81%BE%E3%81%A8%E3%82%81/">Were RNNs All We Needed?を読んだのでまとめ</a>
+        </h2>
+
+        <div class="post-meta"><time class="post-date">2024-12-01</time></div>
+
+        
+          <span class="post-tags">
+            
+            #<a href="http://localhost:1313/mblog/tags/rnn/">RNN</a>&nbsp;
+            
+            #<a href="http://localhost:1313/mblog/tags/mamba/">Mamba</a>&nbsp;
+            
+            #<a href="http://localhost:1313/mblog/tags/transformer/">Transformer</a>&nbsp;
+            
+            #<a href="http://localhost:1313/mblog/tags/lstm/">LSTM</a>&nbsp;
+            
+            #<a href="http://localhost:1313/mblog/tags/gru/">GRU</a>&nbsp;
+            
+          </span>
+        
+
+        
+  <img src="/mblog/posts/were-rnns-all-we-needed%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%81%AE%E3%81%A7%E3%81%BE%E3%81%A8%E3%82%81/feature.png"
+    class="post-cover"
+    alt="Were RNNs All We Needed?を読んだのでまとめ"
+    title="Cover Image" />
+
+
+        <div class="post-content">
+          
+            <p>Were RNNs All We Needed?を読んだので、その内容をまとめておきます。<br>
+<a href="https://arxiv.org/abs/2410.01201">https://arxiv.org/abs/2410.01201</a></p>
+<h2 id="概要">概要</h2>
+<p>Transformerを用いたアーキテクチャの場合、推論に時系列長の二乗に比例した計算量が必要となるため、単純には非常に長い時系列データを扱うことはできません．<br>
+ちょうど一年前くらいにMambaという状態空間モデルベースの手法が提案されており、このMambaならば時系列長に比例した計算量となるため計算量的にはMambaが好ましいです．また学習も効率良くおこなえるうえ、精度的にも良い性能が得られることが分かってきており、有望な手法の1つです．</p>
+<p>旧来のLSTMやGRUといったRNNベースの手法の場合はMambaとも似ているように思えますが、BPTTをおこなって学習をしていく必要があり、この点が長い時系列の学習においてネックとなります．というのも、BPTTでは時系列を遡って順に計算をおこなっていく必要があり、これは時系列長の分だけ深いネットワークを利用しているようなもので、どうしても計算時間が長くなってしまいます．
+一方でTransformerはBPTTが不要で、必要な計算は並列化して効率よく学習ができます．<br>
+本論文では状態空間モデルベースの手法からインスパイアされた、LSTMやGRUを修正して効率的に学習をおこなえるようにした手法を提案しています．</p>
+<h2 id="mamba">Mamba</h2>
+<p>Mambaをさらっと説明すると、次のように入力 $x_t \in \mathbb{R}$ と1つ前の時刻の隠れ状態 $h_{t-1} \in \mathbb{R}^n$ を用いて、次の時刻の隠れ状態 $h_t$と出力$ y_t \in \mathbb{R}$ を計算するモデルです．</p>
+<p>$$
+\begin{align*}
+h_t &amp;= A_t h_{t - 1} + B_t x_t \\
+y_t &amp;= C_t h_t
+\end{align*}.
+$$
+ここで、 $A_t \in \mathbb{R}^{n\times n}, B_t \in \mathbb{R}^n, C_t \in \mathbb{R}^{1 \times n} $ です．</p>
+<p>上記の隠れ状態の更新と出力値の計算方法より、</p>
+<ul>
+<li>時系列長に比例した計算量で推論が可能</li>
+<li>時系列長に依存しないメモリ使用量</li>
+</ul>
+<p>とわかります．</p>
+<h3 id="選択メカニズム">選択メカニズム</h3>
+<p>Mambaの大事なポイントとして、係数$A_t \in \mathbb{R}^{n\times n}, B_t \in \mathbb{R}^n, C_t \in \mathbb{R}^{1 \times n} $ は入力$ x_t $に依存する値です．これにより、Selective Copying TaskとInduction Heads Taskを解けるようになっています．これは隠れ状態へ入力に関する情報を取り込むかどうか、あるいは隠れ状態の情報を捨てるかを入力値に依存して動的に変えることでモデルの性能が高まったということを意味します．<br>
+また、これはRNNのゲート機構を内包した形になっていることも論文中で示されています．<br>
+詳しくは<a href="https://arxiv.org/abs/2312.00752">Mambaの論文</a>を参照して下さい．</p>
+          
+        </div>
+
+        
+          <div>
+            <a class="read-more button inline" href="/mblog/posts/were-rnns-all-we-needed%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%81%AE%E3%81%A7%E3%81%BE%E3%81%A8%E3%82%81/">[]</a>
+          </div>
+        
+      </article>
+    
+
+    <div class="pagination">
+  <div class="pagination__buttons">
+    
+      <a href="/mblog/page/9/" class="button inline prev">
+        &lt; [<span class="button__text">Newer posts</span>]
+      </a>
+    
+    
+      ::
+    
+    
+      <a href="/mblog/page/11/" class="button inline next">
+        [<span class="button__text">Older posts</span>] &gt;
+      </a>
+    
+  </div>
+</div>
+
+  </div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2025 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/mblog/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

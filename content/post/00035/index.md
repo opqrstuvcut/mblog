@@ -3,7 +3,7 @@ title: 画像の距離変換をおこなう
 tags:  ["OpenCV", "距離変換"]
 categories:  ["OpenCV", "画像処理"]
 date: 2020-08-07 11:00:00 +0900
-image: 10fec2481837301639f81cf34c21e4b1.png
+Cover: 10fec2481837301639f81cf34c21e4b1.png
 ---
 本記事はQrunchからの転載です。
 ___

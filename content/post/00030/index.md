@@ -3,7 +3,7 @@ title: テンプレートマッチングで画像から物体をみつける
 tags:  ["OpenCV", "テンプレートマッチング"]
 categories:  ["OpenCV", "画像処理"]
 date: 2020-08-15 11:09:00 +0900
-image: 0359ef5bc2687ab5c1e63356c89cc3e0.png
+Cover: 0359ef5bc2687ab5c1e63356c89cc3e0.png
 ---
 本記事はQrunchからの転載です。
 ___

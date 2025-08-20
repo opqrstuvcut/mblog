@@ -3,7 +3,7 @@ title: erodeで猫を収縮させる
 tags:  ["erode", "縮小"]
 categories:  ["OpenCV", "画像処理"]
 date: 2020-07-20 23:14:16 +0900
-image: fa45ab8993211945b777cb332c493e6a.png
+Cover: fa45ab8993211945b777cb332c493e6a.png
 ---
 本記事はQrunchからの転載です。
 ___

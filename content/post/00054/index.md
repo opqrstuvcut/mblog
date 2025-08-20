@@ -3,7 +3,7 @@ title: imencodeとimdecodeによるメモリ上での画像圧縮
 tags:  ["OpenCV", "圧縮"]
 categories:  ["OpenCV", "画像処理"]
 date: 2020-07-16 11:00:00 +0900
-image: ef33a82444b4c9bca9b7fb97cad0d467.png
+Cover: ef33a82444b4c9bca9b7fb97cad0d467.png
 ---
 本記事はQrunchからの転載です。
 ___

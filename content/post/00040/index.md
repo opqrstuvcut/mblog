@@ -3,7 +3,7 @@ title: ヒストグラム平坦化
 tags:  ["OpenCV", "ヒストグラム平坦化"]
 categories:  ["OpenCV生活", "画像処理"]
 date: 2020-08-02 22:50:29 +0900
-image: e534d7e8e9969a0405e4a1b8f7eea112.png
+Cover: e534d7e8e9969a0405e4a1b8f7eea112.png
 ---
 本記事はQrunchからの転載です。
 ___

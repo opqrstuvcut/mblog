@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><script src="/mblog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=mblog/livereload" data-no-instant defer></script>
+  
+    <title>ディープラーニング :: MatLoverによるMatlab以外のブログ</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="http://localhost:1313/mblog/categories/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0/" />
+
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFC5W8DKV1"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-LFC5W8DKV1');
+        }
+      </script>
+
+
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/custom.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/code.min.d529ea4b2fb8d34328d7d31afc5466d5f7bc2f0bc9abdd98b69385335d7baee4.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/main.min.775ac2af004d44c22a6d000fbd1d9af529642f5cef27399d0280d180af2c2e9b.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/menu.min.310d32205bdedd6f43144e3c3273c9deecd238eba5f9108db5ea96ca0cfbe377.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/post.min.ad50c7f4d00e7975918f37fc74c6029e1959a40d66fb5b2c6564a8715e985573.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/syntax.min.e9ab635cf918bc84b901eb65c0b2caa74c9544245e3647c1af5c129896ef276e.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/terminal.min.77ee67c1d456ac0c280223661a10b75c7729c59aeb33001424a72a14b363e310.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="http://localhost:1313/mblog/favicon.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/mblog/apple-touch-icon.png">
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="ja" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="ディープラーニング">
+<meta property="og:description" content="" />
+<meta property="og:url" content="http://localhost:1313/mblog/categories/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0/" />
+<meta property="og:site_name" content="MatLoverによるMatlab以外のブログ" />
+
+  <meta property="og:image" content="http://localhost:1313/mblog/og-image.png">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+
+
+
+  <link href="/mblog/categories/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0/index.xml" rel="alternate" type="application/rss+xml" title="MatLoverによるMatlab以外のブログ" />
+
+
+
+
+
+
+
+<link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
+    integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5"
+    crossorigin="anonymous">
+
+<script defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js"
+    integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd"
+    crossorigin="anonymous"></script>
+
+<script defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+            ],
+            throwOnError : false
+        });
+    });
+</script>
+
+
+<style>
+  section.article-content h2 {
+    background-color: rgb(245, 245, 245);
+    padding: 10px;
+  }
+
+  :root {
+    --ja-font-family: "メイリオ", "Meiryo";
+    --base-font-family: "Lato", var(--sys-font-family), var(--ja-font-family),
+      sans-serif;
+    --body-background: #ffffe0;
+  }
+
+
+</style>
+
+
+</head>
+<body>
+
+
+<div class="container full">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="http://localhost:1313/mblog/">
+  <div class="logo">
+    Terminal
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/mblog/">Home</a></li>
+        
+      
+        
+          <li><a href="/mblog/archives/">Archives</a></li>
+        
+      
+        
+          <li><a href="/mblog/search/">Search</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/mblog/" >Home</a></li>
+        
+      
+        
+          <li><a href="/mblog/archives/" >Archives</a></li>
+        
+      
+        
+          <li><a href="/mblog/search/" >Search</a></li>
+        
+      
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+  <h1>Posts for: #ディープラーニング</h1>
+  
+  <div class="posts">
+    
+      <article class="post on-list">
+        <h1 class="post-title">
+          <a href="http://localhost:1313/mblog/posts/%E7%89%B9%E5%BE%B4%E9%87%8F%E3%81%AE%E6%AC%A1%E5%85%83%E3%81%AE%E6%9F%94%E8%BB%9F%E6%80%A7%E3%81%8C%E9%AB%98%E3%81%84%E3%83%9E%E3%83%88%E3%83%AA%E3%83%A7%E3%83%BC%E3%82%B7%E3%82%AB%E8%A1%A8%E7%8F%BE%E5%AD%A6%E7%BF%92/">特徴量の次元の柔軟性が高いマトリョーシカ表現学習</a>
+        </h1>
+        <div class="post-meta"><time class="post-date">2025-02-17</time></div>
+
+        
+          <span class="post-tags">
+            
+            #<a href="http://localhost:1313/mblog/tags/%E8%A1%A8%E7%8F%BE%E5%AD%A6%E7%BF%92/">表現学習</a>&nbsp;
+            
+            #<a href="http://localhost:1313/mblog/tags/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0/">ディープラーニング</a>&nbsp;
+            
+            #<a href="http://localhost:1313/mblog/tags/%E7%89%B9%E5%BE%B4%E9%87%8F/">特徴量</a>&nbsp;
+            
+            #<a href="http://localhost:1313/mblog/tags/%E9%81%A9%E5%BF%9C%E7%9A%84%E6%A4%9C%E7%B4%A2/">適応的検索</a>&nbsp;
+            
+            #<a href="http://localhost:1313/mblog/tags/embedding/">Embedding</a>&nbsp;
+            
+            #<a href="http://localhost:1313/mblog/tags/rag/">RAG</a>&nbsp;
+            
+            #<a href="http://localhost:1313/mblog/tags/azure/">Azure</a>&nbsp;
+            
+            #<a href="http://localhost:1313/mblog/tags/ai-search/">AI Search</a>&nbsp;
+            
+          </span>
+        
+
+        
+  <img src="/mblog/posts/%E7%89%B9%E5%BE%B4%E9%87%8F%E3%81%AE%E6%AC%A1%E5%85%83%E3%81%AE%E6%9F%94%E8%BB%9F%E6%80%A7%E3%81%8C%E9%AB%98%E3%81%84%E3%83%9E%E3%83%88%E3%83%AA%E3%83%A7%E3%83%BC%E3%82%B7%E3%82%AB%E8%A1%A8%E7%8F%BE%E5%AD%A6%E7%BF%92/thm.png"
+    class="post-cover"
+    alt="特徴量の次元の柔軟性が高いマトリョーシカ表現学習"
+    title="Cover Image" />
+
+
+        <div class="post-content">
+          
+            <p>一般には、分類問題向けに学習させたディープラーニングモデルから得られる特徴量の次元はあとから変更することはできず、学習のときに固定されてしまいます．
+もしも、学習後に精度をあまり落とさずに次元を小さくできるのであれば、計算リソースやサービスの要求に応じた次元を選択できるため非常に便利です．
+それを実現するための方法として<a href="https://arxiv.org/abs/2205.13147">Matryoshka Representation Learning（マトリョーシカ表現学習）</a>があります．<br>
+なお、マトリョーシカ表現学習はAzureのAI Searchのベクトル検索で利用可能になっています．</p>
+<h2 id="マトリョーシカ表現学習の概要">マトリョーシカ表現学習の概要</h2>
+<p><img src="fig1.png" alt="マトリョーシカ表現学習の概要"></p>
+<h3 id="学習">学習</h3>
+<p>一般にはディープラーニングモデルを用いて$L$クラス分類問題を解くとき、入力データ$x$に対してembedding $z \in \mathbb{R}^d $を計算し、それに対して重み$W \in \mathbb{R}^{L \times d}$を用いて
+$$
+W z
+$$
+を計算します。その後、$Wz$の値から分類問題が解けるようにモデルの学習を進めていきます．$z$は$d$次元であることを前提にしていますので、残念ながら学習後に先頭から$m$次元目までを切り取った$z_{1:m}$のようなembeddingの一部をみても良い特徴量にはなりません．</p>
+<p>マトリョーシカ表現学習(MRL)ではこれを解決するため、事前にembeddingの次元の集合を$\mathcal{M}$を定義しておき（例えば$\mathcal{M}=\{8,16,\cdots,1024, 2048\}$）、各次元ごとにembeddingを切り出してそれを用いて分類問題が解けるように学習をしていきます．<br>
+具体的には、データセットを$\mathcal{D} = \{(x_1,y_1),\cdots,(x_N, y_N) \}$、各$\mathcal{M}$の要素$m$ ごとに用意した重みを$W^{(m)} \in \mathbb{R}^{L \times m}$、スケーリングのパラメータを$c_m$、分類用のLossを$\mathcal{L}$としたとき、以下の最小化問題を解くように学習をおこないます．
+$$
+\begin{align*}
+\min_{\{W^{(m)}\}_{m \in \mathcal{M}}, \theta_F} \frac{1}{N} \sum_{(x_i, y_i) \in \mathcal{D}} \sum_{m \in \mathcal{M}} c_m \cdot \mathcal{L} \left(W^{(m)} \cdot F(x_i;\theta_F)         _{1:m};y_i  \right  )
+\end{align*}
+$$
+ここで、embeddingがモデルのパラメータ$\theta_F$に依存していることを明示するため、$x_i$に対応するembedding $z_i \in \mathbb{R}^d$を$F(x_i;\theta_F)$とあらわしています．<br>
+この式であらわしているように、小さい次元のembeddingでも分類問題が解けるようにすることで、そのような一部のembeddingだけでも良い特徴量になることを期待しています．このように、embeddingがマトリョーシカのように入れ子の形になっているためマトリョーシカ表現学習という名前になっています．<br>
+また、もしかすると$c_m$の調整が少し面倒なのかな？と思いましたが、論文ではすべて$c_m=1$としているようです．</p>
+<p>この手法で少し気になってくるのは、重み行列$W^{(m)}$をそれぞれの$m$ごとに用意するとメモリ使用量が増えることです．<br>
+これに対しては、共通の重み行列$W$を1つ用意し、$W^{m} = W_{1:m}$のように$W$の1行目から$m$行目までを切り出すという形で定義する方法が提案されています．これをEfficient Matryoshka Representation Learning（MRL-E）と呼んでいます．</p>
+          
+        </div>
+
+        
+          <div>
+            <a class="read-more button inline" href="/mblog/posts/%E7%89%B9%E5%BE%B4%E9%87%8F%E3%81%AE%E6%AC%A1%E5%85%83%E3%81%AE%E6%9F%94%E8%BB%9F%E6%80%A7%E3%81%8C%E9%AB%98%E3%81%84%E3%83%9E%E3%83%88%E3%83%AA%E3%83%A7%E3%83%BC%E3%82%B7%E3%82%AB%E8%A1%A8%E7%8F%BE%E5%AD%A6%E7%BF%92/">[]</a>
+          </div>
+        
+      </article>
+    
+
+    <div class="pagination">
+  <div class="pagination__buttons">
+    
+      <a href="/mblog/categories/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0/page/5/" class="button inline prev">
+        &lt; [<span class="button__text">Newer posts</span>]
+      </a>
+    
+    
+    
+  </div>
+</div>
+
+  </div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2025 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/mblog/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

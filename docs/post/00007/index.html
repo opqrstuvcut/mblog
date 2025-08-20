@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><script src="/mblog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=mblog/livereload" data-no-instant defer></script>
+  
+    <title>モデルの予測結果を説明するLIMEの理論 :: MatLoverによるMatlab以外のブログ</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="本記事はQrunchからの転載です。
+モデルの予測結果を説明する方法としてLIMEがあります。 LIMEはディープラーニングに限らず、任意のモデルに対して予測結果を適用することができます。 また手法としては結構有名かと思います。
+今回はそんなLIMEの理論について説明します。
+論文：“Why Should I Trust You?” Explaining the Predictions of Any Classifie
+LIMEの戦略 任意のモデル$f$に入力$x \in \mathbb{R}^d$が与えられたときの予測結果$f(x)$への特徴量の寄与を求めることを考えます。
+LIMEでは$x$近傍（近傍については後述）に対しては$f$と同じような予測をすることができる、かつ解釈が容易なモデル$g$を求めます。 例えば$g$が線形モデルの場合には、$g$の各係数を見ることで特徴量の寄与を得ることが可能です。あるいは$g$が決定木であれば、人間でもある程度容易にモデルの解釈が可能です。ですから、このようなモデル$g$を$f$の代わりに使って、予測結果の解釈をしようというモチベーションです。 ただし、LIMEでは$g$には特徴量の値が$0$か$1$となるベクトル$x&rsquo;$が入力として与えられるものとします。これは何らかのルールで$x$の要素と$x&rsquo;$の要素が対応づいているとします。ここも詳細をあとで述べます。 以上のように、解釈が難しいモデル$f$を解釈が容易なモデル$g$に落とし込むことがLIMEのやりたいことになります。
+実際にどうやって$g$を求めるのかといえば、次式のようになります。 $${\rm argmin_{g \in G}} \ L(f, g, \pi_x) &#43; \Omega(g).$$
+ここで、
+$L$は損失関数です。$x$近傍で$g$の予測値が$f$の予測値に近いと、小さくなるように$L$を定義します。 $\pi_x$は損失関数で使われる重みで、$x$の近傍点が$x$から遠いほど小さい値を取るようにします。詳細は後述する線形モデルの項を参照。 $\Omega$はモデルの複雑さとなります。決定木を使う場合には木の深さであったり、線形モデルの場合には非ゼロの重みの数になります。モデルを解釈するためには、モデルはシンプルな方が良いため、$\Omega$を加えることで$g$をなるべく人間にやさしいモデルにしてあげます。 まだ色々と詳細を述べていないため、わからないところは多々あると思いますが、上式はなるべくシンプルなモデルで$x$の近傍で$f$と近似する$g$を見つけるといったことを意味します。 この局所的に近似された$g$が得られれば、$x$近傍での特徴量が$g$へ与える寄与がわかる、つまり$f$へ与える寄与が近似的にはわかります。
+次に画像の場合のケースについて、詳細に踏み込みます。
+画像に対する線形モデルでのLIME superpixel 画像にLIMEを適用する場合、まず次のように入力画像をsuperpixelに分割し、領域ごとに寄与を求めていきます。
+引用元：https://towardsdatascience.com/understanding-how-lime-explains-predictions-d404e5d1829c
+実際には上記のようにある程度細かく領域を分けますが、以下では例として扱いやすいように次のような画像を考えて、粗く領域を分けていきます（左がオリジナルのくまモンで、右がsuperpixelに分割されたくまモンです）。
+各領域を$g$に与える入力$x&rsquo;$の各要素に対応させます。例えば1番の領域が$x&rsquo;$の1番目の要素、2番が2番目の要素のようにします。その上で、$x&rsquo;$の各要素が1のときには対応する領域のピクセルが$x$と同じピクセル値、0のときにはその領域がグレーで埋められた画像と対応していると考えます。 具体的には $$x&rsquo; = [0, 0, 1, 1, 0,0,0,0]$$ としたとき、3番目と4番目だけが1ですので、この$x&rsquo;$に対応した画像は次のようになります。
+近傍のサンプリング LIMEでは $x$の近傍のサンプリングをおこないます。 画像の場合に近傍とはどうなるんでしょうか？直感的には謎じゃないでしょうか。
+LIMEの場合には分割された領域のうち、適当な個数（個数もランダムに決めますが、個数の下限は決めておきます）をそのままにし、それ以外をグレーに置き換える処理をします。 $x&rsquo;$の話でいえば、適当な個数の要素については1とし、それ以外は0とする処理に等しいです。
+このようにして得られた画像を$x$の近傍として扱います。またこのようにして近傍を得ることを、近傍のサンプリングとします。 先程示した$x&rsquo;$に対応した画像も$x$の近傍になります。
+線形モデルのケース $g$が線形モデルの場合には$g(z&rsquo;)$は次のようになります。
+" />
+<meta name="keywords" content="" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="http://localhost:1313/mblog/post/00007/" />
+
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFC5W8DKV1"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-LFC5W8DKV1');
+        }
+      </script>
+
+
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/custom.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/code.min.d529ea4b2fb8d34328d7d31afc5466d5f7bc2f0bc9abdd98b69385335d7baee4.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/main.min.775ac2af004d44c22a6d000fbd1d9af529642f5cef27399d0280d180af2c2e9b.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/menu.min.310d32205bdedd6f43144e3c3273c9deecd238eba5f9108db5ea96ca0cfbe377.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/post.min.ad50c7f4d00e7975918f37fc74c6029e1959a40d66fb5b2c6564a8715e985573.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/syntax.min.e9ab635cf918bc84b901eb65c0b2caa74c9544245e3647c1af5c129896ef276e.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/terminal.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="http://localhost:1313/mblog/favicon.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/mblog/apple-touch-icon.png">
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="ja" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="モデルの予測結果を説明するLIMEの理論">
+<meta property="og:description" content="本記事はQrunchからの転載です。
+モデルの予測結果を説明する方法としてLIMEがあります。 LIMEはディープラーニングに限らず、任意のモデルに対して予測結果を適用することができます。 また手法としては結構有名かと思います。
+今回はそんなLIMEの理論について説明します。
+論文：“Why Should I Trust You?” Explaining the Predictions of Any Classifie
+LIMEの戦略 任意のモデル$f$に入力$x \in \mathbb{R}^d$が与えられたときの予測結果$f(x)$への特徴量の寄与を求めることを考えます。
+LIMEでは$x$近傍（近傍については後述）に対しては$f$と同じような予測をすることができる、かつ解釈が容易なモデル$g$を求めます。 例えば$g$が線形モデルの場合には、$g$の各係数を見ることで特徴量の寄与を得ることが可能です。あるいは$g$が決定木であれば、人間でもある程度容易にモデルの解釈が可能です。ですから、このようなモデル$g$を$f$の代わりに使って、予測結果の解釈をしようというモチベーションです。 ただし、LIMEでは$g$には特徴量の値が$0$か$1$となるベクトル$x&rsquo;$が入力として与えられるものとします。これは何らかのルールで$x$の要素と$x&rsquo;$の要素が対応づいているとします。ここも詳細をあとで述べます。 以上のように、解釈が難しいモデル$f$を解釈が容易なモデル$g$に落とし込むことがLIMEのやりたいことになります。
+実際にどうやって$g$を求めるのかといえば、次式のようになります。 $${\rm argmin_{g \in G}} \ L(f, g, \pi_x) &#43; \Omega(g).$$
+ここで、
+$L$は損失関数です。$x$近傍で$g$の予測値が$f$の予測値に近いと、小さくなるように$L$を定義します。 $\pi_x$は損失関数で使われる重みで、$x$の近傍点が$x$から遠いほど小さい値を取るようにします。詳細は後述する線形モデルの項を参照。 $\Omega$はモデルの複雑さとなります。決定木を使う場合には木の深さであったり、線形モデルの場合には非ゼロの重みの数になります。モデルを解釈するためには、モデルはシンプルな方が良いため、$\Omega$を加えることで$g$をなるべく人間にやさしいモデルにしてあげます。 まだ色々と詳細を述べていないため、わからないところは多々あると思いますが、上式はなるべくシンプルなモデルで$x$の近傍で$f$と近似する$g$を見つけるといったことを意味します。 この局所的に近似された$g$が得られれば、$x$近傍での特徴量が$g$へ与える寄与がわかる、つまり$f$へ与える寄与が近似的にはわかります。
+次に画像の場合のケースについて、詳細に踏み込みます。
+画像に対する線形モデルでのLIME superpixel 画像にLIMEを適用する場合、まず次のように入力画像をsuperpixelに分割し、領域ごとに寄与を求めていきます。
+引用元：https://towardsdatascience.com/understanding-how-lime-explains-predictions-d404e5d1829c
+実際には上記のようにある程度細かく領域を分けますが、以下では例として扱いやすいように次のような画像を考えて、粗く領域を分けていきます（左がオリジナルのくまモンで、右がsuperpixelに分割されたくまモンです）。
+各領域を$g$に与える入力$x&rsquo;$の各要素に対応させます。例えば1番の領域が$x&rsquo;$の1番目の要素、2番が2番目の要素のようにします。その上で、$x&rsquo;$の各要素が1のときには対応する領域のピクセルが$x$と同じピクセル値、0のときにはその領域がグレーで埋められた画像と対応していると考えます。 具体的には $$x&rsquo; = [0, 0, 1, 1, 0,0,0,0]$$ としたとき、3番目と4番目だけが1ですので、この$x&rsquo;$に対応した画像は次のようになります。
+近傍のサンプリング LIMEでは $x$の近傍のサンプリングをおこないます。 画像の場合に近傍とはどうなるんでしょうか？直感的には謎じゃないでしょうか。
+LIMEの場合には分割された領域のうち、適当な個数（個数もランダムに決めますが、個数の下限は決めておきます）をそのままにし、それ以外をグレーに置き換える処理をします。 $x&rsquo;$の話でいえば、適当な個数の要素については1とし、それ以外は0とする処理に等しいです。
+このようにして得られた画像を$x$の近傍として扱います。またこのようにして近傍を得ることを、近傍のサンプリングとします。 先程示した$x&rsquo;$に対応した画像も$x$の近傍になります。
+線形モデルのケース $g$が線形モデルの場合には$g(z&rsquo;)$は次のようになります。
+" />
+<meta property="og:url" content="http://localhost:1313/mblog/post/00007/" />
+<meta property="og:site_name" content="MatLoverによるMatlab以外のブログ" />
+
+  <meta property="og:image" content="http://localhost:1313/mblog/og-image.png">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+  <meta property="article:section" content="Feature Importance" />
+
+
+  <meta property="article:published_time" content="2020-02-12 00:23:01 &#43;0900 JST" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+
+
+<div class="container">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="http://localhost:1313/mblog/">
+  <div class="logo">
+    Terminal
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/mblog/">Home</a></li>
+        
+      
+        
+          <li><a href="/mblog/page/archives/">Archives</a></li>
+        
+      
+        
+          <li><a href="/mblog/page/search/">Search</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/mblog/" >Home</a></li>
+        
+      
+        
+          <li><a href="/mblog/page/archives/" >Archives</a></li>
+        
+      
+      
+        <li>
+          <ul class="menu">
+            <li class="menu__trigger">&nbsp;▾</li>
+            <li>
+              <ul class="menu__dropdown">
+                
+                  
+                    <li><a href="/mblog/page/search/" >Search</a></li>
+                  
+                
+              </ul>
+            </li>
+          </ul>
+        </li>
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/mblog/post/00007/">モデルの予測結果を説明するLIMEの理論</a>
+  </h1>
+  <div class="post-meta"><time class="post-date">2020-02-12</time></div>
+
+  
+    <span class="post-tags">
+      
+      #<a href="http://localhost:1313/mblog/tags/lime/">LIME</a>&nbsp;
+      
+      #<a href="http://localhost:1313/mblog/tags/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/">機械学習</a>&nbsp;
+      
+      #<a href="http://localhost:1313/mblog/tags/%E9%87%8D%E8%A6%81%E5%BA%A6/">重要度</a>&nbsp;
+      
+      #<a href="http://localhost:1313/mblog/tags/%E5%AF%84%E4%B8%8E/">寄与</a>&nbsp;
+      
+    </span>
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <p>本記事はQrunchからの転載です。</p>
+<hr>
+<p>モデルの予測結果を説明する方法として<strong>LIME</strong>があります。
+LIMEはディープラーニングに限らず、任意のモデルに対して予測結果を適用することができます。
+また手法としては結構有名かと思います。</p>
+<p>今回はそんなLIMEの理論について説明します。</p>
+<p>論文：<a href="https://www.kdd.org/kdd2016/papers/files/rfp0573-ribeiroA.pdf">“Why Should I Trust You?” Explaining the Predictions of Any Classifie</a></p>
+<h1 id="limeの戦略">LIMEの戦略<a href="#limeの戦略" class="hanchor" ariaLabel="Anchor">#</a> </h1>
+<p>任意のモデル$f$に入力$x \in \mathbb{R}^d$が与えられたときの予測結果$f(x)$への特徴量の寄与を求めることを考えます。</p>
+<p>LIMEでは$x$近傍（近傍については後述）に対しては$f$と同じような予測をすることができる、かつ解釈が容易なモデル$g$を求めます。
+例えば$g$が線形モデルの場合には、$g$の各係数を見ることで特徴量の寄与を得ることが可能です。あるいは$g$が決定木であれば、人間でもある程度容易にモデルの解釈が可能です。ですから、このようなモデル$g$を$f$の代わりに使って、予測結果の解釈をしようというモチベーションです。
+ただし、LIMEでは$g$には特徴量の値が$0$か$1$となるベクトル$x&rsquo;$が入力として与えられるものとします。これは何らかのルールで$x$の要素と$x&rsquo;$の要素が対応づいているとします。ここも詳細をあとで述べます。
+以上のように、解釈が難しいモデル$f$を解釈が容易なモデル$g$に落とし込むことがLIMEのやりたいことになります。</p>
+<p>実際にどうやって$g$を求めるのかといえば、次式のようになります。
+$${\rm argmin_{g \in G}} \ L(f, g, \pi_x) + \Omega(g).$$</p>
+<p>ここで、</p>
+<ul>
+<li>$L$は損失関数です。$x$近傍で$g$の予測値が$f$の予測値に近いと、小さくなるように$L$を定義します。</li>
+<li>$\pi_x$は損失関数で使われる重みで、$x$の近傍点が$x$から遠いほど小さい値を取るようにします。詳細は後述する線形モデルの項を参照。</li>
+<li>$\Omega$はモデルの複雑さとなります。決定木を使う場合には木の深さであったり、線形モデルの場合には非ゼロの重みの数になります。モデルを解釈するためには、モデルはシンプルな方が良いため、$\Omega$を加えることで$g$をなるべく人間にやさしいモデルにしてあげます。</li>
+</ul>
+<p>まだ色々と詳細を述べていないため、わからないところは多々あると思いますが、上式は<strong>なるべくシンプルなモデルで$x$の近傍で$f$と近似する$g$を見つける</strong>といったことを意味します。
+この局所的に近似された$g$が得られれば、$x$近傍での特徴量が$g$へ与える寄与がわかる、つまり$f$へ与える寄与が近似的にはわかります。</p>
+<p>次に画像の場合のケースについて、詳細に踏み込みます。</p>
+<h1 id="画像に対する線形モデルでのlime">画像に対する線形モデルでのLIME<a href="#画像に対する線形モデルでのlime" class="hanchor" ariaLabel="Anchor">#</a> </h1>
+<h2 id="superpixel">superpixel<a href="#superpixel" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>画像にLIMEを適用する場合、まず次のように入力画像をsuperpixelに分割し、領域ごとに寄与を求めていきます。</p>
+<blockquote>
+<p><img src="1341b73a17da593ffc43cebc86969604.jpg" alt="">
+引用元：https://towardsdatascience.com/understanding-how-lime-explains-predictions-d404e5d1829c</p></blockquote>
+<p>実際には上記のようにある程度細かく領域を分けますが、以下では例として扱いやすいように次のような画像を考えて、粗く領域を分けていきます（左がオリジナルのくまモンで、右がsuperpixelに分割されたくまモンです）。</p>
+<p><img src="ad1fa258f844d5a4ad33e45d75dcf7da.png" alt=""><img src="cc5a03cf0c2b50e3217a99edddcc002b.jpg" alt=""></p>
+<p>各領域を$g$に与える入力$x&rsquo;$の各要素に対応させます。例えば1番の領域が$x&rsquo;$の1番目の要素、2番が2番目の要素のようにします。その上で、$x&rsquo;$の各要素が1のときには対応する領域のピクセルが$x$と同じピクセル値、0のときにはその領域がグレーで埋められた画像と対応していると考えます。
+具体的には
+$$x&rsquo; = [0, 0, 1, 1, 0,0,0,0]$$
+としたとき、3番目と4番目だけが1ですので、この$x&rsquo;$に対応した画像は次のようになります。</p>
+<p><img src="158a3d802d662d2e95988553c4d83e5d.jpg" alt=""></p>
+<h2 id="近傍のサンプリング">近傍のサンプリング<a href="#近傍のサンプリング" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>LIMEでは $x$の近傍のサンプリングをおこないます。
+画像の場合に近傍とはどうなるんでしょうか？直感的には謎じゃないでしょうか。</p>
+<p>LIMEの場合には分割された領域のうち、適当な個数（個数もランダムに決めますが、個数の下限は決めておきます）をそのままにし、それ以外をグレーに置き換える処理をします。
+$x&rsquo;$の話でいえば、適当な個数の要素については1とし、それ以外は0とする処理に等しいです。</p>
+<p>このようにして得られた画像を$x$の近傍として扱います。またこのようにして近傍を得ることを、近傍のサンプリングとします。
+先程示した$x&rsquo;$に対応した画像も$x$の近傍になります。</p>
+<h2 id="線形モデルのケース">線形モデルのケース<a href="#線形モデルのケース" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>$g$が線形モデルの場合には$g(z&rsquo;)$は次のようになります。</p>
+<p><img src="e25d1447ff223231a0d857396c39ef6f.png" alt=""></p>
+<p>線形モデルの係数（寄与）を求めるため、次のように損失関数$L$を定義します。
+$$  L(f, g, \pi_x) = \sum_{z,z&rsquo;∈Z}\pi_x(z) (f(z) − g(z&rsquo;))^2.$$
+ここで$\pi_x$は以下のとおりです。
+$$ \pi_x = \exp(−D(x, z)^2/\sigma^2).$$
+$z$は$x$近傍の画像をあらわし、$z&rsquo;$は先程まで説明していた（$z$に対応する）$x&rsquo;$と同じものです。$Z$はサンプリングされた$z$と$z&rsquo;$のペアになります。</p>
+<p>上式の意味合いとしては、近傍画像$z$の学習済みモデルでの予測値$f(z)$と解釈が容易なモデル$g(z&rsquo;)$が近い値になるように$g$を学習していきます。</p>
+<p>また、$\pi_x$の存在のため、$z$が$x$に近ければ（=近傍が入力画像に近い）二乗誤差$(f(z) − g(z&rsquo;))^2$が$L$に与える影響は大きいですが、一方で$z$が$x$と大きく異なれば（=近傍が入力画像と大きく異なる）、$(f(z) − g(z&rsquo;))^2$が$L$に与える影響が小さくなります。
+より$x$に近い$z$に関しては$g(z&rsquo;)$が良く$f(x)$に近似されるべきですので、このように重み付けされているのは分かる話かと思います。</p>
+<p>なお論文中ではLasso回帰として${\rm argmin_{g \in G}} \ L(f, g, \pi_x) + \Omega(g)$を解いています。</p>
+<h1 id="limeの実験結果">LIMEの実験結果<a href="#limeの実験結果" class="hanchor" ariaLabel="Anchor">#</a> </h1>
+<p>実験結果は他の方のブログなどで散々書かれていますので、そちらを参考ください（力尽きました）。</p>
+
+      </div></div>
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2025 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/mblog/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

@@ -3,7 +3,7 @@ title: 画像へのアフィン変換
 tags:  ["OpenCV", "affine", "アフィン変換"]
 categories:  ["OpenCV", "画像処理"]
 date: 2020-07-29 11:03:00 +0900
-image: 81a46863d26154ebd07353949e4d8171.png
+Cover: 81a46863d26154ebd07353949e4d8171.png
 ---
 本記事はQrunchからの転載です。
 ___

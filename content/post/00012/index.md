@@ -4,7 +4,7 @@ tags:  ["CNN", "CoordConv", "深層学習", "ディープラーニング", "畳�
 categories: ["画像処理"]
 date: 2019-11-30 21:57:17 +0900
 showtoc: true
-image: 87ac6257d733ab494c7d120ec4e79a99.png
+Cover: 87ac6257d733ab494c7d120ec4e79a99.png
 ---
 本記事はQrunchからの転載です。
 ___

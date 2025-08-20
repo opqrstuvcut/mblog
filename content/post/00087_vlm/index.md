@@ -12,7 +12,7 @@ tags:
   ]
 categories: ["ディープラーニング", "LLM", "NLP", "VLM"]
 date: 2025-07-28
-image: thm.png
+Cover: thm.png
 ---
 
 今回紹介するのは

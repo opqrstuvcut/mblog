@@ -3,7 +3,7 @@ title: dilateで猫を膨張させる
 tags:  ["dilate", "膨張"]
 categories:  ["OpenCV", "画像処理"]
 date: 2020-07-19 20:40:11 +0900
-image: 28690ce14686ae4e18da248ce434c3cc.png
+Cover: 28690ce14686ae4e18da248ce434c3cc.png
 ---
 本記事はQrunchからの転載です。
 ___

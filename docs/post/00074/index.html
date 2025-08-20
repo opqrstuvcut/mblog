@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><script src="/mblog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=mblog/livereload" data-no-instant defer></script>
+  
+    <title>docker composeでAWS ECSにデプロイするときのtips :: MatLoverによるMatlab以外のブログ</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="docker composeを使ってAWSのECSにアプリをデプロイ可能ですが、もしかすると役立つものがあるかもしれないのでメモを残しておきます。 作業したのが半年前なので少し情報が古いかもしれないのです。
+AWSのサービスへのアクセス権限周り ECSのタスクにAWSのサービスへのアクセス権限を与える場合はdocker-compose.ymlに次のように記述すれば良いです（下記はSQSのフルアクセスの例）。
+service: api: x-aws-policies: - &#34;arn:aws:iam::aws:policy/AmazonSQSFullAccess&#34; AWSのsecretの読み込み secretとの連携はdocker-compose.ymlに次のように記述します。
+secrets: sample_secret: name: &#34;シークレットのARN&#34; external: true また、読み込ませたいコンテナにも設定を追加します。例えば次のようにします。
+service: api: secrets: - sample_secret コンテナからは/run/secrets/sample_secretというパスを参照できるようになっており、この中身がsecretの値になります。
+GPUインスタンス 特に何も指定しない場合、FARGATE上にECSのタスクが展開されます。 GPUインスタンスを使いたい場合おそらく2つ選択肢があります。
+https://www.docker.com/blog/deploy-gpu-accelerated-applications-on-amazon-ecs-with-docker-compose/ を参考にgpuの記述をdocker-compose.ymlに追加 docker compose convertを使ってCloudFormationテンプレートを出力し、それを編集してGPUインスタンスが使えるようにする。 自分は後者を選択しました。 というのも、複数のタスクを1つのGPUインスタンス上で実行したかったのですが、前者の方法だと1インスタンスにつき1タスクという制限がありました。 このため、後者を採用し、かつ次の変更を加えています。
+GPUインスタンスのruntimeの設定 1インスタンスに1タスクの問題は次のようにCloudFormationテンプレートのLaunchConfigurationのUserDataに処理を追加することで解決できます。
+LaunchConfiguration: Properties: IamInstanceProfile: Ref: EC2InstanceProfile ImageId: ... InstanceType: g4dn.xlarge SecurityGroups: - Ref: ... AssociatePublicIpAddress: true UserData: Fn::Base64: !Sub - | #!/bin/bash echo ECS_CLUSTER=${ClusterName} &gt;&gt; /etc/ecs/ecs.config (grep -q ^OPTIONS=\&#34;--default-runtime /etc/sysconfig/docker &amp;&amp; echo &#39;/etc/sysconfig/docker needs no changes&#39;) || (sed -i &#39;s/^OPTIONS=&#34;/OPTIONS=&#34;--default-runtime nvidia /&#39; /etc/sysconfig/docker &amp;&amp; echo &#39;/etc/sysconfig/docker updated to have nvidia runtime as default&#39; &amp;&amp; systemctl restart docker &amp;&amp; echo &#39;Restarted docker&#39;) - { ClusterName: SampleCluster } KeyName: ... Type: AWS::AutoScaling::LaunchConfiguration この解決方法はどこかで見たものを利用したものですが、リンク先を失ってしまいました。
+" />
+<meta name="keywords" content="" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="http://localhost:1313/mblog/post/00074/" />
+
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFC5W8DKV1"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-LFC5W8DKV1');
+        }
+      </script>
+
+
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/custom.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/code.min.d529ea4b2fb8d34328d7d31afc5466d5f7bc2f0bc9abdd98b69385335d7baee4.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/main.min.775ac2af004d44c22a6d000fbd1d9af529642f5cef27399d0280d180af2c2e9b.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/menu.min.310d32205bdedd6f43144e3c3273c9deecd238eba5f9108db5ea96ca0cfbe377.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/post.min.ad50c7f4d00e7975918f37fc74c6029e1959a40d66fb5b2c6564a8715e985573.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/syntax.min.e9ab635cf918bc84b901eb65c0b2caa74c9544245e3647c1af5c129896ef276e.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/terminal.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="http://localhost:1313/mblog/favicon.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/mblog/apple-touch-icon.png">
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="ja" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="docker composeでAWS ECSにデプロイするときのtips">
+<meta property="og:description" content="docker composeを使ってAWSのECSにアプリをデプロイ可能ですが、もしかすると役立つものがあるかもしれないのでメモを残しておきます。 作業したのが半年前なので少し情報が古いかもしれないのです。
+AWSのサービスへのアクセス権限周り ECSのタスクにAWSのサービスへのアクセス権限を与える場合はdocker-compose.ymlに次のように記述すれば良いです（下記はSQSのフルアクセスの例）。
+service: api: x-aws-policies: - &#34;arn:aws:iam::aws:policy/AmazonSQSFullAccess&#34; AWSのsecretの読み込み secretとの連携はdocker-compose.ymlに次のように記述します。
+secrets: sample_secret: name: &#34;シークレットのARN&#34; external: true また、読み込ませたいコンテナにも設定を追加します。例えば次のようにします。
+service: api: secrets: - sample_secret コンテナからは/run/secrets/sample_secretというパスを参照できるようになっており、この中身がsecretの値になります。
+GPUインスタンス 特に何も指定しない場合、FARGATE上にECSのタスクが展開されます。 GPUインスタンスを使いたい場合おそらく2つ選択肢があります。
+https://www.docker.com/blog/deploy-gpu-accelerated-applications-on-amazon-ecs-with-docker-compose/ を参考にgpuの記述をdocker-compose.ymlに追加 docker compose convertを使ってCloudFormationテンプレートを出力し、それを編集してGPUインスタンスが使えるようにする。 自分は後者を選択しました。 というのも、複数のタスクを1つのGPUインスタンス上で実行したかったのですが、前者の方法だと1インスタンスにつき1タスクという制限がありました。 このため、後者を採用し、かつ次の変更を加えています。
+GPUインスタンスのruntimeの設定 1インスタンスに1タスクの問題は次のようにCloudFormationテンプレートのLaunchConfigurationのUserDataに処理を追加することで解決できます。
+LaunchConfiguration: Properties: IamInstanceProfile: Ref: EC2InstanceProfile ImageId: ... InstanceType: g4dn.xlarge SecurityGroups: - Ref: ... AssociatePublicIpAddress: true UserData: Fn::Base64: !Sub - | #!/bin/bash echo ECS_CLUSTER=${ClusterName} &gt;&gt; /etc/ecs/ecs.config (grep -q ^OPTIONS=\&#34;--default-runtime /etc/sysconfig/docker &amp;&amp; echo &#39;/etc/sysconfig/docker needs no changes&#39;) || (sed -i &#39;s/^OPTIONS=&#34;/OPTIONS=&#34;--default-runtime nvidia /&#39; /etc/sysconfig/docker &amp;&amp; echo &#39;/etc/sysconfig/docker updated to have nvidia runtime as default&#39; &amp;&amp; systemctl restart docker &amp;&amp; echo &#39;Restarted docker&#39;) - { ClusterName: SampleCluster } KeyName: ... Type: AWS::AutoScaling::LaunchConfiguration この解決方法はどこかで見たものを利用したものですが、リンク先を失ってしまいました。
+" />
+<meta property="og:url" content="http://localhost:1313/mblog/post/00074/" />
+<meta property="og:site_name" content="MatLoverによるMatlab以外のブログ" />
+
+  <meta property="og:image" content="http://localhost:1313/mblog/og-image.png">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+  <meta property="article:section" content="AWS" />
+
+  <meta property="article:section" content="ECS" />
+
+
+  <meta property="article:published_time" content="2022-12-13 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+
+
+<div class="container">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="http://localhost:1313/mblog/">
+  <div class="logo">
+    Terminal
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/mblog/">Home</a></li>
+        
+      
+        
+          <li><a href="/mblog/page/archives/">Archives</a></li>
+        
+      
+        
+          <li><a href="/mblog/page/search/">Search</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/mblog/" >Home</a></li>
+        
+      
+        
+          <li><a href="/mblog/page/archives/" >Archives</a></li>
+        
+      
+      
+        <li>
+          <ul class="menu">
+            <li class="menu__trigger">&nbsp;▾</li>
+            <li>
+              <ul class="menu__dropdown">
+                
+                  
+                    <li><a href="/mblog/page/search/" >Search</a></li>
+                  
+                
+              </ul>
+            </li>
+          </ul>
+        </li>
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/mblog/post/00074/">docker composeでAWS ECSにデプロイするときのtips</a>
+  </h1>
+  <div class="post-meta"><time class="post-date">2022-12-13</time></div>
+
+  
+    <span class="post-tags">
+      
+      #<a href="http://localhost:1313/mblog/tags/aws/">AWS</a>&nbsp;
+      
+    </span>
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <p>docker composeを使ってAWSのECSにアプリをデプロイ可能ですが、もしかすると役立つものがあるかもしれないのでメモを残しておきます。
+作業したのが半年前なので少し情報が古いかもしれないのです。</p>
+<h2 id="awsのサービスへのアクセス権限周り">AWSのサービスへのアクセス権限周り<a href="#awsのサービスへのアクセス権限周り" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>ECSのタスクにAWSのサービスへのアクセス権限を与える場合はdocker-compose.ymlに次のように記述すれば良いです（下記はSQSのフルアクセスの例）。</p>
+<pre tabindex="0"><code>service:
+  api: 
+    x-aws-policies:
+      - &#34;arn:aws:iam::aws:policy/AmazonSQSFullAccess&#34;
+</code></pre><h2 id="awsのsecretの読み込み">AWSのsecretの読み込み<a href="#awsのsecretの読み込み" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>secretとの連携はdocker-compose.ymlに次のように記述します。</p>
+<pre tabindex="0"><code>secrets:
+  sample_secret:
+    name: &#34;シークレットのARN&#34;
+    external: true
+</code></pre><p>また、読み込ませたいコンテナにも設定を追加します。例えば次のようにします。</p>
+<pre tabindex="0"><code>service:
+  api: 
+    secrets:
+      - sample_secret
+</code></pre><p>コンテナからは/run/secrets/sample_secretというパスを参照できるようになっており、この中身がsecretの値になります。</p>
+<h2 id="gpuインスタンス">GPUインスタンス<a href="#gpuインスタンス" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>特に何も指定しない場合、FARGATE上にECSのタスクが展開されます。
+GPUインスタンスを使いたい場合おそらく2つ選択肢があります。</p>
+<ul>
+<li><a href="https://www.docker.com/blog/deploy-gpu-accelerated-applications-on-amazon-ecs-with-docker-compose/">https://www.docker.com/blog/deploy-gpu-accelerated-applications-on-amazon-ecs-with-docker-compose/</a> を参考にgpuの記述をdocker-compose.ymlに追加</li>
+<li>docker compose convertを使ってCloudFormationテンプレートを出力し、それを編集してGPUインスタンスが使えるようにする。</li>
+</ul>
+<p>自分は後者を選択しました。
+というのも、複数のタスクを1つのGPUインスタンス上で実行したかったのですが、前者の方法だと1インスタンスにつき1タスクという制限がありました。
+このため、後者を採用し、かつ次の変更を加えています。</p>
+<h3 id="gpuインスタンスのruntimeの設定">GPUインスタンスのruntimeの設定<a href="#gpuインスタンスのruntimeの設定" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>1インスタンスに1タスクの問題は次のようにCloudFormationテンプレートのLaunchConfigurationのUserDataに処理を追加することで解決できます。</p>
+<pre tabindex="0"><code>  LaunchConfiguration:
+    Properties:
+      IamInstanceProfile:
+        Ref: EC2InstanceProfile
+      ImageId: ...
+      InstanceType: g4dn.xlarge
+      SecurityGroups:
+      - Ref: ...
+      AssociatePublicIpAddress: true
+      UserData:
+        Fn::Base64: !Sub
+          - |
+            #!/bin/bash
+            echo ECS_CLUSTER=${ClusterName} &gt;&gt; /etc/ecs/ecs.config
+            (grep -q ^OPTIONS=\&#34;--default-runtime /etc/sysconfig/docker &amp;&amp; echo &#39;/etc/sysconfig/docker needs no changes&#39;) || (sed -i &#39;s/^OPTIONS=&#34;/OPTIONS=&#34;--default-runtime nvidia /&#39; /etc/sysconfig/docker &amp;&amp; echo &#39;/etc/sysconfig/docker updated to have nvidia runtime as default&#39; &amp;&amp; systemctl restart docker &amp;&amp; echo &#39;Restarted docker&#39;)
+          - {
+              ClusterName: SampleCluster
+            }
+      KeyName: ...
+    Type: AWS::AutoScaling::LaunchConfiguration
+</code></pre><p>この解決方法はどこかで見たものを利用したものですが、リンク先を失ってしまいました。</p>
+<h2 id="eni">ENI<a href="#eni" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>複数のタスクを1インスタンスの上に立ち上げるとネットワークインターフェースの問題が発生してきます。<br>
+docker compose convertで生成したCloudFormationテンプレートでは、awsvpcが設定されており、これだと1タスクが1つのネットワークインターフェースに対応するようです。<br>
+ネットワークインターフェースはインスタンスによるのですが、例えばg4dnは3つですので、3タスクまでしかデプロイできないことになります。</p>
+<h3 id="trunking">Trunking<a href="#trunking" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>前述の問題を解決したいときの1つの解決方法はTrunkingです。<br>
+これはネットワークインターフェースをインスタンスに追加できます！<br>
+ただ話はそんなに簡単ではなく、これが適用できるのは一部のインスタンスに限ります…。自分が使いたいg4dnは対象外でした。</p>
+<h3 id="awsvpc---bridge">awsvpc -&gt; bridge<a href="#awsvpc---bridge" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>もう1つの解決方法はawsvpcを使うのを諦めてNetworkModeをbridgeにすることです。
+NetworkModeを変更するにあたって、docker compose convertで生成されたCloudFormationテンプレートを色々と変更する必要がありますが、もはや仕方がないのでこれで解決しました。</p>
+<h2 id="まとめ">まとめ<a href="#まとめ" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>docker composeコマンドでのdeployは非常に便利ですが、特殊なことは対応していないので結局CloudFormationテンプレートを修正していく必要がでてきます。
+とはいえ、非常に便利な機能であることは間違いないですね。</p>
+
+      </div></div>
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2025 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/mblog/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

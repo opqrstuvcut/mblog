@@ -3,7 +3,7 @@ title: 動画データから前景と背景を分離する
 tags:  ["OpenCV", "前景分離"]
 categories:  ["OpenCV", "画像処理"]
 date: 2020-08-20 11:04:00 +0900
-image: cbb562e9eaee89cb60ac8ec0be592a80.png
+Cover: cbb562e9eaee89cb60ac8ec0be592a80.png
 ---
 本記事はQrunchからの転載です。
 ___

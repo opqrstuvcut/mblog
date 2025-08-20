@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head><script src="/mblog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=mblog/livereload" data-no-instant defer></script>
+  
+    <title>回転しているBounding Box向けのIoUのKFIoU :: MatLoverによるMatlab以外のブログ</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="従来手法の問題点 回転しているBounding Box向けの微分可能なIoUの計算というのは簡単ではありません．既存手法としてGWDやKLDがありますが、問題ごとにハイパーパラメータの調整が必要になります．これを解決してより扱いやすく性能が高い手法になったのがKFIoUになります．
+KFIoU Bounding Boxの正規分布への変換 KFIoUを計算するための前段階として、正解のBounding Boxと予測されたBounding Boxを正規分布に変換します．
+具体的には、Bounding Boxが中心を$(x, y)$、横幅と縦幅を$w, h$, 回転角度を$\theta$としたときに次で定義される平均$\mu$、共分散行列$\Sigma$の正規分布に変換します． $$ \Sigma = R \Lambda R^T, \ \mu = \begin{pmatrix}x, y\end{pmatrix}. $$
+ここで $$ R = \begin{pmatrix} \cos \theta &amp; -\sin \theta \\ \sin \theta &amp; \cos \theta \end{pmatrix}, \Lambda = \begin{pmatrix} \frac{w^2}{4} &amp; 0 \\ 0 &amp; \frac{h^2}{4} \end{pmatrix} $$
+です． 回転しているBounding Boxのそれぞれの辺に沿ったベクトルが$R$の列になっています． 一見、なぞの変換ではあるのですが、このように定義すると以下のようにしてBounding Boxの面積$\mathcal{V_B}(\Sigma)$を求めることができます．
+$$ \mathcal{V_B}(\Sigma) = 2^2 |\Sigma|^{1/2}. $$
+$R$が回転行列であることを用いれば $$ |\Sigma| = |R \Lambda R^T| = |R| |\Lambda| |R| = |\Lambda| = \frac{w^2h^2}{16} $$ ですので、$\mathcal{V_B}(\Sigma)=wh$ となり、無事にBounding Boxの面積に一致します．
+" />
+<meta name="keywords" content="" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="http://localhost:1313/mblog/post/00083_kfiou/" />
+
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFC5W8DKV1"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-LFC5W8DKV1');
+        }
+      </script>
+
+
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/custom.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/code.min.d529ea4b2fb8d34328d7d31afc5466d5f7bc2f0bc9abdd98b69385335d7baee4.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/main.min.775ac2af004d44c22a6d000fbd1d9af529642f5cef27399d0280d180af2c2e9b.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/menu.min.310d32205bdedd6f43144e3c3273c9deecd238eba5f9108db5ea96ca0cfbe377.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/post.min.ad50c7f4d00e7975918f37fc74c6029e1959a40d66fb5b2c6564a8715e985573.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/syntax.min.e9ab635cf918bc84b901eb65c0b2caa74c9544245e3647c1af5c129896ef276e.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/terminal.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="http://localhost:1313/mblog/favicon.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/mblog/apple-touch-icon.png">
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="ja" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="回転しているBounding Box向けのIoUのKFIoU">
+<meta property="og:description" content="従来手法の問題点 回転しているBounding Box向けの微分可能なIoUの計算というのは簡単ではありません．既存手法としてGWDやKLDがありますが、問題ごとにハイパーパラメータの調整が必要になります．これを解決してより扱いやすく性能が高い手法になったのがKFIoUになります．
+KFIoU Bounding Boxの正規分布への変換 KFIoUを計算するための前段階として、正解のBounding Boxと予測されたBounding Boxを正規分布に変換します．
+具体的には、Bounding Boxが中心を$(x, y)$、横幅と縦幅を$w, h$, 回転角度を$\theta$としたときに次で定義される平均$\mu$、共分散行列$\Sigma$の正規分布に変換します． $$ \Sigma = R \Lambda R^T, \ \mu = \begin{pmatrix}x, y\end{pmatrix}. $$
+ここで $$ R = \begin{pmatrix} \cos \theta &amp; -\sin \theta \\ \sin \theta &amp; \cos \theta \end{pmatrix}, \Lambda = \begin{pmatrix} \frac{w^2}{4} &amp; 0 \\ 0 &amp; \frac{h^2}{4} \end{pmatrix} $$
+です． 回転しているBounding Boxのそれぞれの辺に沿ったベクトルが$R$の列になっています． 一見、なぞの変換ではあるのですが、このように定義すると以下のようにしてBounding Boxの面積$\mathcal{V_B}(\Sigma)$を求めることができます．
+$$ \mathcal{V_B}(\Sigma) = 2^2 |\Sigma|^{1/2}. $$
+$R$が回転行列であることを用いれば $$ |\Sigma| = |R \Lambda R^T| = |R| |\Lambda| |R| = |\Lambda| = \frac{w^2h^2}{16} $$ ですので、$\mathcal{V_B}(\Sigma)=wh$ となり、無事にBounding Boxの面積に一致します．
+" />
+<meta property="og:url" content="http://localhost:1313/mblog/post/00083_kfiou/" />
+<meta property="og:site_name" content="MatLoverによるMatlab以外のブログ" />
+
+  <meta property="og:image" content="http://localhost:1313/mblog/og-image.png">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+  <meta property="article:section" content="ディープラーニング" />
+
+  <meta property="article:section" content="物体検出" />
+
+
+  <meta property="article:published_time" content="2025-03-22 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+
+
+<div class="container">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="http://localhost:1313/mblog/">
+  <div class="logo">
+    Terminal
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/mblog/">Home</a></li>
+        
+      
+        
+          <li><a href="/mblog/page/archives/">Archives</a></li>
+        
+      
+        
+          <li><a href="/mblog/page/search/">Search</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/mblog/" >Home</a></li>
+        
+      
+        
+          <li><a href="/mblog/page/archives/" >Archives</a></li>
+        
+      
+      
+        <li>
+          <ul class="menu">
+            <li class="menu__trigger">&nbsp;▾</li>
+            <li>
+              <ul class="menu__dropdown">
+                
+                  
+                    <li><a href="/mblog/page/search/" >Search</a></li>
+                  
+                
+              </ul>
+            </li>
+          </ul>
+        </li>
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/mblog/post/00083_kfiou/">回転しているBounding Box向けのIoUのKFIoU</a>
+  </h1>
+  <div class="post-meta"><time class="post-date">2025-03-22</time></div>
+
+  
+    <span class="post-tags">
+      
+      #<a href="http://localhost:1313/mblog/tags/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0/">ディープラーニング</a>&nbsp;
+      
+      #<a href="http://localhost:1313/mblog/tags/iou/">IoU</a>&nbsp;
+      
+      #<a href="http://localhost:1313/mblog/tags/%E7%89%A9%E4%BD%93%E6%A4%9C%E5%87%BA/">物体検出</a>&nbsp;
+      
+      #<a href="http://localhost:1313/mblog/tags/%E3%82%AB%E3%83%AB%E3%83%9E%E3%83%B3%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%BC/">カルマンフィルター</a>&nbsp;
+      
+      #<a href="http://localhost:1313/mblog/tags/rotated-bounding-box/">Rotated Bounding Box</a>&nbsp;
+      
+      #<a href="http://localhost:1313/mblog/tags/cv/">CV</a>&nbsp;
+      
+      #<a href="http://localhost:1313/mblog/tags/kfiou/">KFIoU</a>&nbsp;
+      
+      #<a href="http://localhost:1313/mblog/tags/skewiou/">SkewIoU</a>&nbsp;
+      
+    </span>
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <h2 id="従来手法の問題点">従来手法の問題点<a href="#従来手法の問題点" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>回転しているBounding Box向けの微分可能なIoUの計算というのは簡単ではありません．既存手法としてGWDやKLDがありますが、問題ごとにハイパーパラメータの調整が必要になります．これを解決してより扱いやすく性能が高い手法になったのが<a href="https://arxiv.org/abs/2201.12558">KFIoU</a>になります．</p>
+<h2 id="kfiou">KFIoU<a href="#kfiou" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<h3 id="bounding-boxの正規分布への変換">Bounding Boxの正規分布への変換<a href="#bounding-boxの正規分布への変換" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>KFIoUを計算するための前段階として、正解のBounding Boxと予測されたBounding Boxを正規分布に変換します．<br>
+具体的には、Bounding Boxが中心を$(x, y)$、横幅と縦幅を$w, h$, 回転角度を$\theta$としたときに次で定義される平均$\mu$、共分散行列$\Sigma$の正規分布に変換します．
+$$
+\Sigma = R \Lambda R^T, \ \mu = \begin{pmatrix}x, y\end{pmatrix}.
+$$</p>
+<p>ここで
+$$
+R = \begin{pmatrix} \cos \theta &amp; -\sin \theta \\ \sin \theta &amp; \cos \theta  \end{pmatrix}, \Lambda = \begin{pmatrix} \frac{w^2}{4} &amp; 0 \\ 0 &amp; \frac{h^2}{4}  \end{pmatrix}
+$$</p>
+<p>です．  回転しているBounding Boxのそれぞれの辺に沿ったベクトルが$R$の列になっています．
+一見、なぞの変換ではあるのですが、このように定義すると以下のようにしてBounding Boxの面積$\mathcal{V_B}(\Sigma)$を求めることができます．</p>
+<p>$$
+\mathcal{V_B}(\Sigma) = 2^2 |\Sigma|^{1/2}.
+$$</p>
+<p>$R$が回転行列であることを用いれば
+$$
+|\Sigma| = |R \Lambda R^T| = |R| |\Lambda| |R| = |\Lambda| = \frac{w^2h^2}{16}
+$$
+ですので、$\mathcal{V_B}(\Sigma)=wh$ となり、無事にBounding Boxの面積に一致します．</p>
+<h3 id="重なった面積の近似">重なった面積の近似<a href="#重なった面積の近似" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<h4 id="方針">方針<a href="#方針" class="hanchor" ariaLabel="Anchor">#</a> </h4>
+<p>さきほどの変換の話ではBounding Boxを正規分布に変換しても、もとのBounding Boxの面積を得ることができるという話でした．<br>
+これを利用すると、順序を逆にしてBounding Boxよりも正規分布が先に得られているときに、そこから対応するBounding Boxの面積を求めるということも考えられます．<br>
+KFIoUでは、2つのBounding BoxのIoUを求めたいときに、それらの正規分布の積の関数（スケールを調整すれば確率分布）を求め、そこから重なった部分の面積を求めるということをします．つまりBounding Boxに対応する2つのガウス分布$\mathcal{N}(x|\mu_1, \Sigma_1), \mathcal{N}(x|\mu_2, \Sigma_2)$に対し、
+$$
+\begin{align}
+\mathcal{N}(x|\mu_1, \Sigma_1) \mathcal{N}(x|\mu_2, \Sigma_2)
+\end{align}
+$$
+もスケールを除けば正規分布の形になりますので、この分布を2つのBounding Boxが重なった部分を表現した正規分布として考えて面積を計算するということをします．ただし、一般には実際に重なった部分は矩形にはならないですが、ここでは矩形で近似していることに注意が必要です．</p>
+<h4 id="カルマンフィルタ">カルマンフィルタ<a href="#カルマンフィルタ" class="hanchor" ariaLabel="Anchor">#</a> </h4>
+<p>次に正規分布の積がどういう形になるのか？という話ですが、論文ではカルマンフィルタを利用した結果を示しています．  とはいえ、よくある計算のようにそのまま平方完成してもOKです．<br>
+ここではカルマンフィルタに沿った話をしていくことにします．カルマンフィルタでいうところの状態変数$x_{k}$と観測値$y_{k}$は
+$$
+\begin{align*}
+x_{k+1} &amp;= x_k + v_k \\
+y_k &amp;= x_k + w_k
+\end{align*}
+$$
+というふうにモデリングしていることになります．ここで$x_0$は平均$\mu_0$、分散$P_0$の正規分布、$v_k$は平均$0$、分散$Q_k$の正規分布、$w_k$は平均$0$、分散$R_k$の正規分布に従っているとしています．<br>
+この定義をもとにして$p(x_0|y_0)$を求めていくと、 $ p(x_0|y_0) = \mathcal{N}_x(\mu, \Sigma)$ となります．
+$\mu$と$\Sigma$の定義は以下のとおりです．
+$$
+\begin{align*}
+\mu &amp;= (I - K) \mu_0 + K y_0 = \mu_0 + K(y_0 - \mu_0), \\
+\Sigma &amp;= (I - K) P_0, \\
+K &amp;= P_0 (R_0 + P_0)^{-1}.
+\end{align*}
+$$
+ここで、$K$はカルマンゲインと呼ばれる値になります．<br>
+ベイズの定理より、$p(x_0|y_0) \propto p(y_0|x_0) p(x_0) = \mathcal{N}(y_0|x_0, R_0) \mathcal{N}(x_0| \mu_0, P_0)= \mathcal{N}(x_0|y_0, R_0) \mathcal{N}(x_0| \mu_0, P_0)$ですから、この形はもともと考えていた式(1)と同じ形式になっています．よって上記の$\mu, \Sigma, K$を対応する変数に置き換えれば2つのBounding Boxの重なっている部分に対応する正規分布が求まります．<br>
+具体的には、
+$$
+\begin{align}
+\alpha \mathcal{N}(x|\mu, \Sigma) = \mathcal{N}(x|\mu_1, \Sigma_1)\mathcal{N}(x|\mu_2, \Sigma_2)
+\end{align}
+$$
+となり、左辺の$\mu$と$\Sigma$はそれぞれ
+$$
+\begin{align*}
+\mu &amp;= \mu_1 + K(\mu_2 - \mu_1), \\
+\Sigma &amp;= (I - K)\Sigma_1,\\
+K &amp;= \Sigma_1(\Sigma_1 + \Sigma_2)^{-1}
+\end{align*}
+$$
+になります．また、$\alpha=\mathcal{N}(\mu_1|\mu_2, \Sigma_1 + \Sigma_2)$となる定数です．このスケールを調整する$\alpha$が存在するため、式(2)を$x$について積分しても1にならないことに注意してください．</p>
+<h3 id="kfiouの定義">KFIoUの定義<a href="#kfiouの定義" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>ここまでの話でKFIoUを定義するための道具は出揃いました．<br>
+KFIoUは以下のようにして2つのBounding Boxの重なり具合を推定します．</p>
+<p>$$
+\begin{align*}
+{\rm KFIoU} = \frac{\mathcal{V_B(\Sigma)}}{\mathcal{V_B(\Sigma_1)} + \mathcal{V_B(\Sigma_2)} - \mathcal{V_B(\Sigma)}}.
+\end{align*}
+$$
+式自体は難しいところがないかと思いますが、次の点に注意が必要です．</p>
+<ol>
+<li>KFIoUの定義式自体はスケール$\alpha$が関係しない形（なんなら分散だけで計算できる）になっています．$\alpha$は2つのBounding Boxの中心位置のズレをあらわしている部分になっていますが、このズレをあらわす役割は別途L1 Lossに任せ、KFIoUの計算をおこなうときには2つのBounding Boxの中心が一致しているというふうに考えて計算してしまいます．</li>
+<li>KFIoUの最大値は1/3になります．2つのBounding Boxがピッタリ重なっているとき($\Sigma_1=\Sigma_2$)が最大値になりますが、そのときは$K=\frac{1}{2}I$より、$\Sigma=\frac{1}{2}\Sigma_1$です．このとき、
+$$
+\begin{align*}
+{\rm KFIoU} = \frac{\frac{1}{2} \mathcal{V_B}(\Sigma_1)}{\mathcal{V_B}(\Sigma_1) + \mathcal{V_B}(\Sigma_1) - \frac{1}{2}\mathcal{V_B}(\Sigma_1) } = \frac{1}{3}
+\end{align*}
+$$
+が成り立つとわかります．一応、KFIoUを3倍すると最大値を1にするように調整できますが、Lossに用いるときは3倍しないほうが良いという結果になったようで、特に係数の調整をしないものが利用されています．</li>
+</ol>
+<p>ここまでの話がまとまっているのが次の図2になります．</p>
+<p><img src="fig2.png" alt="図2"></p>
+<h3 id="loss">Loss<a href="#loss" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>KFIoUを用いた場合のLossはBounding Boxのクラス分類のLoss、KFIoUの分のLoss $L_{kf} = e^{1-{\rm KFIoU}} - 1$、Bounding Boxの中心位置の誤差についてのLoss $L_c$の3つの和を用いることが提案されています．ここで$L_c$は以下の2パターンあります．</p>
+<ol>
+<li>通常どおりのL1 Loss</li>
+<li>既存手法のKLDで提案されているLoss $L_c(\mu_1, \mu_2, \Sigma_1) = {\rm ln}((\mu_2 - \mu_1)^T \Sigma_1^{-1} (\mu_2 - \mu_1) + 1) $</li>
+</ol>
+<h2 id="実験">実験<a href="#実験" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p>論文の中から他の手法との性能比較に関する結果を紹介します．</p>
+<p><img src="table4.png" alt="表4"></p>
+<p>Table4はDOTAというデータセットでの精度比較になっています．Box Def.の列によって回転の情報の定義が異なるのですが、一旦無視して話を進めます．<br>
+KFIoUは他手法と比べて高い性能を出すことができています．GWDやKLDではハイパーパラメータのチューニングをしたうえでこの数値になっていますが、KFIoUはそういったチューニングがなく高い性能を出すことができています．また、Bounding Boxの中心位置の回帰をおこなうLossについては、L1 LossよりもKLDで使われているLossを使うと良いと言えそうです（他の実験結果でもおおよそ精度の向上が見られています）．</p>
+
+      </div></div>
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2025 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/mblog/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

@@ -3,7 +3,7 @@ title: Non-Local Means Denoisingでノイズ除去
 tags:  ["OpenCV", "FNLMD", "ノイズ除去"]
 categories: ["OpenCV", "画像処理"]
 date: 2020-08-01 10:04:00 +0900
-image: 783215bfb0d1c75f10337b84d03a1a34.png
+Cover: 783215bfb0d1c75f10337b84d03a1a34.png
 ---
 本記事はQrunchからの転載です。
 ___

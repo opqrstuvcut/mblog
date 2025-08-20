@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta name="generator" content="Hugo 0.148.2"><script src="/mblog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=mblog/livereload" data-no-instant defer></script>
+  
+    <title>MatLoverによるMatlab以外のブログ</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="http://localhost:1313/mblog/" />
+
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFC5W8DKV1"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-LFC5W8DKV1');
+        }
+      </script>
+
+
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/custom.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/code.min.d529ea4b2fb8d34328d7d31afc5466d5f7bc2f0bc9abdd98b69385335d7baee4.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/main.min.775ac2af004d44c22a6d000fbd1d9af529642f5cef27399d0280d180af2c2e9b.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/menu.min.310d32205bdedd6f43144e3c3273c9deecd238eba5f9108db5ea96ca0cfbe377.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/post.min.ad50c7f4d00e7975918f37fc74c6029e1959a40d66fb5b2c6564a8715e985573.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/syntax.min.e9ab635cf918bc84b901eb65c0b2caa74c9544245e3647c1af5c129896ef276e.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/terminal.min.77ee67c1d456ac0c280223661a10b75c7729c59aeb33001424a72a14b363e310.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="http://localhost:1313/mblog/favicon.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/mblog/apple-touch-icon.png">
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="ja" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="MatLoverによるMatlab以外のブログ">
+<meta property="og:description" content="" />
+<meta property="og:url" content="http://localhost:1313/mblog/" />
+<meta property="og:site_name" content="MatLoverによるMatlab以外のブログ" />
+
+  <meta property="og:image" content="http://localhost:1313/mblog/og-image.png">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+
+
+
+  <link href="/mblog/index.xml" rel="alternate" type="application/rss+xml" title="MatLoverによるMatlab以外のブログ" />
+
+
+
+
+
+
+
+<link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
+    integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5"
+    crossorigin="anonymous">
+
+<script defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js"
+    integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd"
+    crossorigin="anonymous"></script>
+
+<script defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+            ],
+            throwOnError : false
+        });
+    });
+</script>
+
+
+<style>
+  section.article-content h2 {
+    background-color: rgb(245, 245, 245);
+    padding: 10px;
+  }
+
+  :root {
+    --ja-font-family: "メイリオ", "Meiryo";
+    --base-font-family: "Lato", var(--sys-font-family), var(--ja-font-family),
+      sans-serif;
+    --body-background: #ffffe0;
+  }
+
+
+</style>
+
+
+</head>
+<body>
+
+
+<div class="container full">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="http://localhost:1313/mblog/">
+  <div class="logo">
+    Terminal
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/mblog/">Home</a></li>
+        
+      
+        
+          <li><a href="/mblog/archives/">Archives</a></li>
+        
+      
+        
+          <li><a href="/mblog/search/">Search</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/mblog/" >Home</a></li>
+        
+      
+        
+          <li><a href="/mblog/archives/" >Archives</a></li>
+        
+      
+        
+          <li><a href="/mblog/search/" >Search</a></li>
+        
+      
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+  
+  <div class="posts">
+    
+    
+
+    
+    
+      
+    
+    
+
+    
+      <article class="post on-list">
+        <h2 class="post-title">
+          <a href="http://localhost:1313/mblog/posts/docker-compose%E3%81%A7aws-ecs%E3%81%AB%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%99%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AEtips/">docker composeでAWS ECSにデプロイするときのtips</a>
+        </h2>
+
+        <div class="post-meta"><time class="post-date">2022-12-13</time></div>
+
+        
+          <span class="post-tags">
+            
+            #<a href="http://localhost:1313/mblog/tags/aws/">AWS</a>&nbsp;
+            
+          </span>
+        
+
+        
+  <img src="/mblog/posts/docker-compose%E3%81%A7aws-ecs%E3%81%AB%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%99%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AEtips/feature.png"
+    class="post-cover"
+    alt="docker composeでAWS ECSにデプロイするときのtips"
+    title="Cover Image" />
+
+
+        <div class="post-content">
+          
+            <p>docker composeを使ってAWSのECSにアプリをデプロイ可能ですが、もしかすると役立つものがあるかもしれないのでメモを残しておきます。
+作業したのが半年前なので少し情報が古いかもしれないのです。</p>
+<h2 id="awsのサービスへのアクセス権限周り">AWSのサービスへのアクセス権限周り</h2>
+<p>ECSのタスクにAWSのサービスへのアクセス権限を与える場合はdocker-compose.ymlに次のように記述すれば良いです（下記はSQSのフルアクセスの例）。</p>
+<pre tabindex="0"><code>service:
+  api: 
+    x-aws-policies:
+      - &#34;arn:aws:iam::aws:policy/AmazonSQSFullAccess&#34;
+</code></pre><h2 id="awsのsecretの読み込み">AWSのsecretの読み込み</h2>
+<p>secretとの連携はdocker-compose.ymlに次のように記述します。</p>
+<pre tabindex="0"><code>secrets:
+  sample_secret:
+    name: &#34;シークレットのARN&#34;
+    external: true
+</code></pre><p>また、読み込ませたいコンテナにも設定を追加します。例えば次のようにします。</p>
+<pre tabindex="0"><code>service:
+  api: 
+    secrets:
+      - sample_secret
+</code></pre><p>コンテナからは/run/secrets/sample_secretというパスを参照できるようになっており、この中身がsecretの値になります。</p>
+<h2 id="gpuインスタンス">GPUインスタンス</h2>
+<p>特に何も指定しない場合、FARGATE上にECSのタスクが展開されます。
+GPUインスタンスを使いたい場合おそらく2つ選択肢があります。</p>
+<ul>
+<li><a href="https://www.docker.com/blog/deploy-gpu-accelerated-applications-on-amazon-ecs-with-docker-compose/">https://www.docker.com/blog/deploy-gpu-accelerated-applications-on-amazon-ecs-with-docker-compose/</a> を参考にgpuの記述をdocker-compose.ymlに追加</li>
+<li>docker compose convertを使ってCloudFormationテンプレートを出力し、それを編集してGPUインスタンスが使えるようにする。</li>
+</ul>
+<p>自分は後者を選択しました。
+というのも、複数のタスクを1つのGPUインスタンス上で実行したかったのですが、前者の方法だと1インスタンスにつき1タスクという制限がありました。
+このため、後者を採用し、かつ次の変更を加えています。</p>
+<h3 id="gpuインスタンスのruntimeの設定">GPUインスタンスのruntimeの設定</h3>
+<p>1インスタンスに1タスクの問題は次のようにCloudFormationテンプレートのLaunchConfigurationのUserDataに処理を追加することで解決できます。</p>
+<pre tabindex="0"><code>  LaunchConfiguration:
+    Properties:
+      IamInstanceProfile:
+        Ref: EC2InstanceProfile
+      ImageId: ...
+      InstanceType: g4dn.xlarge
+      SecurityGroups:
+      - Ref: ...
+      AssociatePublicIpAddress: true
+      UserData:
+        Fn::Base64: !Sub
+          - |
+            #!/bin/bash
+            echo ECS_CLUSTER=${ClusterName} &gt;&gt; /etc/ecs/ecs.config
+            (grep -q ^OPTIONS=\&#34;--default-runtime /etc/sysconfig/docker &amp;&amp; echo &#39;/etc/sysconfig/docker needs no changes&#39;) || (sed -i &#39;s/^OPTIONS=&#34;/OPTIONS=&#34;--default-runtime nvidia /&#39; /etc/sysconfig/docker &amp;&amp; echo &#39;/etc/sysconfig/docker updated to have nvidia runtime as default&#39; &amp;&amp; systemctl restart docker &amp;&amp; echo &#39;Restarted docker&#39;)
+          - {
+              ClusterName: SampleCluster
+            }
+      KeyName: ...
+    Type: AWS::AutoScaling::LaunchConfiguration
+</code></pre><p>この解決方法はどこかで見たものを利用したものですが、リンク先を失ってしまいました。</p>
+          
+        </div>
+
+        
+          <div>
+            <a class="read-more button inline" href="/mblog/posts/docker-compose%E3%81%A7aws-ecs%E3%81%AB%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%99%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AEtips/">[]</a>
+          </div>
+        
+      </article>
+    
+
+    <div class="pagination">
+  <div class="pagination__buttons">
+    
+      <a href="/mblog/page/14/" class="button inline prev">
+        &lt; [<span class="button__text">Newer posts</span>]
+      </a>
+    
+    
+      ::
+    
+    
+      <a href="/mblog/page/16/" class="button inline next">
+        [<span class="button__text">Older posts</span>] &gt;
+      </a>
+    
+  </div>
+</div>
+
+  </div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2025 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/mblog/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

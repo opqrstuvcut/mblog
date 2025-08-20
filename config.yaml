@@ -1,6 +1,6 @@
 baseURL: "https://opqrstuvcut.github.io/mblog"
 languageCode : "ja-jp"
-theme: ["hugo-video", "hugo-theme-stack"]
+theme: ["hugo-video", "terminal"]
 disqusShortname: https-opqrstuvcut-github-io-blog
 
 pagination:
@@ -21,7 +21,10 @@ sitemap:
 
 enableRobotsTXT: false
 
+
 params:
+    fullWidthTheme: true
+    
     mainSections:
         - post
     featuredImageField: image
@@ -64,38 +67,48 @@ params:
         #   - type: toc
         #     params:
 
-    opengraph:
-        twitter:
-            # Your Twitter username
-            site:
+    # opengraph:
+    #     twitter:
+    #         # Your Twitter username
+    #         site:
+    #
+    #         # Available values: summary, summary_large_image
+    #         card: summary_large_image
 
-            # Available values: summary, summary_large_image
-            card: summary_large_image
+    # defaultImage:
+    #     opengraph:
+    #         enabled: true 
+    #         local: false
+    #         src:
 
-    defaultImage:
-        opengraph:
-            enabled: true 
-            local: false
-            src:
+    # colorScheme:
+    #     # Display toggle
+    #     toggle: false
+    #     
+    #     # Available values: auto, light, dark
+    #     default: light
 
-    colorScheme:
-        # Display toggle
-        toggle: false
-        
-        # Available values: auto, light, dark
-        default: light
-
-    imageProcessing:
-        cover:
-            enabled: true
-        content:
-            enabled: true
+    # imageProcessing:
+    #     cover:
+    #         enabled: true
+    #     content:
+    #         enabled: true
     comments:
         enabled: true 
         provider: disqus
 
+    contentTypeName: "post"
+    showMenuItems: 10
+    autoCover: false
+
+languages:
+  ja:
+    params:
+      title: MatLoverによるMatlab以外のブログ  
+      menuMore: "Show more"
+      readMore: "Read more"
+
 menu:
-    
     social:
         - identifier: github
           name: GitHub
@@ -126,3 +139,5 @@ markup:
               - \]
             - - $$
               - $$
+      renderer:
+        unsafe: true

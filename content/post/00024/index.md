@@ -3,7 +3,7 @@ title: OpenCVのヒストグラムの計算はNumPyより断然速い
 tags:  ["OpenCV", "ヒストグラム"]
 categories:  ["OpenCV", "画像処理"]
 date: 2020-08-10 11:03:00 +0900
-image: 5703e41eaa88a7eb01fcb7ef796e3bb3.png
+Cover: 5703e41eaa88a7eb01fcb7ef796e3bb3.png
 ---
 本記事はQrunchからの転載です。
 ___

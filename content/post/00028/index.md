@@ -3,7 +3,7 @@ title: 抽出した輪郭の描画
 tags:  ["OpenCV", "drawContours", "輪郭"]
 categories: ["OpenCV", "画像処理"]
 date: 2020-08-17 11:03:00 +0900
-image: d0411dcb235b3add1e1a55f1a9394d2d.png
+Cover: d0411dcb235b3add1e1a55f1a9394d2d.png
 ---
 本記事はQrunchからの転載です。
 ___

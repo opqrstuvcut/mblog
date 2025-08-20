@@ -3,7 +3,7 @@ title: inpaintで画像の修復をする
 tags:  ["OpenCV", "inpaint", "復元"]
 categories: ["OpenCV", "画像処理"]
 date: 2020-07-31 11:04:00 +0900
-image: 6cfb060c01c9e2a5a569b5c14ee05620.png
+Cover: 6cfb060c01c9e2a5a569b5c14ee05620.png
 ---
 本記事はQrunchからの転載です。
 ___

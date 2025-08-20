@@ -3,7 +3,7 @@ title: findContoursで輪郭の検出
 tags:  ["OpenCV", "輪郭抽出"]
 categories:  ["OpenCV", "画像処理"]
 date: 2020-08-16 17:56:36 +0900
-image: 36626599de1a642e7bfec7fa47def298.png
+Cover: 36626599de1a642e7bfec7fa47def298.png
 ---
 本記事はQrunchからの転載です。
 ___

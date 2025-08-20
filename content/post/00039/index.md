@@ -3,7 +3,7 @@ title: Canny法でエッジ検出
 tags:  ["OpenCV", "Canny"]
 categories:  ["OpenCV生活", "画像処理"]
 date: 2020-08-03 20:17:14 +0900
-image: 5154e105157ba91bf3bf7306d1cfffe1.jpg
+Cover: 5154e105157ba91bf3bf7306d1cfffe1.jpg
 ---
 本記事はQrunchからの転載です。
 ___

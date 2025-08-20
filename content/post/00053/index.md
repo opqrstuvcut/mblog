@@ -3,7 +3,7 @@ title: Sobelフィルタで微分
 tags:  ["OpenCV", "Sobel"]
 categories:  ["OpenCV", "画像処理"]
 date: 2020-07-16 14:06:05 +0900
-image: d0092a9ae18af82d66d3a2d25fd7b5b8.png
+Cover: d0092a9ae18af82d66d3a2d25fd7b5b8.png
 ---
 本記事はQrunchからの転載です。
 ___

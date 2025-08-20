@@ -4,7 +4,7 @@ tags:  ["ImageBERT", "BERT", "ディープラーニング", "画像", "自然言
 categories: ["機械学習"]
 date: 2020-02-24 19:46:50 +0900
 showtoc: true
-image: 3d410aa8e5a8ffef34906b41784d2cc8.png
+Cover: 3d410aa8e5a8ffef34906b41784d2cc8.png
 ---
 本記事はQrunchからの転載です。
 ___

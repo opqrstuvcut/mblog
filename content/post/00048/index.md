@@ -3,7 +3,7 @@ title: filter2Dで任意のカーネルを扱う
 tags:  ["OpenCV", "filter2D"]
 categories:  ["OpenCV", "画像処理"]
 date: 2020-07-25 12:12:06 +0900
-image: 99878fdaca9a827d2ba5359aa4dcade7.png
+Cover: 99878fdaca9a827d2ba5359aa4dcade7.png
 ---
 本記事はQrunchからの転載です。
 ___

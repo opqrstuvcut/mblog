@@ -3,7 +3,7 @@ title: 大津の二値化で楽をする
 tags:  ["OpenCV", "二値化", "大津二値化"]
 categories:  ["OpenCV", "画像処理"]
 date: 2020-07-10 13:08:19 +0900
-image: 28686c735e0c8f6271a0dd5b95693c1a.png
+Cover: 28686c735e0c8f6271a0dd5b95693c1a.png
 ---
 本記事はQrunchからの転載です。
 ___

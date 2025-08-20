@@ -4,7 +4,7 @@ tags:  ["manifold", "機械学習", "特徴量", "Python"]
 categories:  ["機械学習"]
 date: 2020-01-28 22:52:36 +0900
 showtoc: true
-image: 2f11d99ea2c3cf569c040d9555f5ab2c.png
+Cover: 2f11d99ea2c3cf569c040d9555f5ab2c.png
 ---
 本記事はQrunchからの転載です。
 ___

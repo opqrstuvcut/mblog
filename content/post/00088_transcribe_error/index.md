@@ -8,7 +8,9 @@ tags:
   ]
 categories: ["OpenAI", "Python"]
 date: 2025-07-31
-image: thm.png
+Cover: thm.png
+showFullContent: false
+description: " " 
 ---
 
 下記のように、メモリ上の音声データをBytesIOに書き込み、OpenAIのAPIを実行しようとしました．

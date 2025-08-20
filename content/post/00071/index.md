@@ -3,7 +3,7 @@ title: Tabularデータ向けのサーベイ論文を読んだのでメモ
 tags: ["Table", "Tabular", "Deep Learning", "深層学習", "TabNet", "TabTransformer"] 
 categories: ["機械学習"]
 date: 2022-07-17
-image: fig3.png
+Cover: fig3.png
 ---
 
 Deep Learning(DL)を用いたテーブルデータ向けの手法は色々提案されており、度々、精度面で勾配ブースティング法を超えたとか超えないと話題になる気がします。  

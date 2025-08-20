@@ -4,7 +4,7 @@ tags:  ["AWS", "S3", "flutter", "Dart", "Cognito"]
 categories:  ["AWS"]
 date: 2019-12-08 19:04:32 +0900
 showtoc: true
-image: 5156acb6c29b977915456e21c1d96fb8.png
+Cover: 5156acb6c29b977915456e21c1d96fb8.png
 ---
 
 本記事はQrunchからの転載です。

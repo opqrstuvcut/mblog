@@ -7,12 +7,6 @@
 [submodule "content/post/00076/themes/hugo-video"]
 	path = content/post/00076/themes/hugo-video
 	url = https://github.com/martignoni/hugo-video.git
-[submodule "themes/PaperMod"]
-	path = themes/PaperMod
-	url = https://github.com/adityatelange/hugo-PaperMod.git
-[submodule "themes/dream"]
-	path = themes/dream
-	url = git@github.com:g1eny0ung/hugo-theme-dream
 [submodule "themes/hugo-theme-stack"]
 	path = themes/hugo-theme-stack
 	url = git@github.com:CaiJimmy/hugo-theme-stack

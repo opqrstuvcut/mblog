@@ -3,7 +3,7 @@ title: floodFillで領域に色を塗る
 tags:  ["OpenCV", "floodFill"]
 categories:  ["OpenCV", "画像処理"]
 date: 2020-08-06 11:08:00 +0900
-image: b7d4e85930d3ec37e0350ab3fe75e877.png
+Cover: b7d4e85930d3ec37e0350ab3fe75e877.png
 ---
 本記事はQrunchからの転載です。
 ___

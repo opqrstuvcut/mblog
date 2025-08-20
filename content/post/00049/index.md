@@ -3,7 +3,7 @@ title: 膨張と収縮の組み合わせによるopeningとclosing
 tags:  ["Closing", "Opening"]
 categories:  ["OpenCV", "画像処理"]
 date: 2020-07-21 22:31:32 +0900
-image: 72c323555493bf03f85379bed4fdc20e.png
+Cover: 72c323555493bf03f85379bed4fdc20e.png
 ---
 本記事はQrunchからの転載です。
 ___

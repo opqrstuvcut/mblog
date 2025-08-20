@@ -3,7 +3,7 @@ title: Label StudioのAPIを利用したデータ連携のメモ
 tags: ["Label Studio", "アノテーション", "ディープラーニング", "物体検出", "Pre-Annotations"]
 categories: ["ディープラーニング", "アノテーション"]
 date: 2025-04-24
-image: thm.png
+Cover: thm.png
 ---
 
 Label StudioのAPIを利用するとき用のメモになります．下記で出てくる例は物体検出を例にしています．

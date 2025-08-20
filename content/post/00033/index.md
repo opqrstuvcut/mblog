@@ -3,7 +3,7 @@ title: Watershedで領域検出
 tags:  ["OpenCV", "WaterShed"]
 categories: ["OpenCV", "画像処理"]
 date: 2020-08-08 11:10:00 +0900
-image: 37b16430461df0454f7771d8d4bbfaef.png
+Cover: 37b16430461df0454f7771d8d4bbfaef.png
 ---
 本記事はQrunchからの転載です。
 ___

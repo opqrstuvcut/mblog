@@ -4,7 +4,7 @@ tags:  ["Python", "KLdivergence", "PyTorch", "機械学習", "正規分布"]
 categories:  ["機械学習"]
 date: 2020-03-02T18:01:01+09:00
 showtoc: true
-image: 983be7a190c4aaf3488cd6c3d4471158.png
+Cover: 983be7a190c4aaf3488cd6c3d4471158.png
 ---
 
 本記事はQrunchからの転載です。

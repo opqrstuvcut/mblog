@@ -4,7 +4,7 @@ tags:  ["LIME", "機械学習", "重要度", "寄与"]
 categories:  ["Feature Importance"]
 date: 2020-02-12T00:23:01+09:00
 showtoc: true
-image: 1341b73a17da593ffc43cebc86969604.jpg
+Cover: 1341b73a17da593ffc43cebc86969604.jpg
 ---
 
 本記事はQrunchからの転載です。

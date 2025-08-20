@@ -3,7 +3,7 @@ title: Grabcutsで背景と猫を分離したい
 tags:  ["OpenCV", "Grabcuts"]
 categories: ["OpenCV", "画像処理"]
 date: 2020-08-09 11:00:00 +0900
-image: dba26e4507ff86058f0c703b8298c1f9.png
+Cover: dba26e4507ff86058f0c703b8298c1f9.png
 ---
 本記事はQrunchからの転載です。
 ___

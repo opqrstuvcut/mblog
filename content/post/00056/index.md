@@ -3,7 +3,7 @@ title: AdaptiveThresholdで照明環境が微妙な画像を二値化
 tags: ["AdaptiveThreshold"]
 categories:  ["OpenCV", "画像処理"]
 date: 2020-07-11 09:22:28 +0900
-image: 849c7e82970effeb19b44b3bf511192f.png
+Cover: 849c7e82970effeb19b44b3bf511192f.png
 ---
 本記事はQrunchからの転載です。
 ___

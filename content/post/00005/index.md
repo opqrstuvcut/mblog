@@ -5,7 +5,7 @@ categories:  ["Python"]
 showtoc: true
 date: 2020-01-20T21:09:01+09:00
 draft: false 
-image: bc011ef843d7d97092a83521e65e6a15.png
+Cover: bc011ef843d7d97092a83521e65e6a15.png
 ---
 
 本記事はQrunchからの転載です。

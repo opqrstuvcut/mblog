@@ -3,7 +3,7 @@ title: sepFilter2Dで分離可能フィルタを使って高速化
 tags:  ["OpenCV", "sepFilter2D", "分離可能フィルタ"]
 categories:  ["OpenCV", "画像処理"]
 date: 2020-07-26 11:06:00 +0900
-image: 7f919cf47778b5338c27d63bca691006.png
+Cover: 7f919cf47778b5338c27d63bca691006.png
 ---
 本記事はQrunchからの転載です。
 ___

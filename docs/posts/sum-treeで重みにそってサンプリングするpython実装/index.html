@@ -1,20 +1,33 @@
 <!DOCTYPE html>
-<html lang="ja-jp" dir="ltr">
-    <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content="問題設定 次のような設定でサンプリングをしたいことはよくあると思います。\n3つのデータがあり、それぞれに重みがつけられているとする。 それぞれ、データ1の重みは10、データ2の重みは20、データ3の重みは30である。 このときに各データの重みと全体の重みの和の比を確率としてサンプリングをしたい。 つまり、データ1は10/60、データ2は20/60、データ3は30/60の確率でサンプリングすることになる。 シンプルな方法 さきほどの問題設定のとき、簡単にサンプリングする方法は正規化された重みの和を順に足していき、一様分布からサンプリングした乱数がその和を超えたときのデータを取得するという方法です。 手順は次のようになります。\n0~1の乱数を生成する。 i=0、sum=0とし、生成した乱数をsumが超えるまで以下を実行する。 i番目のデータの重みを全体の重みの和で割る。 1.で計算した重みをsumに足す。 i番目のデータをサンプリングされたデータとする。 この方法は簡単に実装でき、理解も容易ですが、データの重みを順に足していくため、$O(n)$の計算量がかかります。\nSum Tree Sum Treeを用いれば、計算量のオーダーを$O(\\log n)$にできます。\n概要 木の構成 Sum Treeでは二分木を作成し、各ノードがもつ重みを用いてサンプリングの処理をおこないます。 各ノードの重みはそのノードにぶら下がっている葉の重みの和になります。\n図をもちいて具体例を示します。\nデータは5つで重みはそれぞれ5、20、30、5、40としたときには以下のような木が作られます。 緑色の丸はノード、オレンジは葉になります。葉の数値はデータの重み、ノードの数値はノードにぶら下がっている葉の重みの和です。\nサンプリング サンプリングはシンプルです。\n0からrootノードの重みの間の乱数を生成する。これをvとおく。 rootノードから葉にたどり着くまで、以下の処理を繰り返す。 左の子の重みがv以上ならば、左の子のノードに移動する。 左の子の重みがv以上でなければ、右の子のノードに移動する。またv=v-（左の子の重み）とする。 たどり着いた葉をサンプリングされたデータとする。 これだけだとよく分からないと思うので次から例をみていきます。\nサンプリングの例1 1つめのサンプリングの例は次のとおりです。乱数が70のときは以下の赤のような経路を通ります。 処理をおっていくと、はじめにrootノードが100という重みをもっているので、70を生成したときは右の子ノードに移ります。 このとき、左側の子ノードの重みを生成した値から引くことで、右側のノードの重み(40)以下の値になることが保証されます。 ノードの重みで引いた値が10になるため、次に左側のノードにいき、結果として40の重みをもつデータがサンプリングされています。\nこの葉にたどり着く確率は$$\\frac{40}{100} \\times \\frac{40}{40} \\times \\frac{40}{40} = \\frac{40}{100}$$となりますので、狙い通り40%の確率でサンプリングできます。\nまた、見てわかるように、二分木を使うことで葉の重みを個別には見ずに和を利用するため、計算量を減らすことができています。\nサンプリングの例2 また別の例として乱数が50のときも示します。 重み30の葉にたどり着いていますが、そうなる確率は $$\\frac{60}{100} \\times \\frac{35}{60} \\times \\frac{30}{35} = \\frac{30}{100}$$です。\n">
-<title>Sum Treeで重みにそってサンプリングする（Python実装）</title>
+<html lang="ja">
+<head><script src="/mblog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=mblog/livereload" data-no-instant defer></script>
+  
+    <title>Sum Treeで重みにそってサンプリングする（Python実装） :: MatLoverによるMatlab以外のブログ</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="問題設定 次のような設定でサンプリングをしたいことはよくあると思います。
+3つのデータがあり、それぞれに重みがつけられているとする。 それぞれ、データ1の重みは10、データ2の重みは20、データ3の重みは30である。 このときに各データの重みと全体の重みの和の比を確率としてサンプリングをしたい。 つまり、データ1は10/60、データ2は20/60、データ3は30/60の確率でサンプリングすることになる。 シンプルな方法 さきほどの問題設定のとき、簡単にサンプリングする方法は正規化された重みの和を順に足していき、一様分布からサンプリングした乱数がその和を超えたときのデータを取得するという方法です。 手順は次のようになります。
+0~1の乱数を生成する。 i=0、sum=0とし、生成した乱数をsumが超えるまで以下を実行する。 i番目のデータの重みを全体の重みの和で割る。 1.で計算した重みをsumに足す。 i番目のデータをサンプリングされたデータとする。 この方法は簡単に実装でき、理解も容易ですが、データの重みを順に足していくため、$O(n)$の計算量がかかります。
+Sum Tree Sum Treeを用いれば、計算量のオーダーを$O(\log n)$にできます。
+概要 木の構成 Sum Treeでは二分木を作成し、各ノードがもつ重みを用いてサンプリングの処理をおこないます。 各ノードの重みはそのノードにぶら下がっている葉の重みの和になります。
+図をもちいて具体例を示します。
+データは5つで重みはそれぞれ5、20、30、5、40としたときには以下のような木が作られます。 緑色の丸はノード、オレンジは葉になります。葉の数値はデータの重み、ノードの数値はノードにぶら下がっている葉の重みの和です。
+サンプリング サンプリングはシンプルです。
+0からrootノードの重みの間の乱数を生成する。これをvとおく。 rootノードから葉にたどり着くまで、以下の処理を繰り返す。 左の子の重みがv以上ならば、左の子のノードに移動する。 左の子の重みがv以上でなければ、右の子のノードに移動する。またv=v-（左の子の重み）とする。 たどり着いた葉をサンプリングされたデータとする。 これだけだとよく分からないと思うので次から例をみていきます。
+サンプリングの例1 1つめのサンプリングの例は次のとおりです。乱数が70のときは以下の赤のような経路を通ります。 処理をおっていくと、はじめにrootノードが100という重みをもっているので、70を生成したときは右の子ノードに移ります。 このとき、左側の子ノードの重みを生成した値から引くことで、右側のノードの重み(40)以下の値になることが保証されます。 ノードの重みで引いた値が10になるため、次に左側のノードにいき、結果として40の重みをもつデータがサンプリングされています。
+この葉にたどり着く確率は$$\frac{40}{100} \times \frac{40}{40} \times \frac{40}{40} = \frac{40}{100}$$となりますので、狙い通り40%の確率でサンプリングできます。
+また、見てわかるように、二分木を使うことで葉の重みを個別には見ずに和を利用するため、計算量を減らすことができています。
+サンプリングの例2 また別の例として乱数が50のときも示します。 重み30の葉にたどり着いていますが、そうなる確率は $$\frac{60}{100} \times \frac{35}{60} \times \frac{30}{35} = \frac{30}{100}$$です。
+サンプルコード Python実装を最後に示します。
+import numpy as np from typing import List, Optional, Union class Node: def __init__(self, weight, parent): self.weight: int = weight self.left: Optional[Node, Leaf] = None self.right: Optional[Node, Leaf] = None self.parent: Optional[Node, Leaf] = parent class Leaf: def __init__(self, parent): self.weight = 0 self.val = 0 self.parent: Optional[Node] = parent class SumTree: def __init__(self, max_leaves): self._root: Node = Node(weight=0, parent=None) self._max_leaves: int = max_leaves self._leaf_index: int = 0 self._reached_limit: bool = False self._all_leaves: List[Leaf] = [] self._init_tree() def _init_tree(self): hierarchy = int(np.ceil(np.log2(self._max_leaves))) pre_hierarchies = [self._root] for _ in range(1, hierarchy): new_hierarchies = [] for pre_hierarchy_node in pre_hierarchies: left_node = Node(0, paent=pre_hierarchy_node) right_node = Node(0, parent=pre_hierarchy_node) pre_hierarchy_node.left = left_node pre_hierarchy_node.right = right_node new_hierarchies.append(left_node) new_hierarchies.append(right_node) pre_hierarchies = new_hierarchies for node in pre_hierarchies: node.left = Leaf(parent=node) node.right = Leaf(parent=node) self._all_leaves.append(node.left) self._all_leaves.append(node.right) def _update_node_weight(self, node: Node): while node: weight_sum = 0 if node.left: weight_sum &#43;= node.left.weight if node.right: weight_sum &#43;= node.right.weight node.weight = weight_sum node = node.parent def __len__(self): return self._max_leaves if self._reached_limit else self._leaf_index def __getitem__(self, item): if item &gt;= self.__len__(): raise Exception(&#34;index out of range&#34;) if not self._reached_limit: idx = item else: idx = self._leaf_index &#43; item if idx &gt;= self._max_leaves: idx -= self._max_leaves return self._all_leaves[idx] def add(self, val, weight): target_leaf = self._all_leaves[self._leaf_index] target_leaf.val = val target_leaf.weight = weight self._leaf_index &#43;= 1 if self._leaf_index &gt;= self._max_leaves: self._leaf_index = 0 self._reached_limit = True self._update_node_weight(target_leaf.parent) def sample(self): target_val = np.random.random() * self._root.weight target_node = self._root while True: if target_node.left.weight &gt; target_val: target_node = target_node.left else: target_val -= target_node.left.weight target_node = target_node.right if isinstance(target_node, Leaf): break return target_node 次のように使用します。
+" />
+<meta name="keywords" content="" />
 
-<link rel='canonical' href='https://opqrstuvcut.github.io/mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/'>
+  <meta name="robots" content="noodp" />
 
-<link rel="stylesheet" href="/mblog/scss/style.min.946cca6c6259ef94ac55abfae7c7bf3291ea3ed5eea17ef77500b257217c6710.css"><meta property='og:title' content="Sum Treeで重みにそってサンプリングする（Python実装）">
-<meta property='og:description' content="問題設定 次のような設定でサンプリングをしたいことはよくあると思います。\n3つのデータがあり、それぞれに重みがつけられているとする。 それぞれ、データ1の重みは10、データ2の重みは20、データ3の重みは30である。 このときに各データの重みと全体の重みの和の比を確率としてサンプリングをしたい。 つまり、データ1は10/60、データ2は20/60、データ3は30/60の確率でサンプリングすることになる。 シンプルな方法 さきほどの問題設定のとき、簡単にサンプリングする方法は正規化された重みの和を順に足していき、一様分布からサンプリングした乱数がその和を超えたときのデータを取得するという方法です。 手順は次のようになります。\n0~1の乱数を生成する。 i=0、sum=0とし、生成した乱数をsumが超えるまで以下を実行する。 i番目のデータの重みを全体の重みの和で割る。 1.で計算した重みをsumに足す。 i番目のデータをサンプリングされたデータとする。 この方法は簡単に実装でき、理解も容易ですが、データの重みを順に足していくため、$O(n)$の計算量がかかります。\nSum Tree Sum Treeを用いれば、計算量のオーダーを$O(\\log n)$にできます。\n概要 木の構成 Sum Treeでは二分木を作成し、各ノードがもつ重みを用いてサンプリングの処理をおこないます。 各ノードの重みはそのノードにぶら下がっている葉の重みの和になります。\n図をもちいて具体例を示します。\nデータは5つで重みはそれぞれ5、20、30、5、40としたときには以下のような木が作られます。 緑色の丸はノード、オレンジは葉になります。葉の数値はデータの重み、ノードの数値はノードにぶら下がっている葉の重みの和です。\nサンプリング サンプリングはシンプルです。\n0からrootノードの重みの間の乱数を生成する。これをvとおく。 rootノードから葉にたどり着くまで、以下の処理を繰り返す。 左の子の重みがv以上ならば、左の子のノードに移動する。 左の子の重みがv以上でなければ、右の子のノードに移動する。またv=v-（左の子の重み）とする。 たどり着いた葉をサンプリングされたデータとする。 これだけだとよく分からないと思うので次から例をみていきます。\nサンプリングの例1 1つめのサンプリングの例は次のとおりです。乱数が70のときは以下の赤のような経路を通ります。 処理をおっていくと、はじめにrootノードが100という重みをもっているので、70を生成したときは右の子ノードに移ります。 このとき、左側の子ノードの重みを生成した値から引くことで、右側のノードの重み(40)以下の値になることが保証されます。 ノードの重みで引いた値が10になるため、次に左側のノードにいき、結果として40の重みをもつデータがサンプリングされています。\nこの葉にたどり着く確率は$$\\frac{40}{100} \\times \\frac{40}{40} \\times \\frac{40}{40} = \\frac{40}{100}$$となりますので、狙い通り40%の確率でサンプリングできます。\nまた、見てわかるように、二分木を使うことで葉の重みを個別には見ずに和を利用するため、計算量を減らすことができています。\nサンプリングの例2 また別の例として乱数が50のときも示します。 重み30の葉にたどり着いていますが、そうなる確率は $$\\frac{60}{100} \\times \\frac{35}{60} \\times \\frac{30}{35} = \\frac{30}{100}$$です。\n">
-<meta property='og:url' content='https://opqrstuvcut.github.io/mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/'>
-<meta property='og:site_name' content='MatLoverによるMatlab以外のブログ'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='Python' /><meta property='article:tag' content='Sum Tree' /><meta property='article:tag' content='サンプリング' /><meta property='article:published_time' content='2021-01-17T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2021-01-17T00:00:00&#43;00:00'/><meta property='og:image' content='https://opqrstuvcut.github.io/mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/sum_tree_example.png' />
-<meta name="twitter:title" content="Sum Treeで重みにそってサンプリングする（Python実装）">
-<meta name="twitter:description" content="問題設定 次のような設定でサンプリングをしたいことはよくあると思います。\n3つのデータがあり、それぞれに重みがつけられているとする。 それぞれ、データ1の重みは10、データ2の重みは20、データ3の重みは30である。 このときに各データの重みと全体の重みの和の比を確率としてサンプリングをしたい。 つまり、データ1は10/60、データ2は20/60、データ3は30/60の確率でサンプリングすることになる。 シンプルな方法 さきほどの問題設定のとき、簡単にサンプリングする方法は正規化された重みの和を順に足していき、一様分布からサンプリングした乱数がその和を超えたときのデータを取得するという方法です。 手順は次のようになります。\n0~1の乱数を生成する。 i=0、sum=0とし、生成した乱数をsumが超えるまで以下を実行する。 i番目のデータの重みを全体の重みの和で割る。 1.で計算した重みをsumに足す。 i番目のデータをサンプリングされたデータとする。 この方法は簡単に実装でき、理解も容易ですが、データの重みを順に足していくため、$O(n)$の計算量がかかります。\nSum Tree Sum Treeを用いれば、計算量のオーダーを$O(\\log n)$にできます。\n概要 木の構成 Sum Treeでは二分木を作成し、各ノードがもつ重みを用いてサンプリングの処理をおこないます。 各ノードの重みはそのノードにぶら下がっている葉の重みの和になります。\n図をもちいて具体例を示します。\nデータは5つで重みはそれぞれ5、20、30、5、40としたときには以下のような木が作られます。 緑色の丸はノード、オレンジは葉になります。葉の数値はデータの重み、ノードの数値はノードにぶら下がっている葉の重みの和です。\nサンプリング サンプリングはシンプルです。\n0からrootノードの重みの間の乱数を生成する。これをvとおく。 rootノードから葉にたどり着くまで、以下の処理を繰り返す。 左の子の重みがv以上ならば、左の子のノードに移動する。 左の子の重みがv以上でなければ、右の子のノードに移動する。またv=v-（左の子の重み）とする。 たどり着いた葉をサンプリングされたデータとする。 これだけだとよく分からないと思うので次から例をみていきます。\nサンプリングの例1 1つめのサンプリングの例は次のとおりです。乱数が70のときは以下の赤のような経路を通ります。 処理をおっていくと、はじめにrootノードが100という重みをもっているので、70を生成したときは右の子ノードに移ります。 このとき、左側の子ノードの重みを生成した値から引くことで、右側のノードの重み(40)以下の値になることが保証されます。 ノードの重みで引いた値が10になるため、次に左側のノードにいき、結果として40の重みをもつデータがサンプリングされています。\nこの葉にたどり着く確率は$$\\frac{40}{100} \\times \\frac{40}{40} \\times \\frac{40}{40} = \\frac{40}{100}$$となりますので、狙い通り40%の確率でサンプリングできます。\nまた、見てわかるように、二分木を使うことで葉の重みを個別には見ずに和を利用するため、計算量を減らすことができています。\nサンプリングの例2 また別の例として乱数が50のときも示します。 重み30の葉にたどり着いていますが、そうなる確率は $$\\frac{60}{100} \\times \\frac{35}{60} \\times \\frac{30}{35} = \\frac{30}{100}$$です。\n"><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://opqrstuvcut.github.io/mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/sum_tree_example.png' />
-    <link rel="shortcut icon" href="/mblog/favicon.ico" />
+<link rel="canonical" href="http://localhost:1313/mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/" />
+
 
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFC5W8DKV1"></script>
       <script>
@@ -29,7 +42,141 @@
           gtag('js', new Date());
           gtag('config', 'G-LFC5W8DKV1');
         }
-      </script><style>
+      </script>
+
+
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/custom.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/code.min.d529ea4b2fb8d34328d7d31afc5466d5f7bc2f0bc9abdd98b69385335d7baee4.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/main.min.775ac2af004d44c22a6d000fbd1d9af529642f5cef27399d0280d180af2c2e9b.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/menu.min.310d32205bdedd6f43144e3c3273c9deecd238eba5f9108db5ea96ca0cfbe377.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/post.min.ad50c7f4d00e7975918f37fc74c6029e1959a40d66fb5b2c6564a8715e985573.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/syntax.min.e9ab635cf918bc84b901eb65c0b2caa74c9544245e3647c1af5c129896ef276e.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/terminal.min.77ee67c1d456ac0c280223661a10b75c7729c59aeb33001424a72a14b363e310.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="http://localhost:1313/mblog/favicon.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/mblog/apple-touch-icon.png">
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="ja" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Sum Treeで重みにそってサンプリングする（Python実装）">
+<meta property="og:description" content="問題設定 次のような設定でサンプリングをしたいことはよくあると思います。
+3つのデータがあり、それぞれに重みがつけられているとする。 それぞれ、データ1の重みは10、データ2の重みは20、データ3の重みは30である。 このときに各データの重みと全体の重みの和の比を確率としてサンプリングをしたい。 つまり、データ1は10/60、データ2は20/60、データ3は30/60の確率でサンプリングすることになる。 シンプルな方法 さきほどの問題設定のとき、簡単にサンプリングする方法は正規化された重みの和を順に足していき、一様分布からサンプリングした乱数がその和を超えたときのデータを取得するという方法です。 手順は次のようになります。
+0~1の乱数を生成する。 i=0、sum=0とし、生成した乱数をsumが超えるまで以下を実行する。 i番目のデータの重みを全体の重みの和で割る。 1.で計算した重みをsumに足す。 i番目のデータをサンプリングされたデータとする。 この方法は簡単に実装でき、理解も容易ですが、データの重みを順に足していくため、$O(n)$の計算量がかかります。
+Sum Tree Sum Treeを用いれば、計算量のオーダーを$O(\log n)$にできます。
+概要 木の構成 Sum Treeでは二分木を作成し、各ノードがもつ重みを用いてサンプリングの処理をおこないます。 各ノードの重みはそのノードにぶら下がっている葉の重みの和になります。
+図をもちいて具体例を示します。
+データは5つで重みはそれぞれ5、20、30、5、40としたときには以下のような木が作られます。 緑色の丸はノード、オレンジは葉になります。葉の数値はデータの重み、ノードの数値はノードにぶら下がっている葉の重みの和です。
+サンプリング サンプリングはシンプルです。
+0からrootノードの重みの間の乱数を生成する。これをvとおく。 rootノードから葉にたどり着くまで、以下の処理を繰り返す。 左の子の重みがv以上ならば、左の子のノードに移動する。 左の子の重みがv以上でなければ、右の子のノードに移動する。またv=v-（左の子の重み）とする。 たどり着いた葉をサンプリングされたデータとする。 これだけだとよく分からないと思うので次から例をみていきます。
+サンプリングの例1 1つめのサンプリングの例は次のとおりです。乱数が70のときは以下の赤のような経路を通ります。 処理をおっていくと、はじめにrootノードが100という重みをもっているので、70を生成したときは右の子ノードに移ります。 このとき、左側の子ノードの重みを生成した値から引くことで、右側のノードの重み(40)以下の値になることが保証されます。 ノードの重みで引いた値が10になるため、次に左側のノードにいき、結果として40の重みをもつデータがサンプリングされています。
+この葉にたどり着く確率は$$\frac{40}{100} \times \frac{40}{40} \times \frac{40}{40} = \frac{40}{100}$$となりますので、狙い通り40%の確率でサンプリングできます。
+また、見てわかるように、二分木を使うことで葉の重みを個別には見ずに和を利用するため、計算量を減らすことができています。
+サンプリングの例2 また別の例として乱数が50のときも示します。 重み30の葉にたどり着いていますが、そうなる確率は $$\frac{60}{100} \times \frac{35}{60} \times \frac{30}{35} = \frac{30}{100}$$です。
+サンプルコード Python実装を最後に示します。
+import numpy as np from typing import List, Optional, Union class Node: def __init__(self, weight, parent): self.weight: int = weight self.left: Optional[Node, Leaf] = None self.right: Optional[Node, Leaf] = None self.parent: Optional[Node, Leaf] = parent class Leaf: def __init__(self, parent): self.weight = 0 self.val = 0 self.parent: Optional[Node] = parent class SumTree: def __init__(self, max_leaves): self._root: Node = Node(weight=0, parent=None) self._max_leaves: int = max_leaves self._leaf_index: int = 0 self._reached_limit: bool = False self._all_leaves: List[Leaf] = [] self._init_tree() def _init_tree(self): hierarchy = int(np.ceil(np.log2(self._max_leaves))) pre_hierarchies = [self._root] for _ in range(1, hierarchy): new_hierarchies = [] for pre_hierarchy_node in pre_hierarchies: left_node = Node(0, paent=pre_hierarchy_node) right_node = Node(0, parent=pre_hierarchy_node) pre_hierarchy_node.left = left_node pre_hierarchy_node.right = right_node new_hierarchies.append(left_node) new_hierarchies.append(right_node) pre_hierarchies = new_hierarchies for node in pre_hierarchies: node.left = Leaf(parent=node) node.right = Leaf(parent=node) self._all_leaves.append(node.left) self._all_leaves.append(node.right) def _update_node_weight(self, node: Node): while node: weight_sum = 0 if node.left: weight_sum &#43;= node.left.weight if node.right: weight_sum &#43;= node.right.weight node.weight = weight_sum node = node.parent def __len__(self): return self._max_leaves if self._reached_limit else self._leaf_index def __getitem__(self, item): if item &gt;= self.__len__(): raise Exception(&#34;index out of range&#34;) if not self._reached_limit: idx = item else: idx = self._leaf_index &#43; item if idx &gt;= self._max_leaves: idx -= self._max_leaves return self._all_leaves[idx] def add(self, val, weight): target_leaf = self._all_leaves[self._leaf_index] target_leaf.val = val target_leaf.weight = weight self._leaf_index &#43;= 1 if self._leaf_index &gt;= self._max_leaves: self._leaf_index = 0 self._reached_limit = True self._update_node_weight(target_leaf.parent) def sample(self): target_val = np.random.random() * self._root.weight target_node = self._root while True: if target_node.left.weight &gt; target_val: target_node = target_node.left else: target_val -= target_node.left.weight target_node = target_node.right if isinstance(target_node, Leaf): break return target_node 次のように使用します。
+" />
+<meta property="og:url" content="http://localhost:1313/mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/" />
+<meta property="og:site_name" content="MatLoverによるMatlab以外のブログ" />
+
+  
+  
+    
+  
+  <meta property="og:image" content="http://localhost:1313/mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/sum_tree_example.png">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+  <meta property="article:section" content="Python" />
+
+
+  <meta property="article:published_time" content="2021-01-17 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
+    integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5"
+    crossorigin="anonymous">
+
+<script defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js"
+    integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd"
+    crossorigin="anonymous"></script>
+
+<script defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+            ],
+            throwOnError : false
+        });
+    });
+</script>
+
+
+<style>
   section.article-content h2 {
     background-color: rgb(245, 245, 245);
     padding: 10px;
@@ -45,233 +192,112 @@
 
 </style>
 
-    </head>
-    <body class="
-    article-page
-    ">
-    <script>
-        (function() {
-            const colorSchemeKey = 'StackColorScheme';
-            localStorage.setItem(colorSchemeKey, "light");
-        })();
-    </script><script>
-    (function() {
-        const colorSchemeKey = 'StackColorScheme';
-        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
-        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
 
-        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
-            
-
-            document.documentElement.dataset.scheme = 'dark';
-        } else {
-            document.documentElement.dataset.scheme = 'light';
-        }
-    })();
-</script>
-<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
-    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="メニューを開く・閉じる">
-        <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-        </span>
-    </button>
-
-    <header>
-        
-            
-            <figure class="site-avatar">
-                <a href="/mblog/">
-                
-                    
-                    
-                    
-                        
-                        <img src="/mblog/img/avatar_hu_5bc806b678ac7533.jpeg" width="300"
-                            height="300" class="site-logo" loading="lazy" alt="Avatar">
-                    
-                
-                </a>
-                
-                    <span class="emoji">🐾</span>
-                
-            </figure>
-            
-        
-        
-        <div class="site-meta">
-            <h1 class="site-name"><a href="/mblog">MatLoverによるMatlab以外のブログ</a></h1>
-            <h2 class="site-description">機械学習や関連内容のブログです。仕事の依頼などはvikz2713[あっとマーク]gmail.com まで。</h2>
-        </div>
-    </header><ol class="menu-social">
-            
-                <li>
-                    <a 
-                        href='https://github.com/opqrstuvcut'
-                        target="_blank"
-                        title="GitHub"
-                        rel="me"
-                    >
-                        
-                        
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
-</svg>
+</head>
+<body>
 
 
+<div class="container full">
 
-                        
-                    </a>
-                </li>
-            
-        </ol><ol class="menu" id="main-menu">
-        
-        
-        
-        <li >
-            <a href='/mblog/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <polyline points="5 12 3 12 12 3 21 12 19 12" />
-  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
-  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
-</svg>
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="http://localhost:1313/mblog/">
+  <div class="logo">
+    Terminal
+  </div>
+</a>
 
-
-
-                
-                <span>Home</span>
-            </a>
-        </li>
-        
-        
-        <li >
-            <a href='/mblog/archives/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <rect x="3" y="4" width="18" height="4" rx="2" />
-  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
-  <line x1="10" y1="12" x2="14" y2="12" />
-</svg>
-
-
-
-                
-                <span>Archives</span>
-            </a>
-        </li>
-        
-        
-        <li >
-            <a href='/mblog/search/' >
-                
-                
-                
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="10" cy="10" r="7" />
-  <line x1="21" y1="21" x2="15" y2="15" />
-</svg>
-
-
-
-                
-                <span>Search</span>
-            </a>
-        </li>
-        
-        <li class="menu-bottom-section">
-            <ol class="menu">
-
-                
-            </ol>
-        </li>
-    </ol>
-</aside>
-
-    
-
-            <main class="main full-width">
-    <article class="has-image main-article">
-    <header class="article-header">
-        <div class="article-image">
-            <a href="/mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/">
-                <img src="/mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/sum_tree_example_hu_2c612fe88855bad2.png"
-                        srcset="/mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/sum_tree_example_hu_2c612fe88855bad2.png 800w, /mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/sum_tree_example_hu_ef348fa0a074239b.png 1600w"
-                        width="800" 
-                        height="578" 
-                        loading="lazy"
-                        alt="Featured image of post Sum Treeで重みにそってサンプリングする（Python実装）" />
-                
-            </a>
-        </div>
-    
-
-    <div class="article-details">
-    
-    <header class="article-category">
-        
-            <a href="/mblog/categories/python/" >
-                Python
-            </a>
-        
-    </header>
-    
-
-    <div class="article-title-wrapper">
-        <h2 class="article-title">
-            <a href="/mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/">Sum Treeで重みにそってサンプリングする（Python実装）</a>
-        </h2>
-    
-        
     </div>
-
     
-    
-    
-    
-    <footer class="article-time">
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
         
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">1月 17, 2021</time>
-            </div>
+          <li><a href="/mblog/">Home</a></li>
         
-
+      
         
-    </footer>
-    
+          <li><a href="/mblog/archives/">Archives</a></li>
+        
+      
+        
+          <li><a href="/mblog/search/">Search</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
 
     
-</div>
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/mblog/" >Home</a></li>
+        
+      
+        
+          <li><a href="/mblog/archives/" >Archives</a></li>
+        
+      
+        
+          <li><a href="/mblog/search/" >Search</a></li>
+        
+      
+      
+    
+  </ul>
+</nav>
 
+  
 </header>
 
-    <section class="article-content">
+
+  <div class="content">
     
-    
-    <h1 id="問題設定">問題設定
-</h1><p>次のような設定でサンプリングをしたいことはよくあると思います。</p>
+<article class="post">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/">Sum Treeで重みにそってサンプリングする（Python実装）</a>
+  </h1>
+  <div class="post-meta"><time class="post-date">2021-01-17</time></div>
+
+  
+    <span class="post-tags">
+      
+      #<a href="http://localhost:1313/mblog/tags/python/">Python</a>&nbsp;
+      
+      #<a href="http://localhost:1313/mblog/tags/sum-tree/">Sum Tree</a>&nbsp;
+      
+      #<a href="http://localhost:1313/mblog/tags/%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0/">サンプリング</a>&nbsp;
+      
+    </span>
+  
+  
+  <img src="/mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/sum_tree_example.png"
+    class="post-cover"
+    alt="Sum Treeで重みにそってサンプリングする（Python実装）"
+    title="Cover Image" />
+
+
+  
+
+  <div class="post-content"><div>
+        <h1 id="問題設定">問題設定<a href="#問題設定" class="hanchor" ariaLabel="Anchor">#</a> </h1>
+<p>次のような設定でサンプリングをしたいことはよくあると思います。</p>
 <pre tabindex="0"><code>3つのデータがあり、それぞれに重みがつけられているとする。
 それぞれ、データ1の重みは10、データ2の重みは20、データ3の重みは30である。
 このときに各データの重みと全体の重みの和の比を確率としてサンプリングをしたい。
 つまり、データ1は10/60、データ2は20/60、データ3は30/60の確率でサンプリングすることになる。
-</code></pre><h1 id="シンプルな方法">シンプルな方法
-</h1><p>さきほどの問題設定のとき、簡単にサンプリングする方法は正規化された重みの和を順に足していき、一様分布からサンプリングした乱数がその和を超えたときのデータを取得するという方法です。
+</code></pre><h1 id="シンプルな方法">シンプルな方法<a href="#シンプルな方法" class="hanchor" ariaLabel="Anchor">#</a> </h1>
+<p>さきほどの問題設定のとき、簡単にサンプリングする方法は正規化された重みの和を順に足していき、一様分布からサンプリングした乱数がその和を超えたときのデータを取得するという方法です。
 手順は次のようになります。</p>
 <ol>
 <li>0~1の乱数を生成する。</li>
@@ -284,29 +310,18 @@
 <li>i番目のデータをサンプリングされたデータとする。</li>
 </ol>
 <p>この方法は簡単に実装でき、理解も容易ですが、データの重みを順に足していくため、$O(n)$の計算量がかかります。</p>
-<h1 id="sum-tree">Sum Tree
-</h1><p>Sum Treeを用いれば、計算量のオーダーを$O(\log n)$にできます。</p>
-<h2 id="概要">概要
-</h2><h3 id="木の構成">木の構成
-</h3><p>Sum Treeでは二分木を作成し、各ノードがもつ重みを用いてサンプリングの処理をおこないます。
+<h1 id="sum-tree">Sum Tree<a href="#sum-tree" class="hanchor" ariaLabel="Anchor">#</a> </h1>
+<p>Sum Treeを用いれば、計算量のオーダーを$O(\log n)$にできます。</p>
+<h2 id="概要">概要<a href="#概要" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<h3 id="木の構成">木の構成<a href="#木の構成" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>Sum Treeでは二分木を作成し、各ノードがもつ重みを用いてサンプリングの処理をおこないます。
 各ノードの重みはそのノードにぶら下がっている葉の重みの和になります。</p>
 <p>図をもちいて具体例を示します。<br>
 データは5つで重みはそれぞれ5、20、30、5、40としたときには以下のような木が作られます。
-<img src="/mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/sum_tree_example.png"
-	width="527"
-	height="381"
-	srcset="/mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/sum_tree_example_hu_aeb81f9688c27ef4.png 480w, /mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/sum_tree_example_hu_352e8e3dd7bd891a.png 1024w"
-	loading="lazy"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="138"
-		data-flex-basis="331px"
-	
-></p>
+<img src="/mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/sum_tree_example.png" alt=""></p>
 <p>緑色の丸はノード、オレンジは葉になります。葉の数値はデータの重み、ノードの数値はノードにぶら下がっている葉の重みの和です。</p>
-<h3 id="サンプリング">サンプリング
-</h3><p>サンプリングはシンプルです。</p>
+<h3 id="サンプリング">サンプリング<a href="#サンプリング" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>サンプリングはシンプルです。</p>
 <ol>
 <li>0からrootノードの重みの間の乱数を生成する。これをvとおく。</li>
 <li>rootノードから葉にたどり着くまで、以下の処理を繰り返す。
@@ -318,43 +333,21 @@
 <li>たどり着いた葉をサンプリングされたデータとする。</li>
 </ol>
 <p>これだけだとよく分からないと思うので次から例をみていきます。</p>
-<h4 id="サンプリングの例1">サンプリングの例1
-</h4><p>1つめのサンプリングの例は次のとおりです。乱数が70のときは以下の赤のような経路を通ります。
-<img src="/mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/sum_tree_sampling2.png"
-	width="534"
-	height="414"
-	srcset="/mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/sum_tree_sampling2_hu_7f7ce02d50c780b7.png 480w, /mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/sum_tree_sampling2_hu_4bd11ffabdecd076.png 1024w"
-	loading="lazy"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="128"
-		data-flex-basis="309px"
-	
-></p>
+<h4 id="サンプリングの例1">サンプリングの例1<a href="#サンプリングの例1" class="hanchor" ariaLabel="Anchor">#</a> </h4>
+<p>1つめのサンプリングの例は次のとおりです。乱数が70のときは以下の赤のような経路を通ります。
+<img src="/mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/sum_tree_sampling2.png" alt=""></p>
 <p>処理をおっていくと、はじめにrootノードが100という重みをもっているので、70を生成したときは右の子ノードに移ります。
 このとき、左側の子ノードの重みを生成した値から引くことで、右側のノードの重み(40)以下の値になることが保証されます。
 ノードの重みで引いた値が10になるため、次に左側のノードにいき、結果として40の重みをもつデータがサンプリングされています。<br>
 この葉にたどり着く確率は$$\frac{40}{100} \times \frac{40}{40} \times \frac{40}{40} = \frac{40}{100}$$となりますので、狙い通り40%の確率でサンプリングできます。</p>
 <p>また、見てわかるように、二分木を使うことで葉の重みを個別には見ずに和を利用するため、計算量を減らすことができています。</p>
-<h4 id="サンプリングの例2">サンプリングの例2
-</h4><p>また別の例として乱数が50のときも示します。
-<img src="/mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/sum_tree_sample1.png"
-	width="527"
-	height="423"
-	srcset="/mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/sum_tree_sample1_hu_c884e9ea80a1c477.png 480w, /mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/sum_tree_sample1_hu_c0ce805a7265af2a.png 1024w"
-	loading="lazy"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="124"
-		data-flex-basis="299px"
-	
-></p>
+<h4 id="サンプリングの例2">サンプリングの例2<a href="#サンプリングの例2" class="hanchor" ariaLabel="Anchor">#</a> </h4>
+<p>また別の例として乱数が50のときも示します。
+<img src="/mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/sum_tree_sample1.png" alt=""></p>
 <p>重み30の葉にたどり着いていますが、そうなる確率は
 $$\frac{60}{100} \times \frac{35}{60} \times \frac{30}{35} = \frac{30}{100}$$です。</p>
-<h3 id="サンプルコード">サンプルコード
-</h3><p>Python実装を最後に示します。</p>
+<h3 id="サンプルコード">サンプルコード<a href="#サンプルコード" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>Python実装を最後に示します。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Python" data-lang="Python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
 </span></span><span class="line"><span class="cl">
@@ -478,336 +471,68 @@ $$\frac{60}{100} \times \frac{35}{60} \times \frac{30}{35} = \frac{30}{100}$$で
 </span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">count_dict</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="c1"># {&#39;a&#39;: 4941, &#39;b&#39;: 19941, &#39;c&#39;: 29892, &#39;d&#39;: 5234, &#39;e&#39;: 39992}</span>
 </span></span></code></pre></div>
-</section>
+      </div></div>
 
-
-    <footer class="article-footer">
+  
     
-    <section class="article-tags">
-        
-            <a href="/mblog/tags/python/">Python</a>
-        
-            <a href="/mblog/tags/sum-tree/">Sum Tree</a>
-        
-            <a href="/mblog/tags/%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0/">サンプリング</a>
-        
-    </section>
-
-
+<div class="pagination">
+  <div class="pagination__title">
+    <span class="pagination__title-h"></span>
+    <hr />
+  </div>
+  <div class="pagination__buttons">
     
-    <section class="article-copyright">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <circle cx="12" cy="12" r="9" />
-  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
-</svg>
-
-
-
-        <span>Licensed under CC BY-NC-SA 4.0</span>
-    </section>
-    </footer>
-
-
-    
-        <link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI&#43;WdtXRGWt2kTvGFasHpSy3SV"crossorigin="anonymous"
-            ><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG&#43;vnGctmUb0ZY0l8"crossorigin="anonymous"
-                defer
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"integrity="sha384-&#43;VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4&#43;/RRE05"crossorigin="anonymous"
-                defer
-                >
-            </script><script>
-    window.addEventListener("DOMContentLoaded", () => {
-	const mainArticleElement = document.querySelector(".main-article");
-        renderMathInElement(mainArticleElement, {
-            delimiters: [
-                { left: "$$", right: "$$", display: true },
-                { left: "$", right: "$", display: false },
-                { left: "\\(", right: "\\)", display: false },
-                { left: "\\[", right: "\\]", display: true }
-            ],
-            ignoredClasses: ["gist"]
-        });})
-</script>
-
-    
-</article>
-
-    
-
-    
-
-<aside class="related-content--wrapper">
-    <h2 class="section-title">関連するコンテンツ</h2>
-    <div class="related-content">
-        <div class="flex article-list--tile">
-            
-                
-<article class="has-image">
-    <a href="/mblog/posts/openai%E3%81%AEpython%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E5%88%A9%E7%94%A8%E3%81%A7unsupported-file-format%E3%81%8C%E3%81%A7%E3%82%8B/">
-        
-        
-            <div class="article-image">
-                <img src="/mblog/posts/openai%E3%81%AEpython%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E5%88%A9%E7%94%A8%E3%81%A7unsupported-file-format%E3%81%8C%E3%81%A7%E3%82%8B/thm.2dfe749ebfd51a28d35b26263befc118_hu_eb405cfdece0f7ae.png" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post OpenAIのPythonモジュール利用で「Unsupported file format」がでる"
-                        
-                        data-hash="md5-Lf50nr/VGijTWyYmO&#43;/BGA==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">OpenAIのPythonモジュール利用で「Unsupported file format」がでる</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/mblog/posts/magma-nvim%E3%81%A7%E7%90%86%E6%83%B3%E3%81%AB%E8%BF%91%E3%81%84vim%E3%81%A7%E3%81%AEjupyter%E7%92%B0%E5%A2%83%E3%82%92%E4%BD%9C%E3%82%8B/">
-        
-        
-            <div class="article-image">
-                <img src="/mblog/posts/magma-nvim%E3%81%A7%E7%90%86%E6%83%B3%E3%81%AB%E8%BF%91%E3%81%84vim%E3%81%A7%E3%81%AEjupyter%E7%92%B0%E5%A2%83%E3%82%92%E4%BD%9C%E3%82%8B/feature.1498aba3b6c107c84ac3e966c8136b0c_hu_5ba67df008fc5f95.png" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post magma-nvimで理想に近いVimでのJupyter環境を作る"
-                        
-                        data-hash="md5-FJiro7bBB8hKw&#43;lmyBNrDA==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">magma-nvimで理想に近いVimでのJupyter環境を作る</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/mblog/posts/m3u8%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%A8ts%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AEdownload/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">m3u8ファイルとtsファイルのdownload</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="has-image">
-    <a href="/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/">
-        
-        
-            <div class="article-image">
-                <img src="/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/bc011ef843d7d97092a83521e65e6a15.573014fc329d4af5de7e4b4e47f27a36_hu_47ed6359833e4e06.png" 
-                        width="250" 
-                        height="150" 
-                        loading="lazy"
-                        alt="Featured image of post Matplotlibの凡例を外側に表示したい人へ"
-                        
-                        data-hash="md5-VzAU/DKdSvXefktOR/J6Ng==">
-                
-            </div>
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Matplotlibの凡例を外側に表示したい人へ</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/mblog/posts/python%E3%81%AEnamedtuple%E3%82%92%E4%BD%BF%E3%81%8A%E3%81%86/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">Pythonのnamedtupleを使おう</h2>
-        </div>
-    </a>
-</article>
-
-            
-        </div>
-    </div>
-</aside>
-
-     
-    
-        
-    <div class="disqus-container">
-    <div id="disqus_thread"></div>
-<script>
-    window.disqus_config = function () {
+      <a href="http://localhost:1313/mblog/posts/this-version-of-chromedriver-only-supports-chrome-version-xx%E3%81%A8%E3%81%AA%E3%81%A3%E3%81%9F%E3%81%A8%E3%81%8D/" class="button inline prev">
+        &lt; [<span class="button__text">This version of ChromeDriver only supports Chrome version xxとなったとき</span>]
+      </a>
     
     
+      ::
     
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "https-opqrstuvcut-github-io-blog" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+      <a href="http://localhost:1313/mblog/posts/gcp%E3%81%AEworkload-identity%E3%81%A7gke%E3%81%A8gcp%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%A8%E3%81%AE%E9%80%A3%E6%90%BA%E3%82%92%E5%AE%89%E5%85%A8%E3%81%AB%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86/" class="button inline next">
+         [<span class="button__text">GCPのWorkload IdentityでGKEとGCPサービスとの連携を安全におこなう</span>] &gt;
+      </a>
+    
+  </div>
 </div>
 
-<style>
-    .disqus-container {
-        background-color: var(--card-background);
-        border-radius: var(--card-border-radius);
-        box-shadow: var(--shadow-l1);
-        padding: var(--card-padding);
-    }
-</style>
 
-<script>
-    window.addEventListener('onColorSchemeChange', (e) => {
-        if (typeof DISQUS == 'object') {
-            DISQUS.reset({
-                reload: true
-            });
-        }
-    })
-</script>
+  
 
+  
     
 
-    <footer class="site-footer">
-    <section class="copyright">
-        &copy; 
-        
-            2019 - 
-        
-        2025 MatLoverによるMatlab以外のブログ
-    </section>
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
     
-    <section class="powerby">
-        <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> で構築されています。 <br />
-        テーマ <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.30.0">Stack</a></b> は <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> によって設計されています。
-    </section>
+      <div class="copyright">
+        <span>© 2025 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
 </footer>
 
 
-    
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
-    
-    <div class="pswp__bg"></div>
 
-    
-    <div class="pswp__scroll-wrap">
 
-        
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
 
-        
-        <div class="pswp__ui pswp__ui--hidden">
+<script type="text/javascript" src="/mblog/bundle.min.js"></script>
 
-            <div class="pswp__top-bar">
 
-                
 
-                <div class="pswp__counter"></div>
 
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
 
-                <button class="pswp__button pswp__button--share" title="Share"></button>
+  
+</div>
 
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                
-                
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div>
-            </div>
-
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-
-        </div>
-
-    </div>
-
-</div><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
-                defer
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
-                defer
-                >
-            </script><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
-            ><link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
-            >
-
-            </main>
-        </div>
-        <script 
-                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
-                
-                >
-            </script><script type="text/javascript" src="/mblog/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js" defer></script>
-<script>
-    (function () {
-        const customFont = document.createElement('link');
-        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
-
-        customFont.type = "text/css";
-        customFont.rel = "stylesheet";
-
-        document.head.appendChild(customFont);
-    }());
-</script>
-
-    </body>
+</body>
 </html>

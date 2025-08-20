@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta name="generator" content="Hugo 0.148.2"><script src="/mblog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=mblog/livereload" data-no-instant defer></script>
+  
+    <title>MatLoverによるMatlab以外のブログ</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="http://localhost:1313/mblog/" />
+
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFC5W8DKV1"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-LFC5W8DKV1');
+        }
+      </script>
+
+
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/custom.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/code.min.d529ea4b2fb8d34328d7d31afc5466d5f7bc2f0bc9abdd98b69385335d7baee4.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/main.min.775ac2af004d44c22a6d000fbd1d9af529642f5cef27399d0280d180af2c2e9b.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/menu.min.310d32205bdedd6f43144e3c3273c9deecd238eba5f9108db5ea96ca0cfbe377.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/post.min.ad50c7f4d00e7975918f37fc74c6029e1959a40d66fb5b2c6564a8715e985573.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/syntax.min.e9ab635cf918bc84b901eb65c0b2caa74c9544245e3647c1af5c129896ef276e.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/terminal.min.77ee67c1d456ac0c280223661a10b75c7729c59aeb33001424a72a14b363e310.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/mblog/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="http://localhost:1313/mblog/favicon.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/mblog/apple-touch-icon.png">
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="ja" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="MatLoverによるMatlab以外のブログ">
+<meta property="og:description" content="" />
+<meta property="og:url" content="http://localhost:1313/mblog/" />
+<meta property="og:site_name" content="MatLoverによるMatlab以外のブログ" />
+
+  <meta property="og:image" content="http://localhost:1313/mblog/og-image.png">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+
+
+
+  <link href="/mblog/index.xml" rel="alternate" type="application/rss+xml" title="MatLoverによるMatlab以外のブログ" />
+
+
+
+
+
+
+
+<link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
+    integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5"
+    crossorigin="anonymous">
+
+<script defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js"
+    integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd"
+    crossorigin="anonymous"></script>
+
+<script defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+            ],
+            throwOnError : false
+        });
+    });
+</script>
+
+
+<style>
+  section.article-content h2 {
+    background-color: rgb(245, 245, 245);
+    padding: 10px;
+  }
+
+  :root {
+    --ja-font-family: "メイリオ", "Meiryo";
+    --base-font-family: "Lato", var(--sys-font-family), var(--ja-font-family),
+      sans-serif;
+    --body-background: #ffffe0;
+  }
+
+
+</style>
+
+
+</head>
+<body>
+
+
+<div class="container full">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="http://localhost:1313/mblog/">
+  <div class="logo">
+    Terminal
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/mblog/">Home</a></li>
+        
+      
+        
+          <li><a href="/mblog/archives/">Archives</a></li>
+        
+      
+        
+          <li><a href="/mblog/search/">Search</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/mblog/" >Home</a></li>
+        
+      
+        
+          <li><a href="/mblog/archives/" >Archives</a></li>
+        
+      
+        
+          <li><a href="/mblog/search/" >Search</a></li>
+        
+      
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+  
+  <div class="posts">
+    
+    
+
+    
+    
+      
+    
+    
+
+    
+      <article class="post on-list">
+        <h2 class="post-title">
+          <a href="http://localhost:1313/mblog/posts/%E5%AE%89%E6%98%93%E3%81%AB%E9%80%86%E8%A1%8C%E5%88%97%E3%82%92%E6%95%B0%E5%80%A4%E8%A8%88%E7%AE%97%E3%81%99%E3%82%8B%E3%81%AE%E3%81%AF%E3%82%84%E3%82%81%E3%82%88%E3%81%86/">安易に逆行列を数値計算するのはやめよう</a>
+        </h2>
+
+        <div class="post-meta"><time class="post-date">2019-11-15</time></div>
+
+        
+          <span class="post-tags">
+            
+            #<a href="http://localhost:1313/mblog/tags/python/">Python</a>&nbsp;
+            
+            #<a href="http://localhost:1313/mblog/tags/numpy/">Numpy</a>&nbsp;
+            
+            #<a href="http://localhost:1313/mblog/tags/%E9%80%86%E8%A1%8C%E5%88%97/">逆行列</a>&nbsp;
+            
+            #<a href="http://localhost:1313/mblog/tags/lu%E5%88%86%E8%A7%A3/">LU分解</a>&nbsp;
+            
+            #<a href="http://localhost:1313/mblog/tags/%E8%A8%88%E7%AE%97%E9%87%8F/">計算量</a>&nbsp;
+            
+            #<a href="http://localhost:1313/mblog/tags/%E9%80%A3%E7%AB%8B%E4%B8%80%E6%AC%A1%E6%96%B9%E7%A8%8B%E5%BC%8F/">連立一次方程式</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+
+        <div class="post-content">
+          
+            <p>本記事はQrunchからの転載です。</p>
+<hr>
+<p>逆行列を使った計算というのは機械学習ではそれなりに出てきます。
+例えば、最小二乗法では
+$$ x = (X^T X) ^{-1} Xb$$
+の形の式を計算する必要がありますし、正規分布の分散を扱うときにも逆行列が出てきます。
+こういうときにnp.linalg.invを使って逆行列を求めて、その後にベクトルとの積を求めるは簡単にできますから、特に何も考えずにそういうふうにしたくなります。</p>
+<p><strong>でもそれって本当に逆行列の計算が必要ですか？</strong></p>
+<p>多くの問題では逆行列の値そのものよりも、$x=A^{-1}b$のような逆行列とベクトルとの積が必要になります。そのような場合、実は<strong>計算はもっと速くできますよ</strong>、というのが今日のお話です。</p>
+<p>ただし今回は式を深く追うことはしませんので、細かい計算量などが気になる方は別途どこかの講義資料などの参照をお願いします。</p>
+<h1 id="逆行列を求めるための計算量">逆行列を求めるための計算量</h1>
+<p>逆行列を求めるための方法として多くの人が思いつくのが、おそらく線形代数の教科書に載っている掃き出し法でしょう。掃き出し法は逆行列を求めたい行列$A$に対して操作をおこない、単位行列にしていくやり方ですね。
+行列$A$のサイズを$n \times n$としたとき、掃き出し法に必要な乗除算は$n^3$回、引き算は$n(n-1)^2$回です。
+また別途、行列$b$との積を計算する場合には乗算が$n^2$回、足し算が$n(n-1)$回かかることに注意してください。</p>
+<p>実際にはnp.linalg.invはこの方法ではなく、後述する方法を利用して（半ば無理やり？）逆行列を求めますが、そうしても計算量は上記と同じ程度になります。</p>
+<h1 id="連立一次方程式を解く方法">連立一次方程式を解く方法</h1>
+<p>$x=A^{-1}b$の計算は、$Ax=b$の形をした連立一次方程式とみなすことができます（$x=A^{-1}b$の両辺に左から$A$を掛けるとわかりますね）。よって、<strong>連立一次方程式が解ければ、逆行列を求める必要はない</strong>ということです。</p>
+<p>以下ではnp.linalg.solveでもおこなわれている、LU分解と前進後退代入を使った連立一次方程式の解き方について述べます。</p>
+<h2 id="lu分解">LU分解</h2>
+<p>行列$A$に対してLU分解をおこなうことを考えます。LU分解というのは下三角行列$L$と上三角行列$U$の積に行列$A$を分解することを指します。つまり、$$A = LU$$が成り立つような$L$と$U$を求めます。</p>
+<p>LU分解の計算量は乗除算が$(n-1)(n^2+n+3)/3$回で引き算が$n(n-1)(2n-1)/6$回です。ここまでは先程出てきた逆行列を求めるための計算量よりも大分少ない計算量です。</p>
+<p>もちろんLU分解だけでは連立一次方程式は解けず、次の前進後退代入をおこなう必要があります。</p>
+<h2 id="前進後退代入">前進後退代入</h2>
+<p>LU分解が済んでいるとすると、$Ax=b$は$LUx=b$とあらわせます。$y=Ux$とおいてあげると、
+$$Ax=LUx= Ly=b$$
+となりますので、$Ly=b$の連立一次方程式が出てきます。これを$y$について解くと次に
+$$Ux = y$$
+の連立一次方程式があらわれます。最後にこれを$x$について解くことで、ようやく欲しかった$x$が求まります。</p>
+<p>$Ly=b$と$Ux=y$という連立一次方程式を解くなんて計算が重そうだ！と思うかもしれません。
+しかしながら、$L$は下三角行列、$U$は上三角行列であるということを考慮するとそれほど計算量は多くなりません。実際、</p>
+<ul>
+<li>$Ly=b$を求める計算（前進代入）：乗算$n(n-1)/2$回、加減算$n(n-1)/2$回</li>
+<li>$Ux=y$を求める計算（後退代入）：乗除算$n(n+1)/2$回、加減算$n(n-1)/2$回</li>
+<li>上2つの計算量の和：乗除算$n^2$回、加減算$n(n-1)$回</li>
+</ul>
+<p>となります。なんとこれは<strong>前述した$A^{-1}$を$b$に掛けるときの計算量と等しいです！</strong>
+一見大変そうな計算をしているのに、実は行列とベクトルの積と同じ計算量だなんて驚きです。</p>
+<h2 id="lu分解と前進後退代入から逆行列を求める方法">LU分解と前進後退代入から逆行列を求める方法</h2>
+<p>np.linalg.invでは連立一次方程式の計算を利用して逆行列を求めるといいました。これは単位行列$E$を右辺とした連立一次方程式を解くことを指しています。つまり以下の方程式です（右辺と解$X$が行列になりますが、単純に列の分だけ解くべき方程式が増えたと思えばOKです）。
+$$A X = E.$$
+この方程式を解くと、$X = A^{-1}$となるのがわかりますね。</p>
+<p>この方法の前進後退代入の計算量は乗除算$n(2n^2+1)/3$回、加減算$n(n-1)(4n-5)/6$回となります（この計算量の計算は結構大変…）。
+LU分解の計算量との合計は乗除算が$n^3 + n- 1$回、加減算が$n(n-1)^2$回となります。掃き出し法と比べて乗除算が$n-1$回増えますが、$n$が大きくなれば無視できる程度の差です。</p>
+<h1 id="計算量のまとめ">計算量のまとめ</h1>
+<p>計算量についてまとめると、以下のようになります。</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center">方法</th>
+          <th style="text-align: center">乗除算</th>
+          <th style="text-align: center">加減算</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">掃き出し法による逆行列の計算</td>
+          <td style="text-align: center">$n^3$</td>
+          <td style="text-align: center">$n(n-1)^2$</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">行列とベクトルの積</td>
+          <td style="text-align: center">$n^2$</td>
+          <td style="text-align: center">$n(n-1)$</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">LU分解</td>
+          <td style="text-align: center">$(n-1)(n^2+n+3)/3$</td>
+          <td style="text-align: center">$n(n-1)(2n-1)/6$</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">前進後退代入</td>
+          <td style="text-align: center">$n^2$</td>
+          <td style="text-align: center">$n(n-1)$</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">LU分解+前進後退代入による逆行列の計算</td>
+          <td style="text-align: center">$n^3+n-1$</td>
+          <td style="text-align: center">$n(n-1)^2$</td>
+      </tr>
+  </tbody>
+</table>
+<p>LU分解と前進後退代入によって$Ax=b$を解いた場合の計算量では$n^3$に$1/3$がかかっていますから、「逆行列を求める+ベクトルとの積を計算する」の場合に比べて$1/3$程度計算量が減ることがわかります。</p>
+          
+        </div>
+
+        
+          <div>
+            <a class="read-more button inline" href="/mblog/posts/%E5%AE%89%E6%98%93%E3%81%AB%E9%80%86%E8%A1%8C%E5%88%97%E3%82%92%E6%95%B0%E5%80%A4%E8%A8%88%E7%AE%97%E3%81%99%E3%82%8B%E3%81%AE%E3%81%AF%E3%82%84%E3%82%81%E3%82%88%E3%81%86/">[]</a>
+          </div>
+        
+      </article>
+    
+
+    <div class="pagination">
+  <div class="pagination__buttons">
+    
+      <a href="/mblog/page/84/" class="button inline prev">
+        &lt; [<span class="button__text">Newer posts</span>]
+      </a>
+    
+    
+      ::
+    
+    
+      <a href="/mblog/page/86/" class="button inline next">
+        [<span class="button__text">Older posts</span>] &gt;
+      </a>
+    
+  </div>
+</div>
+
+  </div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2025 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/mblog/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

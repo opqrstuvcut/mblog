@@ -3,7 +3,7 @@ title: Hough（ハフ）変換で直線を見つけよう
 tags:  ["OpenCV", "Hough変換"]
 categories:  ["OpenCV生活", "画像処理"]
 date: 2020-08-04 19:00:00 +0900
-image: f57bd9c6dc056b82e658a2f6ca7b6258.png
+Cover: f57bd9c6dc056b82e658a2f6ca7b6258.png
 ---
 本記事はQrunchからの転載です。
 ___

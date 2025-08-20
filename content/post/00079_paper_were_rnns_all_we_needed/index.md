@@ -3,7 +3,7 @@ title: Were RNNs All We Needed?を読んだのでまとめ
 tags: ["RNN", "Mamba", "Transformer", "LSTM", "GRU"] 
 categories: ["機械学習"] 
 date: 2024-12-01
-image: feature.png
+Cover: feature.png
 ---
 
 Were RNNs All We Needed?を読んだので、その内容をまとめておきます。  

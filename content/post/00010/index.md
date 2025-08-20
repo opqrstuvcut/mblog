@@ -4,7 +4,7 @@ tags:  ["深層学習", "ディープラーニング", "BERT", "自然言語", "
 categories:  ["自然言語処理"]
 date: 2019-12-28 23:36:43 +0900
 showtoc: true
-image: 2b1477117e8654c1b558183f0277acdf.png
+Cover: 2b1477117e8654c1b558183f0277acdf.png
 ---
 本記事はQrunchからの転載です。
 ___

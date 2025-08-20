@@ -14,7 +14,7 @@ tags:
   ]
 categories: ["ディープラーニング", "LLM", "NLP"]
 date: 2025-06-30
-image: thm.png
+Cover: thm.png
 ---
 
 # BERTを拡張した生成モデル？拡散型LLM「LLaDA」の概要と可能性

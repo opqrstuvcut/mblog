@@ -3,7 +3,7 @@ title: connectedComponentsで連結した領域の取得
 tags:  ["OpenCV2", "領域抽出"]
 categories:  ["OpenCV", "画像処理"]
 date: 2020-08-18 11:00:00 +0900
-image: 4fad02405d448c838cb1af94842c2bbb.png
+Cover: 4fad02405d448c838cb1af94842c2bbb.png
 ---
 本記事はQrunchからの転載です。
 ___

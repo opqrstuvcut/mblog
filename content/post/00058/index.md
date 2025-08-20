@@ -3,7 +3,7 @@ title: 外れ値に強いMedianBlur
 tags:  ["OpenCV", "medianBlur"]
 categories:  ["OpenCV", "画像処理"]
 date: 2020-07-13 11:00:00 +0900
-image: 38fd4d2636a29433a5cd4a3204c1dca5.png
+Cover: 38fd4d2636a29433a5cd4a3204c1dca5.png
 ---
 本記事はQrunchからの転載です。
 ___
