@@ -2,45 +2,45 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>機械学習 on MatLoverによるMatlab以外のブログ</title>
-    <link>https://opqrstuvcut.github.io/mblog/tags/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/</link>
+    <link>http://localhost:1313/mblog/tags/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/</link>
     <description>Recent content in 機械学習 on MatLoverによるMatlab以外のブログ</description>
     <generator>Hugo</generator>
     <language>ja</language>
     <lastBuildDate>Tue, 19 Oct 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://opqrstuvcut.github.io/mblog/tags/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/mblog/tags/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Individual Conditional Expectation</title>
-      <link>https://opqrstuvcut.github.io/mblog/posts/individual-conditional-expectation/</link>
+      <link>http://localhost:1313/mblog/posts/individual-conditional-expectation/</link>
       <pubDate>Tue, 19 Oct 2021 00:00:00 +0000</pubDate>
-      <guid>https://opqrstuvcut.github.io/mblog/posts/individual-conditional-expectation/</guid>
+      <guid>http://localhost:1313/mblog/posts/individual-conditional-expectation/</guid>
       <description>&lt;p&gt;Individual Conditional Expectation(ICE)は任意のモデルのある特徴量に対するデータごとの挙動を確認する手法です。&lt;br&gt;&#xA;例えば、ある特定のデータのある特徴量が大きくなるにつれ、モデルの出力がどういった変化をするかを見ます。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Partial Dependence Plot</title>
-      <link>https://opqrstuvcut.github.io/mblog/posts/partial-dependence-plot/</link>
+      <link>http://localhost:1313/mblog/posts/partial-dependence-plot/</link>
       <pubDate>Thu, 14 Oct 2021 00:00:00 +0000</pubDate>
-      <guid>https://opqrstuvcut.github.io/mblog/posts/partial-dependence-plot/</guid>
+      <guid>http://localhost:1313/mblog/posts/partial-dependence-plot/</guid>
       <description>&lt;p&gt;Partial Dependence Plotは任意のモデルのある特徴量に対するglobalな挙動を確認できる手法です。&lt;br&gt;&#xA;例えば、特徴量が大きくなるにつれ、モデルの出力がどういった変化をするかがわかります。&lt;/p&gt;</description>
     </item>
     <item>
       <title>KL divergenceに与える分布を入れ替えることの意味をまじめに考えたことあります？</title>
-      <link>https://opqrstuvcut.github.io/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/</link>
+      <link>http://localhost:1313/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/</link>
       <pubDate>Mon, 02 Mar 2020 18:01:01 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/</guid>
+      <guid>http://localhost:1313/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/</guid>
       <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;みんながよく使うKL(Kullback–Leibler) divergenceの話題です。&#xA;KL divergenceといえば2つの確率分布の違いを計算できるやつですね。&#xA;KL divergenceは対称性というものがなく、与えられた2つの分布を入れ替えるとKL divergenceの値が変わります。&#xA;今回は、この入れ替えたときの影響を最小化問題を例としてまじめに考えます。&lt;/p&gt;</description>
     </item>
     <item>
       <title>モデルの予測結果を説明するLIMEの理論</title>
-      <link>https://opqrstuvcut.github.io/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/</link>
+      <link>http://localhost:1313/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/</link>
       <pubDate>Wed, 12 Feb 2020 00:23:01 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/</guid>
+      <guid>http://localhost:1313/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/</guid>
       <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;モデルの予測結果を説明する方法として&lt;strong&gt;LIME&lt;/strong&gt;があります。&#xA;LIMEはディープラーニングに限らず、任意のモデルに対して予測結果を適用することができます。&#xA;また手法としては結構有名かと思います。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Uber製の機械学習モデルのデバッグツールManifold</title>
-      <link>https://opqrstuvcut.github.io/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/</link>
+      <link>http://localhost:1313/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/</link>
       <pubDate>Tue, 28 Jan 2020 22:52:36 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/</guid>
+      <guid>http://localhost:1313/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/</guid>
       <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;Uberが公開している機械学習モデルの予測と特徴量の関係性を可視化するツールである&lt;a href=&#34;https://github.com/uber/manifold#upload-csv-to-demo-app&#34;&gt;Manifold&lt;/a&gt;を紹介します。&lt;/p&gt;&#xA;&lt;h1 id=&#34;manifoldを試す&#34;&gt;Manifoldを試す&lt;/h1&gt;&#xA;&lt;p&gt;Manifoldでできることを見ていきます。&lt;/p&gt;</description>
     </item>
   </channel>

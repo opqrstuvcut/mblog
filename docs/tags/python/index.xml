@@ -2,122 +2,122 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python on MatLoverによるMatlab以外のブログ</title>
-    <link>https://opqrstuvcut.github.io/mblog/tags/python/</link>
+    <link>http://localhost:1313/mblog/tags/python/</link>
     <description>Recent content in Python on MatLoverによるMatlab以外のブログ</description>
     <generator>Hugo</generator>
     <language>ja</language>
     <lastBuildDate>Thu, 31 Jul 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://opqrstuvcut.github.io/mblog/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/mblog/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>OpenAIのPythonモジュール利用で「Unsupported file format」がでる</title>
-      <link>https://opqrstuvcut.github.io/mblog/posts/openai%E3%81%AEpython%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E5%88%A9%E7%94%A8%E3%81%A7unsupported-file-format%E3%81%8C%E3%81%A7%E3%82%8B/</link>
+      <link>http://localhost:1313/mblog/posts/openai%E3%81%AEpython%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E5%88%A9%E7%94%A8%E3%81%A7unsupported-file-format%E3%81%8C%E3%81%A7%E3%82%8B/</link>
       <pubDate>Thu, 31 Jul 2025 00:00:00 +0000</pubDate>
-      <guid>https://opqrstuvcut.github.io/mblog/posts/openai%E3%81%AEpython%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E5%88%A9%E7%94%A8%E3%81%A7unsupported-file-format%E3%81%8C%E3%81%A7%E3%82%8B/</guid>
+      <guid>http://localhost:1313/mblog/posts/openai%E3%81%AEpython%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E5%88%A9%E7%94%A8%E3%81%A7unsupported-file-format%E3%81%8C%E3%81%A7%E3%82%8B/</guid>
       <description>&lt;p&gt;下記のように、メモリ上の音声データをBytesIOに書き込み、OpenAIのAPIを実行しようとしました．&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kn&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;nn&#34;&gt;openai&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;client&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;openai&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;OpenAI&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;io&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;BytesIO&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;voice&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;seek&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;transcription&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;client&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;audio&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;transcriptions&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;create&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;model&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;gpt-4o-mini-transcribe&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;file&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;language&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;ja&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;n&#34;&gt;response_format&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;json&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;この場合、下記のようなエラーが出てしまいます．&lt;/p&gt;</description>
     </item>
     <item>
       <title>WAIC</title>
-      <link>https://opqrstuvcut.github.io/mblog/posts/waic/</link>
+      <link>http://localhost:1313/mblog/posts/waic/</link>
       <pubDate>Sat, 18 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://opqrstuvcut.github.io/mblog/posts/waic/</guid>
+      <guid>http://localhost:1313/mblog/posts/waic/</guid>
       <description>&lt;p&gt;かなり前に「渡辺澄夫ベイズ理論100問 with R/Stan」を読み終わったのもあり、忘れないうちにWAICを自分なりにまとめておきます．&lt;/p&gt;&#xA;&lt;h2 id=&#34;waic&#34;&gt;WAIC&lt;/h2&gt;&#xA;&lt;h3 id=&#34;waicの適用範囲&#34;&gt;WAICの適用範囲&lt;/h3&gt;&#xA;&lt;p&gt;情報量基準のAICやTICは正則性を仮定していますが、実際には正則性が成り立たないケースが多いです．&lt;br&gt;&#xA;WAICは正則性を仮定せずとも利用できる情報量基準になっていて、適用範囲が広いです．ただし、どんなケースでもOKかといえばそうではなく、次の条件を満たしている必要があります（「渡辺澄夫ベイズ理論100問 with R/Stan」の(1.21)）．&lt;/p&gt;</description>
     </item>
     <item>
       <title>magma-nvimで理想に近いVimでのJupyter環境を作る</title>
-      <link>https://opqrstuvcut.github.io/mblog/posts/magma-nvim%E3%81%A7%E7%90%86%E6%83%B3%E3%81%AB%E8%BF%91%E3%81%84vim%E3%81%A7%E3%81%AEjupyter%E7%92%B0%E5%A2%83%E3%82%92%E4%BD%9C%E3%82%8B/</link>
+      <link>http://localhost:1313/mblog/posts/magma-nvim%E3%81%A7%E7%90%86%E6%83%B3%E3%81%AB%E8%BF%91%E3%81%84vim%E3%81%A7%E3%81%AEjupyter%E7%92%B0%E5%A2%83%E3%82%92%E4%BD%9C%E3%82%8B/</link>
       <pubDate>Mon, 12 Jun 2023 00:00:00 +0000</pubDate>
-      <guid>https://opqrstuvcut.github.io/mblog/posts/magma-nvim%E3%81%A7%E7%90%86%E6%83%B3%E3%81%AB%E8%BF%91%E3%81%84vim%E3%81%A7%E3%81%AEjupyter%E7%92%B0%E5%A2%83%E3%82%92%E4%BD%9C%E3%82%8B/</guid>
+      <guid>http://localhost:1313/mblog/posts/magma-nvim%E3%81%A7%E7%90%86%E6%83%B3%E3%81%AB%E8%BF%91%E3%81%84vim%E3%81%A7%E3%81%AEjupyter%E7%92%B0%E5%A2%83%E3%82%92%E4%BD%9C%E3%82%8B/</guid>
       <description>&lt;p&gt;vimで開発しているとブラウザからJupyterを触るのが嫌になってきます。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;開発中にターミナルとブラウザへ移動が面倒&lt;/li&gt;&#xA;&lt;li&gt;vimで使っているformatterとかlinterをそのまま使いたい&lt;/li&gt;&#xA;&lt;li&gt;Jupyter上でもvimキーバインドを設定しているけど、ブラウザのキーバインドと被る&lt;/li&gt;&#xA;&lt;li&gt;vimからIPython上に実行結果を表示する方法もあるが、残念ながらめんどくさかったりで運用面があわない&lt;/li&gt;&#xA;&lt;li&gt;PyCharmやVSCodeを使えばいいじゃんという声が聞こえてきますが、とりあえずPyCharmは気になるところが多くて疲れました&amp;hellip;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;前々からvimで完結するようにしたいなぁと思っていたのですが、ようやくそれがある程度実現されてきたので紹介していきます。&lt;/p&gt;</description>
     </item>
     <item>
       <title>FastAPI &#43; uvicornの構成のサーバーで時間経過でメモリ使用量が増えるとき</title>
-      <link>https://opqrstuvcut.github.io/mblog/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/</link>
+      <link>http://localhost:1313/mblog/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/</link>
       <pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>https://opqrstuvcut.github.io/mblog/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/</guid>
-      <description>&lt;h1 id=&#34;問題発生時の状況&#34;&gt;問題発生時の状況&lt;/h1&gt;&#xA;&lt;p&gt;AWSのECS上にFastAPI + uvicornの構成でのサーバーをたてました。内容的には普通のREST APIです。&lt;br&gt;&#xA;とりあえずは順調に動作していたのですが、たまにコンテナが再起動しているっぽいけどなんだろうと思って調べていたところ、メモリ使用量が次のようになっていました。&lt;br&gt;&#xA;&#xA;&#xA;&#xA;&#x9;&#xA;&#x9;&lt;a href=&#34;https://opqrstuvcut.github.io/mblog/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/memory_usage_ng.png&#34;&gt;&#xA;&#x9;&lt;img src=&#34;https://opqrstuvcut.github.io/mblog/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/memory_usage_ng_hu_827a181089c8ec1f.png&#34; alt=&#34;メモリ使用量&#34;&gt;&#xA;&#x9;&lt;/a&gt;&#xA;&#xA;&lt;/p&gt;</description>
+      <guid>http://localhost:1313/mblog/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/</guid>
+      <description>&lt;h1 id=&#34;問題発生時の状況&#34;&gt;問題発生時の状況&lt;/h1&gt;&#xA;&lt;p&gt;AWSのECS上にFastAPI + uvicornの構成でのサーバーをたてました。内容的には普通のREST APIです。&lt;br&gt;&#xA;とりあえずは順調に動作していたのですが、たまにコンテナが再起動しているっぽいけどなんだろうと思って調べていたところ、メモリ使用量が次のようになっていました。&lt;br&gt;&#xA;&#xA;&#xA;&#xA;&#x9;&#xA;&#x9;&lt;a href=&#34;http://localhost:1313/mblog/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/memory_usage_ng.png&#34;&gt;&#xA;&#x9;&lt;img src=&#34;http://localhost:1313/mblog/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/memory_usage_ng_hu_827a181089c8ec1f.png&#34; alt=&#34;メモリ使用量&#34;&gt;&#xA;&#x9;&lt;/a&gt;&#xA;&#xA;&lt;/p&gt;</description>
     </item>
     <item>
       <title>m3u8ファイルとtsファイルのdownload</title>
-      <link>https://opqrstuvcut.github.io/mblog/posts/m3u8%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%A8ts%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AEdownload/</link>
+      <link>http://localhost:1313/mblog/posts/m3u8%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%A8ts%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AEdownload/</link>
       <pubDate>Sun, 31 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>https://opqrstuvcut.github.io/mblog/posts/m3u8%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%A8ts%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AEdownload/</guid>
+      <guid>http://localhost:1313/mblog/posts/m3u8%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%A8ts%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AEdownload/</guid>
       <description>&lt;p&gt;ライブストリーミングや動画の配信するためにm3u8とtsファイルを利用するケースがあります。&#xA;tsファイルは細切れになった小さい動画になっており、m3u8ファイルはそれらの情報をもっているプレイリストになります。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Sum Treeで重みにそってサンプリングする（Python実装）</title>
-      <link>https://opqrstuvcut.github.io/mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/</link>
+      <link>http://localhost:1313/mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/</link>
       <pubDate>Sun, 17 Jan 2021 00:00:00 +0000</pubDate>
-      <guid>https://opqrstuvcut.github.io/mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/</guid>
+      <guid>http://localhost:1313/mblog/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/</guid>
       <description>&lt;h1 id=&#34;問題設定&#34;&gt;問題設定&lt;/h1&gt;&#xA;&lt;p&gt;次のような設定でサンプリングをしたいことはよくあると思います。&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;3つのデータがあり、それぞれに重みがつけられているとする。&#xA;それぞれ、データ1の重みは10、データ2の重みは20、データ3の重みは30である。&#xA;このときに各データの重みと全体の重みの和の比を確率としてサンプリングをしたい。&#xA;つまり、データ1は10/60、データ2は20/60、データ3は30/60の確率でサンプリングすることになる。&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;シンプルな方法&#34;&gt;シンプルな方法&lt;/h1&gt;&#xA;&lt;p&gt;さきほどの問題設定のとき、簡単にサンプリングする方法は正規化された重みの和を順に足していき、一様分布からサンプリングした乱数がその和を超えたときのデータを取得するという方法です。&#xA;手順は次のようになります。&lt;/p&gt;</description>
     </item>
     <item>
       <title>AWSのLambdaからPostgresを利用</title>
-      <link>https://opqrstuvcut.github.io/mblog/posts/aws%E3%81%AElambda%E3%81%8B%E3%82%89postgres%E3%82%92%E5%88%A9%E7%94%A8/</link>
+      <link>http://localhost:1313/mblog/posts/aws%E3%81%AElambda%E3%81%8B%E3%82%89postgres%E3%82%92%E5%88%A9%E7%94%A8/</link>
       <pubDate>Mon, 04 May 2020 13:35:16 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/mblog/posts/aws%E3%81%AElambda%E3%81%8B%E3%82%89postgres%E3%82%92%E5%88%A9%E7%94%A8/</guid>
+      <guid>http://localhost:1313/mblog/posts/aws%E3%81%AElambda%E3%81%8B%E3%82%89postgres%E3%82%92%E5%88%A9%E7%94%A8/</guid>
       <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;AWSのLambda（Python）からPostgresを利用するためのライブラリの使い方のメモです。何もトラブルなく使えましたが、一応。&#xA;ライブラリのレポジトリは&lt;a href=&#34;https://github.com/jkehler/awslambda-psycopg2&#34;&gt;こちら&lt;/a&gt;です。&lt;/p&gt;</description>
     </item>
     <item>
       <title>KL divergenceに与える分布を入れ替えることの意味をまじめに考えたことあります？</title>
-      <link>https://opqrstuvcut.github.io/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/</link>
+      <link>http://localhost:1313/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/</link>
       <pubDate>Mon, 02 Mar 2020 18:01:01 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/</guid>
+      <guid>http://localhost:1313/mblog/posts/kl-divergence%E3%81%AB%E4%B8%8E%E3%81%88%E3%82%8B%E5%88%86%E5%B8%83%E3%82%92%E5%85%A5%E3%82%8C%E6%9B%BF%E3%81%88%E3%82%8B%E3%81%93%E3%81%A8%E3%81%AE%E6%84%8F%E5%91%B3%E3%82%92%E3%81%BE%E3%81%98%E3%82%81%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%93%E3%81%A8%E3%81%82%E3%82%8A%E3%81%BE%E3%81%99/</guid>
       <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;みんながよく使うKL(Kullback–Leibler) divergenceの話題です。&#xA;KL divergenceといえば2つの確率分布の違いを計算できるやつですね。&#xA;KL divergenceは対称性というものがなく、与えられた2つの分布を入れ替えるとKL divergenceの値が変わります。&#xA;今回は、この入れ替えたときの影響を最小化問題を例としてまじめに考えます。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Pandasのgroupbyの使い方をまとめる</title>
-      <link>https://opqrstuvcut.github.io/mblog/posts/pandas%E3%81%AEgroupby%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%82%92%E3%81%BE%E3%81%A8%E3%82%81%E3%82%8B/</link>
+      <link>http://localhost:1313/mblog/posts/pandas%E3%81%AEgroupby%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%82%92%E3%81%BE%E3%81%A8%E3%82%81%E3%82%8B/</link>
       <pubDate>Fri, 14 Feb 2020 12:04:01 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/mblog/posts/pandas%E3%81%AEgroupby%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%82%92%E3%81%BE%E3%81%A8%E3%82%81%E3%82%8B/</guid>
+      <guid>http://localhost:1313/mblog/posts/pandas%E3%81%AEgroupby%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%82%92%E3%81%BE%E3%81%A8%E3%82%81%E3%82%8B/</guid>
       <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;Pandasのgroupbyについては雰囲気でやっていたところがありますので、ちょっと真面目に使い方を調べてみました。使っているPandasのバージョンは1.0.1です。&lt;/p&gt;</description>
     </item>
     <item>
       <title>PandasのDataFrameを最高に簡単にMarkdownの表として出力</title>
-      <link>https://opqrstuvcut.github.io/mblog/posts/pandas%E3%81%AEdataframe%E3%82%92%E6%9C%80%E9%AB%98%E3%81%AB%E7%B0%A1%E5%8D%98%E3%81%ABmarkdown%E3%81%AE%E8%A1%A8%E3%81%A8%E3%81%97%E3%81%A6%E5%87%BA%E5%8A%9B/</link>
+      <link>http://localhost:1313/mblog/posts/pandas%E3%81%AEdataframe%E3%82%92%E6%9C%80%E9%AB%98%E3%81%AB%E7%B0%A1%E5%8D%98%E3%81%ABmarkdown%E3%81%AE%E8%A1%A8%E3%81%A8%E3%81%97%E3%81%A6%E5%87%BA%E5%8A%9B/</link>
       <pubDate>Thu, 13 Feb 2020 01:55:35 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/mblog/posts/pandas%E3%81%AEdataframe%E3%82%92%E6%9C%80%E9%AB%98%E3%81%AB%E7%B0%A1%E5%8D%98%E3%81%ABmarkdown%E3%81%AE%E8%A1%A8%E3%81%A8%E3%81%97%E3%81%A6%E5%87%BA%E5%8A%9B/</guid>
+      <guid>http://localhost:1313/mblog/posts/pandas%E3%81%AEdataframe%E3%82%92%E6%9C%80%E9%AB%98%E3%81%AB%E7%B0%A1%E5%8D%98%E3%81%ABmarkdown%E3%81%AE%E8%A1%A8%E3%81%A8%E3%81%97%E3%81%A6%E5%87%BA%E5%8A%9B/</guid>
       <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;Pandas1.0からは次のようにしてDataFrameをMarkdownの表として出力できます。&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;df&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;to_markdown&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;())&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以下のように表示されます。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Uber製の機械学習モデルのデバッグツールManifold</title>
-      <link>https://opqrstuvcut.github.io/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/</link>
+      <link>http://localhost:1313/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/</link>
       <pubDate>Tue, 28 Jan 2020 22:52:36 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/</guid>
+      <guid>http://localhost:1313/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/</guid>
       <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;Uberが公開している機械学習モデルの予測と特徴量の関係性を可視化するツールである&lt;a href=&#34;https://github.com/uber/manifold#upload-csv-to-demo-app&#34;&gt;Manifold&lt;/a&gt;を紹介します。&lt;/p&gt;&#xA;&lt;h1 id=&#34;manifoldを試す&#34;&gt;Manifoldを試す&lt;/h1&gt;&#xA;&lt;p&gt;Manifoldでできることを見ていきます。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Matplotlibの凡例を外側に表示したい人へ</title>
-      <link>https://opqrstuvcut.github.io/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/</link>
+      <link>http://localhost:1313/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/</link>
       <pubDate>Mon, 20 Jan 2020 21:09:01 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/</guid>
+      <guid>http://localhost:1313/mblog/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/</guid>
       <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;Matplotlibの凡例を外側に出したい人用に色々な例を書いておきます。&lt;/p&gt;&#xA;&lt;p&gt;次のような凡例の位置をいじらずに表示した状態からいじっていきます。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Pythonのnamedtupleを使おう</title>
-      <link>https://opqrstuvcut.github.io/mblog/posts/python%E3%81%AEnamedtuple%E3%82%92%E4%BD%BF%E3%81%8A%E3%81%86/</link>
+      <link>http://localhost:1313/mblog/posts/python%E3%81%AEnamedtuple%E3%82%92%E4%BD%BF%E3%81%8A%E3%81%86/</link>
       <pubDate>Mon, 06 Jan 2020 21:57:05 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/mblog/posts/python%E3%81%AEnamedtuple%E3%82%92%E4%BD%BF%E3%81%8A%E3%81%86/</guid>
+      <guid>http://localhost:1313/mblog/posts/python%E3%81%AEnamedtuple%E3%82%92%E4%BD%BF%E3%81%8A%E3%81%86/</guid>
       <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;Pythonのnamedtuple使ってますか？&#xA;案外使っていない方が多いので、ご紹介しておきます。&lt;/p&gt;&#xA;&lt;h1 id=&#34;namedtupleとは&#34;&gt;namedtupleとは？&lt;/h1&gt;&#xA;&lt;p&gt;通常のタプルはインデックス指定でのみ要素を参照します。一方で、NamedTupleはタプルの各要素を&lt;strong&gt;名前&lt;/strong&gt;によって参照できます。&lt;br&gt;&#xA;例えばpというnamedtupleの要素にnameというものがあれば、次のようにして参照できます。&lt;/p&gt;</description>
     </item>
     <item>
       <title>安易に逆行列を数値計算するのはやめよう</title>
-      <link>https://opqrstuvcut.github.io/mblog/posts/%E5%AE%89%E6%98%93%E3%81%AB%E9%80%86%E8%A1%8C%E5%88%97%E3%82%92%E6%95%B0%E5%80%A4%E8%A8%88%E7%AE%97%E3%81%99%E3%82%8B%E3%81%AE%E3%81%AF%E3%82%84%E3%82%81%E3%82%88%E3%81%86/</link>
+      <link>http://localhost:1313/mblog/posts/%E5%AE%89%E6%98%93%E3%81%AB%E9%80%86%E8%A1%8C%E5%88%97%E3%82%92%E6%95%B0%E5%80%A4%E8%A8%88%E7%AE%97%E3%81%99%E3%82%8B%E3%81%AE%E3%81%AF%E3%82%84%E3%82%81%E3%82%88%E3%81%86/</link>
       <pubDate>Fri, 15 Nov 2019 01:35:01 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/mblog/posts/%E5%AE%89%E6%98%93%E3%81%AB%E9%80%86%E8%A1%8C%E5%88%97%E3%82%92%E6%95%B0%E5%80%A4%E8%A8%88%E7%AE%97%E3%81%99%E3%82%8B%E3%81%AE%E3%81%AF%E3%82%84%E3%82%81%E3%82%88%E3%81%86/</guid>
+      <guid>http://localhost:1313/mblog/posts/%E5%AE%89%E6%98%93%E3%81%AB%E9%80%86%E8%A1%8C%E5%88%97%E3%82%92%E6%95%B0%E5%80%A4%E8%A8%88%E7%AE%97%E3%81%99%E3%82%8B%E3%81%AE%E3%81%AF%E3%82%84%E3%82%81%E3%82%88%E3%81%86/</guid>
       <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;逆行列を使った計算というのは機械学習ではそれなりに出てきます。&#xA;例えば、最小二乗法では&#xA;$$ x = (X^T X) ^{-1} Xb$$&#xA;の形の式を計算する必要がありますし、正規分布の分散を扱うときにも逆行列が出てきます。&#xA;こういうときにnp.linalg.invを使って逆行列を求めて、その後にベクトルとの積を求めるは簡単にできますから、特に何も考えずにそういうふうにしたくなります。&lt;/p&gt;</description>
     </item>
     <item>
       <title>MinIOでローカルにS3みたいなものを作って開発する</title>
-      <link>https://opqrstuvcut.github.io/mblog/posts/minio%E3%81%A7%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%81%ABs3%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AA%E3%82%82%E3%81%AE%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%A6%E9%96%8B%E7%99%BA%E3%81%99%E3%82%8B/</link>
+      <link>http://localhost:1313/mblog/posts/minio%E3%81%A7%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%81%ABs3%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AA%E3%82%82%E3%81%AE%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%A6%E9%96%8B%E7%99%BA%E3%81%99%E3%82%8B/</link>
       <pubDate>Sat, 09 Nov 2019 12:48:01 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/mblog/posts/minio%E3%81%A7%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%81%ABs3%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AA%E3%82%82%E3%81%AE%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%A6%E9%96%8B%E7%99%BA%E3%81%99%E3%82%8B/</guid>
+      <guid>http://localhost:1313/mblog/posts/minio%E3%81%A7%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%81%ABs3%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AA%E3%82%82%E3%81%AE%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%A6%E9%96%8B%E7%99%BA%E3%81%99%E3%82%8B/</guid>
       <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;AWSのS3を使うようなシステムを開発するときに、S3と連携する部分だけAWSにつなぐより、ローカルにS3が欲しいなぁってふと思いました。でもそんな都合が良い話があるわけないよなぁ、なんて思ったら実はありました！その名も&lt;strong&gt;MinIO&lt;/strong&gt;。&#xA;今回はMinIOの使い方を簡単にご紹介します。とても簡単です。&lt;/p&gt;</description>
     </item>
     <item>
       <title>BERTでおこなうポケモンの説明文生成</title>
-      <link>https://opqrstuvcut.github.io/mblog/posts/bert%E3%81%A7%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3%E3%81%AE%E8%AA%AC%E6%98%8E%E6%96%87%E7%94%9F%E6%88%90/</link>
+      <link>http://localhost:1313/mblog/posts/bert%E3%81%A7%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3%E3%81%AE%E8%AA%AC%E6%98%8E%E6%96%87%E7%94%9F%E6%88%90/</link>
       <pubDate>Thu, 07 Nov 2019 11:42:23 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/mblog/posts/bert%E3%81%A7%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3%E3%81%AE%E8%AA%AC%E6%98%8E%E6%96%87%E7%94%9F%E6%88%90/</guid>
+      <guid>http://localhost:1313/mblog/posts/bert%E3%81%A7%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3%E3%81%AE%E8%AA%AC%E6%98%8E%E6%96%87%E7%94%9F%E6%88%90/</guid>
       <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;概要&#34;&gt;概要&lt;/h1&gt;&#xA;&lt;p&gt;自然言語界隈では非常によく話題になるBERTですが、BERTを使った文生成を実装してみたので今回はその話をします。BERTの事前学習モデルが文生成のタスクで使えたら、比較的少なめの学習データでもそれっぽく文生成できたりしないかなぁと思ってやってみました。&lt;/p&gt;</description>
     </item>
   </channel>

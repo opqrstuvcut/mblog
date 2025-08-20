@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Filter2D on MatLoverによるMatlab以外のブログ</title>
-    <link>https://opqrstuvcut.github.io/mblog/tags/filter2d/</link>
+    <link>http://localhost:1313/mblog/tags/filter2d/</link>
     <description>Recent content in Filter2D on MatLoverによるMatlab以外のブログ</description>
     <generator>Hugo</generator>
     <language>ja</language>
     <lastBuildDate>Sat, 25 Jul 2020 12:12:06 +0900</lastBuildDate>
-    <atom:link href="https://opqrstuvcut.github.io/mblog/tags/filter2d/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/mblog/tags/filter2d/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>filter2Dで任意のカーネルを扱う</title>
-      <link>https://opqrstuvcut.github.io/mblog/posts/filter2d%E3%81%A7%E4%BB%BB%E6%84%8F%E3%81%AE%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB%E3%82%92%E6%89%B1%E3%81%86/</link>
+      <link>http://localhost:1313/mblog/posts/filter2d%E3%81%A7%E4%BB%BB%E6%84%8F%E3%81%AE%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB%E3%82%92%E6%89%B1%E3%81%86/</link>
       <pubDate>Sat, 25 Jul 2020 12:12:06 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/mblog/posts/filter2d%E3%81%A7%E4%BB%BB%E6%84%8F%E3%81%AE%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB%E3%82%92%E6%89%B1%E3%81%86/</guid>
+      <guid>http://localhost:1313/mblog/posts/filter2d%E3%81%A7%E4%BB%BB%E6%84%8F%E3%81%AE%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB%E3%82%92%E6%89%B1%E3%81%86/</guid>
       <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;OpenCVではいろいろなカーネルによる演算が用意されていますが、自分で定義したカーネルを使いたいこともあります。&#xA;そんなときにはfilter2Dが活躍します。&lt;/p&gt;</description>
     </item>
   </channel>
