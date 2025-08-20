@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>自然言語 on MatLoverによるMatlab以外のブログ</title>
-    <link>https://opqrstuvcut.github.io/mblog/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E/</link>
+    <link>http://localhost:1313/mblog/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E/</link>
     <description>Recent content in 自然言語 on MatLoverによるMatlab以外のブログ</description>
     <generator>Hugo</generator>
     <language>ja</language>
     <lastBuildDate>Sun, 21 Jun 2020 15:22:01 +0900</lastBuildDate>
-    <atom:link href="https://opqrstuvcut.github.io/mblog/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/mblog/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>貧乏人なのでPoor Man’s BERTを読んで解説</title>
-      <link>https://opqrstuvcut.github.io/mblog/posts/%E8%B2%A7%E4%B9%8F%E4%BA%BA%E3%81%AA%E3%81%AE%E3%81%A7poor-mans-bert%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A7%E8%A7%A3%E8%AA%AC/</link>
+      <link>http://localhost:1313/mblog/posts/%E8%B2%A7%E4%B9%8F%E4%BA%BA%E3%81%AA%E3%81%AE%E3%81%A7poor-mans-bert%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A7%E8%A7%A3%E8%AA%AC/</link>
       <pubDate>Sun, 21 Jun 2020 15:22:01 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/mblog/posts/%E8%B2%A7%E4%B9%8F%E4%BA%BA%E3%81%AA%E3%81%AE%E3%81%A7poor-mans-bert%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A7%E8%A7%A3%E8%AA%AC/</guid>
+      <guid>http://localhost:1313/mblog/posts/%E8%B2%A7%E4%B9%8F%E4%BA%BA%E3%81%AA%E3%81%AE%E3%81%A7poor-mans-bert%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A7%E8%A7%A3%E8%AA%AC/</guid>
       <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;最近自然言語処理をよくやっていて、BERTを使うことも多いです。&#xA;BERTの性能は高く素晴らしいのですが、実際使う上では、私のような計算リソース弱者には辛いところがあります。&lt;/p&gt;</description>
     </item>
     <item>
       <title>画像と自然言語でのマルチモーダルなImageBERT</title>
-      <link>https://opqrstuvcut.github.io/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%A8%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E3%81%A7%E3%81%AE%E3%83%9E%E3%83%AB%E3%83%81%E3%83%A2%E3%83%BC%E3%83%80%E3%83%AB%E3%81%AAimagebert/</link>
+      <link>http://localhost:1313/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%A8%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E3%81%A7%E3%81%AE%E3%83%9E%E3%83%AB%E3%83%81%E3%83%A2%E3%83%BC%E3%83%80%E3%83%AB%E3%81%AAimagebert/</link>
       <pubDate>Mon, 24 Feb 2020 19:46:50 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%A8%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E3%81%A7%E3%81%AE%E3%83%9E%E3%83%AB%E3%83%81%E3%83%A2%E3%83%BC%E3%83%80%E3%83%AB%E3%81%AAimagebert/</guid>
+      <guid>http://localhost:1313/mblog/posts/%E7%94%BB%E5%83%8F%E3%81%A8%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E3%81%A7%E3%81%AE%E3%83%9E%E3%83%AB%E3%83%81%E3%83%A2%E3%83%BC%E3%83%80%E3%83%AB%E3%81%AAimagebert/</guid>
       <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;最近Microsoftから発表されたImageBERTについて紹介します。&lt;br&gt;&#xA;ImageBERTはBERTの入力に自然言語だけではなく、画像も受け付けるようにしたマルチモーダルなモデルです。&#xA;また論文ではモデルのアーキテクチャだけではなく、学習方法にも新たな提案がされています。&lt;br&gt;&#xA;実験ではImage-to-Sentenceでの検索とSentence-to-Imageの検索タスクでSOTAが示されています。&lt;/p&gt;</description>
     </item>
     <item>
       <title>BERTを軽量化したALBERTの概要</title>
-      <link>https://opqrstuvcut.github.io/mblog/posts/bert%E3%82%92%E8%BB%BD%E9%87%8F%E5%8C%96%E3%81%97%E3%81%9Falbert%E3%81%AE%E6%A6%82%E8%A6%81/</link>
+      <link>http://localhost:1313/mblog/posts/bert%E3%82%92%E8%BB%BD%E9%87%8F%E5%8C%96%E3%81%97%E3%81%9Falbert%E3%81%AE%E6%A6%82%E8%A6%81/</link>
       <pubDate>Sat, 28 Dec 2019 23:36:43 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/mblog/posts/bert%E3%82%92%E8%BB%BD%E9%87%8F%E5%8C%96%E3%81%97%E3%81%9Falbert%E3%81%AE%E6%A6%82%E8%A6%81/</guid>
+      <guid>http://localhost:1313/mblog/posts/bert%E3%82%92%E8%BB%BD%E9%87%8F%E5%8C%96%E3%81%97%E3%81%9Falbert%E3%81%AE%E6%A6%82%E8%A6%81/</guid>
       <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://arxiv.org/abs/1810.04805&#34;&gt;BERT&lt;/a&gt;のパラメータの数を減らしたモデルであるALBERTについての概要を書いていきます。&lt;/p&gt;&#xA;&lt;p&gt;参考論文：&lt;a href=&#34;https://arxiv.org/abs/1909.11942&#34;&gt;ALBERT: A Lite BERT for Self-supervised Learning of Language Representations&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;問題意識&#34;&gt;問題意識&lt;/h1&gt;&#xA;&lt;p&gt;2018年に提案されたBERTは自然言語界隈では非常に上手くいった手法です。先程論文の引用数を見たら、もう3000を超えていまして、この数字を見てもよくわかります。&lt;/p&gt;</description>
     </item>
   </channel>

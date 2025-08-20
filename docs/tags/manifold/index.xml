@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Manifold on MatLoverによるMatlab以外のブログ</title>
-    <link>https://opqrstuvcut.github.io/mblog/tags/manifold/</link>
+    <link>http://localhost:1313/mblog/tags/manifold/</link>
     <description>Recent content in Manifold on MatLoverによるMatlab以外のブログ</description>
     <generator>Hugo</generator>
     <language>ja</language>
     <lastBuildDate>Tue, 28 Jan 2020 22:52:36 +0900</lastBuildDate>
-    <atom:link href="https://opqrstuvcut.github.io/mblog/tags/manifold/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/mblog/tags/manifold/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Uber製の機械学習モデルのデバッグツールManifold</title>
-      <link>https://opqrstuvcut.github.io/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/</link>
+      <link>http://localhost:1313/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/</link>
       <pubDate>Tue, 28 Jan 2020 22:52:36 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/</guid>
+      <guid>http://localhost:1313/mblog/posts/uber%E8%A3%BD%E3%81%AE%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E3%83%84%E3%83%BC%E3%83%ABmanifold/</guid>
       <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;Uberが公開している機械学習モデルの予測と特徴量の関係性を可視化するツールである&lt;a href=&#34;https://github.com/uber/manifold#upload-csv-to-demo-app&#34;&gt;Manifold&lt;/a&gt;を紹介します。&lt;/p&gt;&#xA;&lt;h1 id=&#34;manifoldを試す&#34;&gt;Manifoldを試す&lt;/h1&gt;&#xA;&lt;p&gt;Manifoldでできることを見ていきます。&lt;/p&gt;</description>
     </item>
   </channel>

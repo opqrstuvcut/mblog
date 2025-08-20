@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Namedtuple on MatLoverによるMatlab以外のブログ</title>
-    <link>https://opqrstuvcut.github.io/mblog/tags/namedtuple/</link>
+    <link>http://localhost:1313/mblog/tags/namedtuple/</link>
     <description>Recent content in Namedtuple on MatLoverによるMatlab以外のブログ</description>
     <generator>Hugo</generator>
     <language>ja</language>
     <lastBuildDate>Mon, 06 Jan 2020 21:57:05 +0900</lastBuildDate>
-    <atom:link href="https://opqrstuvcut.github.io/mblog/tags/namedtuple/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/mblog/tags/namedtuple/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Pythonのnamedtupleを使おう</title>
-      <link>https://opqrstuvcut.github.io/mblog/posts/python%E3%81%AEnamedtuple%E3%82%92%E4%BD%BF%E3%81%8A%E3%81%86/</link>
+      <link>http://localhost:1313/mblog/posts/python%E3%81%AEnamedtuple%E3%82%92%E4%BD%BF%E3%81%8A%E3%81%86/</link>
       <pubDate>Mon, 06 Jan 2020 21:57:05 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/mblog/posts/python%E3%81%AEnamedtuple%E3%82%92%E4%BD%BF%E3%81%8A%E3%81%86/</guid>
+      <guid>http://localhost:1313/mblog/posts/python%E3%81%AEnamedtuple%E3%82%92%E4%BD%BF%E3%81%8A%E3%81%86/</guid>
       <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;Pythonのnamedtuple使ってますか？&#xA;案外使っていない方が多いので、ご紹介しておきます。&lt;/p&gt;&#xA;&lt;h1 id=&#34;namedtupleとは&#34;&gt;namedtupleとは？&lt;/h1&gt;&#xA;&lt;p&gt;通常のタプルはインデックス指定でのみ要素を参照します。一方で、NamedTupleはタプルの各要素を&lt;strong&gt;名前&lt;/strong&gt;によって参照できます。&lt;br&gt;&#xA;例えばpというnamedtupleの要素にnameというものがあれば、次のようにして参照できます。&lt;/p&gt;</description>
     </item>
   </channel>
