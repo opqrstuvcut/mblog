@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>LIME on MatLoverによるMatlab以外のブログ</title>
-    <link>http://localhost:1313/mblog/tags/lime/</link>
+    <link>https://opqrstuvcut.github.io/mblog/tags/lime/</link>
     <description>Recent content in LIME on MatLoverによるMatlab以外のブログ</description>
     <generator>Hugo</generator>
     <language>ja</language>
     <lastBuildDate>Wed, 12 Feb 2020 00:23:01 +0900</lastBuildDate>
-    <atom:link href="http://localhost:1313/mblog/tags/lime/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://opqrstuvcut.github.io/mblog/tags/lime/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>モデルの予測結果を説明するLIMEの理論</title>
-      <link>http://localhost:1313/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/</link>
+      <link>https://opqrstuvcut.github.io/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/</link>
       <pubDate>Wed, 12 Feb 2020 00:23:01 +0900</pubDate>
-      <guid>http://localhost:1313/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/</guid>
+      <guid>https://opqrstuvcut.github.io/mblog/posts/%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E4%BA%88%E6%B8%AC%E7%B5%90%E6%9E%9C%E3%82%92%E8%AA%AC%E6%98%8E%E3%81%99%E3%82%8Blime%E3%81%AE%E7%90%86%E8%AB%96/</guid>
       <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;モデルの予測結果を説明する方法として&lt;strong&gt;LIME&lt;/strong&gt;があります。&#xA;LIMEはディープラーニングに限らず、任意のモデルに対して予測結果を適用することができます。&#xA;また手法としては結構有名かと思います。&lt;/p&gt;</description>
     </item>
   </channel>
