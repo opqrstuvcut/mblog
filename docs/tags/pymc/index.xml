@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>PyMC on MatLoverによるMatlab以外のブログ</title>
-    <link>http://localhost:1313/mblog/tags/pymc/</link>
+    <link>https://opqrstuvcut.github.io/mblog/tags/pymc/</link>
     <description>Recent content in PyMC on MatLoverによるMatlab以外のブログ</description>
     <generator>Hugo</generator>
     <language>ja</language>
     <lastBuildDate>Sat, 18 Jan 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/mblog/tags/pymc/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://opqrstuvcut.github.io/mblog/tags/pymc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>WAIC</title>
-      <link>http://localhost:1313/mblog/posts/waic/</link>
+      <link>https://opqrstuvcut.github.io/mblog/posts/waic/</link>
       <pubDate>Sat, 18 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/mblog/posts/waic/</guid>
+      <guid>https://opqrstuvcut.github.io/mblog/posts/waic/</guid>
       <description>&lt;p&gt;かなり前に「渡辺澄夫ベイズ理論100問 with R/Stan」を読み終わったのもあり、忘れないうちにWAICを自分なりにまとめておきます．&lt;/p&gt;&#xA;&lt;h2 id=&#34;waic&#34;&gt;WAIC&lt;/h2&gt;&#xA;&lt;h3 id=&#34;waicの適用範囲&#34;&gt;WAICの適用範囲&lt;/h3&gt;&#xA;&lt;p&gt;情報量基準のAICやTICは正則性を仮定していますが、実際には正則性が成り立たないケースが多いです．&lt;br&gt;&#xA;WAICは正則性を仮定せずとも利用できる情報量基準になっていて、適用範囲が広いです．ただし、どんなケースでもOKかといえばそうではなく、次の条件を満たしている必要があります（「渡辺澄夫ベイズ理論100問 with R/Stan」の(1.21)）．&lt;/p&gt;</description>
     </item>
   </channel>
