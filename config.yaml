@@ -20,7 +20,7 @@ permalinks:
 sitemap:
   filename: sitemap.xml
 
-# enableRobotsTXT: false
+enableRobotsTXT: true
 
 taxonomies:
   category: categories
