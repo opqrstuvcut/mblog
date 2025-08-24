@@ -13,23 +13,23 @@
 
 
 	<h3>カテゴリ</h3>
-	<ul class="categories">
-		{{ range $name, $taxonomy := .Site.Taxonomies.categories }}
-		<li>
-			<a href="{{ (printf " categories/%s" ($name | urlize)) | relLangURL }}">{{ $name }}</a>
+<ul class="categories">
+  {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+    <li>
+      <a href="{{ (printf "categories/%s" ($name | urlize)) | relLangURL }}">{{ $name }}</a>
 
-			({{ len $taxonomy }})
-		</li>
-		{{ end }}
-	</ul>
+      ({{ len $taxonomy }})
+    </li>
+  {{ end }}
+</ul>
 
-	<h3>タグ</h3>
-	<ul class="tags">
-		{{ range $name, $taxonomy := .Site.Taxonomies.tags }}
-		<li>
-			<a href="{{ (printf " tags/%s" ($name | urlize)) | relLangURL }}">{{ $name }}</a>
-			({{ len $taxonomy }})
-		</li>
-		{{ end }}
-	</ul>
+<h3>タグ</h3>
+<ul class="tags">
+  {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+    <li>
+      <a href="{{ (printf "tags/%s" ($name | urlize)) | relLangURL }}">{{ $name }}</a>
+      ({{ len $taxonomy }})
+    </li>
+  {{ end }}
+</ul>
 </aside>
