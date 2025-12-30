@@ -1,0 +1,1935 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta name="generator" content="Hugo 0.148.2">
+	
+	<title>MatLoverによるMatlab以外のブログ</title>
+	
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="https://opqrstuvcut.github.io/" />
+
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFC5W8DKV1"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-LFC5W8DKV1');
+        }
+      </script>
+
+
+
+  
+  <link rel="stylesheet" href="https://opqrstuvcut.github.io/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css">
+
+  
+  <link rel="stylesheet" href="https://opqrstuvcut.github.io/css/code.min.d529ea4b2fb8d34328d7d31afc5466d5f7bc2f0bc9abdd98b69385335d7baee4.css">
+
+  
+  <link rel="stylesheet" href="https://opqrstuvcut.github.io/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css">
+
+  
+  <link rel="stylesheet" href="https://opqrstuvcut.github.io/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css">
+
+  
+  <link rel="stylesheet" href="https://opqrstuvcut.github.io/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
+
+  
+  <link rel="stylesheet" href="https://opqrstuvcut.github.io/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css">
+
+  
+  <link rel="stylesheet" href="https://opqrstuvcut.github.io/css/main.min.775ac2af004d44c22a6d000fbd1d9af529642f5cef27399d0280d180af2c2e9b.css">
+
+  
+  <link rel="stylesheet" href="https://opqrstuvcut.github.io/css/menu.min.310d32205bdedd6f43144e3c3273c9deecd238eba5f9108db5ea96ca0cfbe377.css">
+
+  
+  <link rel="stylesheet" href="https://opqrstuvcut.github.io/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css">
+
+  
+  <link rel="stylesheet" href="https://opqrstuvcut.github.io/css/post.min.ad50c7f4d00e7975918f37fc74c6029e1959a40d66fb5b2c6564a8715e985573.css">
+
+  
+  <link rel="stylesheet" href="https://opqrstuvcut.github.io/css/syntax.min.e9ab635cf918bc84b901eb65c0b2caa74c9544245e3647c1af5c129896ef276e.css">
+
+  
+  <link rel="stylesheet" href="https://opqrstuvcut.github.io/css/terminal.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+
+  
+  <link rel="stylesheet" href="https://opqrstuvcut.github.io/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="https://opqrstuvcut.github.io/favicon.png">
+<link rel="apple-touch-icon" href="https://opqrstuvcut.github.io/apple-touch-icon.png">
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="ja" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="MatLoverによるMatlab以外のブログ">
+<meta property="og:description" content="" />
+<meta property="og:url" content="https://opqrstuvcut.github.io/" />
+<meta property="og:site_name" content="MatLoverによるMatlab以外のブログ" />
+
+  <meta property="og:image" content="https://opqrstuvcut.github.io/og-image.png">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+
+
+
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="MatLoverによるMatlab以外のブログ" />
+
+
+
+
+
+
+
+<link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
+    integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5"
+    crossorigin="anonymous">
+
+<script defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js"
+    integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd"
+    crossorigin="anonymous"></script>
+
+<script defer
+    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
+    integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
+    crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+            ],
+            throwOnError : false
+        });
+    });
+</script>
+
+<meta name="google-site-verification" content="VBThe3LvgreNchk--dzQ7Px-Gezpt0gcnKSBemeI_Rs" />
+
+<style>
+  section.article-content h2 {
+    background-color: rgb(245, 245, 245);
+    padding: 10px;
+  }
+
+  :root {
+    --ja-font-family: "メイリオ", "Meiryo";
+    --base-font-family: "Lato", var(--sys-font-family), var(--ja-font-family),
+      sans-serif;
+    --body-background: #ffffe0;
+  }
+
+</style>
+
+
+</head>
+
+<body>
+	
+
+	<div class="container full">
+		<header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="https://opqrstuvcut.github.io/">
+  <div class="logo">
+    MatLoverによるMatlab以外のブログ
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/">Home</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/" >Home</a></li>
+        
+      
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+		<div class="content">
+			<div class="layout">
+				<aside id="profile">
+  <h3>プロフィール</h3>
+  <div class="profile-box">
+    <p>機械学習や関連内容のブログです。仕事の依頼などはvikz2713[あっとマーク]gmail.com まで。</p>
+    <ul>
+      <li><a href="https://github.com/opqrstuvcut" target="_blank">GitHub</a></li>
+    </ul>
+  </div>
+</aside>
+
+				<main class="main">
+					
+  
+  <div class="posts">
+    
+    
+
+    
+    
+      
+    
+    
+
+    
+      <article class="post on-list">
+        <h2 class="post-title">
+          <a href="https://opqrstuvcut.github.io/posts/opencv%E3%81%AE%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%AE%E8%A8%88%E7%AE%97%E3%81%AFnumpy%E3%82%88%E3%82%8A%E6%96%AD%E7%84%B6%E9%80%9F%E3%81%84/">OpenCVのヒストグラムの計算はNumPyより断然速い</a>
+        </h2>
+
+        <div class="post-meta"><time class="post-date">2020-08-10</time></div>
+
+        
+          <span class="post-tags">
+            
+            #<a href="https://opqrstuvcut.github.io/tags/opencv/">OpenCV</a>&nbsp;
+            
+            #<a href="https://opqrstuvcut.github.io/tags/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0/">ヒストグラム</a>&nbsp;
+            
+          </span>
+        
+
+        
+  <img src="/posts/opencv%E3%81%AE%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%AE%E8%A8%88%E7%AE%97%E3%81%AFnumpy%E3%82%88%E3%82%8A%E6%96%AD%E7%84%B6%E9%80%9F%E3%81%84/5703e41eaa88a7eb01fcb7ef796e3bb3.png"
+    class="post-cover"
+    alt="OpenCVのヒストグラムの計算はNumPyより断然速い"
+    title="Cover Image" />
+
+
+        <div class="post-content">
+          
+            <p>本記事はQrunchからの転載です。</p>
+<hr>
+<p>画像処理や集計、機械学習では何かとヒストグラムを計算するケースがありますね。</p>
+<p>これに伴い、ヒストグラムを計算できるライブラリは色々あるかと思いますが、OpenCVでもヒストグラムを計算する機能をもっています。
+<strong>NumPyでもヒストグラムの計算できるじゃない</strong>、と思いますが、実はOpenCVの方がNumPyのヒストグラムよりも断然速いです。今回はその辺りの比較もおこなっていきます。</p>
+          
+        </div>
+
+        
+          <div>
+            <a class="read-more button inline" href="/posts/opencv%E3%81%AE%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%AE%E8%A8%88%E7%AE%97%E3%81%AFnumpy%E3%82%88%E3%82%8A%E6%96%AD%E7%84%B6%E9%80%9F%E3%81%84/">[Read more]</a>
+          </div>
+        
+      </article>
+    
+      <article class="post on-list">
+        <h2 class="post-title">
+          <a href="https://opqrstuvcut.github.io/posts/grabcuts%E3%81%A7%E8%83%8C%E6%99%AF%E3%81%A8%E7%8C%AB%E3%82%92%E5%88%86%E9%9B%A2%E3%81%97%E3%81%9F%E3%81%84/">Grabcutsで背景と猫を分離したい</a>
+        </h2>
+
+        <div class="post-meta"><time class="post-date">2020-08-09</time></div>
+
+        
+          <span class="post-tags">
+            
+            #<a href="https://opqrstuvcut.github.io/tags/opencv/">OpenCV</a>&nbsp;
+            
+            #<a href="https://opqrstuvcut.github.io/tags/grabcuts/">Grabcuts</a>&nbsp;
+            
+          </span>
+        
+
+        
+  <img src="/posts/grabcuts%E3%81%A7%E8%83%8C%E6%99%AF%E3%81%A8%E7%8C%AB%E3%82%92%E5%88%86%E9%9B%A2%E3%81%97%E3%81%9F%E3%81%84/dba26e4507ff86058f0c703b8298c1f9.png"
+    class="post-cover"
+    alt="Grabcutsで背景と猫を分離したい"
+    title="Cover Image" />
+
+
+        <div class="post-content">
+          
+            <p>本記事はQrunchからの転載です。</p>
+<hr>
+<p>次のような画像があったとします。<br>
+<img src="/posts/grabcuts%E3%81%A7%E8%83%8C%E6%99%AF%E3%81%A8%E7%8C%AB%E3%82%92%E5%88%86%E9%9B%A2%E3%81%97%E3%81%9F%E3%81%84/b7906bd0d4bbe04cf62dab0eda766889.png" alt=""></p>
+<p>ここから猫だけ抽出したいときに、ツールを使えば少し手間はかかりますが、切り取れると思います。<br>
+実はOpenCVのGrabcutsを使えば非常に簡単にそれが実現できます。
+（ディープラーニング使えばできるよね？はおいておいて）</p>
+          
+        </div>
+
+        
+          <div>
+            <a class="read-more button inline" href="/posts/grabcuts%E3%81%A7%E8%83%8C%E6%99%AF%E3%81%A8%E7%8C%AB%E3%82%92%E5%88%86%E9%9B%A2%E3%81%97%E3%81%9F%E3%81%84/">[Read more]</a>
+          </div>
+        
+      </article>
+    
+      <article class="post on-list">
+        <h2 class="post-title">
+          <a href="https://opqrstuvcut.github.io/posts/watershed%E3%81%A7%E9%A0%98%E5%9F%9F%E6%A4%9C%E5%87%BA/">Watershedで領域検出</a>
+        </h2>
+
+        <div class="post-meta"><time class="post-date">2020-08-08</time></div>
+
+        
+          <span class="post-tags">
+            
+            #<a href="https://opqrstuvcut.github.io/tags/opencv/">OpenCV</a>&nbsp;
+            
+            #<a href="https://opqrstuvcut.github.io/tags/watershed/">WaterShed</a>&nbsp;
+            
+          </span>
+        
+
+        
+  <img src="/posts/watershed%E3%81%A7%E9%A0%98%E5%9F%9F%E6%A4%9C%E5%87%BA/37b16430461df0454f7771d8d4bbfaef.png"
+    class="post-cover"
+    alt="Watershedで領域検出"
+    title="Cover Image" />
+
+
+        <div class="post-content">
+          
+            <p>本記事はQrunchからの転載です。</p>
+<hr>
+<p>Watershedと呼ばれる方法を使うと、指定したマーカーの情報と画像のエッジから画像中の領域の分割をおこなってくれます。
+マーカーとしては、この位置は領域1、この位置は領域2それ以外は背景だよといった感じの情報を与えます。</p>
+          
+        </div>
+
+        
+          <div>
+            <a class="read-more button inline" href="/posts/watershed%E3%81%A7%E9%A0%98%E5%9F%9F%E6%A4%9C%E5%87%BA/">[Read more]</a>
+          </div>
+        
+      </article>
+    
+      <article class="post on-list">
+        <h2 class="post-title">
+          <a href="https://opqrstuvcut.github.io/posts/%E7%94%BB%E5%83%8F%E3%81%AE%E8%B7%9D%E9%9B%A2%E5%A4%89%E6%8F%9B%E3%82%92%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86/">画像の距離変換をおこなう</a>
+        </h2>
+
+        <div class="post-meta"><time class="post-date">2020-08-07</time></div>
+
+        
+          <span class="post-tags">
+            
+            #<a href="https://opqrstuvcut.github.io/tags/opencv/">OpenCV</a>&nbsp;
+            
+            #<a href="https://opqrstuvcut.github.io/tags/%E8%B7%9D%E9%9B%A2%E5%A4%89%E6%8F%9B/">距離変換</a>&nbsp;
+            
+          </span>
+        
+
+        
+  <img src="/posts/%E7%94%BB%E5%83%8F%E3%81%AE%E8%B7%9D%E9%9B%A2%E5%A4%89%E6%8F%9B%E3%82%92%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86/10fec2481837301639f81cf34c21e4b1.png"
+    class="post-cover"
+    alt="画像の距離変換をおこなう"
+    title="Cover Image" />
+
+
+        <div class="post-content">
+          
+            <p>本記事はQrunchからの転載です。</p>
+<hr>
+<p>画像に対する距離変換とは、グレースケールの画像において、ピクセルから最も近い0の値をもつピクセルまでの距離を求めたものです。</p>
+          
+        </div>
+
+        
+          <div>
+            <a class="read-more button inline" href="/posts/%E7%94%BB%E5%83%8F%E3%81%AE%E8%B7%9D%E9%9B%A2%E5%A4%89%E6%8F%9B%E3%82%92%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86/">[Read more]</a>
+          </div>
+        
+      </article>
+    
+      <article class="post on-list">
+        <h2 class="post-title">
+          <a href="https://opqrstuvcut.github.io/posts/floodfill%E3%81%A7%E9%A0%98%E5%9F%9F%E3%81%AB%E8%89%B2%E3%82%92%E5%A1%97%E3%82%8B/">floodFillで領域に色を塗る</a>
+        </h2>
+
+        <div class="post-meta"><time class="post-date">2020-08-06</time></div>
+
+        
+          <span class="post-tags">
+            
+            #<a href="https://opqrstuvcut.github.io/tags/opencv/">OpenCV</a>&nbsp;
+            
+            #<a href="https://opqrstuvcut.github.io/tags/floodfill/">floodFill</a>&nbsp;
+            
+          </span>
+        
+
+        
+  <img src="/posts/floodfill%E3%81%A7%E9%A0%98%E5%9F%9F%E3%81%AB%E8%89%B2%E3%82%92%E5%A1%97%E3%82%8B/b7d4e85930d3ec37e0350ab3fe75e877.png"
+    class="post-cover"
+    alt="floodFillで領域に色を塗る"
+    title="Cover Image" />
+
+
+        <div class="post-content">
+          
+            <p>本記事はQrunchからの転載です。</p>
+<hr>
+<p>OpenCVのfloodFillを使うことで、選んだ点の周辺の似たような色のピクセルを塗りつぶすことができます。</p>
+          
+        </div>
+
+        
+          <div>
+            <a class="read-more button inline" href="/posts/floodfill%E3%81%A7%E9%A0%98%E5%9F%9F%E3%81%AB%E8%89%B2%E3%82%92%E5%A1%97%E3%82%8B/">[Read more]</a>
+          </div>
+        
+      </article>
+    
+      <article class="post on-list">
+        <h2 class="post-title">
+          <a href="https://opqrstuvcut.github.io/posts/hough%E5%A4%89%E6%8F%9B%E3%81%A7%E5%86%86%E3%82%92%E6%A4%9C%E5%87%BA/">Hough変換で円を検出</a>
+        </h2>
+
+        <div class="post-meta"><time class="post-date">2020-08-05</time></div>
+
+        
+          <span class="post-tags">
+            
+            #<a href="https://opqrstuvcut.github.io/tags/opencv/">OpenCV</a>&nbsp;
+            
+            #<a href="https://opqrstuvcut.github.io/tags/hough%E5%A4%89%E6%8F%9B/">Hough変換</a>&nbsp;
+            
+            #<a href="https://opqrstuvcut.github.io/tags/%E5%86%86%E6%A4%9C%E5%87%BA/">円検出</a>&nbsp;
+            
+          </span>
+        
+
+        
+  <img src="/posts/hough%E5%A4%89%E6%8F%9B%E3%81%A7%E5%86%86%E3%82%92%E6%A4%9C%E5%87%BA/51aa777f4487689837d45257fa1eba91.png"
+    class="post-cover"
+    alt="Hough変換で円を検出"
+    title="Cover Image" />
+
+
+        <div class="post-content">
+          
+            <p>本記事はQrunchからの転載です。</p>
+<hr>
+<p>Hough変換は直線を検出する方法として前回紹介したのですが、Hough変換を応用することで、円の検出も行えます。</p>
+          
+        </div>
+
+        
+          <div>
+            <a class="read-more button inline" href="/posts/hough%E5%A4%89%E6%8F%9B%E3%81%A7%E5%86%86%E3%82%92%E6%A4%9C%E5%87%BA/">[Read more]</a>
+          </div>
+        
+      </article>
+    
+      <article class="post on-list">
+        <h2 class="post-title">
+          <a href="https://opqrstuvcut.github.io/posts/hough%E3%83%8F%E3%83%95%E5%A4%89%E6%8F%9B%E3%81%A7%E7%9B%B4%E7%B7%9A%E3%82%92%E8%A6%8B%E3%81%A4%E3%81%91%E3%82%88%E3%81%86/">Hough（ハフ）変換で直線を見つけよう</a>
+        </h2>
+
+        <div class="post-meta"><time class="post-date">2020-08-04</time></div>
+
+        
+          <span class="post-tags">
+            
+            #<a href="https://opqrstuvcut.github.io/tags/opencv/">OpenCV</a>&nbsp;
+            
+            #<a href="https://opqrstuvcut.github.io/tags/hough%E5%A4%89%E6%8F%9B/">Hough変換</a>&nbsp;
+            
+          </span>
+        
+
+        
+  <img src="/posts/hough%E3%83%8F%E3%83%95%E5%A4%89%E6%8F%9B%E3%81%A7%E7%9B%B4%E7%B7%9A%E3%82%92%E8%A6%8B%E3%81%A4%E3%81%91%E3%82%88%E3%81%86/f57bd9c6dc056b82e658a2f6ca7b6258.png"
+    class="post-cover"
+    alt="Hough（ハフ）変換で直線を見つけよう"
+    title="Cover Image" />
+
+
+        <div class="post-content">
+          
+            <p>本記事はQrunchからの転載です。</p>
+<hr>
+<p>Hough変換は画像から直線をみつける方法です。</p>
+<h1 id="簡単な原理">簡単な原理</h1>
+<p>入力として2値画像を考えます。
+Hough変換では候補となる直線を用意し、直線上にいくつ0でないピクセルがあるかを数えます。
+このピクセルの個数が指定したしきい値以上であった場合、その候補の直線は正しい直線として扱います。</p>
+          
+        </div>
+
+        
+          <div>
+            <a class="read-more button inline" href="/posts/hough%E3%83%8F%E3%83%95%E5%A4%89%E6%8F%9B%E3%81%A7%E7%9B%B4%E7%B7%9A%E3%82%92%E8%A6%8B%E3%81%A4%E3%81%91%E3%82%88%E3%81%86/">[Read more]</a>
+          </div>
+        
+      </article>
+    
+      <article class="post on-list">
+        <h2 class="post-title">
+          <a href="https://opqrstuvcut.github.io/posts/canny%E6%B3%95%E3%81%A7%E3%82%A8%E3%83%83%E3%82%B8%E6%A4%9C%E5%87%BA/">Canny法でエッジ検出</a>
+        </h2>
+
+        <div class="post-meta"><time class="post-date">2020-08-03</time></div>
+
+        
+          <span class="post-tags">
+            
+            #<a href="https://opqrstuvcut.github.io/tags/opencv/">OpenCV</a>&nbsp;
+            
+            #<a href="https://opqrstuvcut.github.io/tags/canny/">Canny</a>&nbsp;
+            
+          </span>
+        
+
+        
+  <img src="/posts/canny%E6%B3%95%E3%81%A7%E3%82%A8%E3%83%83%E3%82%B8%E6%A4%9C%E5%87%BA/5154e105157ba91bf3bf7306d1cfffe1.jpg"
+    class="post-cover"
+    alt="Canny法でエッジ検出"
+    title="Cover Image" />
+
+
+        <div class="post-content">
+          
+            <p>本記事はQrunchからの転載です。</p>
+<hr>
+<p>エッジ検出の方法として、Canny法というものがあります。
+SobelフィルタやLaplacianフィルタもエッジ検出ができるわけですが、Canny法を使うとより正確に輪郭を検出することが可能です。</p>
+          
+        </div>
+
+        
+          <div>
+            <a class="read-more button inline" href="/posts/canny%E6%B3%95%E3%81%A7%E3%82%A8%E3%83%83%E3%82%B8%E6%A4%9C%E5%87%BA/">[Read more]</a>
+          </div>
+        
+      </article>
+    
+      <article class="post on-list">
+        <h2 class="post-title">
+          <a href="https://opqrstuvcut.github.io/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/">ヒストグラム平坦化</a>
+        </h2>
+
+        <div class="post-meta"><time class="post-date">2020-08-02</time></div>
+
+        
+          <span class="post-tags">
+            
+            #<a href="https://opqrstuvcut.github.io/tags/opencv/">OpenCV</a>&nbsp;
+            
+            #<a href="https://opqrstuvcut.github.io/tags/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/">ヒストグラム平坦化</a>&nbsp;
+            
+          </span>
+        
+
+        
+  <img src="/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/e534d7e8e9969a0405e4a1b8f7eea112.png"
+    class="post-cover"
+    alt="ヒストグラム平坦化"
+    title="Cover Image" />
+
+
+        <div class="post-content">
+          
+            <p>本記事はQrunchからの転載です。</p>
+<hr>
+<p>今日はヒストグラム平坦化を扱います。</p>
+<p>ヒストグラム平坦化はコントラストが偏っているような画像を補正します。
+結果として、コントラストがある程度平坦化された結果が得られます。</p>
+          
+        </div>
+
+        
+          <div>
+            <a class="read-more button inline" href="/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/">[Read more]</a>
+          </div>
+        
+      </article>
+    
+      <article class="post on-list">
+        <h2 class="post-title">
+          <a href="https://opqrstuvcut.github.io/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/">Non-Local Means Denoisingでノイズ除去</a>
+        </h2>
+
+        <div class="post-meta"><time class="post-date">2020-08-01</time></div>
+
+        
+          <span class="post-tags">
+            
+            #<a href="https://opqrstuvcut.github.io/tags/opencv/">OpenCV</a>&nbsp;
+            
+            #<a href="https://opqrstuvcut.github.io/tags/fnlmd/">FNLMD</a>&nbsp;
+            
+            #<a href="https://opqrstuvcut.github.io/tags/%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/">ノイズ除去</a>&nbsp;
+            
+          </span>
+        
+
+        
+  <img src="/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/783215bfb0d1c75f10337b84d03a1a34.png"
+    class="post-cover"
+    alt="Non-Local Means Denoisingでノイズ除去"
+    title="Cover Image" />
+
+
+        <div class="post-content">
+          
+            <p>本記事はQrunchからの転載です。</p>
+<hr>
+<h1 id="non-local-means-denoisingのアイデア">Non-Local Means Denoisingのアイデア</h1>
+<p>今回はノイズ除去を扱うのですが、特にガウスノイズを考えます。
+これは平均が0となるノイズですので、着目しているピクセルにある意味で<strong>似ている</strong>ピクセルを画像中から探してきて、それらの平均を取れば、ノイズの影響が消えたピクセルが得られるはずです。
+これがNon-Local Means Denoisingのアイデアになります。</p>
+          
+        </div>
+
+        
+          <div>
+            <a class="read-more button inline" href="/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/">[Read more]</a>
+          </div>
+        
+      </article>
+    
+
+    <div class="pagination">
+  <div class="pagination__buttons">
+    
+      <a href="/page/4/" class="button inline prev">
+        &lt; [<span class="button__text">Newer posts</span>]
+      </a>
+    
+    
+      ::
+    
+    
+      <a href="/page/6/" class="button inline next">
+        [<span class="button__text">Older posts</span>] &gt;
+      </a>
+    
+  </div>
+</div>
+
+  </div>
+
+				</main>
+				<aside id="sidebar">
+	<h3>最近の記事</h3>
+	<ul class="recent-posts"><li>
+			<a href="/posts/openai%E3%81%AEpython%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E5%88%A9%E7%94%A8%E3%81%A7unsupported-file-format%E3%81%8C%E3%81%A7%E3%82%8B/">OpenAIのPythonモジュール利用で「Unsupported file format」がでる</a>
+			<small class="date">2025-07-31</small>
+		</li><li>
+			<a href="/posts/hidden-in-plain-sight-vlms-overlook-their-visual-representations%E3%81%AE%E8%AB%96%E6%96%87%E7%B4%B9%E4%BB%8B/">「Hidden in plain sight： VLMs overlook their visual representations」の論文紹介</a>
+			<small class="date">2025-07-28</small>
+		</li><li>
+			<a href="/posts/%E6%8B%A1%E6%95%A3%E8%A8%80%E8%AA%9E%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AEllada/">拡散言語モデルのLLaDA</a>
+			<small class="date">2025-06-30</small>
+		</li><li>
+			<a href="/posts/%E5%A4%96%E9%83%A8%E7%9F%A5%E8%AD%98%E3%82%92%E6%B4%BB%E7%94%A8%E3%81%97%E3%81%A6%E5%8A%B9%E7%8E%87%E7%9A%84%E3%81%AB%E6%80%A7%E8%83%BD%E5%90%91%E4%B8%8A%E3%82%92%E9%81%94%E6%88%90%E3%81%97%E3%81%9Fyolo-rd/">外部知識を活用して効率的に性能向上を達成したYOLO-RD</a>
+			<small class="date">2025-05-31</small>
+		</li><li>
+			<a href="/posts/label-studio%E3%81%AEapi%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9F%E3%83%87%E3%83%BC%E3%82%BF%E9%80%A3%E6%90%BA%E3%81%AE%E3%83%A1%E3%83%A2/">Label StudioのAPIを利用したデータ連携のメモ</a>
+			<small class="date">2025-04-24</small>
+		</li><li>
+			<a href="/posts/%E5%9B%9E%E8%BB%A2%E3%81%97%E3%81%A6%E3%81%84%E3%82%8Bbounding-box%E5%90%91%E3%81%91%E3%81%AEiou%E3%81%AEkfiou/">回転しているBounding Box向けのIoUのKFIoU</a>
+			<small class="date">2025-03-22</small>
+		</li><li>
+			<a href="/posts/%E7%89%B9%E5%BE%B4%E9%87%8F%E3%81%AE%E6%AC%A1%E5%85%83%E3%81%AE%E6%9F%94%E8%BB%9F%E6%80%A7%E3%81%8C%E9%AB%98%E3%81%84%E3%83%9E%E3%83%88%E3%83%AA%E3%83%A7%E3%83%BC%E3%82%B7%E3%82%AB%E8%A1%A8%E7%8F%BE%E5%AD%A6%E7%BF%92/">特徴量の次元の柔軟性が高いマトリョーシカ表現学習</a>
+			<small class="date">2025-02-17</small>
+		</li><li>
+			<a href="/posts/waic/">WAIC</a>
+			<small class="date">2025-01-18</small>
+		</li></ul>
+
+
+	<h3>カテゴリ</h3>
+<ul class="categories">
+  
+    <li>
+      <a href="/categories/app-runner">app runner</a>
+
+      (1)
+    </li>
+  
+    <li>
+      <a href="/categories/aws">aws</a>
+
+      (7)
+    </li>
+  
+    <li>
+      <a href="/categories/chrome">chrome</a>
+
+      (1)
+    </li>
+  
+    <li>
+      <a href="/categories/deep-learning">deep learning</a>
+
+      (2)
+    </li>
+  
+    <li>
+      <a href="/categories/docker">docker</a>
+
+      (1)
+    </li>
+  
+    <li>
+      <a href="/categories/ecs">ecs</a>
+
+      (1)
+    </li>
+  
+    <li>
+      <a href="/categories/feature-importance">feature importance</a>
+
+      (3)
+    </li>
+  
+    <li>
+      <a href="/categories/flutter">flutter</a>
+
+      (1)
+    </li>
+  
+    <li>
+      <a href="/categories/gcp">gcp</a>
+
+      (1)
+    </li>
+  
+    <li>
+      <a href="/categories/gpu">gpu</a>
+
+      (2)
+    </li>
+  
+    <li>
+      <a href="/categories/kubernetes">kubernetes</a>
+
+      (1)
+    </li>
+  
+    <li>
+      <a href="/categories/llm">llm</a>
+
+      (2)
+    </li>
+  
+    <li>
+      <a href="/categories/nlp">nlp</a>
+
+      (2)
+    </li>
+  
+    <li>
+      <a href="/categories/openai">openai</a>
+
+      (1)
+    </li>
+  
+    <li>
+      <a href="/categories/opencv">opencv</a>
+
+      (31)
+    </li>
+  
+    <li>
+      <a href="/categories/opencv%E7%94%9F%E6%B4%BB">opencv生活</a>
+
+      (3)
+    </li>
+  
+    <li>
+      <a href="/categories/pandas">pandas</a>
+
+      (1)
+    </li>
+  
+    <li>
+      <a href="/categories/python">python</a>
+
+      (6)
+    </li>
+  
+    <li>
+      <a href="/categories/sql">sql</a>
+
+      (1)
+    </li>
+  
+    <li>
+      <a href="/categories/tensorflow">tensorflow</a>
+
+      (1)
+    </li>
+  
+    <li>
+      <a href="/categories/uwsgi">uwsgi</a>
+
+      (1)
+    </li>
+  
+    <li>
+      <a href="/categories/vim">vim</a>
+
+      (1)
+    </li>
+  
+    <li>
+      <a href="/categories/vim%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3">vimプラグイン</a>
+
+      (1)
+    </li>
+  
+    <li>
+      <a href="/categories/vlm">vlm</a>
+
+      (1)
+    </li>
+  
+    <li>
+      <a href="/categories/%E3%82%A2%E3%83%8E%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">アノテーション</a>
+
+      (1)
+    </li>
+  
+    <li>
+      <a href="/categories/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0">ディープラーニング</a>
+
+      (6)
+    </li>
+  
+    <li>
+      <a href="/categories/%E3%83%99%E3%82%A4%E3%82%BA">ベイズ</a>
+
+      (1)
+    </li>
+  
+    <li>
+      <a href="/categories/%E6%83%85%E5%A0%B1%E9%87%8F%E5%9F%BA%E6%BA%96">情報量基準</a>
+
+      (1)
+    </li>
+  
+    <li>
+      <a href="/categories/%E6%95%B0%E5%80%A4%E8%A8%88%E7%AE%97">数値計算</a>
+
+      (1)
+    </li>
+  
+    <li>
+      <a href="/categories/%E6%95%B0%E5%AD%A6">数学</a>
+
+      (1)
+    </li>
+  
+    <li>
+      <a href="/categories/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92">機械学習</a>
+
+      (11)
+    </li>
+  
+    <li>
+      <a href="/categories/%E6%B7%B1%E5%B1%A4%E5%AD%A6%E7%BF%92">深層学習</a>
+
+      (2)
+    </li>
+  
+    <li>
+      <a href="/categories/%E7%89%A9%E4%BD%93%E6%A4%9C%E5%87%BA">物体検出</a>
+
+      (2)
+    </li>
+  
+    <li>
+      <a href="/categories/%E7%94%BB%E5%83%8F%E5%87%A6%E7%90%86">画像処理</a>
+
+      (36)
+    </li>
+  
+    <li>
+      <a href="/categories/%E7%B5%B1%E8%A8%88">統計</a>
+
+      (2)
+    </li>
+  
+    <li>
+      <a href="/categories/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E5%87%A6%E7%90%86">自然言語処理</a>
+
+      (4)
+    </li>
+  
+    <li>
+      <a href="/categories/%E8%A1%A8%E7%8F%BE%E5%AD%A6%E7%BF%92">表現学習</a>
+
+      (1)
+    </li>
+  
+</ul>
+
+<h3>タグ</h3>
+<ul class="tags">
+  
+    <li>
+      <a href="/tags/adaptivethreshold">adaptivethreshold</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/affine">affine</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/ai-search">ai search</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/aic">aic</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/albert">albert</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/aws">aws</a>
+      (7)
+    </li>
+  
+    <li>
+      <a href="/tags/azure">azure</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/bert">bert</a>
+      (5)
+    </li>
+  
+    <li>
+      <a href="/tags/boto3">boto3</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/bubble">bubble</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/canny">canny</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/chromedriver">chromedriver</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/clip">clip</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/closing">closing</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/cnn">cnn</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/cognito">cognito</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/coordconv">coordconv</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/cuda">cuda</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/cv">cv</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/dart">dart</a>
+      (2)
+    </li>
+  
+    <li>
+      <a href="/tags/deep-learning">deep learning</a>
+      (3)
+    </li>
+  
+    <li>
+      <a href="/tags/deeplearning">deeplearning</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/deeplift">deeplift</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/dilate">dilate</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/dlq">dlq</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/docker">docker</a>
+      (2)
+    </li>
+  
+    <li>
+      <a href="/tags/docker-compose">docker-compose</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/drawcontours">drawcontours</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/ecs">ecs</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/efficientnet">efficientnet</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/embedding">embedding</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/erode">erode</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/fastapi">fastapi</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/feature-importance">feature importance</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/filter2d">filter2d</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/floodfill">floodfill</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/flutter">flutter</a>
+      (2)
+    </li>
+  
+    <li>
+      <a href="/tags/fnlmd">fnlmd</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/gcp">gcp</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/gke">gke</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/gpt">gpt</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/gpu">gpu</a>
+      (2)
+    </li>
+  
+    <li>
+      <a href="/tags/grabcuts">grabcuts</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/groupby">groupby</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/gru">gru</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/hessian">hessian</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/hough%E5%A4%89%E6%8F%9B">hough変換</a>
+      (2)
+    </li>
+  
+    <li>
+      <a href="/tags/imagebert">imagebert</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/individual-conditional-expectation">individual conditional expectation</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/inpaint">inpaint</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/integrated-gradients">integrated gradients</a>
+      (2)
+    </li>
+  
+    <li>
+      <a href="/tags/iou">iou</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/jupyter">jupyter</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/jupytxt">jupytxt</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/keras">keras</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/kfiou">kfiou</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/kldivergence">kldivergence</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/kubernetes">kubernetes</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/label-studio">label studio</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/lambda">lambda</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/laplacian">laplacian</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/lime">lime</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/llada">llada</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/llama">llama</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/llm">llm</a>
+      (2)
+    </li>
+  
+    <li>
+      <a href="/tags/lstm">lstm</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/lu%E5%88%86%E8%A7%A3">lu分解</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/m3u8">m3u8</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/magma">magma</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/mamba">mamba</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/manifold">manifold</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/matplotlib">matplotlib</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/medianblur">medianblur</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/minio">minio</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/minmaxloc">minmaxloc</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/mlm">mlm</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/namedtuple">namedtuple</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/neovim">neovim</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/nlp">nlp</a>
+      (2)
+    </li>
+  
+    <li>
+      <a href="/tags/numpy">numpy</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/nvidia">nvidia</a>
+      (2)
+    </li>
+  
+    <li>
+      <a href="/tags/object-detection">object detection</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/onnx">onnx</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/onnx-runtime">onnx runtime</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/openai">openai</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/opencv">opencv</a>
+      (30)
+    </li>
+  
+    <li>
+      <a href="/tags/opencv2">opencv2</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/opening">opening</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/pabdas">pabdas</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/pandas">pandas</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/partial-dependence-plot">partial dependence plot</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/postgresql">postgresql</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/pre-annotations">pre-annotations</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/pymc">pymc</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/python">python</a>
+      (16)
+    </li>
+  
+    <li>
+      <a href="/tags/pytorch">pytorch</a>
+      (4)
+    </li>
+  
+    <li>
+      <a href="/tags/rag">rag</a>
+      (2)
+    </li>
+  
+    <li>
+      <a href="/tags/rnn">rnn</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/rotated-bounding-box">rotated bounding box</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/rt-detr">rt-detr</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/s3">s3</a>
+      (2)
+    </li>
+  
+    <li>
+      <a href="/tags/sepfilter2d">sepfilter2d</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/shap">shap</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/skewiou">skewiou</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/sobel">sobel</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/sqs">sqs</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/sum-tree">sum tree</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/table">table</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/tabnet">tabnet</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/tabtransformer">tabtransformer</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/tabular">tabular</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/tensorboard">tensorboard</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/tensorflow">tensorflow</a>
+      (3)
+    </li>
+  
+    <li>
+      <a href="/tags/tic">tic</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/transformer">transformer</a>
+      (2)
+    </li>
+  
+    <li>
+      <a href="/tags/uvicorn">uvicorn</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/uwsgi">uwsgi</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/vim">vim</a>
+      (2)
+    </li>
+  
+    <li>
+      <a href="/tags/vlm">vlm</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/waic">waic</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/watershed">watershed</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/workload-identity">workload identity</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/yolo">yolo</a>
+      (2)
+    </li>
+  
+    <li>
+      <a href="/tags/yolo-rd">yolo-rd</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/yolov5">yolov5</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E3%82%A2%E3%83%8E%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">アノテーション</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B">アフィン変換</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E3%82%AB%E3%83%AB%E3%83%9E%E3%83%B3%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%BC">カルマンフィルター</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E3%82%AC%E3%82%A6%E3%82%B9%E5%B9%B3%E6%BB%91%E5%8C%96">ガウス平滑化</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E3%82%AD%E3%83%A3%E3%83%97%E3%82%B7%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0">キャプショニング</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0">サンプリング</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E3%82%B9%E3%83%94%E3%82%A2%E3%83%9E%E3%83%B3%E3%81%AE%E9%A0%86%E4%BD%8D%E7%9B%B8%E9%96%A2%E4%BF%82%E6%95%B0">スピアマンの順位相関係数</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%83%9E%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0">テンプレートマッチング</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0">ディープラーニング</a>
+      (12)
+    </li>
+  
+    <li>
+      <a href="/tags/%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB">ノイズ除去</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0">ヒストグラム</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96">ヒストグラム平坦化</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E6%AF%94%E8%BC%83">ヒストグラム比較</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E3%83%98%E3%83%83%E3%82%BB%E8%A1%8C%E5%88%97">ヘッセ行列</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E3%83%99%E3%82%A4%E3%82%BA">ベイズ</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E4%BA%8C%E5%80%A4%E5%8C%96">二値化</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E5%86%86%E6%A4%9C%E5%87%BA">円検出</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E5%87%B8">凸</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E5%88%86%E9%9B%A2%E5%8F%AF%E8%83%BD%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF">分離可能フィルタ</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E5%89%8D%E6%99%AF%E5%88%86%E9%9B%A2">前景分離</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E5%8B%95%E7%94%BB">動画</a>
+      (2)
+    </li>
+  
+    <li>
+      <a href="/tags/%E5%90%B9%E3%81%8D%E5%87%BA%E3%81%97">吹き出し</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E5%9C%A7%E7%B8%AE">圧縮</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E5%A4%A7%E6%B4%A5%E4%BA%8C%E5%80%A4%E5%8C%96">大津二値化</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E5%A4%A7%E8%A6%8F%E6%A8%A1%E8%A8%80%E8%AA%9E%E3%83%A2%E3%83%87%E3%83%AB">大規模言語モデル</a>
+      (2)
+    </li>
+  
+    <li>
+      <a href="/tags/%E5%AF%84%E4%B8%8E">寄与</a>
+      (2)
+    </li>
+  
+    <li>
+      <a href="/tags/%E5%AF%84%E4%B8%8E%E5%BA%A6">寄与度</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E5%B9%B3%E6%BB%91%E5%8C%96">平滑化</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E5%BE%A9%E5%85%83">復元</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E6%83%85%E5%A0%B1%E9%87%8F%E5%9F%BA%E6%BA%96">情報量基準</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E6%8B%A1%E6%95%A3%E3%83%A2%E3%83%87%E3%83%AB">拡散モデル</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E6%95%B0%E5%AD%A6">数学</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92">機械学習</a>
+      (5)
+    </li>
+  
+    <li>
+      <a href="/tags/%E6%AD%A3%E8%A6%8F%E5%88%86%E5%B8%83">正規分布</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E6%B7%B1%E5%B1%A4%E5%AD%A6%E7%BF%92">深層学習</a>
+      (9)
+    </li>
+  
+    <li>
+      <a href="/tags/%E6%B8%A1%E8%BE%BA%E6%BE%84%E5%A4%AB%E3%83%99%E3%82%A4%E3%82%BA">渡辺澄夫ベイズ</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E7%89%A9%E4%BD%93%E6%A4%9C%E5%87%BA">物体検出</a>
+      (3)
+    </li>
+  
+    <li>
+      <a href="/tags/%E7%89%A9%E4%BD%93%E8%AA%8D%E8%AD%98">物体認識</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E7%89%B9%E5%BE%B4%E9%87%8F">特徴量</a>
+      (2)
+    </li>
+  
+    <li>
+      <a href="/tags/%E7%94%BB%E5%83%8F">画像</a>
+      (4)
+    </li>
+  
+    <li>
+      <a href="/tags/%E7%95%B3%E3%81%BF%E8%BE%BC%E3%81%BF">畳み込み</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E7%B5%B1%E8%A8%88">統計</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E7%B8%AE%E5%B0%8F">縮小</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E8%86%A8%E5%BC%B5">膨張</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E">自然言語</a>
+      (3)
+    </li>
+  
+    <li>
+      <a href="/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E5%87%A6%E7%90%86">自然言語処理</a>
+      (2)
+    </li>
+  
+    <li>
+      <a href="/tags/%E8%92%B8%E7%95%99">蒸留</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E8%A1%A8%E7%8F%BE%E5%AD%A6%E7%BF%92">表現学習</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E8%A8%88%E7%AE%97%E9%87%8F">計算量</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E8%AA%AC%E6%98%8E%E5%8F%AF%E8%83%BDai">説明可能ai</a>
+      (2)
+    </li>
+  
+    <li>
+      <a href="/tags/%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF">読み込み</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E8%B2%A0%E5%AE%9A%E5%80%A4">負定値</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E8%B7%9D%E9%9B%A2%E5%A4%89%E6%8F%9B">距離変換</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E8%BC%AA%E9%83%AD">輪郭</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E8%BC%AA%E9%83%AD%E6%8A%BD%E5%87%BA">輪郭抽出</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E9%80%86%E8%A1%8C%E5%88%97">逆行列</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E9%80%8F%E9%81%8E%E5%A4%89%E6%8F%9B">透過変換</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E9%80%A3%E7%AB%8B%E4%B8%80%E6%AC%A1%E6%96%B9%E7%A8%8B%E5%BC%8F">連立一次方程式</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E9%81%A9%E5%BF%9C%E7%9A%84%E6%A4%9C%E7%B4%A2">適応的検索</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E9%87%8D%E8%A6%81%E5%BA%A6">重要度</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E9%9B%86%E8%A8%88">集計</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E9%A0%98%E5%9F%9F%E6%8A%BD%E5%87%BA">領域抽出</a>
+      (1)
+    </li>
+  
+    <li>
+      <a href="/tags/%E9%AB%98%E9%80%9F%E5%8C%96">高速化</a>
+      (1)
+    </li>
+  
+</ul>
+</aside>
+
+			</div>
+		</div>
+
+
+		
+		<footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2025 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  let fuse;
+  const input = document.getElementById("search-box");
+  const resultsList = document.getElementById("search-results");
+
+  if (!input) return; 
+
+  fetch("\/index.json")
+    .then(res => res.json())
+    .then(data => {
+      fuse = new Fuse(data, {
+        keys: ["title", "summary"],
+        threshold: 0.3,
+      });
+
+      input.addEventListener("input", () => {
+        if (!fuse) return;
+        const results = fuse.search(input.value);
+        resultsList.innerHTML = "";
+        results.slice(0, 5).forEach(r => {
+          const li = document.createElement("li");
+          li.innerHTML = `<a href="${r.item.url}">${r.item.title}</a>`;
+          resultsList.appendChild(li);
+        });
+      });
+    });
+});
+</script>
+
+
+
+		
+	</div>
+
+</body>
+
+</html>

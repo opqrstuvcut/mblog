@@ -1,61 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>AWS on MatLoverによるMatlab以外のブログ</title>
-    <link>https://opqrstuvcut.github.io/categories/aws/</link>
-    <description>Recent content in AWS on MatLoverによるMatlab以外のブログ</description>
-    <generator>Hugo</generator>
-    <language>ja</language>
-    <lastBuildDate>Thu, 25 May 2023 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://opqrstuvcut.github.io/categories/aws/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>App Runnerを実戦投入してのメモ</title>
-      <link>https://opqrstuvcut.github.io/posts/app-runner%E3%82%92%E5%AE%9F%E6%88%A6%E6%8A%95%E5%85%A5%E3%81%97%E3%81%A6%E3%81%AE%E3%83%A1%E3%83%A2/</link>
-      <pubDate>Thu, 25 May 2023 00:00:00 +0000</pubDate>
-      <guid>https://opqrstuvcut.github.io/posts/app-runner%E3%82%92%E5%AE%9F%E6%88%A6%E6%8A%95%E5%85%A5%E3%81%97%E3%81%A6%E3%81%AE%E3%83%A1%E3%83%A2/</guid>
-      <description>&lt;p&gt;簡単にAPIサーバーを用意する方法としてGCPではCloud Run、AWSではApp Runnerが挙げられると思います。&lt;/p&gt;&#xA;&lt;p&gt;今回は最近使ってみたApp Runnerについていくつかメモがてら書いていきます。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>docker composeでAWS ECSにデプロイするときのtips</title>
-      <link>https://opqrstuvcut.github.io/posts/docker-compose%E3%81%A7aws-ecs%E3%81%AB%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%99%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AEtips/</link>
-      <pubDate>Tue, 13 Dec 2022 00:00:00 +0000</pubDate>
-      <guid>https://opqrstuvcut.github.io/posts/docker-compose%E3%81%A7aws-ecs%E3%81%AB%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%99%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AEtips/</guid>
-      <description>&lt;p&gt;docker composeを使ってAWSのECSにアプリをデプロイ可能ですが、もしかすると役立つものがあるかもしれないのでメモを残しておきます。&#xA;作業したのが半年前なので少し情報が古いかもしれないのです。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>FastAPI &#43; uvicornの構成のサーバーで時間経過でメモリ使用量が増えるとき</title>
-      <link>https://opqrstuvcut.github.io/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/</link>
-      <pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>https://opqrstuvcut.github.io/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/</guid>
-      <description>&lt;h1 id=&#34;問題発生時の状況&#34;&gt;問題発生時の状況&lt;/h1&gt;&#xA;&lt;p&gt;AWSのECS上にFastAPI + uvicornの構成でのサーバーをたてました。内容的には普通のREST APIです。&lt;br&gt;&#xA;とりあえずは順調に動作していたのですが、たまにコンテナが再起動しているっぽいけどなんだろうと思って調べていたところ、メモリ使用量が次のようになっていました。&lt;br&gt;&#xA;&#xA;&#xA;&#xA;&#x9;&#xA;&#x9;&lt;a href=&#34;https://opqrstuvcut.github.io/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/memory_usage_ng.png&#34;&gt;&#xA;&#x9;&lt;img src=&#34;https://opqrstuvcut.github.io/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/memory_usage_ng_hu_827a181089c8ec1f.png&#34; alt=&#34;メモリ使用量&#34;&gt;&#xA;&#x9;&lt;/a&gt;&#xA;&#xA;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>AWSのDead Letter QueueのメッセージをもとのQueueに戻す</title>
-      <link>https://opqrstuvcut.github.io/posts/aws%E3%81%AEdead-letter-queue%E3%81%AE%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%82%92%E3%82%82%E3%81%A8%E3%81%AEqueue%E3%81%AB%E6%88%BB%E3%81%99/</link>
-      <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>https://opqrstuvcut.github.io/posts/aws%E3%81%AEdead-letter-queue%E3%81%AE%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%82%92%E3%82%82%E3%81%A8%E3%81%AEqueue%E3%81%AB%E6%88%BB%E3%81%99/</guid>
-      <description>&lt;p&gt;AWSのSQSを使うときにちょっと困るのが、アプリの不具合等でDead Letter Queueに送られたメッセージをもとのQueueに戻したいケースです。&#xA;調べた感じでは、通常のAWS CLIでは簡単にはできなさそうです。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>AWSのLambdaからPostgresを利用</title>
-      <link>https://opqrstuvcut.github.io/posts/aws%E3%81%AElambda%E3%81%8B%E3%82%89postgres%E3%82%92%E5%88%A9%E7%94%A8/</link>
-      <pubDate>Mon, 04 May 2020 13:35:16 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/posts/aws%E3%81%AElambda%E3%81%8B%E3%82%89postgres%E3%82%92%E5%88%A9%E7%94%A8/</guid>
-      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;AWSのLambda（Python）からPostgresを利用するためのライブラリの使い方のメモです。何もトラブルなく使えましたが、一応。&#xA;ライブラリのレポジトリは&lt;a href=&#34;https://github.com/jkehler/awslambda-psycopg2&#34;&gt;こちら&lt;/a&gt;です。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>FlutterでS3にファイルをアップロードする</title>
-      <link>https://opqrstuvcut.github.io/posts/flutter%E3%81%A7s3%E3%81%AB%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E3%82%A2%E3%83%83%E3%83%97%E3%83%AD%E3%83%BC%E3%83%89%E3%81%99%E3%82%8B/</link>
-      <pubDate>Sun, 08 Dec 2019 19:04:32 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/posts/flutter%E3%81%A7s3%E3%81%AB%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E3%82%A2%E3%83%83%E3%83%97%E3%83%AD%E3%83%BC%E3%83%89%E3%81%99%E3%82%8B/</guid>
-      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;FlutterでS3へファイルをアップロードするための公式のライブラリはありませんが、有志によるライブラリ&lt;a href=&#34;https://pub.dev/packages/amazon_s3_cognito&#34;&gt;amazon_s3_cognito&lt;/a&gt;があります。&#xA;今回はこちらの紹介+forkしてちょっと修正したのでよければ使ってねという話になります。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>MinIOでローカルにS3みたいなものを作って開発する</title>
-      <link>https://opqrstuvcut.github.io/posts/minio%E3%81%A7%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%81%ABs3%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AA%E3%82%82%E3%81%AE%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%A6%E9%96%8B%E7%99%BA%E3%81%99%E3%82%8B/</link>
-      <pubDate>Sat, 09 Nov 2019 12:48:01 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/posts/minio%E3%81%A7%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%81%ABs3%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AA%E3%82%82%E3%81%AE%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%A6%E9%96%8B%E7%99%BA%E3%81%99%E3%82%8B/</guid>
-      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;AWSのS3を使うようなシステムを開発するときに、S3と連携する部分だけAWSにつなぐより、ローカルにS3が欲しいなぁってふと思いました。でもそんな都合が良い話があるわけないよなぁ、なんて思ったら実はありました！その名も&lt;strong&gt;MinIO&lt;/strong&gt;。&#xA;今回はMinIOの使い方を簡単にご紹介します。とても簡単です。&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AWS on MatLoverによるMatlab以外のブログ</title><link>https://opqrstuvcut.github.io/categories/aws/</link><description>Recent content in AWS on MatLoverによるMatlab以外のブログ</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Thu, 25 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://opqrstuvcut.github.io/categories/aws/index.xml" rel="self" type="application/rss+xml"/><item><title>App Runnerを実戦投入してのメモ</title><link>https://opqrstuvcut.github.io/posts/app-runner%E3%82%92%E5%AE%9F%E6%88%A6%E6%8A%95%E5%85%A5%E3%81%97%E3%81%A6%E3%81%AE%E3%83%A1%E3%83%A2/</link><pubDate>Thu, 25 May 2023 00:00:00 +0000</pubDate><guid>https://opqrstuvcut.github.io/posts/app-runner%E3%82%92%E5%AE%9F%E6%88%A6%E6%8A%95%E5%85%A5%E3%81%97%E3%81%A6%E3%81%AE%E3%83%A1%E3%83%A2/</guid><description>&lt;p>簡単にAPIサーバーを用意する方法としてGCPではCloud Run、AWSではApp Runnerが挙げられると思います。&lt;/p>
+&lt;p>今回は最近使ってみたApp Runnerについていくつかメモがてら書いていきます。&lt;/p></description></item><item><title>docker composeでAWS ECSにデプロイするときのtips</title><link>https://opqrstuvcut.github.io/posts/docker-compose%E3%81%A7aws-ecs%E3%81%AB%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%99%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AEtips/</link><pubDate>Tue, 13 Dec 2022 00:00:00 +0000</pubDate><guid>https://opqrstuvcut.github.io/posts/docker-compose%E3%81%A7aws-ecs%E3%81%AB%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%99%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AEtips/</guid><description>&lt;p>docker composeを使ってAWSのECSにアプリをデプロイ可能ですが、もしかすると役立つものがあるかもしれないのでメモを残しておきます。
+作業したのが半年前なので少し情報が古いかもしれないのです。&lt;/p></description></item><item><title>FastAPI + uvicornの構成のサーバーで時間経過でメモリ使用量が増えるとき</title><link>https://opqrstuvcut.github.io/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/</link><pubDate>Sun, 20 Mar 2022 00:00:00 +0000</pubDate><guid>https://opqrstuvcut.github.io/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/</guid><description>&lt;h1 id="問題発生時の状況">問題発生時の状況&lt;/h1>
+&lt;p>AWSのECS上にFastAPI + uvicornの構成でのサーバーをたてました。内容的には普通のREST APIです。&lt;br>
+とりあえずは順調に動作していたのですが、たまにコンテナが再起動しているっぽいけどなんだろうと思って調べていたところ、メモリ使用量が次のようになっていました。&lt;br>
+
+
+
+	
+	&lt;a href="https://opqrstuvcut.github.io/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/memory_usage_ng.png">
+	&lt;img src="https://opqrstuvcut.github.io/posts/fastapi--uvicorn%E3%81%AE%E6%A7%8B%E6%88%90%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E6%99%82%E9%96%93%E7%B5%8C%E9%81%8E%E3%81%A7%E3%83%A1%E3%83%A2%E3%83%AA%E4%BD%BF%E7%94%A8%E9%87%8F%E3%81%8C%E5%A2%97%E3%81%88%E3%82%8B%E3%81%A8%E3%81%8D/memory_usage_ng_hu_827a181089c8ec1f.png" alt="メモリ使用量">
+	&lt;/a>
+
+&lt;/p></description></item><item><title>AWSのDead Letter QueueのメッセージをもとのQueueに戻す</title><link>https://opqrstuvcut.github.io/posts/aws%E3%81%AEdead-letter-queue%E3%81%AE%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%82%92%E3%82%82%E3%81%A8%E3%81%AEqueue%E3%81%AB%E6%88%BB%E3%81%99/</link><pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate><guid>https://opqrstuvcut.github.io/posts/aws%E3%81%AEdead-letter-queue%E3%81%AE%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%82%92%E3%82%82%E3%81%A8%E3%81%AEqueue%E3%81%AB%E6%88%BB%E3%81%99/</guid><description>&lt;p>AWSのSQSを使うときにちょっと困るのが、アプリの不具合等でDead Letter Queueに送られたメッセージをもとのQueueに戻したいケースです。
+調べた感じでは、通常のAWS CLIでは簡単にはできなさそうです。&lt;/p></description></item><item><title>AWSのLambdaからPostgresを利用</title><link>https://opqrstuvcut.github.io/posts/aws%E3%81%AElambda%E3%81%8B%E3%82%89postgres%E3%82%92%E5%88%A9%E7%94%A8/</link><pubDate>Mon, 04 May 2020 13:35:16 +0900</pubDate><guid>https://opqrstuvcut.github.io/posts/aws%E3%81%AElambda%E3%81%8B%E3%82%89postgres%E3%82%92%E5%88%A9%E7%94%A8/</guid><description>&lt;p>本記事はQrunchからの転載です。&lt;/p>
+&lt;hr>
+&lt;p>AWSのLambda（Python）からPostgresを利用するためのライブラリの使い方のメモです。何もトラブルなく使えましたが、一応。
+ライブラリのレポジトリは&lt;a href="https://github.com/jkehler/awslambda-psycopg2">こちら&lt;/a>です。&lt;/p></description></item><item><title>FlutterでS3にファイルをアップロードする</title><link>https://opqrstuvcut.github.io/posts/flutter%E3%81%A7s3%E3%81%AB%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E3%82%A2%E3%83%83%E3%83%97%E3%83%AD%E3%83%BC%E3%83%89%E3%81%99%E3%82%8B/</link><pubDate>Sun, 08 Dec 2019 19:04:32 +0900</pubDate><guid>https://opqrstuvcut.github.io/posts/flutter%E3%81%A7s3%E3%81%AB%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E3%82%A2%E3%83%83%E3%83%97%E3%83%AD%E3%83%BC%E3%83%89%E3%81%99%E3%82%8B/</guid><description>&lt;p>本記事はQrunchからの転載です。&lt;/p>
+&lt;hr>
+&lt;p>FlutterでS3へファイルをアップロードするための公式のライブラリはありませんが、有志によるライブラリ&lt;a href="https://pub.dev/packages/amazon_s3_cognito">amazon_s3_cognito&lt;/a>があります。
+今回はこちらの紹介+forkしてちょっと修正したのでよければ使ってねという話になります。&lt;/p></description></item><item><title>MinIOでローカルにS3みたいなものを作って開発する</title><link>https://opqrstuvcut.github.io/posts/minio%E3%81%A7%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%81%ABs3%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AA%E3%82%82%E3%81%AE%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%A6%E9%96%8B%E7%99%BA%E3%81%99%E3%82%8B/</link><pubDate>Sat, 09 Nov 2019 12:48:01 +0900</pubDate><guid>https://opqrstuvcut.github.io/posts/minio%E3%81%A7%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%81%ABs3%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AA%E3%82%82%E3%81%AE%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%A6%E9%96%8B%E7%99%BA%E3%81%99%E3%82%8B/</guid><description>&lt;p>本記事はQrunchからの転載です。&lt;/p>
+&lt;hr>
+&lt;p>AWSのS3を使うようなシステムを開発するときに、S3と連携する部分だけAWSにつなぐより、ローカルにS3が欲しいなぁってふと思いました。でもそんな都合が良い話があるわけないよなぁ、なんて思ったら実はありました！その名も&lt;strong>MinIO&lt;/strong>。
+今回はMinIOの使い方を簡単にご紹介します。とても簡単です。&lt;/p></description></item></channel></rss>

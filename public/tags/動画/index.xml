@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>動画 on MatLoverによるMatlab以外のブログ</title>
+    <link>https://opqrstuvcut.github.io/tags/%E5%8B%95%E7%94%BB/</link>
+    <description>Recent content in 動画 on MatLoverによるMatlab以外のブログ</description>
+    <generator>Hugo</generator>
+    <language>ja</language>
+    <lastBuildDate>Tue, 28 Jul 2020 11:00:00 +0900</lastBuildDate>
+    <atom:link href="https://opqrstuvcut.github.io/tags/%E5%8B%95%E7%94%BB/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>動画の書き込み</title>
+      <link>https://opqrstuvcut.github.io/posts/%E5%8B%95%E7%94%BB%E3%81%AE%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF/</link>
+      <pubDate>Tue, 28 Jul 2020 11:00:00 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/%E5%8B%95%E7%94%BB%E3%81%AE%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;opencvでの動画の書き込み方&#34;&gt;OpenCVでの動画の書き込み方&lt;/h1&gt;&#xA;&lt;p&gt;次のようにしてtest.mp4という名前の動画を作成します。&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Python&#34; data-lang=&#34;Python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;fourcc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cv2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;VideoWriter_fourcc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;m&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;p&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;4&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;v&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;writer&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cv2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;VideoWriter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;test.mp4&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                         &lt;span class=&#34;n&#34;&gt;fourcc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                         &lt;span class=&#34;mi&#34;&gt;30&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                         &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1920&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1080&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;writer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;isOpened&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;())&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;第二引数のfourccは動画のコーデックをあらわしており、mp4のときにはcv2.VideoWriter_fourccの引数には&amp;quot;m&amp;quot;, &amp;ldquo;p&amp;rdquo;, &amp;ldquo;4&amp;rdquo;, &amp;ldquo;v&amp;quot;を指定します。他にもmpgで保存するときには&amp;quot;D&amp;rdquo;, &amp;ldquo;I&amp;rdquo;, &amp;ldquo;V&amp;rdquo;, &amp;ldquo;X&amp;quot;を指定したりできます。拡張子に対応してどういうコーデックが指定できるかは、ググっていただくのが良いかと思います。&#xA;また、第三引数にFPSを第四引数に動画の横と縦の大きさを指定しています。&#xA;isOpenedメソッドにより動画を書き込むための準備ができているかを確認できます。FalseのときにはPCがコーデックに対応していなかったりで上手くいっていません。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>動画の読みこみ</title>
+      <link>https://opqrstuvcut.github.io/posts/%E5%8B%95%E7%94%BB%E3%81%AE%E8%AA%AD%E3%81%BF%E3%81%93%E3%81%BF/</link>
+      <pubDate>Mon, 27 Jul 2020 22:53:54 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/%E5%8B%95%E7%94%BB%E3%81%AE%E8%AA%AD%E3%81%BF%E3%81%93%E3%81%BF/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;今日はOpenCVでの動画の読み書きを扱います。&lt;/p&gt;&#xA;&lt;h1 id=&#34;動画の読み込み&#34;&gt;動画の読み込み&lt;/h1&gt;&#xA;&lt;p&gt;動画の読み込みは簡単です。&lt;/p&gt;&#xA;&lt;p&gt;最初に次のように保存されている動画を開きます。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

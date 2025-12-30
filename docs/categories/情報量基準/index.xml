@@ -1,19 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>情報量基準 on MatLoverによるMatlab以外のブログ</title>
-    <link>https://opqrstuvcut.github.io/categories/%E6%83%85%E5%A0%B1%E9%87%8F%E5%9F%BA%E6%BA%96/</link>
-    <description>Recent content in 情報量基準 on MatLoverによるMatlab以外のブログ</description>
-    <generator>Hugo</generator>
-    <language>ja</language>
-    <lastBuildDate>Sat, 18 Jan 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://opqrstuvcut.github.io/categories/%E6%83%85%E5%A0%B1%E9%87%8F%E5%9F%BA%E6%BA%96/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>WAIC</title>
-      <link>https://opqrstuvcut.github.io/posts/waic/</link>
-      <pubDate>Sat, 18 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://opqrstuvcut.github.io/posts/waic/</guid>
-      <description>&lt;p&gt;かなり前に「渡辺澄夫ベイズ理論100問 with R/Stan」を読み終わったのもあり、忘れないうちにWAICを自分なりにまとめておきます．&lt;/p&gt;&#xA;&lt;h2 id=&#34;waic&#34;&gt;WAIC&lt;/h2&gt;&#xA;&lt;h3 id=&#34;waicの適用範囲&#34;&gt;WAICの適用範囲&lt;/h3&gt;&#xA;&lt;p&gt;情報量基準のAICやTICは正則性を仮定していますが、実際には正則性が成り立たないケースが多いです．&lt;br&gt;&#xA;WAICは正則性を仮定せずとも利用できる情報量基準になっていて、適用範囲が広いです．ただし、どんなケースでもOKかといえばそうではなく、次の条件を満たしている必要があります（「渡辺澄夫ベイズ理論100問 with R/Stan」の(1.21)）．&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>情報量基準 on MatLoverによるMatlab以外のブログ</title><link>https://opqrstuvcut.github.io/categories/%E6%83%85%E5%A0%B1%E9%87%8F%E5%9F%BA%E6%BA%96/</link><description>Recent content in 情報量基準 on MatLoverによるMatlab以外のブログ</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Sat, 18 Jan 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://opqrstuvcut.github.io/categories/%E6%83%85%E5%A0%B1%E9%87%8F%E5%9F%BA%E6%BA%96/index.xml" rel="self" type="application/rss+xml"/><item><title>WAIC</title><link>https://opqrstuvcut.github.io/posts/waic/</link><pubDate>Sat, 18 Jan 2025 00:00:00 +0000</pubDate><guid>https://opqrstuvcut.github.io/posts/waic/</guid><description>&lt;p>かなり前に「渡辺澄夫ベイズ理論100問 with R/Stan」を読み終わったのもあり、忘れないうちにWAICを自分なりにまとめておきます．&lt;/p>
+&lt;h2 id="waic">WAIC&lt;/h2>
+&lt;h3 id="waicの適用範囲">WAICの適用範囲&lt;/h3>
+&lt;p>情報量基準のAICやTICは正則性を仮定していますが、実際には正則性が成り立たないケースが多いです．&lt;br>
+WAICは正則性を仮定せずとも利用できる情報量基準になっていて、適用範囲が広いです．ただし、どんなケースでもOKかといえばそうではなく、次の条件を満たしている必要があります（「渡辺澄夫ベイズ理論100問 with R/Stan」の(1.21)）．&lt;/p></description></item></channel></rss>

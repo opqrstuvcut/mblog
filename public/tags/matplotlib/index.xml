@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Matplotlib on MatLoverによるMatlab以外のブログ</title>
+    <link>https://opqrstuvcut.github.io/tags/matplotlib/</link>
+    <description>Recent content in Matplotlib on MatLoverによるMatlab以外のブログ</description>
+    <generator>Hugo</generator>
+    <language>ja</language>
+    <lastBuildDate>Mon, 20 Jan 2020 21:09:01 +0900</lastBuildDate>
+    <atom:link href="https://opqrstuvcut.github.io/tags/matplotlib/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Matplotlibの凡例を外側に表示したい人へ</title>
+      <link>https://opqrstuvcut.github.io/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/</link>
+      <pubDate>Mon, 20 Jan 2020 21:09:01 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/matplotlib%E3%81%AE%E5%87%A1%E4%BE%8B%E3%82%92%E5%A4%96%E5%81%B4%E3%81%AB%E8%A1%A8%E7%A4%BA%E3%81%97%E3%81%9F%E3%81%84%E4%BA%BA%E3%81%B8/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;Matplotlibの凡例を外側に出したい人用に色々な例を書いておきます。&lt;/p&gt;&#xA;&lt;p&gt;次のような凡例の位置をいじらずに表示した状態からいじっていきます。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

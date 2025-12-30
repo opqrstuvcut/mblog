@@ -1,19 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>輪郭抽出 on MatLoverによるMatlab以外のブログ</title>
-    <link>https://opqrstuvcut.github.io/tags/%E8%BC%AA%E9%83%AD%E6%8A%BD%E5%87%BA/</link>
-    <description>Recent content in 輪郭抽出 on MatLoverによるMatlab以外のブログ</description>
-    <generator>Hugo</generator>
-    <language>ja</language>
-    <lastBuildDate>Sun, 16 Aug 2020 17:56:36 +0900</lastBuildDate>
-    <atom:link href="https://opqrstuvcut.github.io/tags/%E8%BC%AA%E9%83%AD%E6%8A%BD%E5%87%BA/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>findContoursで輪郭の検出</title>
-      <link>https://opqrstuvcut.github.io/posts/findcontours%E3%81%A7%E8%BC%AA%E9%83%AD%E3%81%AE%E6%A4%9C%E5%87%BA/</link>
-      <pubDate>Sun, 16 Aug 2020 17:56:36 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/posts/findcontours%E3%81%A7%E8%BC%AA%E9%83%AD%E3%81%AE%E6%A4%9C%E5%87%BA/</guid>
-      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;画像から物体の輪郭を見つけたくなることが多々あります。&#xA;そんなときにもOpenCVを利用することができます。&lt;/p&gt;&#xA;&lt;h1 id=&#34;findcontoursで輪郭抽出&#34;&gt;findContoursで輪郭抽出&lt;/h1&gt;&#xA;&lt;p&gt;次の画像から輪郭の抽出をおこなうことを考えます。&lt;br&gt;&#xA;&lt;img src=&#34;https://opqrstuvcut.github.io/posts/findcontours%E3%81%A7%E8%BC%AA%E9%83%AD%E3%81%AE%E6%A4%9C%E5%87%BA/5f9b4bcba6cba8859de1bf74287d31b8.png&#34; alt=&#34;&#34;&gt;&lt;br&gt;&#xA;最初に次のように二値化しておきます。&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>輪郭抽出 on MatLoverによるMatlab以外のブログ</title><link>https://opqrstuvcut.github.io/tags/%E8%BC%AA%E9%83%AD%E6%8A%BD%E5%87%BA/</link><description>Recent content in 輪郭抽出 on MatLoverによるMatlab以外のブログ</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Sun, 16 Aug 2020 17:56:36 +0900</lastBuildDate><atom:link href="https://opqrstuvcut.github.io/tags/%E8%BC%AA%E9%83%AD%E6%8A%BD%E5%87%BA/index.xml" rel="self" type="application/rss+xml"/><item><title>findContoursで輪郭の検出</title><link>https://opqrstuvcut.github.io/posts/findcontours%E3%81%A7%E8%BC%AA%E9%83%AD%E3%81%AE%E6%A4%9C%E5%87%BA/</link><pubDate>Sun, 16 Aug 2020 17:56:36 +0900</pubDate><guid>https://opqrstuvcut.github.io/posts/findcontours%E3%81%A7%E8%BC%AA%E9%83%AD%E3%81%AE%E6%A4%9C%E5%87%BA/</guid><description>&lt;p>本記事はQrunchからの転載です。&lt;/p>
+&lt;hr>
+&lt;p>画像から物体の輪郭を見つけたくなることが多々あります。
+そんなときにもOpenCVを利用することができます。&lt;/p>
+&lt;h1 id="findcontoursで輪郭抽出">findContoursで輪郭抽出&lt;/h1>
+&lt;p>次の画像から輪郭の抽出をおこなうことを考えます。&lt;br>
+&lt;img src="https://opqrstuvcut.github.io/posts/findcontours%E3%81%A7%E8%BC%AA%E9%83%AD%E3%81%AE%E6%A4%9C%E5%87%BA/5f9b4bcba6cba8859de1bf74287d31b8.png" alt="">&lt;br>
+最初に次のように二値化しておきます。&lt;/p></description></item></channel></rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sum Tree on MatLoverによるMatlab以外のブログ</title>
+    <link>https://opqrstuvcut.github.io/tags/sum-tree/</link>
+    <description>Recent content in Sum Tree on MatLoverによるMatlab以外のブログ</description>
+    <generator>Hugo</generator>
+    <language>ja</language>
+    <lastBuildDate>Sun, 17 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://opqrstuvcut.github.io/tags/sum-tree/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sum Treeで重みにそってサンプリングする（Python実装）</title>
+      <link>https://opqrstuvcut.github.io/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/</link>
+      <pubDate>Sun, 17 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/sum-tree%E3%81%A7%E9%87%8D%E3%81%BF%E3%81%AB%E3%81%9D%E3%81%A3%E3%81%A6%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0%E3%81%99%E3%82%8Bpython%E5%AE%9F%E8%A3%85/</guid>
+      <description>&lt;h1 id=&#34;問題設定&#34;&gt;問題設定&lt;/h1&gt;&#xA;&lt;p&gt;次のような設定でサンプリングをしたいことはよくあると思います。&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;3つのデータがあり、それぞれに重みがつけられているとする。&#xA;それぞれ、データ1の重みは10、データ2の重みは20、データ3の重みは30である。&#xA;このときに各データの重みと全体の重みの和の比を確率としてサンプリングをしたい。&#xA;つまり、データ1は10/60、データ2は20/60、データ3は30/60の確率でサンプリングすることになる。&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;シンプルな方法&#34;&gt;シンプルな方法&lt;/h1&gt;&#xA;&lt;p&gt;さきほどの問題設定のとき、簡単にサンプリングする方法は正規化された重みの和を順に足していき、一様分布からサンプリングした乱数がその和を超えたときのデータを取得するという方法です。&#xA;手順は次のようになります。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

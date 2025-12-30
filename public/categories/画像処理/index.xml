@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>画像処理 on MatLoverによるMatlab以外のブログ</title>
+    <link>https://opqrstuvcut.github.io/categories/%E7%94%BB%E5%83%8F%E5%87%A6%E7%90%86/</link>
+    <description>Recent content in 画像処理 on MatLoverによるMatlab以外のブログ</description>
+    <generator>Hugo</generator>
+    <language>ja</language>
+    <lastBuildDate>Tue, 13 Dec 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://opqrstuvcut.github.io/categories/%E7%94%BB%E5%83%8F%E5%87%A6%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>いつの間にかOpenCVのVideoCaptureが正しく向きに対応できるようになっていた</title>
+      <link>https://opqrstuvcut.github.io/posts/%E3%81%84%E3%81%A4%E3%81%AE%E9%96%93%E3%81%AB%E3%81%8Bopencv%E3%81%AEvideocapture%E3%81%8C%E6%AD%A3%E3%81%97%E3%81%8F%E5%90%91%E3%81%8D%E3%81%AB%E5%AF%BE%E5%BF%9C%E3%81%A7%E3%81%8D%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%81%9F/</link>
+      <pubDate>Tue, 13 Dec 2022 00:00:00 +0000</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/%E3%81%84%E3%81%A4%E3%81%AE%E9%96%93%E3%81%AB%E3%81%8Bopencv%E3%81%AEvideocapture%E3%81%8C%E6%AD%A3%E3%81%97%E3%81%8F%E5%90%91%E3%81%8D%E3%81%AB%E5%AF%BE%E5%BF%9C%E3%81%A7%E3%81%8D%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E3%81%84%E3%81%9F/</guid>
+      <description>&lt;h1 id=&#34;昔の話&#34;&gt;昔の話&lt;/h1&gt;&#xA;&lt;p&gt;OpenCVのVideoCaptureを使っていると、あれって思うことがありました。&lt;br&gt;&#xA;動画によって、読み込まれたフレームの向きが正しかったり、90度回転していたりするんですよね。特にスマートフォンで撮影した動画で問題が起きていました。&lt;br&gt;&#xA;もちろん、一般的な動画プレーヤーで再生すると正しく表示されるような動画です。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>動画データから前景と背景を分離する</title>
+      <link>https://opqrstuvcut.github.io/posts/%E5%8B%95%E7%94%BB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%8B%E3%82%89%E5%89%8D%E6%99%AF%E3%81%A8%E8%83%8C%E6%99%AF%E3%82%92%E5%88%86%E9%9B%A2%E3%81%99%E3%82%8B/</link>
+      <pubDate>Thu, 20 Aug 2020 11:04:00 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/%E5%8B%95%E7%94%BB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%8B%E3%82%89%E5%89%8D%E6%99%AF%E3%81%A8%E8%83%8C%E6%99%AF%E3%82%92%E5%88%86%E9%9B%A2%E3%81%99%E3%82%8B/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;画像から前景と背景を分けるのは以前に取り上げたのですが、動画でもOpenCVで前景と背景をわけることが可能です。ここでいう前景は動いている物体を指します。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>connectedComponentsで連結した領域の取得</title>
+      <link>https://opqrstuvcut.github.io/posts/connectedcomponents%E3%81%A7%E9%80%A3%E7%B5%90%E3%81%97%E3%81%9F%E9%A0%98%E5%9F%9F%E3%81%AE%E5%8F%96%E5%BE%97/</link>
+      <pubDate>Tue, 18 Aug 2020 11:00:00 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/connectedcomponents%E3%81%A7%E9%80%A3%E7%B5%90%E3%81%97%E3%81%9F%E9%A0%98%E5%9F%9F%E3%81%AE%E5%8F%96%E5%BE%97/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;OpenCVでは二値画像から結合している領域の抽出をおこなうことができます。&#xA;こういうのは自分で実装すると大変なので、大変助かりますね。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>抽出した輪郭の描画</title>
+      <link>https://opqrstuvcut.github.io/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/</link>
+      <pubDate>Mon, 17 Aug 2020 11:03:00 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/%E6%8A%BD%E5%87%BA%E3%81%97%E3%81%9F%E8%BC%AA%E9%83%AD%E3%81%AE%E6%8F%8F%E7%94%BB/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;OpenCVのfindContoursで見つけた輪郭はdrawContoursで簡単に描画できます。&#xA;次のようにして使えます。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>findContoursで輪郭の検出</title>
+      <link>https://opqrstuvcut.github.io/posts/findcontours%E3%81%A7%E8%BC%AA%E9%83%AD%E3%81%AE%E6%A4%9C%E5%87%BA/</link>
+      <pubDate>Sun, 16 Aug 2020 17:56:36 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/findcontours%E3%81%A7%E8%BC%AA%E9%83%AD%E3%81%AE%E6%A4%9C%E5%87%BA/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;画像から物体の輪郭を見つけたくなることが多々あります。&#xA;そんなときにもOpenCVを利用することができます。&lt;/p&gt;&#xA;&lt;h1 id=&#34;findcontoursで輪郭抽出&#34;&gt;findContoursで輪郭抽出&lt;/h1&gt;&#xA;&lt;p&gt;次の画像から輪郭の抽出をおこなうことを考えます。&lt;br&gt;&#xA;&lt;img src=&#34;https://opqrstuvcut.github.io/posts/findcontours%E3%81%A7%E8%BC%AA%E9%83%AD%E3%81%AE%E6%A4%9C%E5%87%BA/5f9b4bcba6cba8859de1bf74287d31b8.png&#34; alt=&#34;&#34;&gt;&lt;br&gt;&#xA;最初に次のように二値化しておきます。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>テンプレートマッチングで画像から物体をみつける</title>
+      <link>https://opqrstuvcut.github.io/posts/%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%83%9E%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%8B%E3%82%89%E7%89%A9%E4%BD%93%E3%82%92%E3%81%BF%E3%81%A4%E3%81%91%E3%82%8B/</link>
+      <pubDate>Sat, 15 Aug 2020 11:09:00 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%83%9E%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%8B%E3%82%89%E7%89%A9%E4%BD%93%E3%82%92%E3%81%BF%E3%81%A4%E3%81%91%E3%82%8B/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;カメラを固定しておいて、何らかの被写体を取り続けるということはよくある問題設定です。&#xA;ただし、被写体の位置が毎回少しズレるということも多々あります。&#xA;そんなときにテンプレートマッチングを使うことができます。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>minMaxLocで最大と最小の位置を楽に取得</title>
+      <link>https://opqrstuvcut.github.io/posts/minmaxloc%E3%81%A7%E6%9C%80%E5%A4%A7%E3%81%A8%E6%9C%80%E5%B0%8F%E3%81%AE%E4%BD%8D%E7%BD%AE%E3%82%92%E6%A5%BD%E3%81%AB%E5%8F%96%E5%BE%97/</link>
+      <pubDate>Tue, 11 Aug 2020 11:04:00 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/minmaxloc%E3%81%A7%E6%9C%80%E5%A4%A7%E3%81%A8%E6%9C%80%E5%B0%8F%E3%81%AE%E4%BD%8D%E7%BD%AE%E3%82%92%E6%A5%BD%E3%81%AB%E5%8F%96%E5%BE%97/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;行列の最大値、最小値はNumPyのmaxやmin、またそれらのインデックスはargmaxやargminを使えば取得できるのですが、OpenCVでは一発ですべて取得できます。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>compHistでヒストグラム比較をいろいろなやり方でおこなう</title>
+      <link>https://opqrstuvcut.github.io/posts/comphist%E3%81%A7%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E6%AF%94%E8%BC%83%E3%82%92%E3%81%84%E3%82%8D%E3%81%84%E3%82%8D%E3%81%AA%E3%82%84%E3%82%8A%E6%96%B9%E3%81%A7%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86/</link>
+      <pubDate>Mon, 10 Aug 2020 13:20:47 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/comphist%E3%81%A7%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E6%AF%94%E8%BC%83%E3%82%92%E3%81%84%E3%82%8D%E3%81%84%E3%82%8D%E3%81%AA%E3%82%84%E3%82%8A%E6%96%B9%E3%81%A7%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;画像処理の領域では画像から特徴量をあらわすヒストグラムを生成することがよくあります。&#xA;特徴量としてヒストグラムを生成するということは、比較をすることもよくあるということで、今回はヒストグラムの比較を扱います。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OpenCVのヒストグラムの計算はNumPyより断然速い</title>
+      <link>https://opqrstuvcut.github.io/posts/opencv%E3%81%AE%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%AE%E8%A8%88%E7%AE%97%E3%81%AFnumpy%E3%82%88%E3%82%8A%E6%96%AD%E7%84%B6%E9%80%9F%E3%81%84/</link>
+      <pubDate>Mon, 10 Aug 2020 11:03:00 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/opencv%E3%81%AE%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%AE%E8%A8%88%E7%AE%97%E3%81%AFnumpy%E3%82%88%E3%82%8A%E6%96%AD%E7%84%B6%E9%80%9F%E3%81%84/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;画像処理や集計、機械学習では何かとヒストグラムを計算するケースがありますね。&lt;/p&gt;&#xA;&lt;p&gt;これに伴い、ヒストグラムを計算できるライブラリは色々あるかと思いますが、OpenCVでもヒストグラムを計算する機能をもっています。&#xA;&lt;strong&gt;NumPyでもヒストグラムの計算できるじゃない&lt;/strong&gt;、と思いますが、実はOpenCVの方がNumPyのヒストグラムよりも断然速いです。今回はその辺りの比較もおこなっていきます。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Grabcutsで背景と猫を分離したい</title>
+      <link>https://opqrstuvcut.github.io/posts/grabcuts%E3%81%A7%E8%83%8C%E6%99%AF%E3%81%A8%E7%8C%AB%E3%82%92%E5%88%86%E9%9B%A2%E3%81%97%E3%81%9F%E3%81%84/</link>
+      <pubDate>Sun, 09 Aug 2020 11:00:00 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/grabcuts%E3%81%A7%E8%83%8C%E6%99%AF%E3%81%A8%E7%8C%AB%E3%82%92%E5%88%86%E9%9B%A2%E3%81%97%E3%81%9F%E3%81%84/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;次のような画像があったとします。&lt;br&gt;&#xA;&lt;img src=&#34;https://opqrstuvcut.github.io/posts/grabcuts%E3%81%A7%E8%83%8C%E6%99%AF%E3%81%A8%E7%8C%AB%E3%82%92%E5%88%86%E9%9B%A2%E3%81%97%E3%81%9F%E3%81%84/b7906bd0d4bbe04cf62dab0eda766889.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;ここから猫だけ抽出したいときに、ツールを使えば少し手間はかかりますが、切り取れると思います。&lt;br&gt;&#xA;実はOpenCVのGrabcutsを使えば非常に簡単にそれが実現できます。&#xA;（ディープラーニング使えばできるよね？はおいておいて）&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Watershedで領域検出</title>
+      <link>https://opqrstuvcut.github.io/posts/watershed%E3%81%A7%E9%A0%98%E5%9F%9F%E6%A4%9C%E5%87%BA/</link>
+      <pubDate>Sat, 08 Aug 2020 11:10:00 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/watershed%E3%81%A7%E9%A0%98%E5%9F%9F%E6%A4%9C%E5%87%BA/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;Watershedと呼ばれる方法を使うと、指定したマーカーの情報と画像のエッジから画像中の領域の分割をおこなってくれます。&#xA;マーカーとしては、この位置は領域1、この位置は領域2それ以外は背景だよといった感じの情報を与えます。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>画像の距離変換をおこなう</title>
+      <link>https://opqrstuvcut.github.io/posts/%E7%94%BB%E5%83%8F%E3%81%AE%E8%B7%9D%E9%9B%A2%E5%A4%89%E6%8F%9B%E3%82%92%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86/</link>
+      <pubDate>Fri, 07 Aug 2020 11:00:00 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/%E7%94%BB%E5%83%8F%E3%81%AE%E8%B7%9D%E9%9B%A2%E5%A4%89%E6%8F%9B%E3%82%92%E3%81%8A%E3%81%93%E3%81%AA%E3%81%86/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;画像に対する距離変換とは、グレースケールの画像において、ピクセルから最も近い0の値をもつピクセルまでの距離を求めたものです。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>floodFillで領域に色を塗る</title>
+      <link>https://opqrstuvcut.github.io/posts/floodfill%E3%81%A7%E9%A0%98%E5%9F%9F%E3%81%AB%E8%89%B2%E3%82%92%E5%A1%97%E3%82%8B/</link>
+      <pubDate>Thu, 06 Aug 2020 11:08:00 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/floodfill%E3%81%A7%E9%A0%98%E5%9F%9F%E3%81%AB%E8%89%B2%E3%82%92%E5%A1%97%E3%82%8B/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;OpenCVのfloodFillを使うことで、選んだ点の周辺の似たような色のピクセルを塗りつぶすことができます。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hough変換で円を検出</title>
+      <link>https://opqrstuvcut.github.io/posts/hough%E5%A4%89%E6%8F%9B%E3%81%A7%E5%86%86%E3%82%92%E6%A4%9C%E5%87%BA/</link>
+      <pubDate>Wed, 05 Aug 2020 11:05:00 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/hough%E5%A4%89%E6%8F%9B%E3%81%A7%E5%86%86%E3%82%92%E6%A4%9C%E5%87%BA/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;Hough変換は直線を検出する方法として前回紹介したのですが、Hough変換を応用することで、円の検出も行えます。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hough（ハフ）変換で直線を見つけよう</title>
+      <link>https://opqrstuvcut.github.io/posts/hough%E3%83%8F%E3%83%95%E5%A4%89%E6%8F%9B%E3%81%A7%E7%9B%B4%E7%B7%9A%E3%82%92%E8%A6%8B%E3%81%A4%E3%81%91%E3%82%88%E3%81%86/</link>
+      <pubDate>Tue, 04 Aug 2020 19:00:00 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/hough%E3%83%8F%E3%83%95%E5%A4%89%E6%8F%9B%E3%81%A7%E7%9B%B4%E7%B7%9A%E3%82%92%E8%A6%8B%E3%81%A4%E3%81%91%E3%82%88%E3%81%86/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;Hough変換は画像から直線をみつける方法です。&lt;/p&gt;&#xA;&lt;h1 id=&#34;簡単な原理&#34;&gt;簡単な原理&lt;/h1&gt;&#xA;&lt;p&gt;入力として2値画像を考えます。&#xA;Hough変換では候補となる直線を用意し、直線上にいくつ0でないピクセルがあるかを数えます。&#xA;このピクセルの個数が指定したしきい値以上であった場合、その候補の直線は正しい直線として扱います。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Canny法でエッジ検出</title>
+      <link>https://opqrstuvcut.github.io/posts/canny%E6%B3%95%E3%81%A7%E3%82%A8%E3%83%83%E3%82%B8%E6%A4%9C%E5%87%BA/</link>
+      <pubDate>Mon, 03 Aug 2020 20:17:14 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/canny%E6%B3%95%E3%81%A7%E3%82%A8%E3%83%83%E3%82%B8%E6%A4%9C%E5%87%BA/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;エッジ検出の方法として、Canny法というものがあります。&#xA;SobelフィルタやLaplacianフィルタもエッジ検出ができるわけですが、Canny法を使うとより正確に輪郭を検出することが可能です。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>ヒストグラム平坦化</title>
+      <link>https://opqrstuvcut.github.io/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/</link>
+      <pubDate>Sun, 02 Aug 2020 22:50:29 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;今日はヒストグラム平坦化を扱います。&lt;/p&gt;&#xA;&lt;p&gt;ヒストグラム平坦化はコントラストが偏っているような画像を補正します。&#xA;結果として、コントラストがある程度平坦化された結果が得られます。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Non-Local Means Denoisingでノイズ除去</title>
+      <link>https://opqrstuvcut.github.io/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/</link>
+      <pubDate>Sat, 01 Aug 2020 10:04:00 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;non-local-means-denoisingのアイデア&#34;&gt;Non-Local Means Denoisingのアイデア&lt;/h1&gt;&#xA;&lt;p&gt;今回はノイズ除去を扱うのですが、特にガウスノイズを考えます。&#xA;これは平均が0となるノイズですので、着目しているピクセルにある意味で&lt;strong&gt;似ている&lt;/strong&gt;ピクセルを画像中から探してきて、それらの平均を取れば、ノイズの影響が消えたピクセルが得られるはずです。&#xA;これがNon-Local Means Denoisingのアイデアになります。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>inpaintで画像の修復をする</title>
+      <link>https://opqrstuvcut.github.io/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/</link>
+      <pubDate>Fri, 31 Jul 2020 11:04:00 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;画像に汚れがついたり、傷がついているケースの修復には、最近ではディープラーニングを使った手法が色々出ていますが、画像処理の範囲でもできることがあります。&#xA;今回はOpenCVで修復をおこなってみます。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>透過変換で斜めから撮った画像を上から見下ろす</title>
+      <link>https://opqrstuvcut.github.io/posts/%E9%80%8F%E9%81%8E%E5%A4%89%E6%8F%9B%E3%81%A7%E6%96%9C%E3%82%81%E3%81%8B%E3%82%89%E6%92%AE%E3%81%A3%E3%81%9F%E7%94%BB%E5%83%8F%E3%82%92%E4%B8%8A%E3%81%8B%E3%82%89%E8%A6%8B%E4%B8%8B%E3%82%8D%E3%81%99/</link>
+      <pubDate>Thu, 30 Jul 2020 11:04:00 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/%E9%80%8F%E9%81%8E%E5%A4%89%E6%8F%9B%E3%81%A7%E6%96%9C%E3%82%81%E3%81%8B%E3%82%89%E6%92%AE%E3%81%A3%E3%81%9F%E7%94%BB%E5%83%8F%E3%82%92%E4%B8%8A%E3%81%8B%E3%82%89%E8%A6%8B%E4%B8%8B%E3%82%8D%E3%81%99/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;透過変換とは&#34;&gt;透過変換とは？&lt;/h1&gt;&#xA;&lt;p&gt;透過変換はアフィン変換よりも柔軟な変換になっていまして、アフィン変換ではできない台形への変換が可能です。また台形から長方形への変換も可能です。&#xA;つまり、斜めに写っているものを上から見たような感じに変換ができるというわけです。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>画像へのアフィン変換</title>
+      <link>https://opqrstuvcut.github.io/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/</link>
+      <pubDate>Wed, 29 Jul 2020 11:03:00 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/%E7%94%BB%E5%83%8F%E3%81%B8%E3%81%AE%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;アフィン変換といえば、普通は2次元上の点や図形を拡大縮小したり、回転したり、平行移動したりといった変換をさします。&#xA;式の話をすると、ある2次元上の点$(x,y)$の$(x&amp;rsquo;, y&amp;rsquo;)$へのアフィン変換は次のようにして表現できます。&#xA;$$\begin{pmatrix}x&amp;rsquo; \\ y&amp;rsquo;  \\ 1 \end{pmatrix} =\begin{pmatrix} a &amp;amp; b &amp;amp; c\\ e &amp;amp; f &amp;amp; g \\ 0 &amp;amp; 0 &amp;amp; 1  \end{pmatrix} \begin{pmatrix}x \\ y \\ 1 \end{pmatrix}.  $$&#xA;$a,b,e,f$の値によって拡大縮小、回転をおこなうようにできますし、$c,g$の値によって平行移動が可能です。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>動画の書き込み</title>
+      <link>https://opqrstuvcut.github.io/posts/%E5%8B%95%E7%94%BB%E3%81%AE%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF/</link>
+      <pubDate>Tue, 28 Jul 2020 11:00:00 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/%E5%8B%95%E7%94%BB%E3%81%AE%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%81%BF/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;opencvでの動画の書き込み方&#34;&gt;OpenCVでの動画の書き込み方&lt;/h1&gt;&#xA;&lt;p&gt;次のようにしてtest.mp4という名前の動画を作成します。&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Python&#34; data-lang=&#34;Python&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;fourcc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cv2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;VideoWriter_fourcc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;m&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;p&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;4&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;v&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;writer&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cv2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;VideoWriter&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;test.mp4&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                         &lt;span class=&#34;n&#34;&gt;fourcc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                         &lt;span class=&#34;mi&#34;&gt;30&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;                         &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1920&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1080&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;writer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;isOpened&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;())&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;第二引数のfourccは動画のコーデックをあらわしており、mp4のときにはcv2.VideoWriter_fourccの引数には&amp;quot;m&amp;quot;, &amp;ldquo;p&amp;rdquo;, &amp;ldquo;4&amp;rdquo;, &amp;ldquo;v&amp;quot;を指定します。他にもmpgで保存するときには&amp;quot;D&amp;rdquo;, &amp;ldquo;I&amp;rdquo;, &amp;ldquo;V&amp;rdquo;, &amp;ldquo;X&amp;quot;を指定したりできます。拡張子に対応してどういうコーデックが指定できるかは、ググっていただくのが良いかと思います。&#xA;また、第三引数にFPSを第四引数に動画の横と縦の大きさを指定しています。&#xA;isOpenedメソッドにより動画を書き込むための準備ができているかを確認できます。FalseのときにはPCがコーデックに対応していなかったりで上手くいっていません。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>動画の読みこみ</title>
+      <link>https://opqrstuvcut.github.io/posts/%E5%8B%95%E7%94%BB%E3%81%AE%E8%AA%AD%E3%81%BF%E3%81%93%E3%81%BF/</link>
+      <pubDate>Mon, 27 Jul 2020 22:53:54 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/%E5%8B%95%E7%94%BB%E3%81%AE%E8%AA%AD%E3%81%BF%E3%81%93%E3%81%BF/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;今日はOpenCVでの動画の読み書きを扱います。&lt;/p&gt;&#xA;&lt;h1 id=&#34;動画の読み込み&#34;&gt;動画の読み込み&lt;/h1&gt;&#xA;&lt;p&gt;動画の読み込みは簡単です。&lt;/p&gt;&#xA;&lt;p&gt;最初に次のように保存されている動画を開きます。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>sepFilter2Dで分離可能フィルタを使って高速化</title>
+      <link>https://opqrstuvcut.github.io/posts/sepfilter2d%E3%81%A7%E5%88%86%E9%9B%A2%E5%8F%AF%E8%83%BD%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E9%AB%98%E9%80%9F%E5%8C%96/</link>
+      <pubDate>Sun, 26 Jul 2020 11:06:00 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/sepfilter2d%E3%81%A7%E5%88%86%E9%9B%A2%E5%8F%AF%E8%83%BD%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E9%AB%98%E9%80%9F%E5%8C%96/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;OpenCVのfilter2Dを使うのは良いのですが、分離可能フィルタのときには&lt;strong&gt;sepFilter2D&lt;/strong&gt;を使うことで、&lt;strong&gt;高速化&lt;/strong&gt;できます。&#xA;今回はこのsepFilter2Dを扱います。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>filter2Dで任意のカーネルを扱う</title>
+      <link>https://opqrstuvcut.github.io/posts/filter2d%E3%81%A7%E4%BB%BB%E6%84%8F%E3%81%AE%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB%E3%82%92%E6%89%B1%E3%81%86/</link>
+      <pubDate>Sat, 25 Jul 2020 12:12:06 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/filter2d%E3%81%A7%E4%BB%BB%E6%84%8F%E3%81%AE%E3%82%AB%E3%83%BC%E3%83%8D%E3%83%AB%E3%82%92%E6%89%B1%E3%81%86/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;OpenCVではいろいろなカーネルによる演算が用意されていますが、自分で定義したカーネルを使いたいこともあります。&#xA;そんなときにはfilter2Dが活躍します。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>膨張と収縮の組み合わせによるopeningとclosing</title>
+      <link>https://opqrstuvcut.github.io/posts/%E8%86%A8%E5%BC%B5%E3%81%A8%E5%8F%8E%E7%B8%AE%E3%81%AE%E7%B5%84%E3%81%BF%E5%90%88%E3%82%8F%E3%81%9B%E3%81%AB%E3%82%88%E3%82%8Bopening%E3%81%A8closing/</link>
+      <pubDate>Tue, 21 Jul 2020 22:31:32 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/%E8%86%A8%E5%BC%B5%E3%81%A8%E5%8F%8E%E7%B8%AE%E3%81%AE%E7%B5%84%E3%81%BF%E5%90%88%E3%82%8F%E3%81%9B%E3%81%AB%E3%82%88%E3%82%8Bopening%E3%81%A8closing/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;画像に対する膨張と収縮の組み合わせによって、openingとclosingという2つの操作が実現できます。&#xA;openingは周辺よりもピクセル値が大きい点を取り除くことができ、closingは周辺よりもピクセル値が小さい点を取り除くことができます。これによってノイズの除去や連結した領域を分割したり、逆に連結させたりできます。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>erodeで猫を収縮させる</title>
+      <link>https://opqrstuvcut.github.io/posts/erode%E3%81%A7%E7%8C%AB%E3%82%92%E5%8F%8E%E7%B8%AE%E3%81%95%E3%81%9B%E3%82%8B/</link>
+      <pubDate>Mon, 20 Jul 2020 23:14:16 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/erode%E3%81%A7%E7%8C%AB%E3%82%92%E5%8F%8E%E7%B8%AE%E3%81%95%E3%81%9B%E3%82%8B/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;erodeによる収縮&#34;&gt;erodeによる収縮&lt;/h1&gt;&#xA;&lt;p&gt;erodeは指定した局所領域内の最小値を取るような操作になります。&lt;/p&gt;&#xA;&lt;p&gt;具体的な例で説明していきます。&#xA;次のようなピクセル値をもった3×3の画像があったとします。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>dilateで猫を膨張させる</title>
+      <link>https://opqrstuvcut.github.io/posts/dilate%E3%81%A7%E7%8C%AB%E3%82%92%E8%86%A8%E5%BC%B5%E3%81%95%E3%81%9B%E3%82%8B/</link>
+      <pubDate>Sun, 19 Jul 2020 20:40:11 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/dilate%E3%81%A7%E7%8C%AB%E3%82%92%E8%86%A8%E5%BC%B5%E3%81%95%E3%81%9B%E3%82%8B/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;OpenCVで用意されているdilateを使うことで、画像の中の物体などを膨張させることができます。&#xA;ただ膨張させるだけだとあまり使いみちがあるのかよく分かりませんが、収縮などと組み合わせることで色々な用途があります。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Laplacianで画像の2階微分</title>
+      <link>https://opqrstuvcut.github.io/posts/laplacian%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE2%E9%9A%8E%E5%BE%AE%E5%88%86/</link>
+      <pubDate>Sat, 18 Jul 2020 13:05:29 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/laplacian%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE2%E9%9A%8E%E5%BE%AE%E5%88%86/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;今回はLaplacianを扱います。&lt;/p&gt;&#xA;&lt;h1 id=&#34;そもそものlaplacian&#34;&gt;そもそものLaplacian&lt;/h1&gt;&#xA;&lt;p&gt;Laplacianの復習的な話ですが、2階偏微分可能な関数$f(x,y)$に対して以下をLaplacianといいます。&#xA;$$ \Delta f = \frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2}.  $$&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Sobelフィルタで微分</title>
+      <link>https://opqrstuvcut.github.io/posts/sobel%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%81%A7%E5%BE%AE%E5%88%86/</link>
+      <pubDate>Thu, 16 Jul 2020 14:06:05 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/sobel%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%81%A7%E5%BE%AE%E5%88%86/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;よくある画像処理のオペレーターとして、画像の微分があります。&#xA;いくつかやり方はありますが、今日はSobel微分を取り上げます。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>imencodeとimdecodeによるメモリ上での画像圧縮</title>
+      <link>https://opqrstuvcut.github.io/posts/imencode%E3%81%A8imdecode%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A1%E3%83%A2%E3%83%AA%E4%B8%8A%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE/</link>
+      <pubDate>Thu, 16 Jul 2020 11:00:00 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/imencode%E3%81%A8imdecode%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A1%E3%83%A2%E3%83%AA%E4%B8%8A%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;画像をpngなどからjpgに変換したいときに、ぱっと思いつくのはファイルを読み込んで、それをjpgの拡張子で書き込みした後に再度読み込みなおすことです。&#xA;1度動かすならばそれでも良いのですが、何度も繰り返しおこなう場合にはファイルの読み書きの時間が気になります。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>サンプルコードでなにかとあらわれるガウス平滑化</title>
+      <link>https://opqrstuvcut.github.io/posts/%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A7%E3%81%AA%E3%81%AB%E3%81%8B%E3%81%A8%E3%81%82%E3%82%89%E3%82%8F%E3%82%8C%E3%82%8B%E3%82%AC%E3%82%A6%E3%82%B9%E5%B9%B3%E6%BB%91%E5%8C%96/</link>
+      <pubDate>Tue, 14 Jul 2020 18:30:00 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%B3%E3%83%BC%E3%83%89%E3%81%A7%E3%81%AA%E3%81%AB%E3%81%8B%E3%81%A8%E3%81%82%E3%82%89%E3%82%8F%E3%82%8C%E3%82%8B%E3%82%AC%E3%82%A6%E3%82%B9%E5%B9%B3%E6%BB%91%E5%8C%96/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;今日はなにかとサンプルコードで使われるガウス平滑化です。&lt;/p&gt;&#xA;&lt;h1 id=&#34;ガウス平滑化とは&#34;&gt;ガウス平滑化とは&lt;/h1&gt;&#xA;&lt;p&gt;前々回取り上げた単純平滑化は局所領域の平均をとることで、平滑化をおこないました。これは局所領域内の各ピクセルの重み付けがすべて等しいともいえます。&#xA;ガウス平滑化では二次元のガウス分布を離散化した値を重みとして利用するような平滑化になります。&#xA;$$g(x,y) = \frac{1}{2\pi\sqrt{\sigma^2}}\exp\left(-\frac{x^2 + y^2}{\sigma^2}\right).$$&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>外れ値に強いMedianBlur</title>
+      <link>https://opqrstuvcut.github.io/posts/%E5%A4%96%E3%82%8C%E5%80%A4%E3%81%AB%E5%BC%B7%E3%81%84medianblur/</link>
+      <pubDate>Mon, 13 Jul 2020 11:00:00 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/%E5%A4%96%E3%82%8C%E5%80%A4%E3%81%AB%E5%BC%B7%E3%81%84medianblur/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;単純平滑化の場合には、局所領域内での平均を取るため、周辺とは大きく異なるピクセル値をもつピクセルがあると、その影響が大きすぎて上手くいかない場合があります。&#xA;そのようなケースでは中央値を使うようにすると、上手くいくかもしれません。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AdaptiveThresholdで照明環境が微妙な画像を二値化</title>
+      <link>https://opqrstuvcut.github.io/posts/adaptivethreshold%E3%81%A7%E7%85%A7%E6%98%8E%E7%92%B0%E5%A2%83%E3%81%8C%E5%BE%AE%E5%A6%99%E3%81%AA%E7%94%BB%E5%83%8F%E3%82%92%E4%BA%8C%E5%80%A4%E5%8C%96/</link>
+      <pubDate>Sat, 11 Jul 2020 09:22:28 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/adaptivethreshold%E3%81%A7%E7%85%A7%E6%98%8E%E7%92%B0%E5%A2%83%E3%81%8C%E5%BE%AE%E5%A6%99%E3%81%AA%E7%94%BB%E5%83%8F%E3%82%92%E4%BA%8C%E5%80%A4%E5%8C%96/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;画像処理で結構シビアなのが、照明環境です。&#xA;例えば次の画像のように、画像の中で明暗が異なると、大津の二値化ではうまくいきません。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>大津の二値化で楽をする</title>
+      <link>https://opqrstuvcut.github.io/posts/%E5%A4%A7%E6%B4%A5%E3%81%AE%E4%BA%8C%E5%80%A4%E5%8C%96%E3%81%A7%E6%A5%BD%E3%82%92%E3%81%99%E3%82%8B/</link>
+      <pubDate>Fri, 10 Jul 2020 13:08:19 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/%E5%A4%A7%E6%B4%A5%E3%81%AE%E4%BA%8C%E5%80%A4%E5%8C%96%E3%81%A7%E6%A5%BD%E3%82%92%E3%81%99%E3%82%8B/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;大津の2値化とは&#34;&gt;大津の2値化とは？&lt;/h1&gt;&#xA;&lt;p&gt;シンプルな二値化では、何かしらのしきい値を決めてあげる必要がありました。&lt;/p&gt;&#xA;&lt;p&gt;人間がグレースケール値のヒストグラムを見てしきい値を決めたり、試行錯誤するというのも良いですが、場合によってはしきい値を自動で決定したくなります。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CNNで画像中のピクセルの座標情報を考慮できるCoordConv</title>
+      <link>https://opqrstuvcut.github.io/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/</link>
+      <pubDate>Sat, 30 Nov 2019 21:57:17 +0900</pubDate>
+      <guid>https://opqrstuvcut.github.io/posts/cnn%E3%81%A7%E7%94%BB%E5%83%8F%E4%B8%AD%E3%81%AE%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%E3%81%AE%E5%BA%A7%E6%A8%99%E6%83%85%E5%A0%B1%E3%82%92%E8%80%83%E6%85%AE%E3%81%A7%E3%81%8D%E3%82%8Bcoordconv/</guid>
+      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;CNNの表現能力の高さはすばらしいものがありますが、何でもうまくいくわけではありません。例えば、画像中の位置情報を考慮しないと解けないような問題は、通常のCNNではうまく対応できません（具体的な例はこの後説明します）。&lt;br&gt;&#xA;このような問題に対応した手法としてCoordConvというものがあります。CoordConvは座標情報をCNNのなかに組み込む手法で、これを使うことで解けるようになるケースや性能が大きく改善されるようなケースがあります。また「効くか分からないけど、とりあえず組み込む」ということをしても、デメリットはそれほどありません。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

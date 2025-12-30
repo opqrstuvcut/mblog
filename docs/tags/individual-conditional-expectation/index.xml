@@ -1,19 +1,2 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Individual Conditional Expectation on MatLoverによるMatlab以外のブログ</title>
-    <link>https://opqrstuvcut.github.io/tags/individual-conditional-expectation/</link>
-    <description>Recent content in Individual Conditional Expectation on MatLoverによるMatlab以外のブログ</description>
-    <generator>Hugo</generator>
-    <language>ja</language>
-    <lastBuildDate>Tue, 19 Oct 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://opqrstuvcut.github.io/tags/individual-conditional-expectation/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Individual Conditional Expectation</title>
-      <link>https://opqrstuvcut.github.io/posts/individual-conditional-expectation/</link>
-      <pubDate>Tue, 19 Oct 2021 00:00:00 +0000</pubDate>
-      <guid>https://opqrstuvcut.github.io/posts/individual-conditional-expectation/</guid>
-      <description>&lt;p&gt;Individual Conditional Expectation(ICE)は任意のモデルのある特徴量に対するデータごとの挙動を確認する手法です。&lt;br&gt;&#xA;例えば、ある特定のデータのある特徴量が大きくなるにつれ、モデルの出力がどういった変化をするかを見ます。&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Individual Conditional Expectation on MatLoverによるMatlab以外のブログ</title><link>https://opqrstuvcut.github.io/tags/individual-conditional-expectation/</link><description>Recent content in Individual Conditional Expectation on MatLoverによるMatlab以外のブログ</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Tue, 19 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://opqrstuvcut.github.io/tags/individual-conditional-expectation/index.xml" rel="self" type="application/rss+xml"/><item><title>Individual Conditional Expectation</title><link>https://opqrstuvcut.github.io/posts/individual-conditional-expectation/</link><pubDate>Tue, 19 Oct 2021 00:00:00 +0000</pubDate><guid>https://opqrstuvcut.github.io/posts/individual-conditional-expectation/</guid><description>&lt;p>Individual Conditional Expectation(ICE)は任意のモデルのある特徴量に対するデータごとの挙動を確認する手法です。&lt;br>
+例えば、ある特定のデータのある特徴量が大きくなるにつれ、モデルの出力がどういった変化をするかを見ます。&lt;/p></description></item></channel></rss>

@@ -1,26 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>物体検出 on MatLoverによるMatlab以外のブログ</title>
-    <link>https://opqrstuvcut.github.io/categories/%E7%89%A9%E4%BD%93%E6%A4%9C%E5%87%BA/</link>
-    <description>Recent content in 物体検出 on MatLoverによるMatlab以外のブログ</description>
-    <generator>Hugo</generator>
-    <language>ja</language>
-    <lastBuildDate>Sat, 31 May 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://opqrstuvcut.github.io/categories/%E7%89%A9%E4%BD%93%E6%A4%9C%E5%87%BA/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>外部知識を活用して効率的に性能向上を達成したYOLO-RD</title>
-      <link>https://opqrstuvcut.github.io/posts/%E5%A4%96%E9%83%A8%E7%9F%A5%E8%AD%98%E3%82%92%E6%B4%BB%E7%94%A8%E3%81%97%E3%81%A6%E5%8A%B9%E7%8E%87%E7%9A%84%E3%81%AB%E6%80%A7%E8%83%BD%E5%90%91%E4%B8%8A%E3%82%92%E9%81%94%E6%88%90%E3%81%97%E3%81%9Fyolo-rd/</link>
-      <pubDate>Sat, 31 May 2025 00:00:00 +0000</pubDate>
-      <guid>https://opqrstuvcut.github.io/posts/%E5%A4%96%E9%83%A8%E7%9F%A5%E8%AD%98%E3%82%92%E6%B4%BB%E7%94%A8%E3%81%97%E3%81%A6%E5%8A%B9%E7%8E%87%E7%9A%84%E3%81%AB%E6%80%A7%E8%83%BD%E5%90%91%E4%B8%8A%E3%82%92%E9%81%94%E6%88%90%E3%81%97%E3%81%9Fyolo-rd/</guid>
-      <description>&lt;p&gt;YOLO-RD (Retriever-Dictionary) は、物体検出の分野で定番となっているYOLO（You Only Look Once）シリーズの最新研究です.&#xA;今回は、ICLR2025で発表されたYOLO-RD(&lt;a href=&#34;https://arxiv.org/abs/2410.15346&#34;&gt;https://arxiv.org/abs/2410.15346&lt;/a&gt;)について解説します.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>回転しているBounding Box向けのIoUのKFIoU</title>
-      <link>https://opqrstuvcut.github.io/posts/%E5%9B%9E%E8%BB%A2%E3%81%97%E3%81%A6%E3%81%84%E3%82%8Bbounding-box%E5%90%91%E3%81%91%E3%81%AEiou%E3%81%AEkfiou/</link>
-      <pubDate>Sat, 22 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://opqrstuvcut.github.io/posts/%E5%9B%9E%E8%BB%A2%E3%81%97%E3%81%A6%E3%81%84%E3%82%8Bbounding-box%E5%90%91%E3%81%91%E3%81%AEiou%E3%81%AEkfiou/</guid>
-      <description>&lt;h2 id=&#34;従来手法の問題点&#34;&gt;従来手法の問題点&lt;/h2&gt;&#xA;&lt;p&gt;回転しているBounding Box向けの微分可能なIoUの計算というのは簡単ではありません．既存手法としてGWDやKLDがありますが、問題ごとにハイパーパラメータの調整が必要になります．これを解決してより扱いやすく性能が高い手法になったのが&lt;a href=&#34;https://arxiv.org/abs/2201.12558&#34;&gt;KFIoU&lt;/a&gt;になります．&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>物体検出 on MatLoverによるMatlab以外のブログ</title><link>https://opqrstuvcut.github.io/categories/%E7%89%A9%E4%BD%93%E6%A4%9C%E5%87%BA/</link><description>Recent content in 物体検出 on MatLoverによるMatlab以外のブログ</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Sat, 31 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://opqrstuvcut.github.io/categories/%E7%89%A9%E4%BD%93%E6%A4%9C%E5%87%BA/index.xml" rel="self" type="application/rss+xml"/><item><title>外部知識を活用して効率的に性能向上を達成したYOLO-RD</title><link>https://opqrstuvcut.github.io/posts/%E5%A4%96%E9%83%A8%E7%9F%A5%E8%AD%98%E3%82%92%E6%B4%BB%E7%94%A8%E3%81%97%E3%81%A6%E5%8A%B9%E7%8E%87%E7%9A%84%E3%81%AB%E6%80%A7%E8%83%BD%E5%90%91%E4%B8%8A%E3%82%92%E9%81%94%E6%88%90%E3%81%97%E3%81%9Fyolo-rd/</link><pubDate>Sat, 31 May 2025 00:00:00 +0000</pubDate><guid>https://opqrstuvcut.github.io/posts/%E5%A4%96%E9%83%A8%E7%9F%A5%E8%AD%98%E3%82%92%E6%B4%BB%E7%94%A8%E3%81%97%E3%81%A6%E5%8A%B9%E7%8E%87%E7%9A%84%E3%81%AB%E6%80%A7%E8%83%BD%E5%90%91%E4%B8%8A%E3%82%92%E9%81%94%E6%88%90%E3%81%97%E3%81%9Fyolo-rd/</guid><description>&lt;p>YOLO-RD (Retriever-Dictionary) は、物体検出の分野で定番となっているYOLO（You Only Look Once）シリーズの最新研究です.
+今回は、ICLR2025で発表されたYOLO-RD(&lt;a href="https://arxiv.org/abs/2410.15346">https://arxiv.org/abs/2410.15346&lt;/a>)について解説します.&lt;/p></description></item><item><title>回転しているBounding Box向けのIoUのKFIoU</title><link>https://opqrstuvcut.github.io/posts/%E5%9B%9E%E8%BB%A2%E3%81%97%E3%81%A6%E3%81%84%E3%82%8Bbounding-box%E5%90%91%E3%81%91%E3%81%AEiou%E3%81%AEkfiou/</link><pubDate>Sat, 22 Mar 2025 00:00:00 +0000</pubDate><guid>https://opqrstuvcut.github.io/posts/%E5%9B%9E%E8%BB%A2%E3%81%97%E3%81%A6%E3%81%84%E3%82%8Bbounding-box%E5%90%91%E3%81%91%E3%81%AEiou%E3%81%AEkfiou/</guid><description>&lt;h2 id="従来手法の問題点">従来手法の問題点&lt;/h2>
+&lt;p>回転しているBounding Box向けの微分可能なIoUの計算というのは簡単ではありません．既存手法としてGWDやKLDがありますが、問題ごとにハイパーパラメータの調整が必要になります．これを解決してより扱いやすく性能が高い手法になったのが&lt;a href="https://arxiv.org/abs/2201.12558">KFIoU&lt;/a>になります．&lt;/p></description></item></channel></rss>

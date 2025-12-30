@@ -1,1639 +1,255 @@
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-	
-	<title>CANINEの論文を読んだメモ :: MatLoverによるMatlab以外のブログ</title>
-	
-	<meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="BERTの系列でCharacterレベルでのembedding手法であるCANINEが提案され、これに似たような手法が盛んになるのではという考えのもと論文を読んだメモを書いておきます。 CANINEってなんて読むべきなんでしょう？
-" />
-<meta name="keywords" content="" />
-
-  <meta name="robots" content="noodp" />
-
-<link rel="canonical" href="https://opqrstuvcut.github.io/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/" />
-
-
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFC5W8DKV1"></script>
-      <script>
-        var doNotTrack = false;
-        if ( false ) {
-          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
-          var doNotTrack = (dnt == "1" || dnt == "yes");
-        }
-        if (!doNotTrack) {
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-LFC5W8DKV1');
-        }
-      </script>
-
-
-
-  
-  <link rel="stylesheet" href="https://opqrstuvcut.github.io/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css">
-
-  
-  <link rel="stylesheet" href="https://opqrstuvcut.github.io/css/code.min.d529ea4b2fb8d34328d7d31afc5466d5f7bc2f0bc9abdd98b69385335d7baee4.css">
-
-  
-  <link rel="stylesheet" href="https://opqrstuvcut.github.io/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css">
-
-  
-  <link rel="stylesheet" href="https://opqrstuvcut.github.io/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css">
-
-  
-  <link rel="stylesheet" href="https://opqrstuvcut.github.io/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
-
-  
-  <link rel="stylesheet" href="https://opqrstuvcut.github.io/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css">
-
-  
-  <link rel="stylesheet" href="https://opqrstuvcut.github.io/css/main.min.775ac2af004d44c22a6d000fbd1d9af529642f5cef27399d0280d180af2c2e9b.css">
-
-  
-  <link rel="stylesheet" href="https://opqrstuvcut.github.io/css/menu.min.310d32205bdedd6f43144e3c3273c9deecd238eba5f9108db5ea96ca0cfbe377.css">
-
-  
-  <link rel="stylesheet" href="https://opqrstuvcut.github.io/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css">
-
-  
-  <link rel="stylesheet" href="https://opqrstuvcut.github.io/css/post.min.ad50c7f4d00e7975918f37fc74c6029e1959a40d66fb5b2c6564a8715e985573.css">
-
-  
-  <link rel="stylesheet" href="https://opqrstuvcut.github.io/css/syntax.min.e9ab635cf918bc84b901eb65c0b2caa74c9544245e3647c1af5c129896ef276e.css">
-
-  
-  <link rel="stylesheet" href="https://opqrstuvcut.github.io/css/terminal.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
-
-  
-  <link rel="stylesheet" href="https://opqrstuvcut.github.io/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
-
-
-
-
-
-
-
-<link rel="shortcut icon" href="https://opqrstuvcut.github.io/favicon.png">
-<link rel="apple-touch-icon" href="https://opqrstuvcut.github.io/apple-touch-icon.png">
-
-
-<meta name="twitter:card" content="summary" />
-
-
-
-<meta property="og:locale" content="ja" />
-<meta property="og:type" content="article" />
-<meta property="og:title" content="CANINEの論文を読んだメモ">
-<meta property="og:description" content="BERTの系列でCharacterレベルでのembedding手法であるCANINEが提案され、これに似たような手法が盛んになるのではという考えのもと論文を読んだメモを書いておきます。 CANINEってなんて読むべきなんでしょう？
-" />
-<meta property="og:url" content="https://opqrstuvcut.github.io/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/" />
-<meta property="og:site_name" content="MatLoverによるMatlab以外のブログ" />
-
-  
-  
-    
-  
-  <meta property="og:image" content="https://opqrstuvcut.github.io/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/fig1.png">
-
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="627">
-
-  <meta property="article:section" content="Deep Learning" />
-
-  <meta property="article:section" content="深層学習" />
-
-  <meta property="article:section" content="自然言語処理" />
-
-
-  <meta property="article:published_time" content="2021-04-13 00:00:00 &#43;0000 UTC" />
-
-
-
-
-
-
-
-
-
-
-<link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css"
-    integrity="sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5"
-    crossorigin="anonymous">
-
-<script defer
-    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js"
-    integrity="sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd"
-    crossorigin="anonymous"></script>
-
-<script defer
-    src="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js"
-    integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl"
-    crossorigin="anonymous"
-    onload="renderMathInElement(document.body);"></script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        renderMathInElement(document.body, {
-            delimiters: [
-                { left: "$$", right: "$$", display: true },
-                { left: "$", right: "$", display: false },
-            ],
-            throwOnError : false
-        });
-    });
-</script>
-
-<meta name="google-site-verification" content="VBThe3LvgreNchk--dzQ7Px-Gezpt0gcnKSBemeI_Rs" />
-
-<style>
-  section.article-content h2 {
-    background-color: rgb(245, 245, 245);
-    padding: 10px;
-  }
-
-  :root {
-    --ja-font-family: "メイリオ", "Meiryo";
-    --base-font-family: "Lato", var(--sys-font-family), var(--ja-font-family),
-      sans-serif;
-    --body-background: #ffffe0;
-  }
-
-</style>
-
-
-</head>
-
-<body>
-	
-
-	<div class="container full">
-		<header class="header">
-  <div class="header__inner">
-    <div class="header__logo">
-      <a href="https://opqrstuvcut.github.io/">
-  <div class="logo">
-    MatLoverによるMatlab以外のブログ
-  </div>
-</a>
-
-    </div>
-    
-      <ul class="menu menu--mobile">
-  <li class="menu__trigger">Menu&nbsp;▾</li>
-  <li>
-    <ul class="menu__dropdown">
-      
-        
-          <li><a href="/">Home</a></li>
-        
-      
-      
-    </ul>
-  </li>
-</ul>
-
-    
-    
-  </div>
-  
-    <nav class="navigation-menu">
-  <ul class="navigation-menu__inner menu--desktop">
-    
-      
-        
-          <li><a href="/" >Home</a></li>
-        
-      
-      
-    
-  </ul>
-</nav>
-
-  
-</header>
-
-
-		<div class="content">
-			<div class="layout">
-				<aside id="profile">
-  <h3>プロフィール</h3>
-  <div class="profile-box">
-    <p>機械学習や関連内容のブログです。仕事の依頼などはvikz2713[あっとマーク]gmail.com まで。</p>
-    <ul>
-      <li><a href="https://github.com/opqrstuvcut" target="_blank">GitHub</a></li>
-    </ul>
-  </div>
-</aside>
-
-				<main class="main">
-					
-<article class="post">
-  <h1 class="post-title">
-    <a href="https://opqrstuvcut.github.io/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/">CANINEの論文を読んだメモ</a>
-  </h1>
-  <div class="post-meta"><time class="post-date">2021-04-13</time></div>
-
-  
-    <span class="post-tags">
-      
-      #<a href="https://opqrstuvcut.github.io/tags/deep-learning/">Deep Learning</a>&nbsp;
-      
-      #<a href="https://opqrstuvcut.github.io/tags/%E6%B7%B1%E5%B1%A4%E5%AD%A6%E7%BF%92/">深層学習</a>&nbsp;
-      
-      #<a href="https://opqrstuvcut.github.io/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E5%87%A6%E7%90%86/">自然言語処理</a>&nbsp;
-      
-    </span>
-  
-  
-  <img src="/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/fig1.png"
-    class="post-cover"
-    alt="CANINEの論文を読んだメモ"
-    title="Cover Image" />
-
-
-  
-
-  <div class="post-content"><div>
-        <p>BERTの系列でCharacterレベルでのembedding手法であるCANINEが提案され、これに似たような手法が盛んになるのではという考えのもと論文を読んだメモを書いておきます。
-CANINEってなんて読むべきなんでしょう？</p>
-<p>論文はこちら：<a href="https://arxiv.org/pdf/2103.06874.pdf">https://arxiv.org/pdf/2103.06874.pdf</a></p>
-<h1 id="エンコーダーのアーキテクチャ">エンコーダーのアーキテクチャ<a href="#エンコーダーのアーキテクチャ" class="hanchor" ariaLabel="Anchor">#</a> </h1>
-<p>CANINEのアーキテクチャは以下のようになっています。
-<img src="/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/fig1.png" alt="CANINEのアーキテクチャ（論文より引用）"></p>
-<p>以下では各々の詳細について述べます。</p>
-<h2 id="入力の作り方">入力の作り方<a href="#入力の作り方" class="hanchor" ariaLabel="Anchor">#</a> </h2>
-<h3 id="文字列から数値列への変換">文字列から数値列への変換<a href="#文字列から数値列への変換" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<p>エンコーダーへの入力は文字単位でおこないます。</p>
-<p>各文字はunicodeの番号に変換され、それがエンコーダーの入力になります。Pythonであれば、ord関数を使うだけで良いです。</p>
-<p>unicodeを使うことで、簡単に入力文を数値列に変換できるうえ、各文字にIDを振って辞書を作成するような手間が不要になります。</p>
-<h3 id="文字のembedding">文字のembedding<a href="#文字のembedding" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<p>文字はunicodeの番号に変換されたあと、embedding（ベクトル）に変換されます。
+<!doctype html><html lang=ja><head><title>CANINEの論文を読んだメモ :: MatLoverによるMatlab以外のブログ</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="BERTの系列でCharacterレベルでのembedding手法であるCANINEが提案され、これに似たような手法が盛んになるのではという考えのもと論文を読んだメモを書いておきます。 CANINEってなんて読むべきなんでしょう？
+"><meta name=keywords content><meta name=robots content="noodp"><link rel=canonical href=https://opqrstuvcut.github.io/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/><script async src="https://www.googletagmanager.com/gtag/js?id=G-LFC5W8DKV1"></script><script>var dnt,doNotTrack=!1;if(!1&&(dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes"),!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-LFC5W8DKV1")}</script><link rel=stylesheet href=https://opqrstuvcut.github.io/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css><link rel=stylesheet href=https://opqrstuvcut.github.io/css/code.min.d529ea4b2fb8d34328d7d31afc5466d5f7bc2f0bc9abdd98b69385335d7baee4.css><link rel=stylesheet href=https://opqrstuvcut.github.io/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css><link rel=stylesheet href=https://opqrstuvcut.github.io/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css><link rel=stylesheet href=https://opqrstuvcut.github.io/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css><link rel=stylesheet href=https://opqrstuvcut.github.io/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css><link rel=stylesheet href=https://opqrstuvcut.github.io/css/main.min.775ac2af004d44c22a6d000fbd1d9af529642f5cef27399d0280d180af2c2e9b.css><link rel=stylesheet href=https://opqrstuvcut.github.io/css/menu.min.310d32205bdedd6f43144e3c3273c9deecd238eba5f9108db5ea96ca0cfbe377.css><link rel=stylesheet href=https://opqrstuvcut.github.io/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css><link rel=stylesheet href=https://opqrstuvcut.github.io/css/post.min.ad50c7f4d00e7975918f37fc74c6029e1959a40d66fb5b2c6564a8715e985573.css><link rel=stylesheet href=https://opqrstuvcut.github.io/css/syntax.min.e9ab635cf918bc84b901eb65c0b2caa74c9544245e3647c1af5c129896ef276e.css><link rel=stylesheet href=https://opqrstuvcut.github.io/css/terminal.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css><link rel=stylesheet href=https://opqrstuvcut.github.io/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css><link rel="shortcut icon" href=https://opqrstuvcut.github.io/favicon.png><link rel=apple-touch-icon href=https://opqrstuvcut.github.io/apple-touch-icon.png><meta name=twitter:card content="summary"><meta property="og:locale" content="ja"><meta property="og:type" content="article"><meta property="og:title" content="CANINEの論文を読んだメモ"><meta property="og:description" content="BERTの系列でCharacterレベルでのembedding手法であるCANINEが提案され、これに似たような手法が盛んになるのではという考えのもと論文を読んだメモを書いておきます。 CANINEってなんて読むべきなんでしょう？
+"><meta property="og:url" content="https://opqrstuvcut.github.io/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/"><meta property="og:site_name" content="MatLoverによるMatlab以外のブログ"><meta property="og:image" content="https://opqrstuvcut.github.io/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/fig1.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="627"><meta property="article:section" content="Deep Learning"><meta property="article:section" content="深層学習"><meta property="article:section" content="自然言語処理"><meta property="article:published_time" content="2021-04-13 00:00:00 +0000 UTC"><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css integrity=sha384-Cqd8ihRLum0CCg8rz0hYKPoLZ3uw+gES2rXQXycqnL5pgVQIflxAUDS7ZSjITLb5 crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.js integrity=sha384-1Or6BdeNQb0ezrmtGeqQHFpppNd7a/gw29xeiSikBbsb44xu3uAo8c7FwbF5jhbd crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/contrib/auto-render.min.js integrity=sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl crossorigin=anonymous onload=renderMathInElement(document.body)></script><script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}],throwOnError:!1})})</script><meta name=google-site-verification content="VBThe3LvgreNchk--dzQ7Px-Gezpt0gcnKSBemeI_Rs"><style>section.article-content h2{background-color:#f5f5f5;padding:10px}:root{--ja-font-family:"メイリオ", "Meiryo";--base-font-family:"Lato", var(--sys-font-family), var(--ja-font-family),
+      sans-serif;--body-background:#ffffe0}</style></head><body><div class="container full"><header class=header><div class=header__inner><div class=header__logo><a href=https://opqrstuvcut.github.io/><div class=logo>MatLoverによるMatlab以外のブログ</div></a></div><ul class="menu menu--mobile"><li class=menu__trigger>Menu&nbsp;▾</li><li><ul class=menu__dropdown><li><a href=/>Home</a></li></ul></li></ul></div><nav class=navigation-menu><ul class="navigation-menu__inner menu--desktop"><li><a href=/>Home</a></li></ul></nav></header><div class=content><div class=layout><aside id=profile><h3>プロフィール</h3><div class=profile-box><p>機械学習や関連内容のブログです。仕事の依頼などはvikz2713[あっとマーク]gmail.com まで。</p><ul><li><a href=https://github.com/opqrstuvcut target=_blank>GitHub</a></li></ul></div></aside><main class=main><article class=post><h1 class=post-title><a href=https://opqrstuvcut.github.io/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/>CANINEの論文を読んだメモ</a></h1><div class=post-meta><time class=post-date>2021-04-13</time></div><span class=post-tags>#<a href=https://opqrstuvcut.github.io/tags/deep-learning/>Deep Learning</a>&nbsp;
+#<a href=https://opqrstuvcut.github.io/tags/%E6%B7%B1%E5%B1%A4%E5%AD%A6%E7%BF%92/>深層学習</a>&nbsp;
+#<a href=https://opqrstuvcut.github.io/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E5%87%A6%E7%90%86/>自然言語処理</a>&nbsp;
+</span><img src=/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/fig1.png class=post-cover alt=CANINEの論文を読んだメモ title="Cover Image"><div class=post-content><div><p>BERTの系列でCharacterレベルでのembedding手法であるCANINEが提案され、これに似たような手法が盛んになるのではという考えのもと論文を読んだメモを書いておきます。
+CANINEってなんて読むべきなんでしょう？</p><p>論文はこちら：<a href=https://arxiv.org/pdf/2103.06874.pdf>https://arxiv.org/pdf/2103.06874.pdf</a></p><h1 id=エンコーダーのアーキテクチャ>エンコーダーのアーキテクチャ<a href=#エンコーダーのアーキテクチャ class=hanchor arialabel=Anchor>#</a></h1><p>CANINEのアーキテクチャは以下のようになっています。
+<img src=/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/fig1.png alt=CANINEのアーキテクチャ（論文より引用）></p><p>以下では各々の詳細について述べます。</p><h2 id=入力の作り方>入力の作り方<a href=#入力の作り方 class=hanchor arialabel=Anchor>#</a></h2><h3 id=文字列から数値列への変換>文字列から数値列への変換<a href=#文字列から数値列への変換 class=hanchor arialabel=Anchor>#</a></h3><p>エンコーダーへの入力は文字単位でおこないます。</p><p>各文字はunicodeの番号に変換され、それがエンコーダーの入力になります。Pythonであれば、ord関数を使うだけで良いです。</p><p>unicodeを使うことで、簡単に入力文を数値列に変換できるうえ、各文字にIDを振って辞書を作成するような手間が不要になります。</p><h3 id=文字のembedding>文字のembedding<a href=#文字のembedding class=hanchor arialabel=Anchor>#</a></h3><p>文字はunicodeの番号に変換されたあと、embedding（ベクトル）に変換されます。
 BERTなどはsubwordに対応したベクトルを参照すれば良いですが、CANINEの場合に同じことをしようとすると、14万3000個の文字ごとに768次元のベクトルを用意する必要があるために難しいです。
-このため、CANINEではword hash embedding trickというものを利用します。</p>
-<p>これは、ある文字のunicodeの番号を$x_i$としたとき、次のようにベクトルを生成します。</p>
-<p>$$\bold{e}_i = \oplus_k^K {\rm LOOKUP}_k(\mathcal{H}_k(x_i)\ \% \  B, d&rsquo;)$$</p>
-<p>ここで${\rm LOOKUP}_k(x, d)$はベクトルの一覧の中から、与えられた値$x$に対応した$d$次元のベクトルを返す関数をあらわします（つまり$\mathbb{R}^{B \times d&rsquo;}$のサイズの行列の特定行を返すような関数）。また$\oplus$	はベクトルの結合を、$\mathcal{H}_k$はハッシュ関数を、$B$は与えられた自然数をあらわします。論文中では$K=8, B=16k, d&rsquo;=768/K(=96)$となっています。</p>
-<p>unicodeの番号のハッシュ値に応じて得られた96次元のベクトルを結合することで、768次元のベクトルを生成しています。この処理によって生成されうるベクトルの種類は$16 \times 32 \times \dots \times 2048 \approx 1.1529215 \times 10^{18}$なので、豊富な表現力をもつこととなります。</p>
-<h2 id="ダウンサンプリング">ダウンサンプリング<a href="#ダウンサンプリング" class="hanchor" ariaLabel="Anchor">#</a> </h2>
-<p>BERTでも同じことがいえますが、文字単位で入力を与えると入力の数が多くなるため計算量が多くなってしまいます。Transformerで行われる行列積は入力長の二乗のオーダーの計算量になるため、入力長を小さくすることは計算量削減に大きく寄与します。
-そのためCANINEではダウンサンプリングを用いて、後続のネットワークへの入力を少なくする方法を提案しています。</p>
-<p>ダウンサンプリングは以下のようにおこなわれます。</p>
-<ol>
-<li>文字のembeddingに対してblock単位でのTransformerを1度だけ適用する。
-<ul>
-<li>これは128字単位で文字を区切り、その中でself-attentionを実行することを指します。blockに区切ることで計算量削減ができます。</li>
-</ul>
-</li>
-<li>strideのサイズが4のConvolutionを実行する。</li>
-</ol>
-<p>1つめのTransformerで文字レベルのembeddingから局所的な情報を得ており、そのあとにstrideが4のConvolutionを実行することで、情報を集約して入力長を1/4に減らすことができます。<br>
-論文では最大で2048字を入力できるようにしていますが、strideのサイズが4のConvolutionを利用することで後続の処理には最大で512個のシーケンスが与えられることになります。</p>
-<p>ダウンサンプリング後のシーケンスは、BERTなどのようにTransformerを重ねたネットワークへ与えられます。</p>
-<h2 id="アップサンプリング">アップサンプリング<a href="#アップサンプリング" class="hanchor" ariaLabel="Anchor">#</a> </h2>
-<p>固有表現抽出やQAなどのタスクを解くために、入力と同じ長さの出力が必要になります（分類問題は[CLS]に対応するトークンを利用すれば良い）。
-このため、次のようにしてアップサンプリングをおこない、入力と同じ長さの出力を得ます。</p>
-<ol>
-<li>Transformerの出力のシーケンスをダウンサンプリングのstrideの分だけ複製し、ダウンサンプリング前の入力長と一致するようにする。
-<ul>
-<li>出力のシーケンスが$(o_1,o_2,\dots)$のときに$(o_1, o_1,o_1,o_1, o_2,o_2,o_2,o_2,\dots)$とすることを指しているはず。</li>
-</ul>
-</li>
-<li>1のシーケンスとダウンサンプリングでのblock単位でのself-attentionでの出力を結合する。
-<ul>
-<li>つまり、各ベクトルは高度な文脈情報と局所的な文脈情報をもつことになります。</li>
-</ul>
-</li>
-<li>結合されたシーケンスへConvolutionを適用することで倍になった次元を結合前の次元に戻す（論文ではkernel sizeは4）。</li>
-<li>最後にTransformerを一度適用する。</li>
-</ol>
-<h2 id="学習">学習<a href="#学習" class="hanchor" ariaLabel="Anchor">#</a> </h2>
-<p>CANINEの事前学習のタスクには文字単位とsubword単位がありますが、性能は問題によって少しだけ変わります。
-各タスクの詳細は以下のとおりです。</p>
-<h3 id="文字単位のタスク">文字単位のタスク<a href="#文字単位のタスク" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<p>入力されるテキストを単語単位で選択し、その単語を文字単位でmaskし、maskされた文字を予測するタスクです。<br>
-予測するときには文字を左から順に予測するなどのような順番が決まっておらず、maskされているなかからランダムな順番で予測をすることになります。</p>
-<h3 id="サブワード単位のタスク">サブワード単位のタスク<a href="#サブワード単位のタスク" class="hanchor" ariaLabel="Anchor">#</a> </h3>
-<p>こちらのタスクではsubword単位で選択し、そのsubwordを文字単位でmaskし、maskされたsubwordを予測するタスクです。<br>
-予測するときにはmaskしたsubwordに含まれる文字に対応する出力をランダムに選択し、その出力からsubwordを予測します。</p>
-<h1 id="実験">実験<a href="#実験" class="hanchor" ariaLabel="Anchor">#</a> </h1>
-<p>実験はTYDI QAデータセットを用いておこなわれています。</p>
-<h2 id="他手法との比較">他手法との比較<a href="#他手法との比較" class="hanchor" ariaLabel="Anchor">#</a> </h2>
-<p>mBERTとの比較が次のテーブルになります。
-<img src="/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/table2.png" alt="mBERTとの比較（論文より引用）"></p>
-<p>CANINE-Sはサブワード単位のタスクで事前学習したとき、CANINE-Cは文字単位のタスクで事前学習したときをあらわします。一番右の2つの列はタスクの性能で、F1スコアで計算されているため大きいほうが良いです。
+このため、CANINEではword hash embedding trickというものを利用します。</p><p>これは、ある文字のunicodeの番号を$x_i$としたとき、次のようにベクトルを生成します。</p><p>$$\bold{e}_i = \oplus_k^K {\rm LOOKUP}_k(\mathcal{H}_k(x_i)\ \% \ B, d&rsquo;)$$</p><p>ここで${\rm LOOKUP}_k(x, d)$はベクトルの一覧の中から、与えられた値$x$に対応した$d$次元のベクトルを返す関数をあらわします（つまり$\mathbb{R}^{B \times d&rsquo;}$のサイズの行列の特定行を返すような関数）。また$\oplus$ はベクトルの結合を、$\mathcal{H}_k$はハッシュ関数を、$B$は与えられた自然数をあらわします。論文中では$K=8, B=16k, d&rsquo;=768/K(=96)$となっています。</p><p>unicodeの番号のハッシュ値に応じて得られた96次元のベクトルを結合することで、768次元のベクトルを生成しています。この処理によって生成されうるベクトルの種類は$16 \times 32 \times \dots \times 2048 \approx 1.1529215 \times 10^{18}$なので、豊富な表現力をもつこととなります。</p><h2 id=ダウンサンプリング>ダウンサンプリング<a href=#ダウンサンプリング class=hanchor arialabel=Anchor>#</a></h2><p>BERTでも同じことがいえますが、文字単位で入力を与えると入力の数が多くなるため計算量が多くなってしまいます。Transformerで行われる行列積は入力長の二乗のオーダーの計算量になるため、入力長を小さくすることは計算量削減に大きく寄与します。
+そのためCANINEではダウンサンプリングを用いて、後続のネットワークへの入力を少なくする方法を提案しています。</p><p>ダウンサンプリングは以下のようにおこなわれます。</p><ol><li>文字のembeddingに対してblock単位でのTransformerを1度だけ適用する。<ul><li>これは128字単位で文字を区切り、その中でself-attentionを実行することを指します。blockに区切ることで計算量削減ができます。</li></ul></li><li>strideのサイズが4のConvolutionを実行する。</li></ol><p>1つめのTransformerで文字レベルのembeddingから局所的な情報を得ており、そのあとにstrideが4のConvolutionを実行することで、情報を集約して入力長を1/4に減らすことができます。<br>論文では最大で2048字を入力できるようにしていますが、strideのサイズが4のConvolutionを利用することで後続の処理には最大で512個のシーケンスが与えられることになります。</p><p>ダウンサンプリング後のシーケンスは、BERTなどのようにTransformerを重ねたネットワークへ与えられます。</p><h2 id=アップサンプリング>アップサンプリング<a href=#アップサンプリング class=hanchor arialabel=Anchor>#</a></h2><p>固有表現抽出やQAなどのタスクを解くために、入力と同じ長さの出力が必要になります（分類問題は[CLS]に対応するトークンを利用すれば良い）。
+このため、次のようにしてアップサンプリングをおこない、入力と同じ長さの出力を得ます。</p><ol><li>Transformerの出力のシーケンスをダウンサンプリングのstrideの分だけ複製し、ダウンサンプリング前の入力長と一致するようにする。<ul><li>出力のシーケンスが$(o_1,o_2,\dots)$のときに$(o_1, o_1,o_1,o_1, o_2,o_2,o_2,o_2,\dots)$とすることを指しているはず。</li></ul></li><li>1のシーケンスとダウンサンプリングでのblock単位でのself-attentionでの出力を結合する。<ul><li>つまり、各ベクトルは高度な文脈情報と局所的な文脈情報をもつことになります。</li></ul></li><li>結合されたシーケンスへConvolutionを適用することで倍になった次元を結合前の次元に戻す（論文ではkernel sizeは4）。</li><li>最後にTransformerを一度適用する。</li></ol><h2 id=学習>学習<a href=#学習 class=hanchor arialabel=Anchor>#</a></h2><p>CANINEの事前学習のタスクには文字単位とsubword単位がありますが、性能は問題によって少しだけ変わります。
+各タスクの詳細は以下のとおりです。</p><h3 id=文字単位のタスク>文字単位のタスク<a href=#文字単位のタスク class=hanchor arialabel=Anchor>#</a></h3><p>入力されるテキストを単語単位で選択し、その単語を文字単位でmaskし、maskされた文字を予測するタスクです。<br>予測するときには文字を左から順に予測するなどのような順番が決まっておらず、maskされているなかからランダムな順番で予測をすることになります。</p><h3 id=サブワード単位のタスク>サブワード単位のタスク<a href=#サブワード単位のタスク class=hanchor arialabel=Anchor>#</a></h3><p>こちらのタスクではsubword単位で選択し、そのsubwordを文字単位でmaskし、maskされたsubwordを予測するタスクです。<br>予測するときにはmaskしたsubwordに含まれる文字に対応する出力をランダムに選択し、その出力からsubwordを予測します。</p><h1 id=実験>実験<a href=#実験 class=hanchor arialabel=Anchor>#</a></h1><p>実験はTYDI QAデータセットを用いておこなわれています。</p><h2 id=他手法との比較>他手法との比較<a href=#他手法との比較 class=hanchor arialabel=Anchor>#</a></h2><p>mBERTとの比較が次のテーブルになります。
+<img src=/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/table2.png alt=mBERTとの比較（論文より引用）></p><p>CANINE-Sはサブワード単位のタスクで事前学習したとき、CANINE-Cは文字単位のタスクで事前学習したときをあらわします。一番右の2つの列はタスクの性能で、F1スコアで計算されているため大きいほうが良いです。
 結果を見るとmBERTに大きな差をつけていることがわかります。
-また、Example/secの列をみると、mBERTは文字単位の入力にすると非常に推論が遅いですが、CANINEはそれに比べると非常に速いです。とはいえ、mBERTのsubword単位の入力の場合に比べると当然遅いです。</p>
-<h2 id="ablation-study">ablation study<a href="#ablation-study" class="hanchor" ariaLabel="Anchor">#</a> </h2>
-<p>ablation studyです。
-<img src="/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/table4.png" alt="ablation study（論文より引用）"></p>
-<p>個人的に気になったところとしては、ダウンサンプリングのときによりstrideをもっと大きくすると計算量が減るのですが、この結果をみるとstrideを大きくすることで結構性能が下がってしまっています。これは残念。
-embeddingの次元も小さくすると性能が結構下がっていますね。</p>
-
-      </div></div>
-
-  
-    
-<div class="pagination">
-  <div class="pagination__title">
-    <span class="pagination__title-h"></span>
-    <hr />
-  </div>
-  <div class="pagination__buttons">
-    
-      <a href="https://opqrstuvcut.github.io/posts/aws%E3%81%AEdead-letter-queue%E3%81%AE%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%82%92%E3%82%82%E3%81%A8%E3%81%AEqueue%E3%81%AB%E6%88%BB%E3%81%99/" class="button inline prev">
-        &lt; [<span class="button__text">AWSのDead Letter QueueのメッセージをもとのQueueに戻す</span>]
-      </a>
-    
-    
-      ::
-    
-    
-      <a href="https://opqrstuvcut.github.io/posts/%E7%94%BB%E5%83%8F%E8%AA%8D%E8%AD%98%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E6%80%A7%E8%83%BD%E3%82%92%E3%81%82%E3%81%92%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AEtips/" class="button inline next">
-         [<span class="button__text">画像認識モデルの性能をあげるためのTips</span>] &gt;
-      </a>
-    
-  </div>
-</div>
-
-
-  
-
-  
-    
-
-  
-</article>
-
-				</main>
-				<aside id="sidebar">
-	<h3>最近の記事</h3>
-	<ul class="recent-posts"><li>
-			<a href="/posts/openai%E3%81%AEpython%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E5%88%A9%E7%94%A8%E3%81%A7unsupported-file-format%E3%81%8C%E3%81%A7%E3%82%8B/">OpenAIのPythonモジュール利用で「Unsupported file format」がでる</a>
-			<small class="date">2025-07-31</small>
-		</li><li>
-			<a href="/posts/hidden-in-plain-sight-vlms-overlook-their-visual-representations%E3%81%AE%E8%AB%96%E6%96%87%E7%B4%B9%E4%BB%8B/">「Hidden in plain sight： VLMs overlook their visual representations」の論文紹介</a>
-			<small class="date">2025-07-28</small>
-		</li><li>
-			<a href="/posts/%E6%8B%A1%E6%95%A3%E8%A8%80%E8%AA%9E%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AEllada/">拡散言語モデルのLLaDA</a>
-			<small class="date">2025-06-30</small>
-		</li><li>
-			<a href="/posts/%E5%A4%96%E9%83%A8%E7%9F%A5%E8%AD%98%E3%82%92%E6%B4%BB%E7%94%A8%E3%81%97%E3%81%A6%E5%8A%B9%E7%8E%87%E7%9A%84%E3%81%AB%E6%80%A7%E8%83%BD%E5%90%91%E4%B8%8A%E3%82%92%E9%81%94%E6%88%90%E3%81%97%E3%81%9Fyolo-rd/">外部知識を活用して効率的に性能向上を達成したYOLO-RD</a>
-			<small class="date">2025-05-31</small>
-		</li><li>
-			<a href="/posts/label-studio%E3%81%AEapi%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9F%E3%83%87%E3%83%BC%E3%82%BF%E9%80%A3%E6%90%BA%E3%81%AE%E3%83%A1%E3%83%A2/">Label StudioのAPIを利用したデータ連携のメモ</a>
-			<small class="date">2025-04-24</small>
-		</li><li>
-			<a href="/posts/%E5%9B%9E%E8%BB%A2%E3%81%97%E3%81%A6%E3%81%84%E3%82%8Bbounding-box%E5%90%91%E3%81%91%E3%81%AEiou%E3%81%AEkfiou/">回転しているBounding Box向けのIoUのKFIoU</a>
-			<small class="date">2025-03-22</small>
-		</li><li>
-			<a href="/posts/%E7%89%B9%E5%BE%B4%E9%87%8F%E3%81%AE%E6%AC%A1%E5%85%83%E3%81%AE%E6%9F%94%E8%BB%9F%E6%80%A7%E3%81%8C%E9%AB%98%E3%81%84%E3%83%9E%E3%83%88%E3%83%AA%E3%83%A7%E3%83%BC%E3%82%B7%E3%82%AB%E8%A1%A8%E7%8F%BE%E5%AD%A6%E7%BF%92/">特徴量の次元の柔軟性が高いマトリョーシカ表現学習</a>
-			<small class="date">2025-02-17</small>
-		</li><li>
-			<a href="/posts/waic/">WAIC</a>
-			<small class="date">2025-01-18</small>
-		</li></ul>
-
-
-	<h3>カテゴリ</h3>
-<ul class="categories">
-  
-    <li>
-      <a href="/categories/app-runner">app runner</a>
-
-      (1)
-    </li>
-  
-    <li>
-      <a href="/categories/aws">aws</a>
-
-      (7)
-    </li>
-  
-    <li>
-      <a href="/categories/chrome">chrome</a>
-
-      (1)
-    </li>
-  
-    <li>
-      <a href="/categories/deep-learning">deep learning</a>
-
-      (2)
-    </li>
-  
-    <li>
-      <a href="/categories/docker">docker</a>
-
-      (1)
-    </li>
-  
-    <li>
-      <a href="/categories/ecs">ecs</a>
-
-      (1)
-    </li>
-  
-    <li>
-      <a href="/categories/feature-importance">feature importance</a>
-
-      (3)
-    </li>
-  
-    <li>
-      <a href="/categories/flutter">flutter</a>
-
-      (1)
-    </li>
-  
-    <li>
-      <a href="/categories/gcp">gcp</a>
-
-      (1)
-    </li>
-  
-    <li>
-      <a href="/categories/gpu">gpu</a>
-
-      (2)
-    </li>
-  
-    <li>
-      <a href="/categories/kubernetes">kubernetes</a>
-
-      (1)
-    </li>
-  
-    <li>
-      <a href="/categories/llm">llm</a>
-
-      (2)
-    </li>
-  
-    <li>
-      <a href="/categories/nlp">nlp</a>
-
-      (2)
-    </li>
-  
-    <li>
-      <a href="/categories/openai">openai</a>
-
-      (1)
-    </li>
-  
-    <li>
-      <a href="/categories/opencv">opencv</a>
-
-      (31)
-    </li>
-  
-    <li>
-      <a href="/categories/opencv%E7%94%9F%E6%B4%BB">opencv生活</a>
-
-      (3)
-    </li>
-  
-    <li>
-      <a href="/categories/pandas">pandas</a>
-
-      (1)
-    </li>
-  
-    <li>
-      <a href="/categories/python">python</a>
-
-      (6)
-    </li>
-  
-    <li>
-      <a href="/categories/sql">sql</a>
-
-      (1)
-    </li>
-  
-    <li>
-      <a href="/categories/tensorflow">tensorflow</a>
-
-      (1)
-    </li>
-  
-    <li>
-      <a href="/categories/uwsgi">uwsgi</a>
-
-      (1)
-    </li>
-  
-    <li>
-      <a href="/categories/vim">vim</a>
-
-      (1)
-    </li>
-  
-    <li>
-      <a href="/categories/vim%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3">vimプラグイン</a>
-
-      (1)
-    </li>
-  
-    <li>
-      <a href="/categories/vlm">vlm</a>
-
-      (1)
-    </li>
-  
-    <li>
-      <a href="/categories/%E3%82%A2%E3%83%8E%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">アノテーション</a>
-
-      (1)
-    </li>
-  
-    <li>
-      <a href="/categories/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0">ディープラーニング</a>
-
-      (6)
-    </li>
-  
-    <li>
-      <a href="/categories/%E3%83%99%E3%82%A4%E3%82%BA">ベイズ</a>
-
-      (1)
-    </li>
-  
-    <li>
-      <a href="/categories/%E6%83%85%E5%A0%B1%E9%87%8F%E5%9F%BA%E6%BA%96">情報量基準</a>
-
-      (1)
-    </li>
-  
-    <li>
-      <a href="/categories/%E6%95%B0%E5%80%A4%E8%A8%88%E7%AE%97">数値計算</a>
-
-      (1)
-    </li>
-  
-    <li>
-      <a href="/categories/%E6%95%B0%E5%AD%A6">数学</a>
-
-      (1)
-    </li>
-  
-    <li>
-      <a href="/categories/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92">機械学習</a>
-
-      (11)
-    </li>
-  
-    <li>
-      <a href="/categories/%E6%B7%B1%E5%B1%A4%E5%AD%A6%E7%BF%92">深層学習</a>
-
-      (2)
-    </li>
-  
-    <li>
-      <a href="/categories/%E7%89%A9%E4%BD%93%E6%A4%9C%E5%87%BA">物体検出</a>
-
-      (2)
-    </li>
-  
-    <li>
-      <a href="/categories/%E7%94%BB%E5%83%8F%E5%87%A6%E7%90%86">画像処理</a>
-
-      (36)
-    </li>
-  
-    <li>
-      <a href="/categories/%E7%B5%B1%E8%A8%88">統計</a>
-
-      (2)
-    </li>
-  
-    <li>
-      <a href="/categories/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E5%87%A6%E7%90%86">自然言語処理</a>
-
-      (4)
-    </li>
-  
-    <li>
-      <a href="/categories/%E8%A1%A8%E7%8F%BE%E5%AD%A6%E7%BF%92">表現学習</a>
-
-      (1)
-    </li>
-  
-</ul>
-
-<h3>タグ</h3>
-<ul class="tags">
-  
-    <li>
-      <a href="/tags/adaptivethreshold">adaptivethreshold</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/affine">affine</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/ai-search">ai search</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/aic">aic</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/albert">albert</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/aws">aws</a>
-      (7)
-    </li>
-  
-    <li>
-      <a href="/tags/azure">azure</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/bert">bert</a>
-      (5)
-    </li>
-  
-    <li>
-      <a href="/tags/boto3">boto3</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/bubble">bubble</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/canny">canny</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/chromedriver">chromedriver</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/clip">clip</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/closing">closing</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/cnn">cnn</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/cognito">cognito</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/coordconv">coordconv</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/cuda">cuda</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/cv">cv</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/dart">dart</a>
-      (2)
-    </li>
-  
-    <li>
-      <a href="/tags/deep-learning">deep learning</a>
-      (3)
-    </li>
-  
-    <li>
-      <a href="/tags/deeplearning">deeplearning</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/deeplift">deeplift</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/dilate">dilate</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/dlq">dlq</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/docker">docker</a>
-      (2)
-    </li>
-  
-    <li>
-      <a href="/tags/docker-compose">docker-compose</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/drawcontours">drawcontours</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/ecs">ecs</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/efficientnet">efficientnet</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/embedding">embedding</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/erode">erode</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/fastapi">fastapi</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/feature-importance">feature importance</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/filter2d">filter2d</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/floodfill">floodfill</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/flutter">flutter</a>
-      (2)
-    </li>
-  
-    <li>
-      <a href="/tags/fnlmd">fnlmd</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/gcp">gcp</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/gke">gke</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/gpt">gpt</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/gpu">gpu</a>
-      (2)
-    </li>
-  
-    <li>
-      <a href="/tags/grabcuts">grabcuts</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/groupby">groupby</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/gru">gru</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/hessian">hessian</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/hough%E5%A4%89%E6%8F%9B">hough変換</a>
-      (2)
-    </li>
-  
-    <li>
-      <a href="/tags/imagebert">imagebert</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/individual-conditional-expectation">individual conditional expectation</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/inpaint">inpaint</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/integrated-gradients">integrated gradients</a>
-      (2)
-    </li>
-  
-    <li>
-      <a href="/tags/iou">iou</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/jupyter">jupyter</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/jupytxt">jupytxt</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/keras">keras</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/kfiou">kfiou</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/kldivergence">kldivergence</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/kubernetes">kubernetes</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/label-studio">label studio</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/lambda">lambda</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/laplacian">laplacian</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/lime">lime</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/llada">llada</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/llama">llama</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/llm">llm</a>
-      (2)
-    </li>
-  
-    <li>
-      <a href="/tags/lstm">lstm</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/lu%E5%88%86%E8%A7%A3">lu分解</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/m3u8">m3u8</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/magma">magma</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/mamba">mamba</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/manifold">manifold</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/matplotlib">matplotlib</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/medianblur">medianblur</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/minio">minio</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/minmaxloc">minmaxloc</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/mlm">mlm</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/namedtuple">namedtuple</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/neovim">neovim</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/nlp">nlp</a>
-      (2)
-    </li>
-  
-    <li>
-      <a href="/tags/numpy">numpy</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/nvidia">nvidia</a>
-      (2)
-    </li>
-  
-    <li>
-      <a href="/tags/object-detection">object detection</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/onnx">onnx</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/onnx-runtime">onnx runtime</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/openai">openai</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/opencv">opencv</a>
-      (30)
-    </li>
-  
-    <li>
-      <a href="/tags/opencv2">opencv2</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/opening">opening</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/pabdas">pabdas</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/pandas">pandas</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/partial-dependence-plot">partial dependence plot</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/postgresql">postgresql</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/pre-annotations">pre-annotations</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/pymc">pymc</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/python">python</a>
-      (16)
-    </li>
-  
-    <li>
-      <a href="/tags/pytorch">pytorch</a>
-      (4)
-    </li>
-  
-    <li>
-      <a href="/tags/rag">rag</a>
-      (2)
-    </li>
-  
-    <li>
-      <a href="/tags/rnn">rnn</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/rotated-bounding-box">rotated bounding box</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/rt-detr">rt-detr</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/s3">s3</a>
-      (2)
-    </li>
-  
-    <li>
-      <a href="/tags/sepfilter2d">sepfilter2d</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/shap">shap</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/skewiou">skewiou</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/sobel">sobel</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/sqs">sqs</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/sum-tree">sum tree</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/table">table</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/tabnet">tabnet</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/tabtransformer">tabtransformer</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/tabular">tabular</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/tensorboard">tensorboard</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/tensorflow">tensorflow</a>
-      (3)
-    </li>
-  
-    <li>
-      <a href="/tags/tic">tic</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/transformer">transformer</a>
-      (2)
-    </li>
-  
-    <li>
-      <a href="/tags/uvicorn">uvicorn</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/uwsgi">uwsgi</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/vim">vim</a>
-      (2)
-    </li>
-  
-    <li>
-      <a href="/tags/vlm">vlm</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/waic">waic</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/watershed">watershed</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/workload-identity">workload identity</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/yolo">yolo</a>
-      (2)
-    </li>
-  
-    <li>
-      <a href="/tags/yolo-rd">yolo-rd</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/yolov5">yolov5</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E3%82%A2%E3%83%8E%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">アノテーション</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B">アフィン変換</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E3%82%AB%E3%83%AB%E3%83%9E%E3%83%B3%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%BC">カルマンフィルター</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E3%82%AC%E3%82%A6%E3%82%B9%E5%B9%B3%E6%BB%91%E5%8C%96">ガウス平滑化</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E3%82%AD%E3%83%A3%E3%83%97%E3%82%B7%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0">キャプショニング</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0">サンプリング</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E3%82%B9%E3%83%94%E3%82%A2%E3%83%9E%E3%83%B3%E3%81%AE%E9%A0%86%E4%BD%8D%E7%9B%B8%E9%96%A2%E4%BF%82%E6%95%B0">スピアマンの順位相関係数</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%83%9E%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0">テンプレートマッチング</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0">ディープラーニング</a>
-      (12)
-    </li>
-  
-    <li>
-      <a href="/tags/%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB">ノイズ除去</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0">ヒストグラム</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96">ヒストグラム平坦化</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E6%AF%94%E8%BC%83">ヒストグラム比較</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E3%83%98%E3%83%83%E3%82%BB%E8%A1%8C%E5%88%97">ヘッセ行列</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E3%83%99%E3%82%A4%E3%82%BA">ベイズ</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E4%BA%8C%E5%80%A4%E5%8C%96">二値化</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E5%86%86%E6%A4%9C%E5%87%BA">円検出</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E5%87%B8">凸</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E5%88%86%E9%9B%A2%E5%8F%AF%E8%83%BD%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF">分離可能フィルタ</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E5%89%8D%E6%99%AF%E5%88%86%E9%9B%A2">前景分離</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E5%8B%95%E7%94%BB">動画</a>
-      (2)
-    </li>
-  
-    <li>
-      <a href="/tags/%E5%90%B9%E3%81%8D%E5%87%BA%E3%81%97">吹き出し</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E5%9C%A7%E7%B8%AE">圧縮</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E5%A4%A7%E6%B4%A5%E4%BA%8C%E5%80%A4%E5%8C%96">大津二値化</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E5%A4%A7%E8%A6%8F%E6%A8%A1%E8%A8%80%E8%AA%9E%E3%83%A2%E3%83%87%E3%83%AB">大規模言語モデル</a>
-      (2)
-    </li>
-  
-    <li>
-      <a href="/tags/%E5%AF%84%E4%B8%8E">寄与</a>
-      (2)
-    </li>
-  
-    <li>
-      <a href="/tags/%E5%AF%84%E4%B8%8E%E5%BA%A6">寄与度</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E5%B9%B3%E6%BB%91%E5%8C%96">平滑化</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E5%BE%A9%E5%85%83">復元</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E6%83%85%E5%A0%B1%E9%87%8F%E5%9F%BA%E6%BA%96">情報量基準</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E6%8B%A1%E6%95%A3%E3%83%A2%E3%83%87%E3%83%AB">拡散モデル</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E6%95%B0%E5%AD%A6">数学</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92">機械学習</a>
-      (5)
-    </li>
-  
-    <li>
-      <a href="/tags/%E6%AD%A3%E8%A6%8F%E5%88%86%E5%B8%83">正規分布</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E6%B7%B1%E5%B1%A4%E5%AD%A6%E7%BF%92">深層学習</a>
-      (9)
-    </li>
-  
-    <li>
-      <a href="/tags/%E6%B8%A1%E8%BE%BA%E6%BE%84%E5%A4%AB%E3%83%99%E3%82%A4%E3%82%BA">渡辺澄夫ベイズ</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E7%89%A9%E4%BD%93%E6%A4%9C%E5%87%BA">物体検出</a>
-      (3)
-    </li>
-  
-    <li>
-      <a href="/tags/%E7%89%A9%E4%BD%93%E8%AA%8D%E8%AD%98">物体認識</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E7%89%B9%E5%BE%B4%E9%87%8F">特徴量</a>
-      (2)
-    </li>
-  
-    <li>
-      <a href="/tags/%E7%94%BB%E5%83%8F">画像</a>
-      (4)
-    </li>
-  
-    <li>
-      <a href="/tags/%E7%95%B3%E3%81%BF%E8%BE%BC%E3%81%BF">畳み込み</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E7%B5%B1%E8%A8%88">統計</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E7%B8%AE%E5%B0%8F">縮小</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E8%86%A8%E5%BC%B5">膨張</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E">自然言語</a>
-      (3)
-    </li>
-  
-    <li>
-      <a href="/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E5%87%A6%E7%90%86">自然言語処理</a>
-      (2)
-    </li>
-  
-    <li>
-      <a href="/tags/%E8%92%B8%E7%95%99">蒸留</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E8%A1%A8%E7%8F%BE%E5%AD%A6%E7%BF%92">表現学習</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E8%A8%88%E7%AE%97%E9%87%8F">計算量</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E8%AA%AC%E6%98%8E%E5%8F%AF%E8%83%BDai">説明可能ai</a>
-      (2)
-    </li>
-  
-    <li>
-      <a href="/tags/%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF">読み込み</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E8%B2%A0%E5%AE%9A%E5%80%A4">負定値</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E8%B7%9D%E9%9B%A2%E5%A4%89%E6%8F%9B">距離変換</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E8%BC%AA%E9%83%AD">輪郭</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E8%BC%AA%E9%83%AD%E6%8A%BD%E5%87%BA">輪郭抽出</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E9%80%86%E8%A1%8C%E5%88%97">逆行列</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E9%80%8F%E9%81%8E%E5%A4%89%E6%8F%9B">透過変換</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E9%80%A3%E7%AB%8B%E4%B8%80%E6%AC%A1%E6%96%B9%E7%A8%8B%E5%BC%8F">連立一次方程式</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E9%81%A9%E5%BF%9C%E7%9A%84%E6%A4%9C%E7%B4%A2">適応的検索</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E9%87%8D%E8%A6%81%E5%BA%A6">重要度</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E9%9B%86%E8%A8%88">集計</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E9%A0%98%E5%9F%9F%E6%8A%BD%E5%87%BA">領域抽出</a>
-      (1)
-    </li>
-  
-    <li>
-      <a href="/tags/%E9%AB%98%E9%80%9F%E5%8C%96">高速化</a>
-      (1)
-    </li>
-  
-</ul>
-</aside>
-
-			</div>
-		</div>
-
-
-		
-		<footer class="footer">
-  <div class="footer__inner">
-    
-      <div class="copyright">
-        <span>© 2025 Powered by <a href="https://gohugo.io">Hugo</a></span>
-    
-      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
-      </div>
-  </div>
-</footer>
-
-
-
-
-
-
-<script type="text/javascript" src="/bundle.min.js"></script>
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  let fuse;
-  const input = document.getElementById("search-box");
-  const resultsList = document.getElementById("search-results");
-
-  if (!input) return; 
-
-  fetch("\/index.json")
-    .then(res => res.json())
-    .then(data => {
-      fuse = new Fuse(data, {
-        keys: ["title", "summary"],
-        threshold: 0.3,
-      });
-
-      input.addEventListener("input", () => {
-        if (!fuse) return;
-        const results = fuse.search(input.value);
-        resultsList.innerHTML = "";
-        results.slice(0, 5).forEach(r => {
-          const li = document.createElement("li");
-          li.innerHTML = `<a href="${r.item.url}">${r.item.title}</a>`;
-          resultsList.appendChild(li);
-        });
-      });
-    });
-});
-</script>
-
-
-
-		
-	</div>
-
-</body>
-
-</html>
+また、Example/secの列をみると、mBERTは文字単位の入力にすると非常に推論が遅いですが、CANINEはそれに比べると非常に速いです。とはいえ、mBERTのsubword単位の入力の場合に比べると当然遅いです。</p><h2 id=ablation-study>ablation study<a href=#ablation-study class=hanchor arialabel=Anchor>#</a></h2><p>ablation studyです。
+<img src=/posts/canine%E3%81%AE%E8%AB%96%E6%96%87%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%83%A1%E3%83%A2/table4.png alt="ablation study（論文より引用）"></p><p>個人的に気になったところとしては、ダウンサンプリングのときによりstrideをもっと大きくすると計算量が減るのですが、この結果をみるとstrideを大きくすることで結構性能が下がってしまっています。これは残念。
+embeddingの次元も小さくすると性能が結構下がっていますね。</p></div></div><div class=pagination><div class=pagination__title><span class=pagination__title-h></span><hr></div><div class=pagination__buttons><a href=https://opqrstuvcut.github.io/posts/aws%E3%81%AEdead-letter-queue%E3%81%AE%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%82%92%E3%82%82%E3%81%A8%E3%81%AEqueue%E3%81%AB%E6%88%BB%E3%81%99/ class="button inline prev">&lt; [<span class=button__text>AWSのDead Letter QueueのメッセージをもとのQueueに戻す</span>]
+</a>::
+<a href=https://opqrstuvcut.github.io/posts/%E7%94%BB%E5%83%8F%E8%AA%8D%E8%AD%98%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E6%80%A7%E8%83%BD%E3%82%92%E3%81%82%E3%81%92%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AEtips/ class="button inline next">[<span class=button__text>画像認識モデルの性能をあげるためのTips</span>] ></a></div></div></article></main><aside id=sidebar><h3>最近の記事</h3><ul class=recent-posts><li><a href=/posts/openai%E3%81%AEpython%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E5%88%A9%E7%94%A8%E3%81%A7unsupported-file-format%E3%81%8C%E3%81%A7%E3%82%8B/>OpenAIのPythonモジュール利用で「Unsupported file format」がでる</a>
+<small class=date>2025-07-31</small></li><li><a href=/posts/hidden-in-plain-sight-vlms-overlook-their-visual-representations%E3%81%AE%E8%AB%96%E6%96%87%E7%B4%B9%E4%BB%8B/>「Hidden in plain sight： VLMs overlook their visual representations」の論文紹介</a>
+<small class=date>2025-07-28</small></li><li><a href=/posts/%E6%8B%A1%E6%95%A3%E8%A8%80%E8%AA%9E%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AEllada/>拡散言語モデルのLLaDA</a>
+<small class=date>2025-06-30</small></li><li><a href=/posts/%E5%A4%96%E9%83%A8%E7%9F%A5%E8%AD%98%E3%82%92%E6%B4%BB%E7%94%A8%E3%81%97%E3%81%A6%E5%8A%B9%E7%8E%87%E7%9A%84%E3%81%AB%E6%80%A7%E8%83%BD%E5%90%91%E4%B8%8A%E3%82%92%E9%81%94%E6%88%90%E3%81%97%E3%81%9Fyolo-rd/>外部知識を活用して効率的に性能向上を達成したYOLO-RD</a>
+<small class=date>2025-05-31</small></li><li><a href=/posts/label-studio%E3%81%AEapi%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9F%E3%83%87%E3%83%BC%E3%82%BF%E9%80%A3%E6%90%BA%E3%81%AE%E3%83%A1%E3%83%A2/>Label StudioのAPIを利用したデータ連携のメモ</a>
+<small class=date>2025-04-24</small></li><li><a href=/posts/%E5%9B%9E%E8%BB%A2%E3%81%97%E3%81%A6%E3%81%84%E3%82%8Bbounding-box%E5%90%91%E3%81%91%E3%81%AEiou%E3%81%AEkfiou/>回転しているBounding Box向けのIoUのKFIoU</a>
+<small class=date>2025-03-22</small></li><li><a href=/posts/%E7%89%B9%E5%BE%B4%E9%87%8F%E3%81%AE%E6%AC%A1%E5%85%83%E3%81%AE%E6%9F%94%E8%BB%9F%E6%80%A7%E3%81%8C%E9%AB%98%E3%81%84%E3%83%9E%E3%83%88%E3%83%AA%E3%83%A7%E3%83%BC%E3%82%B7%E3%82%AB%E8%A1%A8%E7%8F%BE%E5%AD%A6%E7%BF%92/>特徴量の次元の柔軟性が高いマトリョーシカ表現学習</a>
+<small class=date>2025-02-17</small></li><li><a href=/posts/waic/>WAIC</a>
+<small class=date>2025-01-18</small></li></ul><h3>カテゴリ</h3><ul class=categories><li><a href=/categories/app-runner>app runner</a>
+(1)</li><li><a href=/categories/aws>aws</a>
+(7)</li><li><a href=/categories/chrome>chrome</a>
+(1)</li><li><a href=/categories/deep-learning>deep learning</a>
+(2)</li><li><a href=/categories/docker>docker</a>
+(1)</li><li><a href=/categories/ecs>ecs</a>
+(1)</li><li><a href=/categories/feature-importance>feature importance</a>
+(3)</li><li><a href=/categories/flutter>flutter</a>
+(1)</li><li><a href=/categories/gcp>gcp</a>
+(1)</li><li><a href=/categories/gpu>gpu</a>
+(2)</li><li><a href=/categories/kubernetes>kubernetes</a>
+(1)</li><li><a href=/categories/llm>llm</a>
+(2)</li><li><a href=/categories/nlp>nlp</a>
+(2)</li><li><a href=/categories/openai>openai</a>
+(1)</li><li><a href=/categories/opencv>opencv</a>
+(31)</li><li><a href=/categories/opencv%E7%94%9F%E6%B4%BB>opencv生活</a>
+(3)</li><li><a href=/categories/pandas>pandas</a>
+(1)</li><li><a href=/categories/python>python</a>
+(6)</li><li><a href=/categories/sql>sql</a>
+(1)</li><li><a href=/categories/tensorflow>tensorflow</a>
+(1)</li><li><a href=/categories/uwsgi>uwsgi</a>
+(1)</li><li><a href=/categories/vim>vim</a>
+(1)</li><li><a href=/categories/vim%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3>vimプラグイン</a>
+(1)</li><li><a href=/categories/vlm>vlm</a>
+(1)</li><li><a href=/categories/%E3%82%A2%E3%83%8E%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3>アノテーション</a>
+(1)</li><li><a href=/categories/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0>ディープラーニング</a>
+(6)</li><li><a href=/categories/%E3%83%99%E3%82%A4%E3%82%BA>ベイズ</a>
+(1)</li><li><a href=/categories/%E6%83%85%E5%A0%B1%E9%87%8F%E5%9F%BA%E6%BA%96>情報量基準</a>
+(1)</li><li><a href=/categories/%E6%95%B0%E5%80%A4%E8%A8%88%E7%AE%97>数値計算</a>
+(1)</li><li><a href=/categories/%E6%95%B0%E5%AD%A6>数学</a>
+(1)</li><li><a href=/categories/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92>機械学習</a>
+(11)</li><li><a href=/categories/%E6%B7%B1%E5%B1%A4%E5%AD%A6%E7%BF%92>深層学習</a>
+(2)</li><li><a href=/categories/%E7%89%A9%E4%BD%93%E6%A4%9C%E5%87%BA>物体検出</a>
+(2)</li><li><a href=/categories/%E7%94%BB%E5%83%8F%E5%87%A6%E7%90%86>画像処理</a>
+(36)</li><li><a href=/categories/%E7%B5%B1%E8%A8%88>統計</a>
+(2)</li><li><a href=/categories/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E5%87%A6%E7%90%86>自然言語処理</a>
+(4)</li><li><a href=/categories/%E8%A1%A8%E7%8F%BE%E5%AD%A6%E7%BF%92>表現学習</a>
+(1)</li></ul><h3>タグ</h3><ul class=tags><li><a href=/tags/adaptivethreshold>adaptivethreshold</a>
+(1)</li><li><a href=/tags/affine>affine</a>
+(1)</li><li><a href=/tags/ai-search>ai search</a>
+(1)</li><li><a href=/tags/aic>aic</a>
+(1)</li><li><a href=/tags/albert>albert</a>
+(1)</li><li><a href=/tags/aws>aws</a>
+(7)</li><li><a href=/tags/azure>azure</a>
+(1)</li><li><a href=/tags/bert>bert</a>
+(5)</li><li><a href=/tags/boto3>boto3</a>
+(1)</li><li><a href=/tags/bubble>bubble</a>
+(1)</li><li><a href=/tags/canny>canny</a>
+(1)</li><li><a href=/tags/chromedriver>chromedriver</a>
+(1)</li><li><a href=/tags/clip>clip</a>
+(1)</li><li><a href=/tags/closing>closing</a>
+(1)</li><li><a href=/tags/cnn>cnn</a>
+(1)</li><li><a href=/tags/cognito>cognito</a>
+(1)</li><li><a href=/tags/coordconv>coordconv</a>
+(1)</li><li><a href=/tags/cuda>cuda</a>
+(1)</li><li><a href=/tags/cv>cv</a>
+(1)</li><li><a href=/tags/dart>dart</a>
+(2)</li><li><a href=/tags/deep-learning>deep learning</a>
+(3)</li><li><a href=/tags/deeplearning>deeplearning</a>
+(1)</li><li><a href=/tags/deeplift>deeplift</a>
+(1)</li><li><a href=/tags/dilate>dilate</a>
+(1)</li><li><a href=/tags/dlq>dlq</a>
+(1)</li><li><a href=/tags/docker>docker</a>
+(2)</li><li><a href=/tags/docker-compose>docker-compose</a>
+(1)</li><li><a href=/tags/drawcontours>drawcontours</a>
+(1)</li><li><a href=/tags/ecs>ecs</a>
+(1)</li><li><a href=/tags/efficientnet>efficientnet</a>
+(1)</li><li><a href=/tags/embedding>embedding</a>
+(1)</li><li><a href=/tags/erode>erode</a>
+(1)</li><li><a href=/tags/fastapi>fastapi</a>
+(1)</li><li><a href=/tags/feature-importance>feature importance</a>
+(1)</li><li><a href=/tags/filter2d>filter2d</a>
+(1)</li><li><a href=/tags/floodfill>floodfill</a>
+(1)</li><li><a href=/tags/flutter>flutter</a>
+(2)</li><li><a href=/tags/fnlmd>fnlmd</a>
+(1)</li><li><a href=/tags/gcp>gcp</a>
+(1)</li><li><a href=/tags/gke>gke</a>
+(1)</li><li><a href=/tags/gpt>gpt</a>
+(1)</li><li><a href=/tags/gpu>gpu</a>
+(2)</li><li><a href=/tags/grabcuts>grabcuts</a>
+(1)</li><li><a href=/tags/groupby>groupby</a>
+(1)</li><li><a href=/tags/gru>gru</a>
+(1)</li><li><a href=/tags/hessian>hessian</a>
+(1)</li><li><a href=/tags/hough%E5%A4%89%E6%8F%9B>hough変換</a>
+(2)</li><li><a href=/tags/imagebert>imagebert</a>
+(1)</li><li><a href=/tags/individual-conditional-expectation>individual conditional expectation</a>
+(1)</li><li><a href=/tags/inpaint>inpaint</a>
+(1)</li><li><a href=/tags/integrated-gradients>integrated gradients</a>
+(2)</li><li><a href=/tags/iou>iou</a>
+(1)</li><li><a href=/tags/jupyter>jupyter</a>
+(1)</li><li><a href=/tags/jupytxt>jupytxt</a>
+(1)</li><li><a href=/tags/keras>keras</a>
+(1)</li><li><a href=/tags/kfiou>kfiou</a>
+(1)</li><li><a href=/tags/kldivergence>kldivergence</a>
+(1)</li><li><a href=/tags/kubernetes>kubernetes</a>
+(1)</li><li><a href=/tags/label-studio>label studio</a>
+(1)</li><li><a href=/tags/lambda>lambda</a>
+(1)</li><li><a href=/tags/laplacian>laplacian</a>
+(1)</li><li><a href=/tags/lime>lime</a>
+(1)</li><li><a href=/tags/llada>llada</a>
+(1)</li><li><a href=/tags/llama>llama</a>
+(1)</li><li><a href=/tags/llm>llm</a>
+(2)</li><li><a href=/tags/lstm>lstm</a>
+(1)</li><li><a href=/tags/lu%E5%88%86%E8%A7%A3>lu分解</a>
+(1)</li><li><a href=/tags/m3u8>m3u8</a>
+(1)</li><li><a href=/tags/magma>magma</a>
+(1)</li><li><a href=/tags/mamba>mamba</a>
+(1)</li><li><a href=/tags/manifold>manifold</a>
+(1)</li><li><a href=/tags/matplotlib>matplotlib</a>
+(1)</li><li><a href=/tags/medianblur>medianblur</a>
+(1)</li><li><a href=/tags/minio>minio</a>
+(1)</li><li><a href=/tags/minmaxloc>minmaxloc</a>
+(1)</li><li><a href=/tags/mlm>mlm</a>
+(1)</li><li><a href=/tags/namedtuple>namedtuple</a>
+(1)</li><li><a href=/tags/neovim>neovim</a>
+(1)</li><li><a href=/tags/nlp>nlp</a>
+(2)</li><li><a href=/tags/numpy>numpy</a>
+(1)</li><li><a href=/tags/nvidia>nvidia</a>
+(2)</li><li><a href=/tags/object-detection>object detection</a>
+(1)</li><li><a href=/tags/onnx>onnx</a>
+(1)</li><li><a href=/tags/onnx-runtime>onnx runtime</a>
+(1)</li><li><a href=/tags/openai>openai</a>
+(1)</li><li><a href=/tags/opencv>opencv</a>
+(30)</li><li><a href=/tags/opencv2>opencv2</a>
+(1)</li><li><a href=/tags/opening>opening</a>
+(1)</li><li><a href=/tags/pabdas>pabdas</a>
+(1)</li><li><a href=/tags/pandas>pandas</a>
+(1)</li><li><a href=/tags/partial-dependence-plot>partial dependence plot</a>
+(1)</li><li><a href=/tags/postgresql>postgresql</a>
+(1)</li><li><a href=/tags/pre-annotations>pre-annotations</a>
+(1)</li><li><a href=/tags/pymc>pymc</a>
+(1)</li><li><a href=/tags/python>python</a>
+(16)</li><li><a href=/tags/pytorch>pytorch</a>
+(4)</li><li><a href=/tags/rag>rag</a>
+(2)</li><li><a href=/tags/rnn>rnn</a>
+(1)</li><li><a href=/tags/rotated-bounding-box>rotated bounding box</a>
+(1)</li><li><a href=/tags/rt-detr>rt-detr</a>
+(1)</li><li><a href=/tags/s3>s3</a>
+(2)</li><li><a href=/tags/sepfilter2d>sepfilter2d</a>
+(1)</li><li><a href=/tags/shap>shap</a>
+(1)</li><li><a href=/tags/skewiou>skewiou</a>
+(1)</li><li><a href=/tags/sobel>sobel</a>
+(1)</li><li><a href=/tags/sqs>sqs</a>
+(1)</li><li><a href=/tags/sum-tree>sum tree</a>
+(1)</li><li><a href=/tags/table>table</a>
+(1)</li><li><a href=/tags/tabnet>tabnet</a>
+(1)</li><li><a href=/tags/tabtransformer>tabtransformer</a>
+(1)</li><li><a href=/tags/tabular>tabular</a>
+(1)</li><li><a href=/tags/tensorboard>tensorboard</a>
+(1)</li><li><a href=/tags/tensorflow>tensorflow</a>
+(3)</li><li><a href=/tags/tic>tic</a>
+(1)</li><li><a href=/tags/transformer>transformer</a>
+(2)</li><li><a href=/tags/uvicorn>uvicorn</a>
+(1)</li><li><a href=/tags/uwsgi>uwsgi</a>
+(1)</li><li><a href=/tags/vim>vim</a>
+(2)</li><li><a href=/tags/vlm>vlm</a>
+(1)</li><li><a href=/tags/waic>waic</a>
+(1)</li><li><a href=/tags/watershed>watershed</a>
+(1)</li><li><a href=/tags/workload-identity>workload identity</a>
+(1)</li><li><a href=/tags/yolo>yolo</a>
+(2)</li><li><a href=/tags/yolo-rd>yolo-rd</a>
+(1)</li><li><a href=/tags/yolov5>yolov5</a>
+(1)</li><li><a href=/tags/%E3%82%A2%E3%83%8E%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3>アノテーション</a>
+(1)</li><li><a href=/tags/%E3%82%A2%E3%83%95%E3%82%A3%E3%83%B3%E5%A4%89%E6%8F%9B>アフィン変換</a>
+(1)</li><li><a href=/tags/%E3%82%AB%E3%83%AB%E3%83%9E%E3%83%B3%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%83%BC>カルマンフィルター</a>
+(1)</li><li><a href=/tags/%E3%82%AC%E3%82%A6%E3%82%B9%E5%B9%B3%E6%BB%91%E5%8C%96>ガウス平滑化</a>
+(1)</li><li><a href=/tags/%E3%82%AD%E3%83%A3%E3%83%97%E3%82%B7%E3%83%A7%E3%83%8B%E3%83%B3%E3%82%B0>キャプショニング</a>
+(1)</li><li><a href=/tags/%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AA%E3%83%B3%E3%82%B0>サンプリング</a>
+(1)</li><li><a href=/tags/%E3%82%B9%E3%83%94%E3%82%A2%E3%83%9E%E3%83%B3%E3%81%AE%E9%A0%86%E4%BD%8D%E7%9B%B8%E9%96%A2%E4%BF%82%E6%95%B0>スピアマンの順位相関係数</a>
+(1)</li><li><a href=/tags/%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%83%9E%E3%83%83%E3%83%81%E3%83%B3%E3%82%B0>テンプレートマッチング</a>
+(1)</li><li><a href=/tags/%E3%83%87%E3%82%A3%E3%83%BC%E3%83%97%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0>ディープラーニング</a>
+(12)</li><li><a href=/tags/%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB>ノイズ除去</a>
+(1)</li><li><a href=/tags/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0>ヒストグラム</a>
+(1)</li><li><a href=/tags/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E5%B9%B3%E5%9D%A6%E5%8C%96>ヒストグラム平坦化</a>
+(1)</li><li><a href=/tags/%E3%83%92%E3%82%B9%E3%83%88%E3%82%B0%E3%83%A9%E3%83%A0%E6%AF%94%E8%BC%83>ヒストグラム比較</a>
+(1)</li><li><a href=/tags/%E3%83%98%E3%83%83%E3%82%BB%E8%A1%8C%E5%88%97>ヘッセ行列</a>
+(1)</li><li><a href=/tags/%E3%83%99%E3%82%A4%E3%82%BA>ベイズ</a>
+(1)</li><li><a href=/tags/%E4%BA%8C%E5%80%A4%E5%8C%96>二値化</a>
+(1)</li><li><a href=/tags/%E5%86%86%E6%A4%9C%E5%87%BA>円検出</a>
+(1)</li><li><a href=/tags/%E5%87%B8>凸</a>
+(1)</li><li><a href=/tags/%E5%88%86%E9%9B%A2%E5%8F%AF%E8%83%BD%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF>分離可能フィルタ</a>
+(1)</li><li><a href=/tags/%E5%89%8D%E6%99%AF%E5%88%86%E9%9B%A2>前景分離</a>
+(1)</li><li><a href=/tags/%E5%8B%95%E7%94%BB>動画</a>
+(2)</li><li><a href=/tags/%E5%90%B9%E3%81%8D%E5%87%BA%E3%81%97>吹き出し</a>
+(1)</li><li><a href=/tags/%E5%9C%A7%E7%B8%AE>圧縮</a>
+(1)</li><li><a href=/tags/%E5%A4%A7%E6%B4%A5%E4%BA%8C%E5%80%A4%E5%8C%96>大津二値化</a>
+(1)</li><li><a href=/tags/%E5%A4%A7%E8%A6%8F%E6%A8%A1%E8%A8%80%E8%AA%9E%E3%83%A2%E3%83%87%E3%83%AB>大規模言語モデル</a>
+(2)</li><li><a href=/tags/%E5%AF%84%E4%B8%8E>寄与</a>
+(2)</li><li><a href=/tags/%E5%AF%84%E4%B8%8E%E5%BA%A6>寄与度</a>
+(1)</li><li><a href=/tags/%E5%B9%B3%E6%BB%91%E5%8C%96>平滑化</a>
+(1)</li><li><a href=/tags/%E5%BE%A9%E5%85%83>復元</a>
+(1)</li><li><a href=/tags/%E6%83%85%E5%A0%B1%E9%87%8F%E5%9F%BA%E6%BA%96>情報量基準</a>
+(1)</li><li><a href=/tags/%E6%8B%A1%E6%95%A3%E3%83%A2%E3%83%87%E3%83%AB>拡散モデル</a>
+(1)</li><li><a href=/tags/%E6%95%B0%E5%AD%A6>数学</a>
+(1)</li><li><a href=/tags/%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92>機械学習</a>
+(5)</li><li><a href=/tags/%E6%AD%A3%E8%A6%8F%E5%88%86%E5%B8%83>正規分布</a>
+(1)</li><li><a href=/tags/%E6%B7%B1%E5%B1%A4%E5%AD%A6%E7%BF%92>深層学習</a>
+(9)</li><li><a href=/tags/%E6%B8%A1%E8%BE%BA%E6%BE%84%E5%A4%AB%E3%83%99%E3%82%A4%E3%82%BA>渡辺澄夫ベイズ</a>
+(1)</li><li><a href=/tags/%E7%89%A9%E4%BD%93%E6%A4%9C%E5%87%BA>物体検出</a>
+(3)</li><li><a href=/tags/%E7%89%A9%E4%BD%93%E8%AA%8D%E8%AD%98>物体認識</a>
+(1)</li><li><a href=/tags/%E7%89%B9%E5%BE%B4%E9%87%8F>特徴量</a>
+(2)</li><li><a href=/tags/%E7%94%BB%E5%83%8F>画像</a>
+(4)</li><li><a href=/tags/%E7%95%B3%E3%81%BF%E8%BE%BC%E3%81%BF>畳み込み</a>
+(1)</li><li><a href=/tags/%E7%B5%B1%E8%A8%88>統計</a>
+(1)</li><li><a href=/tags/%E7%B8%AE%E5%B0%8F>縮小</a>
+(1)</li><li><a href=/tags/%E8%86%A8%E5%BC%B5>膨張</a>
+(1)</li><li><a href=/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E>自然言語</a>
+(3)</li><li><a href=/tags/%E8%87%AA%E7%84%B6%E8%A8%80%E8%AA%9E%E5%87%A6%E7%90%86>自然言語処理</a>
+(2)</li><li><a href=/tags/%E8%92%B8%E7%95%99>蒸留</a>
+(1)</li><li><a href=/tags/%E8%A1%A8%E7%8F%BE%E5%AD%A6%E7%BF%92>表現学習</a>
+(1)</li><li><a href=/tags/%E8%A8%88%E7%AE%97%E9%87%8F>計算量</a>
+(1)</li><li><a href=/tags/%E8%AA%AC%E6%98%8E%E5%8F%AF%E8%83%BDai>説明可能ai</a>
+(2)</li><li><a href=/tags/%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF>読み込み</a>
+(1)</li><li><a href=/tags/%E8%B2%A0%E5%AE%9A%E5%80%A4>負定値</a>
+(1)</li><li><a href=/tags/%E8%B7%9D%E9%9B%A2%E5%A4%89%E6%8F%9B>距離変換</a>
+(1)</li><li><a href=/tags/%E8%BC%AA%E9%83%AD>輪郭</a>
+(1)</li><li><a href=/tags/%E8%BC%AA%E9%83%AD%E6%8A%BD%E5%87%BA>輪郭抽出</a>
+(1)</li><li><a href=/tags/%E9%80%86%E8%A1%8C%E5%88%97>逆行列</a>
+(1)</li><li><a href=/tags/%E9%80%8F%E9%81%8E%E5%A4%89%E6%8F%9B>透過変換</a>
+(1)</li><li><a href=/tags/%E9%80%A3%E7%AB%8B%E4%B8%80%E6%AC%A1%E6%96%B9%E7%A8%8B%E5%BC%8F>連立一次方程式</a>
+(1)</li><li><a href=/tags/%E9%81%A9%E5%BF%9C%E7%9A%84%E6%A4%9C%E7%B4%A2>適応的検索</a>
+(1)</li><li><a href=/tags/%E9%87%8D%E8%A6%81%E5%BA%A6>重要度</a>
+(1)</li><li><a href=/tags/%E9%9B%86%E8%A8%88>集計</a>
+(1)</li><li><a href=/tags/%E9%A0%98%E5%9F%9F%E6%8A%BD%E5%87%BA>領域抽出</a>
+(1)</li><li><a href=/tags/%E9%AB%98%E9%80%9F%E5%8C%96>高速化</a>
+(1)</li></ul></aside></div></div><footer class=footer><div class=footer__inner><div class=copyright><span>© 2025 Powered by <a href=https://gohugo.io>Hugo</a></span>
+<span>:: <a href=https://github.com/panr/hugo-theme-terminal target=_blank>Theme</a> made by <a href=https://github.com/panr target=_blank>panr</a></span></div></div></footer><script type=text/javascript src=/bundle.min.js></script><script src=https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js></script><script>document.addEventListener("DOMContentLoaded",()=>{let e;const t=document.getElementById("search-box"),n=document.getElementById("search-results");if(!t)return;fetch("/index.json").then(e=>e.json()).then(s=>{e=new Fuse(s,{keys:["title","summary"],threshold:.3}),t.addEventListener("input",()=>{if(!e)return;const s=e.search(t.value);n.innerHTML="",s.slice(0,5).forEach(e=>{const t=document.createElement("li");t.innerHTML=`<a href="${e.item.url}">${e.item.title}</a>`,n.appendChild(t)})})})})</script></div></body></html>

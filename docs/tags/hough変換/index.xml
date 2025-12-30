@@ -1,26 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Hough変換 on MatLoverによるMatlab以外のブログ</title>
-    <link>https://opqrstuvcut.github.io/tags/hough%E5%A4%89%E6%8F%9B/</link>
-    <description>Recent content in Hough変換 on MatLoverによるMatlab以外のブログ</description>
-    <generator>Hugo</generator>
-    <language>ja</language>
-    <lastBuildDate>Wed, 05 Aug 2020 11:05:00 +0900</lastBuildDate>
-    <atom:link href="https://opqrstuvcut.github.io/tags/hough%E5%A4%89%E6%8F%9B/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Hough変換で円を検出</title>
-      <link>https://opqrstuvcut.github.io/posts/hough%E5%A4%89%E6%8F%9B%E3%81%A7%E5%86%86%E3%82%92%E6%A4%9C%E5%87%BA/</link>
-      <pubDate>Wed, 05 Aug 2020 11:05:00 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/posts/hough%E5%A4%89%E6%8F%9B%E3%81%A7%E5%86%86%E3%82%92%E6%A4%9C%E5%87%BA/</guid>
-      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;Hough変換は直線を検出する方法として前回紹介したのですが、Hough変換を応用することで、円の検出も行えます。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Hough（ハフ）変換で直線を見つけよう</title>
-      <link>https://opqrstuvcut.github.io/posts/hough%E3%83%8F%E3%83%95%E5%A4%89%E6%8F%9B%E3%81%A7%E7%9B%B4%E7%B7%9A%E3%82%92%E8%A6%8B%E3%81%A4%E3%81%91%E3%82%88%E3%81%86/</link>
-      <pubDate>Tue, 04 Aug 2020 19:00:00 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/posts/hough%E3%83%8F%E3%83%95%E5%A4%89%E6%8F%9B%E3%81%A7%E7%9B%B4%E7%B7%9A%E3%82%92%E8%A6%8B%E3%81%A4%E3%81%91%E3%82%88%E3%81%86/</guid>
-      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;Hough変換は画像から直線をみつける方法です。&lt;/p&gt;&#xA;&lt;h1 id=&#34;簡単な原理&#34;&gt;簡単な原理&lt;/h1&gt;&#xA;&lt;p&gt;入力として2値画像を考えます。&#xA;Hough変換では候補となる直線を用意し、直線上にいくつ0でないピクセルがあるかを数えます。&#xA;このピクセルの個数が指定したしきい値以上であった場合、その候補の直線は正しい直線として扱います。&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hough変換 on MatLoverによるMatlab以外のブログ</title><link>https://opqrstuvcut.github.io/tags/hough%E5%A4%89%E6%8F%9B/</link><description>Recent content in Hough変換 on MatLoverによるMatlab以外のブログ</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Wed, 05 Aug 2020 11:05:00 +0900</lastBuildDate><atom:link href="https://opqrstuvcut.github.io/tags/hough%E5%A4%89%E6%8F%9B/index.xml" rel="self" type="application/rss+xml"/><item><title>Hough変換で円を検出</title><link>https://opqrstuvcut.github.io/posts/hough%E5%A4%89%E6%8F%9B%E3%81%A7%E5%86%86%E3%82%92%E6%A4%9C%E5%87%BA/</link><pubDate>Wed, 05 Aug 2020 11:05:00 +0900</pubDate><guid>https://opqrstuvcut.github.io/posts/hough%E5%A4%89%E6%8F%9B%E3%81%A7%E5%86%86%E3%82%92%E6%A4%9C%E5%87%BA/</guid><description>&lt;p>本記事はQrunchからの転載です。&lt;/p>
+&lt;hr>
+&lt;p>Hough変換は直線を検出する方法として前回紹介したのですが、Hough変換を応用することで、円の検出も行えます。&lt;/p></description></item><item><title>Hough（ハフ）変換で直線を見つけよう</title><link>https://opqrstuvcut.github.io/posts/hough%E3%83%8F%E3%83%95%E5%A4%89%E6%8F%9B%E3%81%A7%E7%9B%B4%E7%B7%9A%E3%82%92%E8%A6%8B%E3%81%A4%E3%81%91%E3%82%88%E3%81%86/</link><pubDate>Tue, 04 Aug 2020 19:00:00 +0900</pubDate><guid>https://opqrstuvcut.github.io/posts/hough%E3%83%8F%E3%83%95%E5%A4%89%E6%8F%9B%E3%81%A7%E7%9B%B4%E7%B7%9A%E3%82%92%E8%A6%8B%E3%81%A4%E3%81%91%E3%82%88%E3%81%86/</guid><description>&lt;p>本記事はQrunchからの転載です。&lt;/p>
+&lt;hr>
+&lt;p>Hough変換は画像から直線をみつける方法です。&lt;/p>
+&lt;h1 id="簡単な原理">簡単な原理&lt;/h1>
+&lt;p>入力として2値画像を考えます。
+Hough変換では候補となる直線を用意し、直線上にいくつ0でないピクセルがあるかを数えます。
+このピクセルの個数が指定したしきい値以上であった場合、その候補の直線は正しい直線として扱います。&lt;/p></description></item></channel></rss>

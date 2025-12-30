@@ -1,19 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>SepFilter2D on MatLoverによるMatlab以外のブログ</title>
-    <link>https://opqrstuvcut.github.io/tags/sepfilter2d/</link>
-    <description>Recent content in SepFilter2D on MatLoverによるMatlab以外のブログ</description>
-    <generator>Hugo</generator>
-    <language>ja</language>
-    <lastBuildDate>Sun, 26 Jul 2020 11:06:00 +0900</lastBuildDate>
-    <atom:link href="https://opqrstuvcut.github.io/tags/sepfilter2d/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>sepFilter2Dで分離可能フィルタを使って高速化</title>
-      <link>https://opqrstuvcut.github.io/posts/sepfilter2d%E3%81%A7%E5%88%86%E9%9B%A2%E5%8F%AF%E8%83%BD%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E9%AB%98%E9%80%9F%E5%8C%96/</link>
-      <pubDate>Sun, 26 Jul 2020 11:06:00 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/posts/sepfilter2d%E3%81%A7%E5%88%86%E9%9B%A2%E5%8F%AF%E8%83%BD%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E9%AB%98%E9%80%9F%E5%8C%96/</guid>
-      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;OpenCVのfilter2Dを使うのは良いのですが、分離可能フィルタのときには&lt;strong&gt;sepFilter2D&lt;/strong&gt;を使うことで、&lt;strong&gt;高速化&lt;/strong&gt;できます。&#xA;今回はこのsepFilter2Dを扱います。&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>SepFilter2D on MatLoverによるMatlab以外のブログ</title><link>https://opqrstuvcut.github.io/tags/sepfilter2d/</link><description>Recent content in SepFilter2D on MatLoverによるMatlab以外のブログ</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Sun, 26 Jul 2020 11:06:00 +0900</lastBuildDate><atom:link href="https://opqrstuvcut.github.io/tags/sepfilter2d/index.xml" rel="self" type="application/rss+xml"/><item><title>sepFilter2Dで分離可能フィルタを使って高速化</title><link>https://opqrstuvcut.github.io/posts/sepfilter2d%E3%81%A7%E5%88%86%E9%9B%A2%E5%8F%AF%E8%83%BD%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E9%AB%98%E9%80%9F%E5%8C%96/</link><pubDate>Sun, 26 Jul 2020 11:06:00 +0900</pubDate><guid>https://opqrstuvcut.github.io/posts/sepfilter2d%E3%81%A7%E5%88%86%E9%9B%A2%E5%8F%AF%E8%83%BD%E3%83%95%E3%82%A3%E3%83%AB%E3%82%BF%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E9%AB%98%E9%80%9F%E5%8C%96/</guid><description>&lt;p>本記事はQrunchからの転載です。&lt;/p>
+&lt;hr>
+&lt;p>OpenCVのfilter2Dを使うのは良いのですが、分離可能フィルタのときには&lt;strong>sepFilter2D&lt;/strong>を使うことで、&lt;strong>高速化&lt;/strong>できます。
+今回はこのsepFilter2Dを扱います。&lt;/p></description></item></channel></rss>

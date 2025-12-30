@@ -1,19 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>復元 on MatLoverによるMatlab以外のブログ</title>
-    <link>https://opqrstuvcut.github.io/tags/%E5%BE%A9%E5%85%83/</link>
-    <description>Recent content in 復元 on MatLoverによるMatlab以外のブログ</description>
-    <generator>Hugo</generator>
-    <language>ja</language>
-    <lastBuildDate>Fri, 31 Jul 2020 11:04:00 +0900</lastBuildDate>
-    <atom:link href="https://opqrstuvcut.github.io/tags/%E5%BE%A9%E5%85%83/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>inpaintで画像の修復をする</title>
-      <link>https://opqrstuvcut.github.io/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/</link>
-      <pubDate>Fri, 31 Jul 2020 11:04:00 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/</guid>
-      <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;画像に汚れがついたり、傷がついているケースの修復には、最近ではディープラーニングを使った手法が色々出ていますが、画像処理の範囲でもできることがあります。&#xA;今回はOpenCVで修復をおこなってみます。&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>復元 on MatLoverによるMatlab以外のブログ</title><link>https://opqrstuvcut.github.io/tags/%E5%BE%A9%E5%85%83/</link><description>Recent content in 復元 on MatLoverによるMatlab以外のブログ</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Fri, 31 Jul 2020 11:04:00 +0900</lastBuildDate><atom:link href="https://opqrstuvcut.github.io/tags/%E5%BE%A9%E5%85%83/index.xml" rel="self" type="application/rss+xml"/><item><title>inpaintで画像の修復をする</title><link>https://opqrstuvcut.github.io/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/</link><pubDate>Fri, 31 Jul 2020 11:04:00 +0900</pubDate><guid>https://opqrstuvcut.github.io/posts/inpaint%E3%81%A7%E7%94%BB%E5%83%8F%E3%81%AE%E4%BF%AE%E5%BE%A9%E3%82%92%E3%81%99%E3%82%8B/</guid><description>&lt;p>本記事はQrunchからの転載です。&lt;/p>
+&lt;hr>
+&lt;p>画像に汚れがついたり、傷がついているケースの修復には、最近ではディープラーニングを使った手法が色々出ていますが、画像処理の範囲でもできることがあります。
+今回はOpenCVで修復をおこなってみます。&lt;/p></description></item></channel></rss>

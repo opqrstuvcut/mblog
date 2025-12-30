@@ -12,7 +12,7 @@ hasCJKLanguage: true
 DefaultContentLanguage: ja
 enableInlineShortcodes: true
 googleAnalytics: G-LFC5W8DKV1
-publishDir: "docs"
+publishDir: "public"
 
 permalinks:
   post: /posts/:slug/
