@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>FNLMD on MatLoverによるMatlab以外のブログ</title>
-    <link>https://opqrstuvcut.github.io/mblog/tags/fnlmd/</link>
+    <link>https://opqrstuvcut.github.io/tags/fnlmd/</link>
     <description>Recent content in FNLMD on MatLoverによるMatlab以外のブログ</description>
     <generator>Hugo</generator>
     <language>ja</language>
     <lastBuildDate>Sat, 01 Aug 2020 10:04:00 +0900</lastBuildDate>
-    <atom:link href="https://opqrstuvcut.github.io/mblog/tags/fnlmd/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://opqrstuvcut.github.io/tags/fnlmd/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Non-Local Means Denoisingでノイズ除去</title>
-      <link>https://opqrstuvcut.github.io/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/</link>
+      <link>https://opqrstuvcut.github.io/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/</link>
       <pubDate>Sat, 01 Aug 2020 10:04:00 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/mblog/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/</guid>
+      <guid>https://opqrstuvcut.github.io/posts/non-local-means-denoising%E3%81%A7%E3%83%8E%E3%82%A4%E3%82%BA%E9%99%A4%E5%8E%BB/</guid>
       <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;non-local-means-denoisingのアイデア&#34;&gt;Non-Local Means Denoisingのアイデア&lt;/h1&gt;&#xA;&lt;p&gt;今回はノイズ除去を扱うのですが、特にガウスノイズを考えます。&#xA;これは平均が0となるノイズですので、着目しているピクセルにある意味で&lt;strong&gt;似ている&lt;/strong&gt;ピクセルを画像中から探してきて、それらの平均を取れば、ノイズの影響が消えたピクセルが得られるはずです。&#xA;これがNon-Local Means Denoisingのアイデアになります。&lt;/p&gt;</description>
     </item>
   </channel>

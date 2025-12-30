@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vim on MatLoverによるMatlab以外のブログ</title>
-    <link>https://opqrstuvcut.github.io/mblog/tags/vim/</link>
+    <link>https://opqrstuvcut.github.io/tags/vim/</link>
     <description>Recent content in Vim on MatLoverによるMatlab以外のブログ</description>
     <generator>Hugo</generator>
     <language>ja</language>
     <lastBuildDate>Thu, 22 Aug 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://opqrstuvcut.github.io/mblog/tags/vim/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://opqrstuvcut.github.io/tags/vim/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>おすすめの(Neo)Vimプラグイン</title>
-      <link>https://opqrstuvcut.github.io/mblog/posts/%E3%81%8A%E3%81%99%E3%81%99%E3%82%81%E3%81%AEneovim%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3/</link>
+      <link>https://opqrstuvcut.github.io/posts/%E3%81%8A%E3%81%99%E3%81%99%E3%82%81%E3%81%AEneovim%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3/</link>
       <pubDate>Thu, 22 Aug 2024 00:00:00 +0000</pubDate>
-      <guid>https://opqrstuvcut.github.io/mblog/posts/%E3%81%8A%E3%81%99%E3%81%99%E3%82%81%E3%81%AEneovim%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3/</guid>
+      <guid>https://opqrstuvcut.github.io/posts/%E3%81%8A%E3%81%99%E3%81%99%E3%82%81%E3%81%AEneovim%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3/</guid>
       <description>&lt;p&gt;NeoVimで利用しているプラグインはたくさんあるのですが、個人的に激推なプラグインを紹介します。&lt;br&gt;&#xA;下記の設定例の記載が特にないプラグインはLazyでプラグインを読み込んでいるだけのものになります。&lt;/p&gt;</description>
     </item>
     <item>
       <title>magma-nvimで理想に近いVimでのJupyter環境を作る</title>
-      <link>https://opqrstuvcut.github.io/mblog/posts/magma-nvim%E3%81%A7%E7%90%86%E6%83%B3%E3%81%AB%E8%BF%91%E3%81%84vim%E3%81%A7%E3%81%AEjupyter%E7%92%B0%E5%A2%83%E3%82%92%E4%BD%9C%E3%82%8B/</link>
+      <link>https://opqrstuvcut.github.io/posts/magma-nvim%E3%81%A7%E7%90%86%E6%83%B3%E3%81%AB%E8%BF%91%E3%81%84vim%E3%81%A7%E3%81%AEjupyter%E7%92%B0%E5%A2%83%E3%82%92%E4%BD%9C%E3%82%8B/</link>
       <pubDate>Mon, 12 Jun 2023 00:00:00 +0000</pubDate>
-      <guid>https://opqrstuvcut.github.io/mblog/posts/magma-nvim%E3%81%A7%E7%90%86%E6%83%B3%E3%81%AB%E8%BF%91%E3%81%84vim%E3%81%A7%E3%81%AEjupyter%E7%92%B0%E5%A2%83%E3%82%92%E4%BD%9C%E3%82%8B/</guid>
+      <guid>https://opqrstuvcut.github.io/posts/magma-nvim%E3%81%A7%E7%90%86%E6%83%B3%E3%81%AB%E8%BF%91%E3%81%84vim%E3%81%A7%E3%81%AEjupyter%E7%92%B0%E5%A2%83%E3%82%92%E4%BD%9C%E3%82%8B/</guid>
       <description>&lt;p&gt;vimで開発しているとブラウザからJupyterを触るのが嫌になってきます。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;開発中にターミナルとブラウザへ移動が面倒&lt;/li&gt;&#xA;&lt;li&gt;vimで使っているformatterとかlinterをそのまま使いたい&lt;/li&gt;&#xA;&lt;li&gt;Jupyter上でもvimキーバインドを設定しているけど、ブラウザのキーバインドと被る&lt;/li&gt;&#xA;&lt;li&gt;vimからIPython上に実行結果を表示する方法もあるが、残念ながらめんどくさかったりで運用面があわない&lt;/li&gt;&#xA;&lt;li&gt;PyCharmやVSCodeを使えばいいじゃんという声が聞こえてきますが、とりあえずPyCharmは気になるところが多くて疲れました&amp;hellip;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;前々からvimで完結するようにしたいなぁと思っていたのですが、ようやくそれがある程度実現されてきたので紹介していきます。&lt;/p&gt;</description>
     </item>
   </channel>
