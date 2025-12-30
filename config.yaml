@@ -1,4 +1,7 @@
 baseURL: "https://opqrstuvcut.github.io/mblog/"
+canonifyURLs: true
+relativeURLs: false
+
 languageCode : "ja-jp"
 theme: ["hugo-video", "terminal"]
 # disqusShortname: https-opqrstuvcut-github-io-blog
