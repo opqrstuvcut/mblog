@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>FloodFill on MatLoverによるMatlab以外のブログ</title>
-    <link>https://opqrstuvcut.github.io/tags/floodfill/</link>
+    <link>https://opqrstuvcut.github.io/mblog/tags/floodfill/</link>
     <description>Recent content in FloodFill on MatLoverによるMatlab以外のブログ</description>
     <generator>Hugo</generator>
     <language>ja</language>
     <lastBuildDate>Thu, 06 Aug 2020 11:08:00 +0900</lastBuildDate>
-    <atom:link href="https://opqrstuvcut.github.io/tags/floodfill/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://opqrstuvcut.github.io/mblog/tags/floodfill/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>floodFillで領域に色を塗る</title>
-      <link>https://opqrstuvcut.github.io/posts/floodfill%E3%81%A7%E9%A0%98%E5%9F%9F%E3%81%AB%E8%89%B2%E3%82%92%E5%A1%97%E3%82%8B/</link>
+      <link>https://opqrstuvcut.github.io/mblog/posts/floodfill%E3%81%A7%E9%A0%98%E5%9F%9F%E3%81%AB%E8%89%B2%E3%82%92%E5%A1%97%E3%82%8B/</link>
       <pubDate>Thu, 06 Aug 2020 11:08:00 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/posts/floodfill%E3%81%A7%E9%A0%98%E5%9F%9F%E3%81%AB%E8%89%B2%E3%82%92%E5%A1%97%E3%82%8B/</guid>
+      <guid>https://opqrstuvcut.github.io/mblog/posts/floodfill%E3%81%A7%E9%A0%98%E5%9F%9F%E3%81%AB%E8%89%B2%E3%82%92%E5%A1%97%E3%82%8B/</guid>
       <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;OpenCVのfloodFillを使うことで、選んだ点の周辺の似たような色のピクセルを塗りつぶすことができます。&lt;/p&gt;</description>
     </item>
   </channel>

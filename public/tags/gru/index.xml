@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>GRU on MatLoverによるMatlab以外のブログ</title>
-    <link>https://opqrstuvcut.github.io/tags/gru/</link>
+    <link>https://opqrstuvcut.github.io/mblog/tags/gru/</link>
     <description>Recent content in GRU on MatLoverによるMatlab以外のブログ</description>
     <generator>Hugo</generator>
     <language>ja</language>
     <lastBuildDate>Sun, 01 Dec 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://opqrstuvcut.github.io/tags/gru/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://opqrstuvcut.github.io/mblog/tags/gru/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Were RNNs All We Needed?を読んだのでまとめ</title>
-      <link>https://opqrstuvcut.github.io/posts/were-rnns-all-we-needed%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%81%AE%E3%81%A7%E3%81%BE%E3%81%A8%E3%82%81/</link>
+      <link>https://opqrstuvcut.github.io/mblog/posts/were-rnns-all-we-needed%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%81%AE%E3%81%A7%E3%81%BE%E3%81%A8%E3%82%81/</link>
       <pubDate>Sun, 01 Dec 2024 00:00:00 +0000</pubDate>
-      <guid>https://opqrstuvcut.github.io/posts/were-rnns-all-we-needed%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%81%AE%E3%81%A7%E3%81%BE%E3%81%A8%E3%82%81/</guid>
+      <guid>https://opqrstuvcut.github.io/mblog/posts/were-rnns-all-we-needed%E3%82%92%E8%AA%AD%E3%82%93%E3%81%A0%E3%81%AE%E3%81%A7%E3%81%BE%E3%81%A8%E3%82%81/</guid>
       <description>&lt;p&gt;Were RNNs All We Needed?を読んだので、その内容をまとめておきます。&lt;br&gt;&#xA;&lt;a href=&#34;https://arxiv.org/abs/2410.01201&#34;&gt;https://arxiv.org/abs/2410.01201&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;概要&#34;&gt;概要&lt;/h2&gt;&#xA;&lt;p&gt;Transformerを用いたアーキテクチャの場合、推論に時系列長の二乗に比例した計算量が必要となるため、単純には非常に長い時系列データを扱うことはできません．&lt;br&gt;&#xA;ちょうど一年前くらいにMambaという状態空間モデルベースの手法が提案されており、このMambaならば時系列長に比例した計算量となるため計算量的にはMambaが好ましいです．また学習も効率良くおこなえるうえ、精度的にも良い性能が得られることが分かってきており、有望な手法の1つです．&lt;/p&gt;</description>
     </item>
   </channel>

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>PostgreSQL on MatLoverによるMatlab以外のブログ</title>
-    <link>https://opqrstuvcut.github.io/tags/postgresql/</link>
+    <link>https://opqrstuvcut.github.io/mblog/tags/postgresql/</link>
     <description>Recent content in PostgreSQL on MatLoverによるMatlab以外のブログ</description>
     <generator>Hugo</generator>
     <language>ja</language>
     <lastBuildDate>Mon, 04 May 2020 13:35:16 +0900</lastBuildDate>
-    <atom:link href="https://opqrstuvcut.github.io/tags/postgresql/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://opqrstuvcut.github.io/mblog/tags/postgresql/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AWSのLambdaからPostgresを利用</title>
-      <link>https://opqrstuvcut.github.io/posts/aws%E3%81%AElambda%E3%81%8B%E3%82%89postgres%E3%82%92%E5%88%A9%E7%94%A8/</link>
+      <link>https://opqrstuvcut.github.io/mblog/posts/aws%E3%81%AElambda%E3%81%8B%E3%82%89postgres%E3%82%92%E5%88%A9%E7%94%A8/</link>
       <pubDate>Mon, 04 May 2020 13:35:16 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/posts/aws%E3%81%AElambda%E3%81%8B%E3%82%89postgres%E3%82%92%E5%88%A9%E7%94%A8/</guid>
+      <guid>https://opqrstuvcut.github.io/mblog/posts/aws%E3%81%AElambda%E3%81%8B%E3%82%89postgres%E3%82%92%E5%88%A9%E7%94%A8/</guid>
       <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;AWSのLambda（Python）からPostgresを利用するためのライブラリの使い方のメモです。何もトラブルなく使えましたが、一応。&#xA;ライブラリのレポジトリは&lt;a href=&#34;https://github.com/jkehler/awslambda-psycopg2&#34;&gt;こちら&lt;/a&gt;です。&lt;/p&gt;</description>
     </item>
   </channel>

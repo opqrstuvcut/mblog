@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Docker on MatLoverによるMatlab以外のブログ</title>
-    <link>https://opqrstuvcut.github.io/tags/docker/</link>
+    <link>https://opqrstuvcut.github.io/mblog/tags/docker/</link>
     <description>Recent content in Docker on MatLoverによるMatlab以外のブログ</description>
     <generator>Hugo</generator>
     <language>ja</language>
     <lastBuildDate>Sun, 08 Nov 2020 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://opqrstuvcut.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://opqrstuvcut.github.io/mblog/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>docker-composeのbuildがはじまらないとき</title>
-      <link>https://opqrstuvcut.github.io/posts/docker-compose%E3%81%AEbuild%E3%81%8C%E3%81%AF%E3%81%98%E3%81%BE%E3%82%89%E3%81%AA%E3%81%84%E3%81%A8%E3%81%8D/</link>
+      <link>https://opqrstuvcut.github.io/mblog/posts/docker-compose%E3%81%AEbuild%E3%81%8C%E3%81%AF%E3%81%98%E3%81%BE%E3%82%89%E3%81%AA%E3%81%84%E3%81%A8%E3%81%8D/</link>
       <pubDate>Sun, 08 Nov 2020 00:00:00 +0000</pubDate>
-      <guid>https://opqrstuvcut.github.io/posts/docker-compose%E3%81%AEbuild%E3%81%8C%E3%81%AF%E3%81%98%E3%81%BE%E3%82%89%E3%81%AA%E3%81%84%E3%81%A8%E3%81%8D/</guid>
+      <guid>https://opqrstuvcut.github.io/mblog/posts/docker-compose%E3%81%AEbuild%E3%81%8C%E3%81%AF%E3%81%98%E3%81%BE%E3%82%89%E3%81%AA%E3%81%84%E3%81%A8%E3%81%8D/</guid>
       <description>&lt;p&gt;最近では実験用の環境なんかもDockerコンテナ上に用意することも多いです。&lt;br&gt;&#xA;docker-composeも使うわけですが、たまにdocker-composeのbuildがいつになってもはじまらないことがあります。&lt;br&gt;&#xA;Building xxxがずっと表示されて、そこから進まないわけです。&lt;/p&gt;</description>
     </item>
     <item>
       <title>MinIOでローカルにS3みたいなものを作って開発する</title>
-      <link>https://opqrstuvcut.github.io/posts/minio%E3%81%A7%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%81%ABs3%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AA%E3%82%82%E3%81%AE%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%A6%E9%96%8B%E7%99%BA%E3%81%99%E3%82%8B/</link>
+      <link>https://opqrstuvcut.github.io/mblog/posts/minio%E3%81%A7%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%81%ABs3%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AA%E3%82%82%E3%81%AE%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%A6%E9%96%8B%E7%99%BA%E3%81%99%E3%82%8B/</link>
       <pubDate>Sat, 09 Nov 2019 12:48:01 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/posts/minio%E3%81%A7%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%81%ABs3%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AA%E3%82%82%E3%81%AE%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%A6%E9%96%8B%E7%99%BA%E3%81%99%E3%82%8B/</guid>
+      <guid>https://opqrstuvcut.github.io/mblog/posts/minio%E3%81%A7%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%81%ABs3%E3%81%BF%E3%81%9F%E3%81%84%E3%81%AA%E3%82%82%E3%81%AE%E3%82%92%E4%BD%9C%E3%81%A3%E3%81%A6%E9%96%8B%E7%99%BA%E3%81%99%E3%82%8B/</guid>
       <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;AWSのS3を使うようなシステムを開発するときに、S3と連携する部分だけAWSにつなぐより、ローカルにS3が欲しいなぁってふと思いました。でもそんな都合が良い話があるわけないよなぁ、なんて思ったら実はありました！その名も&lt;strong&gt;MinIO&lt;/strong&gt;。&#xA;今回はMinIOの使い方を簡単にご紹介します。とても簡単です。&lt;/p&gt;</description>
     </item>
   </channel>

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>圧縮 on MatLoverによるMatlab以外のブログ</title>
-    <link>https://opqrstuvcut.github.io/tags/%E5%9C%A7%E7%B8%AE/</link>
+    <link>https://opqrstuvcut.github.io/mblog/tags/%E5%9C%A7%E7%B8%AE/</link>
     <description>Recent content in 圧縮 on MatLoverによるMatlab以外のブログ</description>
     <generator>Hugo</generator>
     <language>ja</language>
     <lastBuildDate>Thu, 16 Jul 2020 11:00:00 +0900</lastBuildDate>
-    <atom:link href="https://opqrstuvcut.github.io/tags/%E5%9C%A7%E7%B8%AE/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://opqrstuvcut.github.io/mblog/tags/%E5%9C%A7%E7%B8%AE/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>imencodeとimdecodeによるメモリ上での画像圧縮</title>
-      <link>https://opqrstuvcut.github.io/posts/imencode%E3%81%A8imdecode%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A1%E3%83%A2%E3%83%AA%E4%B8%8A%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE/</link>
+      <link>https://opqrstuvcut.github.io/mblog/posts/imencode%E3%81%A8imdecode%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A1%E3%83%A2%E3%83%AA%E4%B8%8A%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE/</link>
       <pubDate>Thu, 16 Jul 2020 11:00:00 +0900</pubDate>
-      <guid>https://opqrstuvcut.github.io/posts/imencode%E3%81%A8imdecode%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A1%E3%83%A2%E3%83%AA%E4%B8%8A%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE/</guid>
+      <guid>https://opqrstuvcut.github.io/mblog/posts/imencode%E3%81%A8imdecode%E3%81%AB%E3%82%88%E3%82%8B%E3%83%A1%E3%83%A2%E3%83%AA%E4%B8%8A%E3%81%A7%E3%81%AE%E7%94%BB%E5%83%8F%E5%9C%A7%E7%B8%AE/</guid>
       <description>&lt;p&gt;本記事はQrunchからの転載です。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;画像をpngなどからjpgに変換したいときに、ぱっと思いつくのはファイルを読み込んで、それをjpgの拡張子で書き込みした後に再度読み込みなおすことです。&#xA;1度動かすならばそれでも良いのですが、何度も繰り返しおこなう場合にはファイルの読み書きの時間が気になります。&lt;/p&gt;</description>
     </item>
   </channel>
