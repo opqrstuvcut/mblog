@@ -2,13 +2,13 @@ baseURL: "https://opqrstuvcut.github.io"
 canonifyURLs: true
 relativeURLs: false
 
-languageCode : "ja-jp"
+languageCode: "ja-jp"
 theme: ["hugo-video", "terminal"]
 # disqusShortname: https-opqrstuvcut-github-io-blog
 
 pagination:
-    pagerSize: 10
-title: MatLoverによるMatlab以外のブログ  
+  pagerSize: 10
+title: MatLoverによるMatlab以外のブログ
 hasCJKLanguage: true
 
 DefaultContentLanguage: ja
@@ -17,8 +17,8 @@ googleAnalytics: G-LFC5W8DKV1
 publishDir: "docs"
 
 permalinks:
-    post: /posts/:slug/
-    page: /:slug/
+  post: /posts/:slug/
+  page: /:slug/
 
 sitemap:
   filename: sitemap.xml
@@ -30,69 +30,69 @@ taxonomies:
   tag: tags
 
 params:
-    fullWidthTheme: true
-    
-    mainSections:
-        - post
-    featuredImageField: image
-    # rssFullContent: true
-    # favicon: ./static/favicon.ico
-    # assets:
-    #   favicon: favicon.ico
+  fullWidthTheme: true
 
-    footer:
-        since: 2019
+  mainSections:
+    - post
+  featuredImageField: image
+  # rssFullContent: true
+  # favicon: ./static/favicon.ico
+  # assets:
+  #   favicon: favicon.ico
 
-    widgets:
-        homepage:
-          - type: categories
-            params:
-                limit: 10
-          - type: tag-cloud
-            params:
-                limit: 10
-        # page:
-        #   - type: toc
-        #     params:
+  footer:
+    since: 2019
 
-    # opengraph:
-    #     twitter:
-    #         # Your Twitter username
-    #         site:
-    #
-    #         # Available values: summary, summary_large_image
-    #         card: summary_large_image
+  widgets:
+    homepage:
+      - type: categories
+        params:
+          limit: 10
+      - type: tag-cloud
+        params:
+          limit: 10
+    # page:
+    #   - type: toc
+    #     params:
 
-    # defaultImage:
-    #     opengraph:
-    #         enabled: true 
-    #         local: false
-    #         src:
+  # opengraph:
+  #     twitter:
+  #         # Your Twitter username
+  #         site:
+  #
+  #         # Available values: summary, summary_large_image
+  #         card: summary_large_image
 
-    # colorScheme:
-    #     # Display toggle
-    #     toggle: false
-    #     
-    #     # Available values: auto, light, dark
-    #     default: light
+  # defaultImage:
+  #     opengraph:
+  #         enabled: true
+  #         local: false
+  #         src:
 
-    # imageProcessing:
-    #     cover:
-    #         enabled: true
-    #     content:
-    #         enabled: true
-    # comments:
-    #     enabled: true 
-    #     provider: disqus
+  # colorScheme:
+  #     # Display toggle
+  #     toggle: false
+  #
+  #     # Available values: auto, light, dark
+  #     default: light
 
-    contentTypeName: "post"
-    showMenuItems: 10
-    autoCover: false
+  # imageProcessing:
+  #     cover:
+  #         enabled: true
+  #     content:
+  #         enabled: true
+  # comments:
+  #     enabled: true
+  #     provider: disqus
+
+  contentTypeName: "post"
+  showMenuItems: 10
+  autoCover: false
 
 languages:
   ja:
     params:
-      title: MatLoverによるMatlab以外のブログ  
+      title: MatLoverによるMatlab以外のブログ
       menuMore: "Show more"
       readMore: "Read more"
       logo:
@@ -103,35 +103,39 @@ languages:
         url: "/about"
 
 menu:
-    social:
-        - identifier: github
-          name: GitHub
-          url: https://github.com/opqrstuvcut
-          params:
-              icon: brand-github
+  social:
+    - identifier: github
+      name: GitHub
+      url: https://github.com/opqrstuvcut
+      params:
+        icon: brand-github
 
 related:
-    includeNewer: true
-    threshold: 60
-    toLower: false
-    indices:
-        - name: tags
-          weight: 100
+  includeNewer: true
+  threshold: 60
+  toLower: false
+  indices:
+    - name: tags
+      weight: 100
 
-        - name: categories
-          weight: 200
+    - name: categories
+      weight: 200
 
 markup:
-    highlight:
-        noClasses: false
-    goldmark:
-      extensions:
-        passthrough:
-          delimiters:
-            block:
+  highlight:
+    noClasses: false
+  goldmark:
+    extensions:
+      passthrough:
+        delimiters:
+          block:
             - - \[
               - \]
             - - $$
               - $$
-      renderer:
-        unsafe: true
+    renderer:
+      unsafe: true
+
+caches:
+  images:
+    dir: :cacheDir/images
