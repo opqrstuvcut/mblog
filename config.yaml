@@ -1,6 +1,4 @@
 baseURL: "https://opqrstuvcut.github.io"
-canonifyURLs: true
-relativeURLs: false
 
 languageCode: "ja-jp"
 theme: ["hugo-video", "terminal"]
