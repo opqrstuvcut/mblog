@@ -1,4 +1,4 @@
-baseURL: "https://opqrstuvcut.github.io/mblog"
+baseURL: "https://blog.opqrstuvcut.net"
 
 languageCode: "ja-jp"
 theme: ["hugo-video", "terminal"]
